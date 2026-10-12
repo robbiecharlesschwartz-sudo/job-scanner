@@ -22,32 +22,29 @@ class Ratings(BaseModel):
     ratings: list[Rating]
 
 
-INSTRUCTIONS = """You screen job postings for one early-career candidate. Their profile is below.
+INSTRUCTIONS = """You screen job postings for one early-career candidate. Their profile, including
+hard requirements, is below. Be strict: the candidate would rather miss a borderline posting than
+wade through roles they can't get. Most postings you see should be No.
 
 For each posting, return:
 - rating:
-  Strong  = clearly entry-level (new grad / analyst / associate / 0-2 yrs) AND squarely in
-            consulting or strategy (incl. sustainability/climate consulting, corporate strategy,
-            strategy & ops, BizOps, chief of staff, founder's associate, internal consulting), US-based.
-  Good    = entry-level and adjacent to that work (e.g. operations or transformation analyst,
-            a consulting role with a technical tilt, a strategy role in a narrower domain).
-  Stretch = plausible but a reach: slightly senior wording, a specialised domain, or unclear level.
-  No      = not a fit: requires 3+ years, senior, non-US only, internship, or unrelated function
-            (pure engineering, audit, tax, sales quota roles, clinical, etc.).
-- reason: ONE short line (max ~15 words) on why it fits or doesn't, specific to this candidate
-  (e.g. "Entry-level climate consulting; your CDP/EcoVadis work maps directly").
-- starts_before_summer_2027: true only if the posting says the start date is before ~June 2027.
+  Strong  = meets every hard requirement AND is squarely lane 1 or 2 (strategy / management /
+            sustainability consulting analyst, or in-house corporate strategy / chief of staff
+            office analyst), explicitly new-grad or 0-1 years, based in NYC.
+  Good    = meets every hard requirement; lane 3 (rotational program), business development,
+            or a lane 1-2 role that is a step removed (e.g. operations consulting).
+  Stretch = meets the hard requirements on paper but something is unclear (level not stated,
+            ambiguous NYC presence) - only if you think it's still worth a look.
+  No      = misses ANY hard requirement, or the level/years can't plausibly be 0-1.
+- reason: ONE short line (max ~15 words), specific to this candidate.
+- starts_before_summer_2027: true if the posting needs a start before ~May 2027 or a cohort
+  after 2027 (e.g. 2028 availability).
 
-Level calibration (be strict - Strong should be rare, a handful per day at most):
+Level calibration:
 - At Deloitte, EY, PwC, KPMG, Accenture, IBM, Guidehouse, Slalom, West Monroe and Kearney, a bare
-  "Consultant" title is the level ABOVE new-grad entry (it usually means 2-4 years or an MBA).
-  Rate it Stretch at most unless the posting says entry-level / new grad / campus / 2027 / 0-2 years.
-- Entry-level titles there are: Analyst, Associate, Staff, Business Analyst, Associate Consultant,
-  or anything marked new grad / campus / class of 2027.
-- When the description is missing, judge from the title and lean one step lower.
-- Strong also requires the work itself to be strategy, management, operations, transformation or
-  sustainability consulting - not IT implementation (SAP, Salesforce, Workday, ServiceNow),
-  cyber, or data engineering, which are Good at best.
+  "Consultant" title is often the level above entry. Rate it No if the posting asks for 2+ years,
+  Stretch if it says nothing about level, higher only if it says new grad / campus / 2027.
+- If the description is missing, judge from the title and lean one step lower.
 
 Return one entry per posting, using the posting's id exactly as given.
 

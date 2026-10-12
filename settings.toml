@@ -18,58 +18,77 @@ model = "claude-haiku-5-5"
 batch_size = 8
 
 [filters]
-# Regexes are case-insensitive and matched against the job title unless noted.
+# Regexes, case-insensitive. The target (see profile.md): new-grad (0-1 yrs) roles based in NYC,
+# starting after an April 2027 graduation, in three lanes - external consulting, in-house
+# strategy, rotational/generalist programs - with business development as a looser fourth.
 
-# Seniority that rules a posting out.
-exclude_title = [
+# Seniority / wrong-stage titles. Always disqualifying.
+exclude_level = [
   '\bsenior\b', '\bsr\.?\b', '\bmanager\b', '\bdirector\b', '\bprincipal\b', '\bpartner\b',
-  '\bhead of\b', '\bvice president\b', '\bvp\b', '\bsvp\b', '\bevp\b', '\bexecutive director\b',
-  '\blead\b', '\barchitect\b', '\bfellow\b', '\bexpert\b', '\bmanaging\b',
-  '\bintern(ship)?\b', '\bco-?op\b', '\bsummer\s+(scholar|leadership)\b', '\bresidency\b',
-  '\bsoftware engineer\b', '\bdeveloper\b', '\bengineer\b', '\bdata scientist\b',
-  '\bnurse\b', '\bpharmacist\b', '\btechnician\b', '\bmechanic\b', '\bdriver\b',
-  '\baudit\b', '\btax\b', '\baccountant\b', '\bpayroll\b', '\bsales representative\b',
-  '\baccount executive\b', '\brecruit', '\bparalegal\b', '\battorney\b', '\bcounsel\b',
-  '\bsummer\s+(associate|analyst|consultant|20\d\d)\b', '\badministrative\b', '\bassistant\b',
-  '\bsales associate\b', '\bmerchandis', '\bwarehouse\b', '\bactuar', '\bsoc\b',
-  'talent acquisition', '\bcost accounting\b', '\bfood (services|safety)\b',
-  '\bexperienced\b', 'sales development', '\brepresentative\b',
-  '\b(software|data|cyber software) engineering\b', '\bfreelance\b',
+  '\bhead of\b', '\bvice president\b', '\bvp\b', '\bsvp\b', '\bevp\b', '\blead\b', '\bmanaging\b',
+  '\bexecutive\b', '\bexpert\b', '\bfellow\b', '\barchitect\b', '\bexperienced\b', '\bmba\b',
+  '\bintern(ship)?\b', '\bco-?op\b', '\bsummer\b', '\bresidency\b', '\bapprentice',
+  '\b(ii|iii|iv)\b', '\blevel [2-9]\b', '\bspecialist\s+(ii|iii)\b',
 ]
 
-# Function: at least one must match the title (or, for "maybe" terms, the description).
-function_title = [
-  'consult', 'strateg', 'transformation', 'sustainab', 'climate', '\besg\b', 'decarboni',
-  'strategy (and|&) operations', 'business operations', 'operations (analyst|associate)',
-  '\bbizops\b', 'chief of staff', "founder'?s associate", 'corporate development', 'advisory',
-  'management consult', 'business analyst', 'deal', 'value creation', 'performance improvement',
-  'parthenon', 'monitor deloitte', 'special projects', 'internal consulting',
+# Off-target work. Disqualifying unless the title is also ESG/sustainability/climate work.
+exclude_domain = [
+  'engineer', '\bdeveloper\b', 'software', 'data scien', 'cyber', 'security', '\bcloud\b',
+  'devops', '\bsap\b', 'salesforce', 'workday', 'servicenow', '\boracle\b', 'dynamics',
+  'anaplan', 'netsuite', 'guidewire', '\bpega', '\bit\b', 'technical', '\bsolutions?\b',
+  'implementation', 'integration', '\bapplication', '\bpackage\b', '\bdelivery\b', 'platform',
+  '\baudit', 'assurance', '\btax\b', 'accounting', 'accountant', 'actuar', 'payroll', '\brisk\b',
+  'compliance', 'forensic', '\baml\b', 'fraud', 'legal', 'paralegal', 'attorney', 'counsel',
+  '\bsales\b', 'account executive', 'recruit', 'talent acquisition', '\bhr\b', 'clinical',
+  'nurse', 'pharmac', 'medical', 'scientist', '\blab\b', 'manufacturing', 'marketing',
+  'communications', 'content', 'design', 'product manag', 'customer success', 'support',
+  'administrative', 'assistant', 'driver', 'warehouse', 'merchandis', 'clearance', 'ts/sci',
+  '\bsecret\b', 'financial due diligence', 'valuation', 'portfolio', 'trader', 'trading',
+  'quant', 'investment banking', 'underwrit', 'loan', 'credit', 'wealth', 'insurance', 'claims',
+  'analytics', 'data analyst', 'reporting', 'governance', 'insights',
+]
+domain_rescue = ['sustainab', 'climate', '\besg\b', 'decarboni', 'net[- ]zero', 'energy transition']
+
+# Lanes. The title must name one of these.
+function_any = [
+  'strateg', 'chief of staff', 'strategic initiatives', 'corporate development', 'bizops',
+  'business operations', 'strategy (and|&) operations', "founder'?s associate", 'special projects',
+  'internal consult', 'management consult', 'business consult', 'sustainab', 'climate', '\besg\b',
+  'decarboni', 'parthenon', 'monitor deloitte', 'value creation', 'performance improvement',
+  'rotational', 'rotation', 'leadership development', 'development program', 'graduate program',
+  'analyst program', 'generalist', 'business development',
+]
+# Extra lane words that only count at consulting firms (priority 1-2): there, these are the job.
+function_consulting = ['consult', 'business analyst', 'transformation', 'operations', 'advisory']
+consulting_priorities = [1, 2]
+
+# Level words in the title. "consultant" counts only at consulting firms (Big 4 / Accenture use
+# it for new grads); "associate" is skipped at banks unless marked early-career.
+level_title = [
+  '\banalyst\b', '\bassociate\b', '\bstaff\b', 'new grad', 'graduate', 'entry[- ]level', 'campus',
+  '\b2027\b', 'class of', 'early career', '\bjunior\b', 'program\b',
+]
+level_title_consulting = ['\bconsultant\b']
+early_markers = [
+  'new grad', 'recent graduate', 'entry[- ]level', 'class of 2027', '2027 grad', 'graduating',
+  'campus', 'undergraduate', '\b0\s*(-|–|to)\s*[12]\s*years', 'no prior (work )?experience',
+  'early[- ]career', '\b2027\b',
 ]
 
-# Companies at these priorities need a target function in the title; an early-career level
-# alone ("Associate", "Analyst") isn't enough at a non-consulting employer.
-require_function_priorities = [3]
-
-# Level signals that make a posting a clear early-career match.
-early_career = [
-  '\banalyst\b', '\bassociate\b', 'new grad', 'graduate', 'entry[- ]level', 'early career',
-  'campus', '\b2027\b', 'class of', '\bjunior\b', '\bstaff\b', 'level 1', '\bl1\b',
-  'associate consultant', 'business analyst', 'consultant i\b',
-]
-
-# Description text that rules a posting out (years of experience above the 0-2 range).
+# Description phrases that disqualify: 2+ years required, MBA required.
 exclude_description = [
-  '\b([3-9]|1[0-9])\+?\s*(\-|to|–)?\s*\d*\s*\+?\s*years?\b[^.]{0,40}\b(experience|exp\.)',
-  'minimum of ([3-9]|three|four|five|six|seven|eight|ten) years',
-  'at least ([3-9]|three|four|five|six|seven|eight|ten) years',
+  '\b([2-9]|1[0-9])\s*\+?\s*(-|–|to)?\s*\d*\s*\+?\s*years?\b[^.]{0,50}\b(experience|exp\.)',
+  '\b(minimum|at least|min\.?)( of)? ([2-9]|two|three|four|five|six|seven|eight|ten)\s*\+?\s*years',
+  '\b(two|three|four|five|six|seven|eight|ten)\s*\(?\d*\)?\s*\+?\s*(or more )?years?\b[^.]{0,50}\bexperience',
+  'mba (is |degree )?required', 'post[- ]mba', 'completed (an |your )?mba', 'current mba',
 ]
 
-# Start dates before summer 2027 -> flag (not drop).
-early_start_title = [
-  '\b2026\b', '\b(winter|spring|january|february|march|april)\s+2027\b',
+# Start-date / cohort mismatches: before an April 2027 graduation, or a 2028+ cohort.
+bad_start_title = [
+  '\b2026\b', '\b(winter|spring|january|february|march)\s+2027\b', '\b2028\b', '\b2029\b',
 ]
-early_start_description = [
-  'start\w*[^.\n]{0,40}\b(2026|(winter|spring|january|february|march|april|may)\s+2027)\b',
-  '\b(2026|(winter|spring|january|february|march|april)\s+2027)\s+start',
-  'immediate(ly)? start', 'start (date )?asap',
+bad_start_description = [
+  'start\w*[^.\n]{0,40}\b(2026|(winter|spring|january|february|march)\s+2027|2028)\b',
+  '\b(2026|(winter|spring|january|february|march)\s+2027|2028)\s+(start|cohort|class)',
+  'available to start (immediately|asap)', 'immediate start',
 ]

@@ -70,42 +70,72 @@ def is_us(location: str) -> bool | None:
     return None
 
 
+def is_nyc(location: str) -> bool | None:
+    """True = at least one location is New York City, False = located but not NYC,
+    None = no usable location ("Multiple Locations", blank)."""
+    loc = location.strip()
+    if not loc or re.fullmatch(r"(?i)(multiple|various|\d+)\s+locations?.*|remote", loc):
+        return None
+    low = loc.lower()
+    if re.search(r"new york city|\bnyc\b|manhattan|brooklyn", low):
+        return True
+    for seg in re.split(r"[;/|]", low):
+        seg = seg.strip()
+        if re.match(r"(us\s*-\s*)?(ny\s*[-,]\s*)?new york\b", seg):       # "New York, NY", "NY-New York"
+            return True
+        if re.search(r"\bny\s*[-,]\s*new york\b|new york,\s*(ny|new york)\b", seg):
+            return True
+        parts = [x.strip() for x in seg.split(",")]
+        if len(parts) >= 3 and "new york" in parts and parts.index("new york") != 1:
+            return True                                                    # city list "Boston, Chicago, New York"
+    return False
+
+
 def _any(patterns: list[str], text: str) -> bool:
     return any(re.search(p, text, flags=re.I) for p in patterns)
 
 
+def title_ok(job, f: dict) -> bool:
+    """Cheap first pass on title + listed location, before fetching detail pages."""
+    consulting = job.priority in f["consulting_priorities"]
+    t = job.title
+    return not (_any(f["exclude_level"], t)
+                or (_any(f["exclude_domain"], t) and not _any(f["domain_rescue"], t))
+                or not (_any(f["function_any"], t) or (consulting and _any(f["function_consulting"], t)))
+                or _any(f["bad_start_title"], t)
+                or is_nyc(job.location) is False)
+
+
 def classify(job, f: dict) -> tuple[str, str]:
-    """Returns (verdict, why). verdict in reject | borderline | clear."""
-    title = job.title
-    if _any(f["exclude_title"], title):
-        return "reject", "seniority/function in title"
-    us = job.extra.get("country_us", is_us(job.location))
-    if us is None and job.extra.get("assume_us"):
-        us = True
-    if us is False:
-        return "reject", "non-US location"
-    fn = _any(f["function_title"], title)
-    early = _any(f["early_career"], title) or _any(f["early_career"], job.meta)
-    if not fn and not early:
-        return "reject", "no target function or level in title"
-    if not fn and job.priority in f.get("require_function_priorities", []):
-        return "reject", "no target function in title"
-    if job.description and _any(f["exclude_description"], job.description):
-        if not (fn and early):
-            return "reject", "asks for 3+ years"
-        return "borderline", "title fits but description mentions 3+ years"
-    if fn and early and us:
-        return "clear", "function + early-career level"
-    why = []
-    if not fn:
-        why.append("level fits, function unclear")
-    if not early:
-        why.append("function fits, level unclear")
-    if us is None:
-        why.append("location unclear")
-    return "borderline", "; ".join(why)
+    """Returns (verdict, why). verdict in reject | candidate | clear.
+    clear = every rule passes and the posting itself says early-career; candidate = passes, but
+    the level rests on the title alone, so the LLM gets the final say."""
+    title, desc = job.title, job.description or ""
+    consulting = job.priority in f["consulting_priorities"]
+    if _any(f["exclude_level"], title):
+        return "reject", "senior / intern / wrong-stage title"
+    if _any(f["exclude_domain"], title) and not _any(f["domain_rescue"], title):
+        return "reject", "off-target function"
+    if not (_any(f["function_any"], title) or (consulting and _any(f["function_consulting"], title))):
+        return "reject", "not consulting / strategy / rotational"
+    level = _any(f["level_title"], title) or (consulting and _any(f["level_title_consulting"], title))
+    early_desc = _any(f["early_markers"], f"{title}\n{job.meta}\n{desc}")
+    if not level and not early_desc:
+        return "reject", "no early-career level"
+    if job.extra.get("associate_is_senior") and re.search(r"(?i)\bassociate\b", title) and not early_desc:
+        return "reject", "bank 'Associate' = post-MBA"
+    if _any(f["bad_start_title"], title) or _any(f["bad_start_description"], desc[:8000]):
+        return "reject", "start date / cohort doesn't fit an April 2027 grad"
+    if _any(f["exclude_description"], re.sub(r"(?i)\b[01]\s*(-|–|to)\s*\d+\s*\+?\s*years?", " ", desc)):
+        return "reject", "asks for 2+ years or an MBA"
+    nyc = is_nyc(job.location)
+    if nyc is None and re.search(r"New York", desc):
+        nyc = True
+    if not nyc:
+        return "reject", "not based in NYC" if nyc is False else "location unknown"
+    return ("clear", "early-career consulting/strategy role in NYC") if early_desc else \
+        ("candidate", "title fits; level not stated in posting")
 
 
 def flags_early_start(job, f: dict) -> bool:
-    return _any(f["early_start_title"], job.title) or \
-        _any(f["early_start_description"], job.description[:6000])
+    return False   # bad start dates are now rejected outright in classify()

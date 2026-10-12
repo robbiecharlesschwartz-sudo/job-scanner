@@ -98,14 +98,16 @@ def main(argv=None) -> int:
                 break
 
     # Keyword pass. Workday listings carry no description, so fetch it for survivors and re-check.
-    first_pass = [j for j in new if filters.classify(j, f)[0] != "reject"]
+    first_pass = [j for j in new if filters.title_ok(j, f)]
 
     def enrich(j):
-        if "detail" in j.extra:
-            try:
+        try:
+            if "detail" in j.extra:
                 adapters.workday_detail(j)
-            except Exception:
-                pass                            # keep the listing-level data
+            elif j.extra.get("platform") in ("avature", "radancy"):
+                adapters.page_detail(j)
+        except Exception:
+            pass                                # keep the listing-level data
         return j
 
     with cf.ThreadPoolExecutor(max_workers=8) as ex:
@@ -131,17 +133,14 @@ def main(argv=None) -> int:
     for j in candidates:
         r = ratings.get(j.key)
         if r:
-            if r.rating == "No":
-                if j.verdict != "clear":
-                    continue                    # Claude screens borderline postings out
-                j.rating = "Stretch"            # keyword-clear postings are never dropped
-            else:
-                j.rating = r.rating
-            j.reason = r.reason
-            j.early_start = r.starts_before_summer_2027
+            if r.rating == "No" or r.starts_before_summer_2027:
+                continue                        # the LLM's "no" is final
+            j.rating, j.reason = r.rating, r.reason
         else:
-            j.rating = "Good" if j.verdict == "clear" else "Stretch"
-            j.reason = f"Keyword match ({j.reason}); not rated by Claude."
+            if j.verdict != "clear":
+                continue                        # unrated and level unconfirmed: skip
+            j.rating = "Good"
+            j.reason = "Entry-level consulting/strategy role in NYC (AI rating unavailable this run)."
         j.early_start = j.early_start or filters.flags_early_start(j, f)
         j.extra["code"] = short_code(j.key)
         matches.append(j)

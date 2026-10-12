@@ -16,53 +16,63 @@ def job(title, loc="New York, NY", pri=1, desc="", **extra):
 
 
 class Location(unittest.TestCase):
-    def test_us(self):
-        for loc in ["New York, NY", "US - DC, Washington", "Remote (USA)", "Chicago; London",
-                    "Dallas, US (United States)", "Atlanta, Georgia (US)", "Purchase, New York (US)"]:
-            self.assertTrue(filters.is_us(loc), loc)
+    def test_nyc(self):
+        for loc in ["New York, NY", "New York, New York, United States", "US - NY, New York",
+                    "NY-New York", "Boston; New York, NY", "Americas / Atlanta, Boston, Chicago, New York",
+                    "United States - New York - New York City", "New York, US (United States)",
+                    "New York, NY (HQ); San Francisco, CA; Remote (US)"]:
+            self.assertTrue(filters.is_nyc(loc), loc)
 
-    def test_non_us(self):
-        for loc in ["London, Greater London (GB)", "Bangalore, IN", "Toronto, Ontario (CA)",
-                    "Asia Pacific / Bangkok, Jakarta", "Azerbaijan, Azerbaijan (AZ)", "Cairo - ETIC"]:
-            self.assertFalse(filters.is_us(loc), loc)
+    def test_not_nyc(self):
+        for loc in ["Purchase, New York (US)", "Rochester, New York", "Chicago, IL", "Remote (US)",
+                    "Jersey City, NJ, United States (US)", "London (GB)", "Rosslyn, Virginia, United States"]:
+            self.assertFalse(filters.is_nyc(loc), loc)
 
     def test_unknown(self):
         for loc in ["", "Multiple Locations", "3 Locations", "Remote"]:
-            self.assertIsNone(filters.is_us(loc), loc)
+            self.assertIsNone(filters.is_nyc(loc), loc)
 
 
 class Classify(unittest.TestCase):
     def v(self, *a, **k):
         return filters.classify(job(*a, **k), F)[0]
 
-    def test_clear(self):
-        self.assertEqual(self.v("Strategy Analyst"), "clear")
-        self.assertEqual(self.v("Entry Level AI-First Transformation – Strategy Consultant 2027"), "clear")
-        self.assertEqual(self.v("Associate, Strategy & Operations", pri=3), "clear")
+    def test_accepts(self):
+        self.assertEqual(self.v("Strategy Analyst", desc="Open to 2027 graduates."), "clear")
+        self.assertEqual(self.v("Consultative Offerings - Analyst - Functional & Operations Strategy",
+                                desc="This is an entry-level opportunity."), "clear")
+        self.assertEqual(self.v("Corporate Strategy Analyst", pri=3), "candidate")
+        self.assertEqual(self.v("Leadership Development Program - Strategy", pri=3,
+                                desc="For recent graduates."), "clear")
+        self.assertEqual(self.v("USA - Assurance - Climate Change and Sustainability Services - Staff",
+                                desc="campus hire"), "clear")      # ESG rescues "assurance"
+        self.assertEqual(self.v("Consultant, Strategy", pri=1), "candidate")
 
-    def test_reject(self):
-        for t in ["Senior Consultant, Strategy", "Manager, Corporate Strategy", "Strategy Intern",
-                  "Experienced Consultant, Banking", "Summer Analyst - Strategy", "Software Engineer",
-                  "Associate Administrative Assistant", "Route Sales Associate"]:
-            self.assertEqual(self.v(t), "reject", t)
-        self.assertEqual(self.v("Strategy Analyst", loc="London (GB)"), "reject")
-        self.assertEqual(self.v("Financial Analyst", pri=3), "reject")   # P3 needs a function
+    def test_rejects(self):
+        cases = {
+            "Technical Consultant, Mid-Market": dict(pri=3, desc="4+ years in technical consulting"),
+            "Senior Consultant, Strategy": {}, "Manager, Corporate Strategy": {},
+            "Strategy Intern": {}, "Summer Analyst - Strategy": {},
+            "Associate Package Consultant - Salesforce 2027": {},
+            "Associate, Corporate Strategy": dict(pri=3, associate_is_senior=True),
+            "Financial Analyst": dict(pri=3), "Consultant, Strategy (needs yrs)": dict(desc="3+ years of experience"),
+            "Strategy Analyst - January 2028": {}, "Strategy Analyst (MBA)": dict(desc="MBA required."),
+            "Analyst, Cyber Strategy": {}, "Consultant, Strategy": dict(pri=3),
+        }
+        for t, k in cases.items():
+            self.assertEqual(self.v(t, **k), "reject", t)
+        self.assertEqual(self.v("Strategy Analyst", loc="Chicago, IL"), "reject")
+        self.assertEqual(self.v("Strategy Analyst", loc="Remote (US)"), "reject")
+        self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations"), "reject")
 
-    def test_borderline(self):
-        self.assertEqual(self.v("Consultant, Supply Chain"), "borderline")        # level unclear
-        self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations"), "borderline")
-        self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations", assume_us=True), "clear")
+    def test_years_ranges(self):
+        self.assertEqual(self.v("Strategy Analyst", desc="0-2 years of experience preferred"), "clear")
+        self.assertEqual(self.v("Strategy Analyst", desc="2-4 years of consulting experience"), "reject")
+        self.assertEqual(self.v("Strategy Analyst", desc="Minimum of two years of experience"), "reject")
 
-    def test_years(self):
-        d = "Requires 5+ years of consulting experience."
-        self.assertEqual(self.v("Consultant, Strategy", desc=d), "reject")
-        self.assertEqual(self.v("Strategy Analyst", desc=d), "borderline")
-        self.assertEqual(self.v("Strategy Analyst", desc="0-2 years of experience"), "clear")
-
-    def test_early_start(self):
-        self.assertTrue(filters.flags_early_start(job("Analyst - January 2027 start"), F))
-        self.assertTrue(filters.flags_early_start(job("Analyst", desc="Start date: Winter 2027."), F))
-        self.assertFalse(filters.flags_early_start(job("Analyst", desc="© 2026 Acme. Start summer 2027."), F))
+    def test_location_from_description(self):
+        self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations",
+                                desc="Entry-level. Offices: New York, Boston."), "clear")
 
 
 class Alerts(unittest.TestCase):

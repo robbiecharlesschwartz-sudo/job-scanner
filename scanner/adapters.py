@@ -99,8 +99,9 @@ def _mk(c: dict, **kw) -> Job:
     kw["title"] = re.sub(r"\s+", " ", html.unescape(kw.get("title") or "")).strip()
     kw["location"] = re.sub(r"\s+", " ", html.unescape(kw.get("location") or "")).strip()
     job = Job(company=c["name"], priority=int(c.get("priority", 9)), **kw)
-    if c.get("assume_us"):
-        job.extra["assume_us"] = True
+    job.extra["platform"] = c["platform"]
+    if c.get("associate_is_senior"):
+        job.extra["associate_is_senior"] = True
     return job
 
 
@@ -194,6 +195,23 @@ def workday_detail(job: Job) -> None:
         job.extra["country_us"] = country in ("United States of America", "United States")
     job.posted = d.get("startDate", job.posted)
     job.meta = d.get("timeType", "")
+
+
+def page_detail(job: Job) -> None:
+    """Avature (Deloitte) and Radancy (EY) list "Multiple Locations"; the posting page has the
+    real city list and the description. Called for candidates only."""
+    h = get_text(job.url)
+    body = h[h.find("ats-description"):] if "ats-description" in h else h
+    text = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", body, flags=re.S | re.I))
+    job.description = text[:8000]
+    flat = strip_html(h).replace("\n", " | ")
+    m = re.search(r"Locations?:\s*\|?\s*([^|]{3,600})", flat)
+    if m:
+        job.location = m.group(1).strip()
+    else:
+        cities = re.findall(r"[A-Z][A-Za-z .'-]+, [A-Z][A-Za-z ]+, United States", strip_html(h))
+        if cities:
+            job.location = "; ".join(dict.fromkeys(c.strip() for c in cities))
 
 
 def oracle(c: dict) -> list[Job]:
