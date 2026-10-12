@@ -15,7 +15,7 @@ max_listed = 25
 # Haiku 5.5 keeps this to pennies a month; "claude-opus-5-5" rates more carefully at ~40x the price.
 model = "claude-haiku-5-5"
 # Postings scored per Claude request.
-batch_size = 8
+batch_size = 6
 
 [filters]
 # Regexes, case-insensitive. The target (see profile.md): new-grad (0-1 yrs) roles based in NYC,
@@ -86,12 +86,15 @@ early_markers = [
   'early[- ]career', '\b2027\b',
 ]
 
-# Description phrases that disqualify: 3+ years required, MBA required.
+# Description phrases that disqualify: 3+ years, an MBA / graduate degree, prior full-time work.
 exclude_description = [
   '\b([3-9]|1[0-9])\s*\+?\s*(-|–|to)?\s*\d*\s*\+?\s*years?\b[^.]{0,50}\b(experience|exp\.)',
   '\b(minimum|at least|min\.?)( of)? ([3-9]|three|four|five|six|seven|eight|ten)\s*\+?\s*years',
   '\b(three|four|five|six|seven|eight|ten)\s*\(?\d*\)?\s*\+?\s*(or more )?years?\b[^.]{0,50}\bexperience',
   'mba (is |degree )?required', 'post[- ]mba', 'completed (an |your )?mba', 'current mba',
+  '\b(have|hold|be pursuing|pursuing|completed?|possess|earned)\s+(an?\s+|your\s+)?(mba|master|graduate degree|advanced degree)',
+  '\b(mba|graduate degree|advanced degree)\b[^.]{0,40}\b(required|must|necessary)',
+  'prior full[- ]time (work |professional )?experience', 'mba (candidates|graduates|students)',
 ]
 
 # Start-date / cohort mismatches: before an April 2027 graduation, or a 2028+ cohort.

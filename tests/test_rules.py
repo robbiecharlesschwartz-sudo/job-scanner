@@ -80,6 +80,15 @@ class Classify(unittest.TestCase):
         self.assertEqual(self.v("Product Strategy Analyst", loc="Chicago, IL", desc="new grad"), "reject")
         self.assertEqual(self.v("Senior Product Strategy Analyst", desc="new grad"), "reject")
 
+    def test_graduate_degree(self):
+        for d in ["Candidates must have or be pursuing an MBA or similar graduate degree -- such as a "
+                  "master's degree in Finance -- along with prior full time work experience.",
+                  "Hold an MBA or other advanced degree.", "A graduate degree is required.",
+                  "Requires prior full-time work experience."]:
+            self.assertEqual(self.v("Strategy Analyst", desc=d), "reject", d)
+        self.assertEqual(self.v("Strategy Analyst", desc="Bachelor's or Master's degree in business; new grad."), "clear")
+        self.assertEqual(self.v("Kearney Associate, Strategic Operations", pri=2, associate_is_senior=True), "reject")
+
     def test_location_from_description(self):
         self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations",
                                 desc="Entry-level. Offices: New York, Boston."), "clear")

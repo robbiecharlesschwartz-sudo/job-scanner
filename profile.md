@@ -32,7 +32,9 @@ Business development is a looser fourth option.
   Analyst" (a bank "Associate" means post-MBA or 3+ years = No); at corporates Strategy Analyst,
   Business Analyst, Rotational Analyst, Leadership Development Program, or Associate only when
   marked early-career.
-- No: Senior, Manager, Lead, Principal; "2+ years", "3-5 years" or more; MBA required;
+- No: anything requiring (or "pursuing") an MBA, master's or other graduate degree, or prior
+  full-time work experience. The candidate graduates with a bachelor's and isn't pursuing more.
+- No: Senior, Manager, Lead, Principal; "3+ years" or more; MBA required;
   internships (incl. Summer 2027 intern); start dates before graduation (before ~May 2027) or a
   later cohort (e.g. 2028 availability).
 - No: technical/implementation consulting (SAP, Salesforce, Workday, ServiceNow, integrations,

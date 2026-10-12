@@ -1,0 +1,45 @@
+# Your own verdicts on real postings. The AI reads these before every rating, so it learns your
+# judgement. Add one whenever a rating looks wrong (or just tell Claude Code and it will add it).
+# rating: Strong | Good | Stretch | No
+
+[[example]]
+company = "Ramp"
+title = "Technical Consultant, Mid-Market"
+rating = "No"
+why = "Asks for 4+ years and it's technical implementation work, not strategy. Out of range."
+
+[[example]]
+company = "Deloitte"
+title = "Consultative Offerings - Analyst - Functional & Operations Strategy"
+rating = "Strong"
+why = "Entry-level strategy consulting analyst, NYC among the offices. Exactly the target."
+
+[[example]]
+company = "IBM Consulting"
+title = "Entry Level AI-First Transformation – Strategy Consultant 2027"
+rating = "Strong"
+why = "Explicit 2027 entry-level strategy consulting role in New York."
+
+[[example]]
+company = "Kearney"
+title = "Kearney Associate, Strategic Operations (SOP) Plan Tower"
+rating = "No"
+why = "Kearney 'Associate' is the post-MBA title: requires an MBA or graduate degree plus prior full-time work. A bachelor's grad can't apply."
+
+[[example]]
+company = "Deloitte"
+title = "Docebo Consultant"
+rating = "No"
+why = "Software-platform implementation work, not strategy."
+
+[[example]]
+company = "Deloitte"
+title = "Customer Strategy Consultant"
+rating = "Stretch"
+why = "Right lane, but a bare Big 4 'Consultant' title with no stated level is often above new grad."
+
+[[example]]
+company = "JPMorgan Chase"
+title = "Intelligent Solutions Strategy, Associate"
+rating = "No"
+why = "At a bank, 'Associate' means post-MBA or 3+ years."

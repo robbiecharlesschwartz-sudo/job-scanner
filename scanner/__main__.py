@@ -71,10 +71,11 @@ def check_ai() -> int:
     ratings, err = scorer.score([sample], (ROOT / "profile.md").read_text(),
                                 settings["scoring"]["model"], 1)
     r = ratings.get(sample.key)
-    claude_failed = bool(err and err.startswith("Claude"))
-    who = ("Groq (Claude failed)" if claude_failed else
-           "Claude" if os.environ.get("ANTHROPIC_API_KEY") else "Groq") if r else "nobody"
-    print(f"AI check: answered by {who}; rating={r.rating if r else '-'}")
+    order = [n for n, k in (("Claude", "ANTHROPIC_API_KEY"), ("NVIDIA", "NVIDIA_API_KEY"),
+                            ("Groq", "GROQ_API_KEY")) if os.environ.get(k)]
+    failed = {e.split(":")[0] for e in (err or "").split("; ") if e}
+    who = next((n for n in order if n not in failed), "nobody") if r else "nobody"
+    print(f"AI check: answered by {who}; rating={r.rating if r else '-'}; reason={r.reason if r else '-'}")
     if err:
         print(f"AI check errors: {err}")
     return 0 if r else 1
@@ -124,7 +125,7 @@ def main(argv=None) -> int:
         try:
             if "detail" in j.extra:
                 adapters.workday_detail(j)
-            elif j.extra.get("platform") in ("avature", "radancy"):
+            elif j.extra.get("platform") in ("avature", "radancy", "yello"):
                 adapters.page_detail(j)
         except Exception:
             pass                                # keep the listing-level data
@@ -217,6 +218,8 @@ def main(argv=None) -> int:
     for m in run["matches"]:
         tracked.setdefault(m["key"], {**m, "first_seen": today, "last_listed": today,
                                       "misses": 0, "closed_on": None})
+    shown = {m["key"] for r in (runs + [run])[-KEEP_RUNS:] for m in r["matches"]}
+    tracked = {k: t for k, t in tracked.items() if k in shown or t.get("closed_on")}
     closed_cutoff = (now.date() - dt.timedelta(days=CLOSED_DAYS)).isoformat()
     open_cutoff = (now.date() - dt.timedelta(days=FORGET_AFTER_DAYS)).isoformat()
     tracked = {k: t for k, t in tracked.items()

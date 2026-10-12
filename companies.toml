@@ -106,6 +106,7 @@ base = "https://jobs.slalom.com/en_US/careersmarketplace"
 [[company]]
 name = "Kearney"
 priority = 2
+associate_is_senior = true   # Kearney undergrads join as Business Analysts; Associate = post-MBA
 platform = "yello"
 base = "https://kearney.recsolu.com"
 board = "EPd41qlA4_03IncZMnWyRQ"

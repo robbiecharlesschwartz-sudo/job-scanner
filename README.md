@@ -8,7 +8,8 @@ Vercel Hobby, Groq, ntfy.
 ```
 companies.toml   who to scan (add/remove/re-prioritise here)
 settings.toml    keyword rules, alert limits, results-page URL, LLM settings
-profile.md       your background, sent to the LLM when it rates fit
+profile.md       your background + hard requirements, sent to the LLM when it rates fit
+examples.toml    your verdicts on real postings; the LLM follows them as precedent
 scanner/         adapters (one per job-board platform), filters, LLM scorer, ntfy alerts, page
 state/           seen.json (every posting ever listed) + runs.json (last 30 scans) + tracked.json (open/closed matches)
 site/            the generated results page, deployed by Vercel
@@ -21,7 +22,8 @@ site/            the generated results page, deployed by Vercel
    No LinkedIn, no aggregators.
 2. Anything already in `state/seen.json` (company + job ID) is skipped.
 3. Keyword rules in `settings.toml` sort new postings into reject / borderline / clear.
-4. An LLM (Groq's free tier; Claude if `ANTHROPIC_API_KEY` is set) rates every survivor
+4. An LLM rates every survivor (Claude if `ANTHROPIC_API_KEY` has credit, else NVIDIA's free
+   Kimi K3, else Groq's free tier), guided by `profile.md` and your past verdicts in `examples.toml`. It
    Strong / Good / Stretch / No with a one-line reason. Borderline postings rated No are dropped;
    keyword-clear ones are kept. Without a key, clear postings get "Good", borderline "Stretch".
 5. Matches are ordered by company priority, then fit. Each gets its own phone alert (tap opens
@@ -46,7 +48,8 @@ Secrets the workflow reads (repo Settings, Secrets and variables, Actions):
 
 | Secret | Value |
 |---|---|
-| `GROQ_API_KEY` | free key from console.groq.com (rates fit) |
+| `NVIDIA_API_KEY` | free key from build.nvidia.com (main rater, Kimi K3) |
+| `GROQ_API_KEY` | free key from console.groq.com (backup rater) |
 | `NTFY_TOPIC` | private ntfy topic name; subscribe to it in the ntfy phone app |
 | `ANTHROPIC_API_KEY` | optional, paid: use Claude for ratings instead of Groq |
 

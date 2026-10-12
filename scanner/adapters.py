@@ -199,9 +199,13 @@ def workday_detail(job: Job) -> None:
 
 def page_detail(job: Job) -> None:
     """Avature (Deloitte) and Radancy (EY) list "Multiple Locations"; the posting page has the
-    real city list and the description. Called for candidates only."""
+    real city list and the description. Yello (Kearney) listings carry no description.
+    Called for candidates only."""
     h = get_text(job.url)
     body = h[h.find("ats-description"):] if "ats-description" in h else h
+    if job.extra.get("platform") == "yello":      # listing location is already right
+        job.description = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", h, flags=re.S | re.I))[:8000]
+        return
     text = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", body, flags=re.S | re.I))
     job.description = text[:8000]
     flat = strip_html(h).replace("\n", " | ")

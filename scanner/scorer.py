@@ -57,7 +57,21 @@ Level calibration:
 Return one entry per posting, using the posting's id exactly as given.
 
 CANDIDATE PROFILE
-{profile}"""
+{profile}
+
+YOUR PAST VERDICTS - the candidate's own calls on real postings. Match their judgement:
+{examples}"""
+
+
+def _examples() -> str:
+    """examples.toml: postings the candidate has judged, shown to the AI as precedent."""
+    import tomllib
+    from pathlib import Path
+    p = Path(__file__).resolve().parent.parent / "examples.toml"
+    if not p.exists():
+        return "(none yet)"
+    rows = tomllib.loads(p.read_text()).get("example", [])
+    return "\n".join(f"- {e['company']} - {e['title']}: {e['rating']}. {e['why']}" for e in rows) or "(none yet)"
 
 
 def _posting_block(j) -> str:
@@ -73,14 +87,16 @@ def score(jobs: list, profile: str, model: str, batch_size: int = 12) -> tuple[d
     ANTHROPIC_API_KEY is set. No key or an API failure -> keyword ratings, and the run carries on."""
     if not jobs:
         return {}, None
-    system = INSTRUCTIONS.format(profile=profile)
+    system = INSTRUCTIONS.format(profile=profile, examples=_examples())
     providers = []
     if os.environ.get("ANTHROPIC_API_KEY"):
         providers.append(("Claude", lambda chunk: _claude(system, chunk, model)))
-    if os.environ.get("GROQ_API_KEY"):
-        providers.append(("Groq", lambda chunk: _groq(system, chunk)))
+    for name, url, key_env, m in OPENAI_COMPATIBLE:        # free tiers, best first
+        if os.environ.get(key_env):
+            providers.append((name, lambda chunk, url=url, key_env=key_env, m=m:
+                              _openai_compatible(system, chunk, url, key_env, m)))
     if not providers:
-        return {}, "No GROQ_API_KEY or ANTHROPIC_API_KEY set - used keyword ratings"
+        return {}, "No AI key set (NVIDIA_API_KEY, GROQ_API_KEY or ANTHROPIC_API_KEY) - used keyword ratings"
     out, errors, dead = {}, [], set()
     for i in range(0, len(jobs), batch_size):
         chunk = jobs[i:i + batch_size]
@@ -110,29 +126,34 @@ def _claude(system: str, chunk: list, model: str) -> list[Rating]:
     return resp.parsed_output.ratings
 
 
-GROQ_MODEL = "openai/gpt-oss-120b"
+# Free OpenAI-compatible APIs, tried in order. (name, endpoint, key env var, model)
+OPENAI_COMPATIBLE = [
+    ("NVIDIA", "https://integrate.api.nvidia.com/v1/chat/completions", "NVIDIA_API_KEY", "moonshotai/kimi-k3"),
+    ("Groq", "https://api.groq.com/openai/v1/chat/completions", "GROQ_API_KEY", "openai/gpt-oss-120b"),
+]
 
 
-def _groq(system: str, chunk: list) -> list[Rating]:
-    schema_hint = ('Respond with JSON only: {"ratings": [{"id": str, "rating": "Strong"|"Good"|'
+def _openai_compatible(system: str, chunk: list, url: str, key_env: str, model: str) -> list[Rating]:
+    schema_hint = ('Respond with JSON only, no prose: {"ratings": [{"id": str, "rating": "Strong"|"Good"|'
                    '"Stretch"|"No", "reason": str, "starts_before_summer_2027": bool}]}')
     body = json.dumps({
-        "model": GROQ_MODEL, "temperature": 0.2, "response_format": {"type": "json_object"},
+        "model": model, "temperature": 0.2, "max_tokens": 4000,
+        "response_format": {"type": "json_object"},
         "messages": [{"role": "system", "content": system + "\n\n" + schema_hint},
                      {"role": "user", "content": "\n\n".join(_posting_block(j) for j in chunk)}],
     }).encode()
     for attempt in range(5):
-        req = urllib.request.Request(
-            "https://api.groq.com/openai/v1/chat/completions", data=body, method="POST",
-            headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}",
-                     "Content-Type": "application/json", "User-Agent": "job-scanner"})
+        req = urllib.request.Request(url, data=body, method="POST", headers={
+            "Authorization": f"Bearer {os.environ[key_env]}", "Content-Type": "application/json",
+            "User-Agent": "job-scanner"})
         try:
-            with urllib.request.urlopen(req, timeout=120) as r:
+            with urllib.request.urlopen(req, timeout=180) as r:
                 content = json.load(r)["choices"][0]["message"]["content"]
+            content = content[content.find("{"):content.rfind("}") + 1]   # tolerate stray prose
             return Ratings.model_validate_json(content).ratings
         except urllib.error.HTTPError as e:
             if e.code == 429 and attempt < 4:     # free-tier rate limit: wait it out
                 time.sleep(float(e.headers.get("retry-after") or 20))
                 continue
-            raise RuntimeError(f"Groq {e.code}: {e.read().decode('utf-8', 'replace')[:150]}")
-    raise RuntimeError("Groq rate limit persisted")
+            raise RuntimeError(f"{e.code}: {e.read().decode('utf-8', 'replace')[:150]}")
+    raise RuntimeError("rate limit persisted")
