@@ -38,6 +38,17 @@ For each posting, return:
   (e.g. "Entry-level climate consulting; your CDP/EcoVadis work maps directly").
 - starts_before_summer_2027: true only if the posting says the start date is before ~June 2027.
 
+Level calibration (be strict - Strong should be rare, a handful per day at most):
+- At Deloitte, EY, PwC, KPMG, Accenture, IBM, Guidehouse, Slalom, West Monroe and Kearney, a bare
+  "Consultant" title is the level ABOVE new-grad entry (it usually means 2-4 years or an MBA).
+  Rate it Stretch at most unless the posting says entry-level / new grad / campus / 2027 / 0-2 years.
+- Entry-level titles there are: Analyst, Associate, Staff, Business Analyst, Associate Consultant,
+  or anything marked new grad / campus / class of 2027.
+- When the description is missing, judge from the title and lean one step lower.
+- Strong also requires the work itself to be strategy, management, operations, transformation or
+  sustainability consulting - not IT implementation (SAP, Salesforce, Workday, ServiceNow),
+  cyber, or data engineering, which are Good at best.
+
 Return one entry per posting, using the posting's id exactly as given.
 
 CANDIDATE PROFILE
@@ -57,20 +68,28 @@ def score(jobs: list, profile: str, model: str, batch_size: int = 12) -> tuple[d
     if not jobs:
         return {}, None
     system = INSTRUCTIONS.format(profile=profile)
+    providers = []
     if os.environ.get("ANTHROPIC_API_KEY"):
-        call = lambda chunk: _claude(system, chunk, model)
-    elif os.environ.get("GROQ_API_KEY"):
-        call = lambda chunk: _groq(system, chunk)
-    else:
+        providers.append(("Claude", lambda chunk: _claude(system, chunk, model)))
+    if os.environ.get("GROQ_API_KEY"):
+        providers.append(("Groq", lambda chunk: _groq(system, chunk)))
+    if not providers:
         return {}, "No GROQ_API_KEY or ANTHROPIC_API_KEY set - used keyword ratings"
-    out, errors = {}, []
+    out, errors, dead = {}, [], set()
     for i in range(0, len(jobs), batch_size):
         chunk = jobs[i:i + batch_size]
-        try:
-            for r in call(chunk):
-                out[r.id] = r
-        except Exception as e:                 # one bad batch falls back to keyword ratings
-            errors.append(str(e)[:200])
+        for name, call in providers:             # Claude first; Groq if Claude fails (e.g. no credit)
+            if name in dead:
+                continue
+            try:
+                for r in call(chunk):
+                    out[r.id] = r
+                break
+            except Exception as e:
+                msg = str(e)
+                errors.append(f"{name}: {msg[:160]}")
+                if "credit balance" in msg or "401" in msg[:40]:
+                    dead.add(name)               # account-level problem: stop retrying it
     return out, "; ".join(dict.fromkeys(errors)) or None
 
 
