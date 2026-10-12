@@ -7,10 +7,10 @@ Vercel Hobby, Groq, ntfy.
 
 ```
 companies.toml   who to scan (add/remove/re-prioritise here)
-settings.toml    keyword rules, SMS limits, results-page URL, Claude model
-profile.md       your background, sent to Claude when it rates fit
-scanner/         adapters (one per job-board platform), filters, Claude scorer, SMS, page
-state/           seen.json (every posting ever listed) + runs.json (last 30 scans)
+settings.toml    keyword rules, alert limits, results-page URL, LLM settings
+profile.md       your background, sent to the LLM when it rates fit
+scanner/         adapters (one per job-board platform), filters, LLM scorer, ntfy alerts, page
+state/           seen.json (every posting ever listed) + runs.json (last 30 scans) + tracked.json (open/closed matches)
 site/            the generated results page, deployed by Vercel
 ```
 
@@ -34,8 +34,8 @@ site/            the generated results page, deployed by Vercel
 
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m scanner --dry-run          # fetch + rate, print texts, write nothing
-.venv/bin/python -m scanner --no-sms           # write state/site, don't text
+.venv/bin/python -m scanner --dry-run          # fetch + rate, print alerts, write nothing
+.venv/bin/python -m scanner --no-sms           # write state/site, don't send alerts
 .venv/bin/python -m scanner --only Ramp EY     # just these companies
 ```
 
