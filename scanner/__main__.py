@@ -10,6 +10,7 @@ import concurrent.futures as cf
 import datetime as dt
 import hashlib
 import json
+import os
 import sys
 import tomllib
 from pathlib import Path
@@ -63,12 +64,31 @@ def fetch_all(companies: list[dict]) -> tuple[list, dict]:
     return jobs, sources
 
 
+def check_ai() -> int:
+    settings = tomllib.loads((ROOT / "settings.toml").read_text())
+    sample = adapters.Job(company="Deloitte", priority=1, job_id="check", title="Strategy Analyst",
+                          location="New York, NY", url="", description="Entry-level, class of 2027.")
+    ratings, err = scorer.score([sample], (ROOT / "profile.md").read_text(),
+                                settings["scoring"]["model"], 1)
+    r = ratings.get(sample.key)
+    claude_failed = bool(err and err.startswith("Claude"))
+    who = ("Groq (Claude failed)" if claude_failed else
+           "Claude" if os.environ.get("ANTHROPIC_API_KEY") else "Groq") if r else "nobody"
+    print(f"AI check: answered by {who}; rating={r.rating if r else '-'}")
+    if err:
+        print(f"AI check errors: {err}")
+    return 0 if r else 1
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="no state/site writes, print texts")
     ap.add_argument("--no-sms", action="store_true", help="write state/site but don't text")
     ap.add_argument("--only", nargs="*", help="limit to these company names")
+    ap.add_argument("--check-ai", action="store_true", help="rate one sample posting and report which AI answered")
     args = ap.parse_args(argv)
+    if args.check_ai:
+        return check_ai()
 
     settings = tomllib.loads((ROOT / "settings.toml").read_text())
     companies = [c for c in tomllib.loads((ROOT / "companies.toml").read_text())["company"]
