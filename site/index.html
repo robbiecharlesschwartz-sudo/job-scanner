@@ -1,6 +1,55 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex"><title>Job Scanner</title>
-<style>:root{--bg:#f7f7f5;--ink:#1c1c1a;--muted:#6b6b66}@media (prefers-color-scheme:dark){:root{--bg:#151514;--ink:#ecece8;--muted:#a3a39c}}
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Job Scanner</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--ink:#1c1c1a;--muted:#6b6b66;--line:#e4e4df;--link:#1f5fbf;
+--strong-bg:#e3f1e6;--strong-ink:#1d5a2c;--good-bg:#e5eef9;--good-ink:#1f4f8f;
+--stretch-bg:#f2efe6;--stretch-ink:#5f5532;--warn-bg:#fbeaea;--warn-ink:#8a2222}
+@media (prefers-color-scheme:dark){:root{--bg:#151514;--card:#1f1f1d;--ink:#ecece8;--muted:#a3a39c;
+--line:#33332f;--link:#8ab4f8;--strong-bg:#1e3524;--strong-ink:#a6dcb3;--good-bg:#1d2a3d;--good-ink:#a9c7ef;
+--stretch-bg:#302c1f;--stretch-ink:#ddd2a8;--warn-bg:#3a1f1f;--warn-ink:#f0b0b0}}
+*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-main{max-width:760px;margin:0 auto;padding:20px 16px}p{color:var(--muted)}</style></head>
-<body><main><h1>Job Scanner</h1><p>No scans yet. Results appear here after the first daily run.</p></main></body></html>
+main{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:22px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13px;margin:0 0 20px}
+h2{font-size:15px;margin:28px 0 10px;display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid var(--line);padding-bottom:6px}
+h2 span{color:var(--muted);font-weight:400;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 10px}
+.top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.co{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.title{font-weight:600;font-size:16px;margin:2px 0 4px;display:block;color:var(--link);text-decoration:none}
+.title:hover{text-decoration:underline}
+.meta{font-size:13px;color:var(--muted)}
+.reason{margin:6px 0 0;font-size:14px}
+.pill{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.Strong{background:var(--strong-bg);color:var(--strong-ink)}
+.Good{background:var(--good-bg);color:var(--good-ink)}
+.Stretch{background:var(--stretch-bg);color:var(--stretch-ink)}
+.flag{display:inline-block;margin-top:6px;font-size:12px;background:var(--warn-bg);color:var(--warn-ink);padding:2px 8px;border-radius:6px}
+.empty{color:var(--muted);font-size:14px;margin:0 0 6px}
+details{margin-top:6px;font-size:13px;color:var(--muted)}
+details table{border-collapse:collapse;width:100%;margin-top:6px}
+details td{padding:3px 6px;border-bottom:1px solid var(--line)}
+details td.n{text-align:right;font-variant-numeric:tabular-nums}
+.err{color:var(--warn-ink)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 4px}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card.closed{opacity:.7}
+.card.closed .title{color:var(--muted)}
+.closedtag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+details.closedlist{margin:20px 0 0;font-size:15px;color:var(--ink)}
+details.closedlist>summary{font-weight:600;cursor:pointer;padding:10px 0;border-bottom:1px solid var(--line)}
+details.closedlist>summary span{color:var(--muted);font-weight:400;font-size:13px}
+details.closedlist .card{margin-top:10px}
+</style></head><body><main>
+<h1>Job Scanner</h1>
+<p class="sub">Early-career consulting &amp; strategy openings at target companies.
+Last scan Mon Oct 12, 2026 · 3:35 PM ET · first scan (full backlog). 6 matches across the last 1 scans, newest first.</p>
+<div class="chips"><button aria-pressed="true" data-r="">All</button><button aria-pressed="false" data-r="Strong">Strong</button><button aria-pressed="false" data-r="Good">Good</button><button aria-pressed="false" data-r="Stretch">Stretch</button></div><h2>Mon Oct 12, 2026 · 3:35 PM ET · first scan (full backlog)<span>6 matches</span></h2><div class="card" id="wkjtpp" data-r="Strong"><div class="top"><span class="co">P1 · Deloitte</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Enterprise-Tech-Strategy/364926" target="_blank" rel="noopener">Consultative Offerings - Analyst - Enterprise Tech Strategy</a><div class="meta">Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States</div><p class="reason">Analyst role in NYC, entry-level strategy consulting.</p></div><div class="card" id="hmb45j" data-r="Strong"><div class="top"><span class="co">P1 · Deloitte</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Functional-Operations-Strategy/364895" target="_blank" rel="noopener">Consultative Offerings - Analyst - Functional &amp; Operations Strategy</a><div class="meta">Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States</div><p class="reason">Analyst position, NYC, entry-level strategy focus.</p></div><div class="card" id="tms32m" data-r="Strong"><div class="top"><span class="co">P1 · IBM Consulting</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://careers.ibm.com/careers/JobDetail?jobId=130269" target="_blank" rel="noopener">Entry Level AI-First Transformation – Strategy Consultant 2027</a><div class="meta">New York, US (United States)</div><p class="reason">Entry-level NYC strategy role, matches new-grad level.</p></div><div class="card" id="rd4fjx" data-r="Strong"><div class="top"><span class="co">P2 · Kearney</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://kearney.recsolu.com/jobs/UrXp7YIaU3tklQ-4bU2GnA?job_board_id=EPd41qlA4_03IncZMnWyRQ" target="_blank" rel="noopener">Kearney Associate, Strategic Operations (SOP) Deliver Tower</a><div class="meta">Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Washington DC · posted 3w</div><p class="reason">Associate role, NYC, entry-level consulting.</p></div><div class="card" id="ab5nt8" data-r="Strong"><div class="top"><span class="co">P2 · Kearney</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://kearney.recsolu.com/jobs/3Gt2RF9ZtRPAiXRv2eU1mA?job_board_id=EPd41qlA4_03IncZMnWyRQ" target="_blank" rel="noopener">Kearney Associate, Strategic Operations (SOP) Make Tower</a><div class="meta">Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Toronto, Washington DC · posted 4d</div><p class="reason">Associate role, NYC, entry-level consulting.</p></div><div class="card" id="xjpnmu" data-r="Strong"><div class="top"><span class="co">P2 · Kearney</span><span> <span class="pill Strong">Strong</span></span></div><a class="title" href="https://kearney.recsolu.com/jobs/gkVp10okbfV8xTs4kFsI3Q?job_board_id=EPd41qlA4_03IncZMnWyRQ" target="_blank" rel="noopener">Kearney Associate, Strategic Operations (SOP) Plan Tower</a><div class="meta">Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Washington DC · posted Aug 6</div><p class="reason">Associate title fits entry-level strategy consulting, NYC listed</p></div><details><summary>Scan details · 5358 new postings screened out</summary><p>Claude: Error code: 400 - {&#x27;type&#x27;: &#x27;error&#x27;, &#x27;error&#x27;: {&#x27;type&#x27;: &#x27;invalid_request_error&#x27;, &#x27;message&#x27;: &#x27;Your credit balance is too low to access the Anthropic API. Please go</p><table><tr><td>Accenture (AccentureCareers)</td><td class="n">152 listed</td><td class="n">152 new</td></tr><tr><td>American Express</td><td class="n">321 listed</td><td class="n">321 new</td></tr><tr><td>BlackRock (BlackRock_Professional)</td><td class="n">160 listed</td><td class="n">160 new</td></tr><tr><td>Deloitte</td><td class="n">680 listed</td><td class="n">680 new</td></tr><tr><td>EY</td><td class="n">38 listed</td><td class="n">38 new</td></tr><tr><td>Guidehouse (External)</td><td class="n">40 listed</td><td class="n">40 new</td></tr><tr><td>IBM Consulting</td><td class="n">91 listed</td><td class="n">91 new</td></tr><tr><td>JPMorgan Chase</td><td class="n">732 listed</td><td class="n">732 new</td></tr><tr><td>KPMG</td><td class="n">778 listed</td><td class="n">778 new</td></tr><tr><td>Kearney</td><td class="n">194 listed</td><td class="n">194 new</td></tr><tr><td>North Highland</td><td class="n">61 listed</td><td class="n">61 new</td></tr><tr><td>PepsiCo</td><td class="n">888 listed</td><td class="n">888 new</td></tr><tr><td>Pfizer (PfizerCareers)</td><td class="n">94 listed</td><td class="n">94 new</td></tr><tr><td>PwC (Global_Experienced_Careers)</td><td class="n">728 listed</td><td class="n">0 new</td></tr><tr><td>PwC (US_Entry_Level_Careers)</td><td class="n">60 listed</td><td class="n">788 new</td></tr><tr><td>Ramp</td><td class="n">165 listed</td><td class="n">165 new</td></tr><tr><td>Slalom</td><td class="n">20 listed</td><td class="n">20 new</td></tr><tr><td>Watershed</td><td class="n">36 listed</td><td class="n">36 new</td></tr><tr><td>West Monroe</td><td class="n">126 listed</td><td class="n">126 new</td></tr></table></details><details class="closedlist"><summary>Closed postings <span>· 0 in the last 30 days, no longer listed on the company site</span></summary><p class="empty">None yet.</p></details>
+</main><script>
+document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.chips button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const r=b.dataset.r;document.querySelectorAll('.card').forEach(c=>{c.hidden=!!r&&c.dataset.r!==r});
+}));
+</script></body></html>

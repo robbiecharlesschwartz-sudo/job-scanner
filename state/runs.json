@@ -1,0 +1,187 @@
+[
+ {
+  "date": "2026-10-12",
+  "label": "Mon Oct 12, 2026 \u00b7 3:35 PM ET \u00b7 first scan (full backlog)",
+  "matches": [
+   {
+    "code": "wkjtpp",
+    "company": "Deloitte",
+    "priority": 1,
+    "title": "Consultative Offerings - Analyst - Enterprise Tech Strategy",
+    "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States",
+    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Enterprise-Tech-Strategy/364926",
+    "posted": "",
+    "rating": "Strong",
+    "reason": "Analyst role in NYC, entry-level strategy consulting.",
+    "early_start": false,
+    "key": "Deloitte|364926"
+   },
+   {
+    "code": "hmb45j",
+    "company": "Deloitte",
+    "priority": 1,
+    "title": "Consultative Offerings - Analyst - Functional & Operations Strategy",
+    "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States",
+    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Functional-Operations-Strategy/364895",
+    "posted": "",
+    "rating": "Strong",
+    "reason": "Analyst position, NYC, entry-level strategy focus.",
+    "early_start": false,
+    "key": "Deloitte|364895"
+   },
+   {
+    "code": "tms32m",
+    "company": "IBM Consulting",
+    "priority": 1,
+    "title": "Entry Level AI-First Transformation \u2013 Strategy Consultant 2027",
+    "location": "New York, US (United States)",
+    "url": "https://careers.ibm.com/careers/JobDetail?jobId=130269",
+    "posted": "",
+    "rating": "Strong",
+    "reason": "Entry-level NYC strategy role, matches new-grad level.",
+    "early_start": false,
+    "key": "IBM Consulting|130269"
+   },
+   {
+    "code": "rd4fjx",
+    "company": "Kearney",
+    "priority": 2,
+    "title": "Kearney Associate, Strategic Operations (SOP) Deliver Tower",
+    "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Washington DC",
+    "url": "https://kearney.recsolu.com/jobs/UrXp7YIaU3tklQ-4bU2GnA?job_board_id=EPd41qlA4_03IncZMnWyRQ",
+    "posted": "3w",
+    "rating": "Strong",
+    "reason": "Associate role, NYC, entry-level consulting.",
+    "early_start": false,
+    "key": "Kearney|UrXp7YIaU3tklQ-4bU2GnA"
+   },
+   {
+    "code": "ab5nt8",
+    "company": "Kearney",
+    "priority": 2,
+    "title": "Kearney Associate, Strategic Operations (SOP) Make Tower",
+    "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Toronto, Washington DC",
+    "url": "https://kearney.recsolu.com/jobs/3Gt2RF9ZtRPAiXRv2eU1mA?job_board_id=EPd41qlA4_03IncZMnWyRQ",
+    "posted": "4d",
+    "rating": "Strong",
+    "reason": "Associate role, NYC, entry-level consulting.",
+    "early_start": false,
+    "key": "Kearney|3Gt2RF9ZtRPAiXRv2eU1mA"
+   },
+   {
+    "code": "xjpnmu",
+    "company": "Kearney",
+    "priority": 2,
+    "title": "Kearney Associate, Strategic Operations (SOP) Plan Tower",
+    "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Washington DC",
+    "url": "https://kearney.recsolu.com/jobs/gkVp10okbfV8xTs4kFsI3Q?job_board_id=EPd41qlA4_03IncZMnWyRQ",
+    "posted": "Aug 6",
+    "rating": "Strong",
+    "reason": "Associate title fits entry-level strategy consulting, NYC listed",
+    "early_start": false,
+    "key": "Kearney|gkVp10okbfV8xTs4kFsI3Q"
+   }
+  ],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 152,
+    "new": 152,
+    "company": "Accenture"
+   },
+   "American Express": {
+    "fetched": 321,
+    "new": 321,
+    "company": "American Express"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 160,
+    "new": 160,
+    "company": "BlackRock"
+   },
+   "Deloitte": {
+    "fetched": 680,
+    "new": 680,
+    "company": "Deloitte"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 38,
+    "company": "EY"
+   },
+   "Guidehouse (External)": {
+    "fetched": 40,
+    "new": 40,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 91,
+    "new": 91,
+    "company": "IBM Consulting"
+   },
+   "JPMorgan Chase": {
+    "fetched": 732,
+    "new": 732,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 778,
+    "new": 778,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 194,
+    "new": 194,
+    "company": "Kearney"
+   },
+   "North Highland": {
+    "fetched": 61,
+    "new": 61,
+    "company": "North Highland"
+   },
+   "PepsiCo": {
+    "fetched": 888,
+    "new": 888,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 94,
+    "new": 94,
+    "company": "Pfizer"
+   },
+   "PwC (Global_Experienced_Careers)": {
+    "fetched": 728,
+    "new": 0,
+    "company": "PwC"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 60,
+    "new": 788,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 165,
+    "new": 165,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 20,
+    "company": "Slalom"
+   },
+   "Watershed": {
+    "fetched": 36,
+    "new": 36,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 126,
+    "company": "West Monroe"
+   }
+  },
+  "screened_out": 5358,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
+  ]
+ }
+]
