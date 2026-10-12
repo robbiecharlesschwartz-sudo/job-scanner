@@ -1,7 +1,20 @@
 {
  "date": "2026-10-12",
- "label": "Mon Oct 12, 2026 \u00b7 3:55 PM ET \u00b7 first scan (full backlog)",
+ "label": "Mon Oct 12, 2026 \u00b7 4:14 PM ET \u00b7 first scan (full backlog)",
  "matches": [
+  {
+   "code": "wkjtpp",
+   "company": "Deloitte",
+   "priority": 1,
+   "title": "Consultative Offerings - Analyst - Enterprise Tech Strategy",
+   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States",
+   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Enterprise-Tech-Strategy/364926",
+   "posted": "",
+   "rating": "Strong",
+   "reason": "Entry-level strategy consulting analyst, NYC among offices; tech strategy still strategy lane.",
+   "early_start": false,
+   "key": "Deloitte|364926"
+  },
   {
    "code": "hmb45j",
    "company": "Deloitte",
@@ -11,7 +24,7 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Functional-Operations-Strategy/364895",
    "posted": "",
    "rating": "Strong",
-   "reason": "Analyst strategy role, entry-level, NYC",
+   "reason": "Entry-level strategy consulting analyst, NYC among offices; matches prior verdict.",
    "early_start": false,
    "key": "Deloitte|364895"
   },
@@ -24,22 +37,9 @@
    "url": "https://careers.ibm.com/careers/JobDetail?jobId=130269",
    "posted": "",
    "rating": "Strong",
-   "reason": "Entry-level strategy role in NYC, matches new-grad level",
+   "reason": "Explicit 2027 entry-level strategy consulting role in New York; matches prior verdict.",
    "early_start": false,
    "key": "IBM Consulting|130269"
-  },
-  {
-   "code": "wkjtpp",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Consultative Offerings - Analyst - Enterprise Tech Strategy",
-   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Enterprise-Tech-Strategy/364926",
-   "posted": "",
-   "rating": "Good",
-   "reason": "Analyst role in tech strategy, entry-level but tech focus",
-   "early_start": false,
-   "key": "Deloitte|364926"
   },
   {
    "code": "ttenas",
@@ -50,9 +50,22 @@
    "url": "https://careers.ibm.com/careers/JobDetail?jobId=130070",
    "posted": "",
    "rating": "Good",
-   "reason": "Specialized integration focus, but entry-level strategy",
+   "reason": "2027 entry-level NYC strategy role, but specialized M&A integration domain.",
    "early_start": false,
    "key": "IBM Consulting|130070"
+  },
+  {
+   "code": "2z97rb",
+   "company": "Accenture",
+   "priority": 1,
+   "title": "Life Sciences R&D Management Consultant",
+   "location": "PA - Philadelphia; Chicago, Accenture Tower, Corp; Arlington, 1201 Wilson, Corp; San Francisco, 415 Mission Street, Corp; Morristown, 1 Speedwell Ave, Corp; Boston, 888 Boylston, Corp; New York, One Manhattan West, Corp (United States of America)",
+   "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/PA---Philadelphia/Life-Sciences-R-D-Management-Consultant_R00328324",
+   "posted": "2026-09-25",
+   "rating": "Stretch",
+   "reason": "Consulting in NYC but requires 2+ years and life sciences R&D depth.",
+   "early_start": false,
+   "key": "Accenture|R00328324"
   },
   {
    "code": "8dnjxr",
@@ -63,22 +76,9 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Banking-Capital-Markets-Transformation-Consultant/370839",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
+   "reason": "Transformation strategy lane, NYC, but Consultant level asking ~2 years.",
    "early_start": false,
    "key": "Deloitte|370839"
-  },
-  {
-   "code": "yejnub",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Commerce Product Consultant",
-   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Baltimore, Maryland, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Hartford, Connecticut, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New Orleans, Louisiana, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Richmond, Virginia, United States; Sacramento, California, United States; San Antonio, Texas, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Commerce-Product-Consultant/369988",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Close fit: specialised domain; asks for ~2 years (AI rating unavailable this run).",
-   "early_start": false,
-   "key": "Deloitte|369988"
   },
   {
    "code": "exaj4e",
@@ -89,48 +89,9 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Customer-Strategy-Consultant/370893",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
+   "reason": "Right strategy lane and NYC, but Big 4 Consultant asking 2+ years.",
    "early_start": false,
    "key": "Deloitte|370893"
-  },
-  {
-   "code": "fdruad",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Docebo Consultant",
-   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Baltimore, Maryland, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Hartford, Connecticut, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New Orleans, Louisiana, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Richmond, Virginia, United States; Sacramento, California, United States; San Antonio, Texas, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Docebo-Consultant/370876",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
-   "early_start": false,
-   "key": "Deloitte|370876"
-  },
-  {
-   "code": "aey4du",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Financial Services Business Valuation Consultant",
-   "location": "Atlanta, Georgia, United States; Chicago, Illinois, United States; Morristown, New Jersey, United States; New York, New York, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Financial-Services-Business-Valuation-Consultant/370759",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Valuation focus, consultant level ambiguous, not core strategy",
-   "early_start": false,
-   "key": "Deloitte|370759"
-  },
-  {
-   "code": "aaavta",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Fleet Management Consultant, Strategy, Growth, and Transformation",
-   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Chicago, Illinois, United States; Columbus, Ohio, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Huntsville, Alabama, United States; Los Angeles, California, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New Orleans, Louisiana, United States; New York, New York, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Rosslyn, Virginia, United States; San Antonio, Texas, United States; San Diego, California, United States; Tallahassee, Florida, United States; Tampa, Florida, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Fleet-Management-Consultant-Strategy-Growth-and-Transformation/364654",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
-   "early_start": false,
-   "key": "Deloitte|364654"
   },
   {
    "code": "82kupc",
@@ -141,7 +102,7 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Global-Business-Services-GBS-Strategy-Consultant/355048",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
+   "reason": "Operating-model strategy adjacent, but Consultant level asking ~2 years.",
    "early_start": false,
    "key": "Deloitte|355048"
   },
@@ -154,22 +115,9 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Healthcare-Supply-Chain-Data-Analytics-Strategy-Growth-and-Transformation-Consultant/368834",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Close fit: specialised domain; asks for ~2 years (AI rating unavailable this run).",
+   "reason": "Specialized healthcare supply-chain analytics and ~2 years required.",
    "early_start": false,
    "key": "Deloitte|368834"
-  },
-  {
-   "code": "2smwmw",
-   "company": "Deloitte",
-   "priority": 1,
-   "title": "Technology Strategy Consultant",
-   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Sacramento, California, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
-   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Technology-Strategy-Consultant/355406",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Close fit: specialised domain; asks for ~2 years (AI rating unavailable this run).",
-   "early_start": false,
-   "key": "Deloitte|355406"
   },
   {
    "code": "abbkew",
@@ -180,74 +128,9 @@
    "url": "https://careers.ibm.com/careers/JobDetail?jobId=134479",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Consultant title likely above entry, ambiguous level",
+   "reason": "Right lane but bare 'Strategy Consultant' with no stated level likely above new grad.",
    "early_start": false,
    "key": "IBM Consulting|134479"
-  },
-  {
-   "code": "rd4fjx",
-   "company": "Kearney",
-   "priority": 2,
-   "title": "Kearney Associate, Strategic Operations (SOP) Deliver Tower",
-   "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Washington DC",
-   "url": "https://kearney.recsolu.com/jobs/UrXp7YIaU3tklQ-4bU2GnA?job_board_id=EPd41qlA4_03IncZMnWyRQ",
-   "posted": "3w",
-   "rating": "Strong",
-   "reason": "Entry\u2011level Kearney Associate strategy role in NYC",
-   "early_start": false,
-   "key": "Kearney|UrXp7YIaU3tklQ-4bU2GnA"
-  },
-  {
-   "code": "ab5nt8",
-   "company": "Kearney",
-   "priority": 2,
-   "title": "Kearney Associate, Strategic Operations (SOP) Make Tower",
-   "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Southfield, Toronto, Washington DC",
-   "url": "https://kearney.recsolu.com/jobs/3Gt2RF9ZtRPAiXRv2eU1mA?job_board_id=EPd41qlA4_03IncZMnWyRQ",
-   "posted": "4d",
-   "rating": "Strong",
-   "reason": "Entry\u2011level Kearney Associate strategy role in NYC",
-   "early_start": false,
-   "key": "Kearney|3Gt2RF9ZtRPAiXRv2eU1mA"
-  },
-  {
-   "code": "xjpnmu",
-   "company": "Kearney",
-   "priority": 2,
-   "title": "Kearney Associate, Strategic Operations (SOP) Plan Tower",
-   "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Washington DC",
-   "url": "https://kearney.recsolu.com/jobs/gkVp10okbfV8xTs4kFsI3Q?job_board_id=EPd41qlA4_03IncZMnWyRQ",
-   "posted": "Aug 6",
-   "rating": "Strong",
-   "reason": "Entry\u2011level Kearney Associate strategy role in NYC",
-   "early_start": false,
-   "key": "Kearney|gkVp10okbfV8xTs4kFsI3Q"
-  },
-  {
-   "code": "x6jqj9",
-   "company": "Kearney",
-   "priority": 2,
-   "title": "Kearney Associate, Digital & Analytics (D&A) Practice - Agentic Planning",
-   "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Washington DC",
-   "url": "https://kearney.recsolu.com/jobs/UaUdS0Am-aP5a6Ir0ov9zQ?job_board_id=EPd41qlA4_03IncZMnWyRQ",
-   "posted": "Jul 11",
-   "rating": "Good",
-   "reason": "Digital & Analytics focus, adjacent to core strategy",
-   "early_start": false,
-   "key": "Kearney|UaUdS0Am-aP5a6Ir0ov9zQ"
-  },
-  {
-   "code": "j7kcv9",
-   "company": "Kearney",
-   "priority": 2,
-   "title": "Kearney Associate, Digital Operations, Supply Chain Design & Optimization",
-   "location": "Americas / Atlanta, Boston, Chicago, Dallas, New York, San Francisco, Toronto, Washington DC",
-   "url": "https://kearney.recsolu.com/jobs/9JbrkVX0_ujkaxpQceW1VQ?job_board_id=EPd41qlA4_03IncZMnWyRQ",
-   "posted": "Feb 18",
-   "rating": "Good",
-   "reason": "Supply\u2011chain design focus, specialized domain",
-   "early_start": false,
-   "key": "Kearney|9JbrkVX0_ujkaxpQceW1VQ"
   },
   {
    "code": "8bajmv",
@@ -258,7 +141,7 @@
    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765640",
    "posted": "2026-09-14",
    "rating": "Good",
-   "reason": "Marketing leadership program, not core strategy",
+   "reason": "2027 full-time analyst rotational program in NYC, but marketing-focused rather than strategy.",
    "early_start": false,
    "key": "JPMorgan Chase|210765640"
   },
@@ -270,8 +153,8 @@
    "location": "New York, NY, United States (US)",
    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210797484",
    "posted": "2026-10-06",
-   "rating": "Good",
-   "reason": "Analyst role in asset management, not core strategy",
+   "rating": "Stretch",
+   "reason": "NYC analyst program but asset-management liquidity/cash client work, adjacent to strategy lanes.",
    "early_start": false,
    "key": "JPMorgan Chase|210797484"
   },
@@ -284,20 +167,20 @@
    "url": "https://jobs.ashbyhq.com/ramp/606475af-b74f-42c4-978a-dde138a86ac7",
    "posted": "2026-05-29",
    "rating": "Stretch",
-   "reason": "Requires 1\u20114 years finance experience, beyond new\u2011grad level",
+   "reason": "Strategic finance in NYC; 1-4 years slightly above new grad.",
    "early_start": false,
    "key": "Ramp|606475af-b74f-42c4-978a-dde138a86ac7"
   }
  ],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 152,
-   "new": 152,
+   "fetched": 153,
+   "new": 153,
    "company": "Accenture"
   },
   "American Express": {
-   "fetched": 322,
-   "new": 322,
+   "fetched": 323,
+   "new": 323,
    "company": "American Express"
   },
   "BlackRock (BlackRock_Professional)": {
@@ -306,8 +189,8 @@
    "company": "BlackRock"
   },
   "Deloitte": {
-   "fetched": 675,
-   "new": 675,
+   "fetched": 682,
+   "new": 682,
    "company": "Deloitte"
   },
   "EY": {
@@ -331,8 +214,8 @@
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 780,
-   "new": 780,
+   "fetched": 782,
+   "new": 782,
    "company": "KPMG"
   },
   "Kearney": {
@@ -386,8 +269,8 @@
    "company": "West Monroe"
   }
  },
- "screened_out": 5344,
+ "screened_out": 5364,
  "notes": [
-  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; Groq: Groq 413: {\"error\":{\"message\":\"Request too large for model `openai/gpt-oss-120b` in organization `org_01m3p10vdee4yrshdvky9m41h0` service tier `on_demand` on to"
+  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
  ]
 }
