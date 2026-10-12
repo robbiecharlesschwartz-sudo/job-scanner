@@ -23,22 +23,30 @@ class Ratings(BaseModel):
 
 
 INSTRUCTIONS = """You screen job postings for one early-career candidate. Their profile, including
-hard requirements, is below. Be strict: the candidate would rather miss a borderline posting than
-wade through roles they can't get. Most postings you see should be No.
+hard requirements, is below. Hard requirements are
+strict, but the candidate does want to see a few close calls: roles slightly out of range that
+they could still realistically get.
 
 For each posting, return:
-- rating:
+- rating (use the whole scale - a typical day should have more Good and Stretch than Strong):
   Strong  = meets every hard requirement AND is squarely lane 1 or 2 (strategy / management /
             sustainability consulting analyst, or in-house corporate strategy / chief of staff
-            office analyst), explicitly new-grad or 0-1 years, based in NYC.
-  Good    = meets every hard requirement; lane 3 (rotational program), business development,
-            or a lane 1-2 role that is a step removed (e.g. operations consulting).
-  Stretch = meets the hard requirements on paper but something is unclear (level not stated,
-            ambiguous NYC presence) - only if you think it's still worth a look.
-  No      = misses ANY hard requirement, or the level/years can't plausibly be 0-1.
-- reason: ONE short line (max ~15 words), specific to this candidate.
+            office analyst), explicitly new-grad or 0-1 years, NYC. Example: "Strategy Analyst,
+            Monitor Deloitte - 2027 new grad, New York".
+  Good    = meets the hard requirements but is a step to the side: operations / supply-chain /
+            transformation consulting, a rotational program, strategic finance, business
+            development, or a lane 1-2 role that doesn't state its level. Example: "Kearney
+            Associate, Strategic Operations".
+  Stretch = slightly out of range but realistic: asks for about 2 years, sits next to the lanes
+            (analytics, product or marketing strategy, risk advisory), or the level is a
+            reasonable reach. Example: "Strategy Associate - 1-2 years preferred".
+  No      = misses a hard requirement: not NYC, senior, 3+ years, MBA, internship, wrong start
+            date, technical/implementation work, or a bank "Associate".
+- reason: ONE short line (max ~15 words) saying why, specific to this candidate.
 - starts_before_summer_2027: true if the posting needs a start before ~May 2027 or a cohort
   after 2027 (e.g. 2028 availability).
+If a posting has a "Screening note", the keyword screen found it a step off-lane: rate it Good
+or Stretch, not Strong.
 
 Level calibration:
 - At Deloitte, EY, PwC, KPMG, Accenture, IBM, Guidehouse, Slalom, West Monroe and Kearney, a bare
@@ -54,7 +62,8 @@ CANDIDATE PROFILE
 
 def _posting_block(j) -> str:
     desc = (j.description or "").strip()[:2500]
-    return (f"<posting id=\"{j.key}\">\nCompany: {j.company}\nTitle: {j.title}\n"
+    hint = f"Screening note: {j.reason}\n" if j.verdict == "stretch" else ""
+    return (f"<posting id=\"{j.key}\">\nCompany: {j.company}\nTitle: {j.title}\n{hint}"
             f"Location: {j.location or 'unknown'}\nBoard hints: {j.meta or '-'}\n"
             f"Description: {desc or '(not available - judge from title)'}\n</posting>")
 

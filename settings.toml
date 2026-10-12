@@ -36,18 +36,23 @@ exclude_domain = [
   'engineer', '\bdeveloper\b', 'software', 'data scien', 'cyber', 'security', '\bcloud\b',
   'devops', '\bsap\b', 'salesforce', 'workday', 'servicenow', '\boracle\b', 'dynamics',
   'anaplan', 'netsuite', 'guidewire', '\bpega', '\bit\b', 'technical', '\bsolutions?\b',
-  'implementation', 'integration', '\bapplication', '\bpackage\b', '\bdelivery\b', 'platform',
-  '\baudit', 'assurance', '\btax\b', 'accounting', 'accountant', 'actuar', 'payroll', '\brisk\b',
-  'compliance', 'forensic', '\baml\b', 'fraud', 'legal', 'paralegal', 'attorney', 'counsel',
+  'implementation', '\bapplication', '\bpackage\b', '\bdelivery\b', 'platform',
+  '\baudit', 'assurance', '\btax\b', 'accounting', 'accountant', 'actuar', 'payroll',
+  'forensic', '\baml\b', 'fraud', 'legal', 'paralegal', 'attorney', 'counsel',
   '\bsales\b', 'account executive', 'recruit', 'talent acquisition', '\bhr\b', 'clinical',
-  'nurse', 'pharmac', 'medical', 'scientist', '\blab\b', 'manufacturing', 'marketing',
-  'communications', 'content', 'design', 'product manag', 'customer success', 'support',
+  'nurse', 'pharmac', 'medical', 'scientist', '\blab\b', 'manufacturing', 'support',
   'administrative', 'assistant', 'driver', 'warehouse', 'merchandis', 'clearance', 'ts/sci',
-  '\bsecret\b', 'financial due diligence', 'valuation', 'portfolio', 'trader', 'trading',
-  'quant', 'investment banking', 'underwrit', 'loan', 'credit', 'wealth', 'insurance', 'claims',
-  'analytics', 'data analyst', 'reporting', 'governance', 'insights',
+  '\bsecret\b', 'trader', 'trading', 'quant', 'investment banking', 'underwrit', 'loan',
+  'credit', 'wealth', 'insurance', 'claims', 'customer success',
 ]
 domain_rescue = ['sustainab', 'climate', '\besg\b', 'decarboni', 'net[- ]zero', 'energy transition']
+
+# Adjacent work: not disqualifying, but caps the posting at Stretch.
+stretch_domain = [
+  'analytics', 'data analyst', 'insights', 'reporting', 'governance', '\brisk\b', 'compliance',
+  'marketing', 'communications', 'content', 'design', 'product', 'portfolio', 'valuation',
+  'financial due diligence', 'integration', 'technology',
+]
 
 # Lanes. The title must name one of these.
 function_any = [
@@ -58,6 +63,12 @@ function_any = [
   'rotational', 'rotation', 'leadership development', 'development program', 'graduate program',
   'analyst program', 'generalist', 'business development',
 ]
+# Adjacent lane words (any company): pass, but rated no higher than Good/Stretch by the AI.
+function_adjacent = [
+  'strategic finance', 'fp&a', 'financial planning', '\bplanning\b', '\bprogram\b', '\bproject\b',
+  'operations', 'business analyst', 'transformation', 'innovation', 'growth', 'partnerships',
+]
+
 # Extra lane words that only count at consulting firms (priority 1-2): there, these are the job.
 function_consulting = ['consult', 'business analyst', 'transformation', 'operations', 'advisory']
 consulting_priorities = [1, 2]
@@ -75,15 +86,21 @@ early_markers = [
   'early[- ]career', '\b2027\b',
 ]
 
-# Description phrases that disqualify: 2+ years required, MBA required.
+# Description phrases that disqualify: 3+ years required, MBA required.
 exclude_description = [
-  '\b([2-9]|1[0-9])\s*\+?\s*(-|–|to)?\s*\d*\s*\+?\s*years?\b[^.]{0,50}\b(experience|exp\.)',
-  '\b(minimum|at least|min\.?)( of)? ([2-9]|two|three|four|five|six|seven|eight|ten)\s*\+?\s*years',
-  '\b(two|three|four|five|six|seven|eight|ten)\s*\(?\d*\)?\s*\+?\s*(or more )?years?\b[^.]{0,50}\bexperience',
+  '\b([3-9]|1[0-9])\s*\+?\s*(-|–|to)?\s*\d*\s*\+?\s*years?\b[^.]{0,50}\b(experience|exp\.)',
+  '\b(minimum|at least|min\.?)( of)? ([3-9]|three|four|five|six|seven|eight|ten)\s*\+?\s*years',
+  '\b(three|four|five|six|seven|eight|ten)\s*\(?\d*\)?\s*\+?\s*(or more )?years?\b[^.]{0,50}\bexperience',
   'mba (is |degree )?required', 'post[- ]mba', 'completed (an |your )?mba', 'current mba',
 ]
 
 # Start-date / cohort mismatches: before an April 2027 graduation, or a 2028+ cohort.
+# About 2 years asked for: slightly out of range -> Stretch at most.
+stretch_description = [
+  '\b(2|two)\s*\+?\s*(-|–|to)?\s*\d*\s*\+?\s*years?\b[^.]{0,50}\b(experience|exp\.)',
+  '\b(minimum|at least|min\.?)( of)? (2|two)\s*\+?\s*years',
+]
+
 bad_start_title = [
   '\b2026\b', '\b(winter|spring|january|february|march)\s+2027\b', '\b2028\b', '\b2029\b',
 ]

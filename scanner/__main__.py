@@ -134,13 +134,16 @@ def main(argv=None) -> int:
         r = ratings.get(j.key)
         if r:
             if r.rating == "No" or r.starts_before_summer_2027:
-                continue                        # the LLM's "no" is final
+                continue                        # the AI's "no" is final
             j.rating, j.reason = r.rating, r.reason
+            if j.verdict == "stretch" and j.rating == "Strong":
+                j.rating = "Good"               # keyword rules found it a step off-lane
         else:
-            if j.verdict != "clear":
+            if j.verdict == "candidate":
                 continue                        # unrated and level unconfirmed: skip
-            j.rating = "Good"
-            j.reason = "Entry-level consulting/strategy role in NYC (AI rating unavailable this run)."
+            j.rating = "Good" if j.verdict == "clear" else "Stretch"
+            j.reason = ("Entry-level consulting/strategy role in NYC" if j.verdict == "clear"
+                        else f"Close fit: {j.reason}") + " (AI rating unavailable this run)."
         j.early_start = j.early_start or filters.flags_early_start(j, f)
         j.extra["code"] = short_code(j.key)
         matches.append(j)
@@ -158,7 +161,10 @@ def main(argv=None) -> int:
         "notes": notes,
     }
 
-    texts = notify.compose(run["matches"], settings["site"]["url"], first_run=first_run,
+    # Never alert twice about a posting already on the page (e.g. after a re-scan of the backlog).
+    tracked: dict = load_json(STATE / "tracked.json", {})
+    fresh = [m for m in run["matches"] if m["key"] not in tracked]
+    texts = notify.compose(fresh, settings["site"]["url"], first_run=first_run and not tracked,
                            max_listed=settings["sms"]["max_listed"])
     if args.dry_run:
         print(json.dumps(run, indent=1))
@@ -177,7 +183,6 @@ def main(argv=None) -> int:
 
     # Closed postings: a match counts as closed once its board answers twice without listing it.
     # Feeds that only show a slice of the board (Slalom's RSS) can't tell, so they're skipped.
-    tracked: dict = load_json(STATE / "tracked.json", {})
     listed = {j.key for j in jobs}
     partial = {c["name"] for c in companies if c["platform"] in PARTIAL_PLATFORMS}
     for key, t in tracked.items():

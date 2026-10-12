@@ -23,7 +23,7 @@ Three lanes, in priority order:
    business development.
 Business development is a looser fourth option.
 
-## Hard requirements (any miss = No)
+## Hard requirements (any miss = No; close-but-not-quite roles are welcome as Good/Stretch)
 - Based in New York City. Remote-only or another city = No (a role listing several offices
   including New York is fine).
 - New-grad level. Eligible titles: Business Analyst, Associate (BCG-style undergrad title),

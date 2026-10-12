@@ -101,22 +101,27 @@ def title_ok(job, f: dict) -> bool:
     t = job.title
     return not (_any(f["exclude_level"], t)
                 or (_any(f["exclude_domain"], t) and not _any(f["domain_rescue"], t))
-                or not (_any(f["function_any"], t) or (consulting and _any(f["function_consulting"], t)))
+                or not (_any(f["function_any"], t) or _any(f["function_adjacent"], t)
+                        or (consulting and _any(f["function_consulting"], t)))
                 or _any(f["bad_start_title"], t)
                 or is_nyc(job.location) is False)
 
 
 def classify(job, f: dict) -> tuple[str, str]:
-    """Returns (verdict, why). verdict in reject | candidate | clear.
-    clear = every rule passes and the posting itself says early-career; candidate = passes, but
-    the level rests on the title alone, so the LLM gets the final say."""
+    """Returns (verdict, why). verdict:
+    reject    misses a hard requirement (NYC, level, start date, 3+ yrs/MBA, off-target work)
+    clear     on-lane, NYC, and the posting itself says early-career
+    candidate on-lane and NYC, level rests on the title -> the AI decides
+    stretch   passes the hard rules but is a step off (adjacent work, ~2 yrs) -> the AI may
+              rate it Good or Stretch, never Strong"""
     title, desc = job.title, job.description or ""
     consulting = job.priority in f["consulting_priorities"]
     if _any(f["exclude_level"], title):
         return "reject", "senior / intern / wrong-stage title"
     if _any(f["exclude_domain"], title) and not _any(f["domain_rescue"], title):
         return "reject", "off-target function"
-    if not (_any(f["function_any"], title) or (consulting and _any(f["function_consulting"], title))):
+    on_lane = _any(f["function_any"], title) or (consulting and _any(f["function_consulting"], title))
+    if not on_lane and not _any(f["function_adjacent"], title):
         return "reject", "not consulting / strategy / rotational"
     level = _any(f["level_title"], title) or (consulting and _any(f["level_title_consulting"], title))
     early_desc = _any(f["early_markers"], f"{title}\n{job.meta}\n{desc}")
@@ -126,13 +131,23 @@ def classify(job, f: dict) -> tuple[str, str]:
         return "reject", "bank 'Associate' = post-MBA"
     if _any(f["bad_start_title"], title) or _any(f["bad_start_description"], desc[:8000]):
         return "reject", "start date / cohort doesn't fit an April 2027 grad"
-    if _any(f["exclude_description"], re.sub(r"(?i)\b[01]\s*(-|–|to)\s*\d+\s*\+?\s*years?", " ", desc)):
-        return "reject", "asks for 2+ years or an MBA"
+    desc_years = re.sub(r"(?i)\b[01]\s*(-|–|to)\s*\d+\s*\+?\s*years?", " ", desc)
+    if _any(f["exclude_description"], desc_years):
+        return "reject", "asks for 3+ years or an MBA"
     nyc = is_nyc(job.location)
     if nyc is None and re.search(r"New York", desc):
         nyc = True
     if not nyc:
         return "reject", "not based in NYC" if nyc is False else "location unknown"
+    stretch = []
+    if not on_lane:
+        stretch.append("adjacent to your lanes")
+    if _any(f["stretch_domain"], title) and not _any(f["domain_rescue"], title):
+        stretch.append("specialised domain")
+    if _any(f["stretch_description"], desc_years):
+        stretch.append("asks for ~2 years")
+    if stretch:
+        return "stretch", "; ".join(stretch)
     return ("clear", "early-career consulting/strategy role in NYC") if early_desc else \
         ("candidate", "title fits; level not stated in posting")
 

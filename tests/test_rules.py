@@ -68,7 +68,17 @@ class Classify(unittest.TestCase):
     def test_years_ranges(self):
         self.assertEqual(self.v("Strategy Analyst", desc="0-2 years of experience preferred"), "clear")
         self.assertEqual(self.v("Strategy Analyst", desc="2-4 years of consulting experience"), "reject")
-        self.assertEqual(self.v("Strategy Analyst", desc="Minimum of two years of experience"), "reject")
+        self.assertEqual(self.v("Strategy Analyst", desc="Minimum of two years of experience"), "stretch")
+        self.assertEqual(self.v("Strategy Analyst", desc="3+ years of experience"), "reject")
+
+    def test_stretch_band(self):
+        self.assertEqual(self.v("Associate, Financial Planning", pri=3, desc="early career"), "stretch")
+        self.assertEqual(self.v("Product Strategy Analyst", desc="new grad"), "stretch")
+        self.assertEqual(self.v("Marketing Strategy Analyst", desc="new grad"), "stretch")
+        self.assertEqual(self.v("Operations Analyst", pri=3, desc="new grad"), "stretch")
+        # hard rules still win
+        self.assertEqual(self.v("Product Strategy Analyst", loc="Chicago, IL", desc="new grad"), "reject")
+        self.assertEqual(self.v("Senior Product Strategy Analyst", desc="new grad"), "reject")
 
     def test_location_from_description(self):
         self.assertEqual(self.v("Strategy Analyst", loc="Multiple Locations",
