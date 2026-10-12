@@ -1,0 +1,176 @@
+# Target companies. Add, remove, or re-prioritise freely.
+#
+# Every entry needs: name, priority (1 = highest), platform, plus that platform's fields.
+# Set `enabled = false` to pause a company without deleting it.
+#
+# Platforms and their fields (one adapter per platform, see scanner/adapters.py):
+#   greenhouse  board            -> boards-api.greenhouse.io/v1/boards/<board>/jobs
+#   lever       board            -> api.lever.co/v0/postings/<board>
+#   ashby       board            -> api.ashbyhq.com/posting-api/job-board/<board>
+#   workday     tenant, host, site, [queries]   (host is the wdN part, e.g. "wd1")
+#   oracle      host, site, [queries]           (Oracle HCM candidate experience)
+#   avature     base, [queries]                 (Avature HTML search, e.g. Deloitte)
+#   avature_rss base                            (Avature RSS feed; ~20 newest items only)
+#   radancy     base, [queries]                 (Radancy/TalentBrew "search-jobs" sites)
+#   jibe        base, [queries]                 (iCIMS Jibe sites with /api/jobs)
+#   sourceflow  base                            (Sourceflow /_sf/api/v1/jobs/search.json)
+#   yello       base, board                     (Yello / recsolu job boards)
+#   ibm         category                        (IBM's careers search API)
+#   kpmg        (no fields)                     (kpmguscareers.com listing)
+#
+# `assume_us = true` treats unplaceable locations ("Multiple Locations") as US for US-only boards.
+# `queries` are server-side keyword searches. The big boards have thousands of postings,
+# so they are searched rather than pulled whole. Leave queries out to pull everything.
+
+# ---------------- Priority 1 ----------------
+
+[[company]]
+name = "Deloitte"
+priority = 1
+platform = "avature"
+base = "https://apply.deloitte.com/en_US/careers"
+assume_us = true   # US careers site; "Multiple Locations" means multiple US offices
+queries = ["analyst", "consultant", "strategy", "2027"]
+
+[[company]]
+name = "EY"
+priority = 1
+platform = "radancy"
+base = "https://usearlycareers.ey.com"   # EY US early-careers board (new grad + campus roles)
+assume_us = true
+
+[[company]]
+name = "PwC"
+priority = 1
+platform = "workday"
+tenant = "pwc"
+host = "wd3"
+site = "US_Entry_Level_Careers"
+assume_us = true
+
+[[company]]
+name = "PwC"
+priority = 1
+platform = "workday"
+tenant = "pwc"
+host = "wd3"
+site = "Global_Experienced_Careers"
+queries = ["associate strategy", "associate consulting", "associate sustainability", "analyst"]
+
+[[company]]
+name = "KPMG"
+priority = 1
+platform = "kpmg"
+assume_us = true
+
+[[company]]
+name = "Accenture"
+priority = 1
+platform = "workday"
+tenant = "accenture"
+host = "wd103"
+site = "AccentureCareers"
+queries = ["analyst", "strategy", "consulting", "sustainability", "2027"]
+
+[[company]]
+name = "IBM Consulting"
+priority = 1
+platform = "ibm"
+category = "Consulting"
+
+# ---------------- Priority 2 ----------------
+
+[[company]]
+name = "Guidehouse"
+priority = 2
+platform = "workday"
+tenant = "guidehouse"
+host = "wd1"
+site = "External"
+
+[[company]]
+name = "West Monroe"
+priority = 2
+platform = "greenhouse"
+board = "westmonroe4"
+
+[[company]]
+name = "North Highland"
+priority = 2
+platform = "sourceflow"
+base = "https://careers.northhighland.com"
+
+[[company]]
+name = "Slalom"
+priority = 2
+platform = "avature_rss"
+base = "https://jobs.slalom.com/en_US/careersmarketplace"
+
+[[company]]
+name = "Kearney"
+priority = 2
+platform = "yello"
+base = "https://kearney.recsolu.com"
+board = "EPd41qlA4_03IncZMnWyRQ"
+
+# ---------------- Priority 3 ----------------
+
+[[company]]
+name = "American Express"
+priority = 3
+platform = "oracle"
+host = "egug.fa.us2.oraclecloud.com"
+site = "CX_1"
+queries = ["strategy", "analyst", "chief of staff", "operations"]
+
+[[company]]
+name = "PepsiCo"
+priority = 3
+platform = "jibe"
+base = "https://www.pepsicojobs.com"
+queries = ["strategy", "analyst", "associate", "transformation"]
+
+[[company]]
+name = "JPMorgan Chase"
+priority = 3
+platform = "oracle"
+host = "jpmc.fa.oraclecloud.com"
+site = "CX_1001"
+queries = ["corporate strategy", "strategy analyst", "strategy associate", "chief of staff", "internal consulting"]
+
+[[company]]
+name = "Pfizer"
+priority = 3
+platform = "workday"
+tenant = "pfizer"
+host = "wd1"
+site = "PfizerCareers"
+queries = ["strategy", "analyst", "associate", "chief of staff"]
+
+[[company]]
+name = "BlackRock"
+priority = 3
+platform = "workday"
+tenant = "blackrock"
+host = "wd1"
+site = "BlackRock_Professional"
+queries = ["strategy", "analyst", "chief of staff"]
+
+[[company]]
+name = "Ramp"
+priority = 3
+platform = "ashby"
+board = "ramp"
+
+[[company]]
+name = "Watershed"
+priority = 3
+platform = "ashby"
+board = "watershed"
+
+[[company]]
+name = "Persefoni"
+priority = 3
+platform = "greenhouse"
+board = "persefoniaiinc"
+enabled = false   # board returned 404 on 2026-10-11 (no open roles, or moved). Re-check later.
