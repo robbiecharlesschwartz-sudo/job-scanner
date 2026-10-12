@@ -65,34 +65,28 @@ class Classify(unittest.TestCase):
         self.assertFalse(filters.flags_early_start(job("Analyst", desc="© 2026 Acme. Start summer 2027."), F))
 
 
-class Texts(unittest.TestCase):
+class Alerts(unittest.TestCase):
     def m(self, i, rating="Good"):
         return {"company": "Acme", "title": f"Strategy Analyst {i}", "location": "New York, NY",
-                "rating": rating, "code": f"c{i}", "early_start": False}
+                "rating": rating, "code": f"c{i}", "early_start": False, "reason": "fits",
+                "url": f"https://jobs.example/{i}"}
 
-    def test_every_match_linked(self):
+    def test_every_match_alerted_then_summary(self):
         ms = [self.m(i, r) for i, r in enumerate(["Strong", "Good", "Good", "Stretch", "Good"])]
         out = notify.compose(ms, "https://site.example")
-        text = "\n".join(out)
-        self.assertTrue(out[0].startswith("Job Scanner: 5 new matches (1 Strong, 3 Good, 1 Stretch)"))
-        for i in range(5):
-            self.assertIn(f"site.example/j/c{i}", text)
-        self.assertTrue(out[-1].endswith("All results: site.example/"))
-        self.assertTrue(all(len(t) <= 1200 for t in out))
-
-    def test_one(self):
-        out = notify.compose([self.m(1)], "https://site.example")
-        self.assertEqual(len(out), 1)
-        self.assertIn("1 new match (1 Good)", out[0])
+        self.assertEqual(len(out), 6)
+        self.assertEqual([a["click"] for a in out[:5]], [f"https://jobs.example/{i}" for i in range(5)])
+        self.assertEqual(out[0]["priority"], "high")
+        self.assertEqual(out[-1]["click"], "https://site.example/")
+        self.assertIn("5 new matches today", out[-1]["title"])
+        self.assertIn("1 Strong, 3 Good, 1 Stretch", out[-1]["body"])
 
     def test_backlog_capped(self):
-        ms = [self.m(i) for i in range(60)]
-        out = notify.compose(ms, "https://site.example", first_run=True, max_listed=25)
-        text = "\n".join(out)
-        self.assertIn("first scan: 60 open matches", text)
-        self.assertIn("/j/c24", text)
-        self.assertNotIn("/j/c25", text)
-        self.assertIn("+35 more on the page: site.example/", text)
+        out = notify.compose([self.m(i) for i in range(60)], "https://site.example",
+                             first_run=True, max_listed=25)
+        self.assertEqual(len(out), 26)
+        self.assertIn("First scan: 60 open matches", out[-1]["title"])
+        self.assertIn("35 more only on the results page", out[-1]["body"])
 
     def test_none(self):
         self.assertEqual(notify.compose([], "https://s"), [])

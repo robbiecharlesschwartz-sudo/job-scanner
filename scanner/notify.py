@@ -1,8 +1,10 @@
-"""Twilio SMS. Plain REST call - no SDK needed for one endpoint."""
+"""Phone alerts via ntfy.sh: free push notifications, no account. Install the ntfy app and
+subscribe to the topic in NTFY_TOPIC. Tapping an alert opens the posting."""
 from __future__ import annotations
 
-import base64
 import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -17,62 +19,54 @@ def _short_loc(loc: str) -> str:
 
 
 def compose(matches: list[dict], site_url: str, first_run: bool = False,
-            max_listed: int = 25, max_chars: int = 1200) -> list[str]:
-    """Text bodies to send (empty list = send nothing). Every match gets a line and a link to
-    the posting; the last text links to the results page. Twilio joins a long body into one
-    message on the phone (it bills per 153-character segment)."""
+            max_listed: int = 25) -> list[dict]:
+    """One alert per new match (title, location, fit, reason; tap opens the posting), then one
+    summary alert that opens the results page. Empty list = send nothing."""
     if not matches:
         return []
-    host = site_url.replace("https://", "").replace("http://", "").rstrip("/")
+    site = site_url.rstrip("/") + "/"
+    alerts = []
+    for m in matches[:max_listed]:
+        flag = "\nStart date may be before summer 2027." if m.get("early_start") else ""
+        alerts.append({
+            "title": f"{m['company']}: {m['title'][:90]}",
+            "body": f"{m['rating']} fit · {_short_loc(m['location'])}\n{m['reason']}{flag}",
+            "click": m["url"], "tags": "briefcase",
+            "priority": "high" if m["rating"] == "Strong" else "default",
+        })
     counts = {r: sum(1 for m in matches if m["rating"] == r) for r in RATING_ORDER}
     tally = ", ".join(f"{n} {r}" for r, n in counts.items() if n)
-    n = len(matches)
-    head = (f"Job Scanner first scan: {n} open matches ({tally})." if first_run
-            else f"Job Scanner: {n} new match{'es' if n != 1 else ''} ({tally}).")
-    listed = matches[:max_listed]
-    lines = []
-    for m in listed:
-        flag = " | starts pre-summer '27" if m.get("early_start") else ""
-        lines.append(f"{m['company']}: {m['title'][:80]} | {_short_loc(m['location'])} | "
-                     f"{m['rating']}{flag}\n{host}/j/{m['code']}")
-    tail = (f"+{n - len(listed)} more on the page: {host}/" if n > len(listed)
-            else f"All results: {host}/")
-
-    bodies, cur = [], head
-    for line in lines:
-        if len(cur) + len(line) + 2 > max_chars:
-            bodies.append(cur)
-            cur = line
-        else:
-            cur += "\n\n" + line
-    if len(cur) + len(tail) + 2 > max_chars:
-        bodies.append(cur)
-        cur = tail
-    else:
-        cur += "\n\n" + tail
-    bodies.append(cur)
-    return bodies
+    n, more = len(matches), len(matches) - min(len(matches), max_listed)
+    head = (f"First scan: {n} open matches" if first_run
+            else f"{n} new match{'es' if n != 1 else ''} today")
+    alerts.append({
+        "title": f"Job Scanner: {head}",
+        "body": f"{tally}." + (f" {more} more only on the results page." if more else "")
+                + " Tap to open the full list.",
+        "click": site, "tags": "clipboard", "priority": "default",
+    })
+    return alerts
 
 
-def send(bodies: list[str]) -> list[str]:
-    """Sends via Twilio. Returns a list of error strings (empty on success)."""
-    sid, token = os.environ.get("TWILIO_ACCOUNT_SID"), os.environ.get("TWILIO_AUTH_TOKEN")
-    sender, to = os.environ.get("TWILIO_FROM"), os.environ.get("SMS_TO")
-    if not (sid and token and sender and to):
-        return ["Twilio env vars missing (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, SMS_TO)"]
-    auth = base64.b64encode(f"{sid}:{token}".encode()).decode()
+def send(alerts: list[dict]) -> list[str]:
+    """Posts each alert to ntfy. Returns a list of error strings (empty on success)."""
+    topic = os.environ.get("NTFY_TOPIC")
+    if not topic:
+        return ["NTFY_TOPIC not set"]
+    server = os.environ.get("NTFY_SERVER", "https://ntfy.sh").rstrip("/")
+    site = alerts[-1]["click"]
     errors = []
-    for body in bodies:
-        # TWILIO_FROM may be a phone number or a Messaging Service SID (MG...).
-        field = "MessagingServiceSid" if sender.startswith("MG") else "From"
-        data = urllib.parse.urlencode({"To": to, field: sender, "Body": body}).encode()
-        req = urllib.request.Request(
-            f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json", data=data,
-            headers={"Authorization": f"Basic {auth}"}, method="POST")
+    for a in alerts:
+        params = {"title": a["title"], "click": a["click"], "tags": a["tags"], "priority": a["priority"]}
+        if a["click"] != site:
+            params["actions"] = f"view, Open posting, {a['click']}; view, Results page, {site}"
+        url = f"{server}/{topic}?{urllib.parse.urlencode(params)}"
+        req = urllib.request.Request(url, data=a["body"].encode("utf-8"), method="POST")
         try:
             urllib.request.urlopen(req, timeout=30).read()
         except urllib.error.HTTPError as e:
-            errors.append(f"Twilio {e.code}: {e.read().decode('utf-8', 'replace')[:300]}")
+            errors.append(f"ntfy {e.code}: {e.read().decode('utf-8', 'replace')[:200]}")
         except urllib.error.URLError as e:
-            errors.append(f"Twilio connection error: {e}")
+            errors.append(f"ntfy connection error: {e}")
+        time.sleep(1)                       # stay well inside ntfy's anonymous rate limit
     return errors

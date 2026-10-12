@@ -5,12 +5,14 @@
 url = "https://job-scanner-robbie.vercel.app"
 
 [sms]
-# Every new match is texted with a link to the posting, plus a link to the results page.
-# Matches are packed several to a text. Past this many in one day (e.g. the first scan's
-# backlog) the text lists the top ones and points to the page for the rest.
+# Phone alerts go through ntfy (free push notifications). Every new match gets its own alert
+# (tap opens the posting), followed by one summary alert that opens the results page.
+# Past this many in one day (e.g. the first scan's backlog) the rest are only on the page.
 max_listed = 25
 
 [scoring]
+# Ratings use Groq's free tier (GROQ_API_KEY). If ANTHROPIC_API_KEY is set, Claude is used instead
+# with this model.
 model = "claude-opus-5-5"
 # Postings scored per Claude request.
 batch_size = 12

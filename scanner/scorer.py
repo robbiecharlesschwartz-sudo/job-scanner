@@ -1,7 +1,11 @@
-"""Rates keyword survivors with Claude: Strong / Good / Stretch / No, plus a one-line reason."""
+"""Rates keyword survivors with an LLM (Groq free tier, or Claude): Strong / Good / Stretch / No, plus a one-line reason."""
 from __future__ import annotations
 
+import json
 import os
+import time
+import urllib.error
+import urllib.request
 from typing import Literal
 
 from pydantic import BaseModel
@@ -48,36 +52,62 @@ def _posting_block(j) -> str:
 
 
 def score(jobs: list, profile: str, model: str, batch_size: int = 12) -> tuple[dict, str | None]:
-    """Returns ({job.key: Rating}, error). Missing API key or any API failure -> ({}, message);
-    the caller then falls back to rule-based ratings so the run still sends results."""
+    """Returns ({job.key: Rating}, error). Uses Groq's free tier (GROQ_API_KEY); Claude instead if
+    ANTHROPIC_API_KEY is set. No key or an API failure -> keyword ratings, and the run carries on."""
     if not jobs:
         return {}, None
-    if not os.environ.get("ANTHROPIC_API_KEY"):
-        return {}, "ANTHROPIC_API_KEY not set - used keyword ratings"
-    import anthropic
-
-    client = anthropic.Anthropic()
     system = INSTRUCTIONS.format(profile=profile)
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        call = lambda chunk: _claude(system, chunk, model)
+    elif os.environ.get("GROQ_API_KEY"):
+        call = lambda chunk: _groq(system, chunk)
+    else:
+        return {}, "No GROQ_API_KEY or ANTHROPIC_API_KEY set - used keyword ratings"
     out, errors = {}, []
     for i in range(0, len(jobs), batch_size):
         chunk = jobs[i:i + batch_size]
         try:
-            resp = client.messages.parse(
-                model=model,
-                max_tokens=8000,
-                system=system,
-                messages=[{"role": "user", "content": "\n\n".join(_posting_block(j) for j in chunk)}],
-                output_format=Ratings,
-            )
-        except anthropic.APIStatusError as e:
-            errors.append(f"Claude API {e.status_code}: {e.message}")
-            continue
-        except anthropic.APIConnectionError as e:
-            errors.append(f"Claude API connection error: {e}")
-            continue
-        if resp.stop_reason == "refusal" or resp.parsed_output is None:
-            errors.append(f"Claude returned no ratings for a batch (stop_reason={resp.stop_reason})")
-            continue
-        for r in resp.parsed_output.ratings:
-            out[r.id] = r
+            for r in call(chunk):
+                out[r.id] = r
+        except Exception as e:                 # one bad batch falls back to keyword ratings
+            errors.append(str(e)[:200])
     return out, "; ".join(dict.fromkeys(errors)) or None
+
+
+def _claude(system: str, chunk: list, model: str) -> list[Rating]:
+    import anthropic
+    resp = anthropic.Anthropic().messages.parse(
+        model=model, max_tokens=8000, system=system,
+        messages=[{"role": "user", "content": "\n\n".join(_posting_block(j) for j in chunk)}],
+        output_format=Ratings)
+    if resp.stop_reason == "refusal" or resp.parsed_output is None:
+        raise RuntimeError(f"Claude returned no ratings (stop_reason={resp.stop_reason})")
+    return resp.parsed_output.ratings
+
+
+GROQ_MODEL = "openai/gpt-oss-120b"
+
+
+def _groq(system: str, chunk: list) -> list[Rating]:
+    schema_hint = ('Respond with JSON only: {"ratings": [{"id": str, "rating": "Strong"|"Good"|'
+                   '"Stretch"|"No", "reason": str, "starts_before_summer_2027": bool}]}')
+    body = json.dumps({
+        "model": GROQ_MODEL, "temperature": 0.2, "response_format": {"type": "json_object"},
+        "messages": [{"role": "system", "content": system + "\n\n" + schema_hint},
+                     {"role": "user", "content": "\n\n".join(_posting_block(j) for j in chunk)}],
+    }).encode()
+    for attempt in range(5):
+        req = urllib.request.Request(
+            "https://api.groq.com/openai/v1/chat/completions", data=body, method="POST",
+            headers={"Authorization": f"Bearer {os.environ['GROQ_API_KEY']}",
+                     "Content-Type": "application/json", "User-Agent": "job-scanner"})
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                content = json.load(r)["choices"][0]["message"]["content"]
+            return Ratings.model_validate_json(content).ratings
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 4:     # free-tier rate limit: wait it out
+                time.sleep(float(e.headers.get("retry-after") or 20))
+                continue
+            raise RuntimeError(f"Groq {e.code}: {e.read().decode('utf-8', 'replace')[:150]}")
+    raise RuntimeError("Groq rate limit persisted")

@@ -1,7 +1,9 @@
 # Job Scanner
 
 Daily scan of target companies' own career sites for early-career consulting and strategy
-openings. New matches are texted via Twilio and listed on a results page.
+openings. New matches arrive as free push notifications (ntfy) and are listed on a results page,
+which also keeps closed postings for 30 days. Everything runs on free tiers: GitHub Actions,
+Vercel Hobby, Groq, ntfy.
 
 ```
 companies.toml   who to scan (add/remove/re-prioritise here)
@@ -19,12 +21,14 @@ site/            the generated results page, deployed by Vercel
    No LinkedIn, no aggregators.
 2. Anything already in `state/seen.json` (company + job ID) is skipped.
 3. Keyword rules in `settings.toml` sort new postings into reject / borderline / clear.
-4. Claude rates every survivor Strong / Good / Stretch / No with a one-line reason. Borderline
-   postings rated No are dropped; keyword-clear ones are kept. Without an API key, clear
-   postings get "Good" and borderline ones "Stretch".
-5. Matches are ordered by company priority, then fit. Up to 3 matches are texted one per
-   message; more than that sends one summary text linking to the page. No matches, no text.
-6. `state/` and `site/` are committed back, which redeploys the page.
+4. An LLM (Groq's free tier; Claude if `ANTHROPIC_API_KEY` is set) rates every survivor
+   Strong / Good / Stretch / No with a one-line reason. Borderline postings rated No are dropped;
+   keyword-clear ones are kept. Without a key, clear postings get "Good", borderline "Stretch".
+5. Matches are ordered by company priority, then fit. Each gets its own phone alert (tap opens
+   the posting), then one summary alert opens the results page. No matches, no alert.
+6. Past matches that vanish from their board on two scans in a row move to "Closed postings"
+   on the page for 30 days.
+7. `state/` and `site/` are committed back, which redeploys the page.
 
 ## Running it
 
@@ -42,10 +46,9 @@ Secrets the workflow reads (repo Settings, Secrets and variables, Actions):
 
 | Secret | Value |
 |---|---|
-| `ANTHROPIC_API_KEY` | Claude API key (optional; without it, keyword ratings only) |
-| `TWILIO_ACCOUNT_SID`, `TWILIO_AUTH_TOKEN` | from the Twilio console |
-| `TWILIO_FROM` | your Twilio number (+1...) or a Messaging Service SID (MG...) |
-| `SMS_TO` | your phone, e.g. +1646... |
+| `GROQ_API_KEY` | free key from console.groq.com (rates fit) |
+| `NTFY_TOPIC` | private ntfy topic name; subscribe to it in the ntfy phone app |
+| `ANTHROPIC_API_KEY` | optional, paid: use Claude for ratings instead of Groq |
 
 ## Adding a company
 
