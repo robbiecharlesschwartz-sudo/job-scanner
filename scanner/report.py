@@ -1,6 +1,7 @@
 """Writes the static results site: site/index.html plus one short-link redirect per match."""
 from __future__ import annotations
 
+import datetime as dt
 import html
 import json
 from pathlib import Path
@@ -40,6 +41,13 @@ details td.n{text-align:right;font-variant-numeric:tabular-nums}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 4px}
 .chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card.closed{opacity:.7}
+.card.closed .title{color:var(--muted)}
+.closedtag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+details.closedlist{margin:20px 0 0;font-size:15px;color:var(--ink)}
+details.closedlist>summary{font-weight:600;cursor:pointer;padding:10px 0;border-bottom:1px solid var(--line)}
+details.closedlist>summary span{color:var(--muted);font-weight:400;font-size:13px}
+details.closedlist .card{margin-top:10px}
 """
 
 JS = """
@@ -52,12 +60,20 @@ document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click'
 e = html.escape
 
 
-def _card(m: dict) -> str:
+def _date(iso: str) -> str:
+    try:
+        return dt.date.fromisoformat(iso).strftime("%b %-d")
+    except ValueError:
+        return iso
+
+
+def _card(m: dict, closed_on: str | None = None) -> str:
     flag = '<span class="flag">Start date may be before summer 2027</span>' if m.get("early_start") else ""
     posted = f" · posted {e(m['posted'])}" if m.get("posted") else ""
-    return (f'<div class="card" id="{e(m["code"])}" data-r="{e(m["rating"])}"><div class="top">'
-            f'<span class="co">P{m["priority"]} · {e(m["company"])}</span>'
-            f'<span class="pill {e(m["rating"])}">{e(m["rating"])}</span></div>'
+    tag = f'<span class="closedtag">Closed {e(_date(closed_on))}</span>' if closed_on else ""
+    return (f'<div class="card{" closed" if closed_on else ""}" id="{e(m["code"])}" data-r="{e(m["rating"])}">'
+            f'<div class="top"><span class="co">P{m["priority"]} · {e(m["company"])}</span>'
+            f'<span>{tag} <span class="pill {e(m["rating"])}">{e(m["rating"])}</span></span></div>'
             f'<a class="title" href="{e(m["url"])}" target="_blank" rel="noopener">{e(m["title"])}</a>'
             f'<div class="meta">{e(m["location"] or "Location not listed")}{posted}</div>'
             f'<p class="reason">{e(m["reason"])}</p>{flag}</div>')
@@ -75,7 +91,9 @@ def _health(run: dict) -> str:
             f'{notes}<table>{"".join(rows)}</table></details>')
 
 
-def write_site(site_dir: Path, runs: list[dict], site_url: str) -> None:
+def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dict] | None = None) -> None:
+    closed = closed or []
+    closed_on = {c["code"]: c["closed_on"] for c in closed}
     site_dir.mkdir(parents=True, exist_ok=True)
     (site_dir / "j").mkdir(exist_ok=True)
     latest = runs[-1] if runs else {}
@@ -84,8 +102,13 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str) -> None:
     for run in reversed(runs):
         ms = run["matches"]
         head = f'<h2>{e(run["label"])}<span>{len(ms)} match{"es" if len(ms) != 1 else ""}</span></h2>'
-        body = "".join(_card(m) for m in ms) or '<p class="empty">No new matches.</p>'
+        body = "".join(_card(m, closed_on.get(m["code"])) for m in ms) or '<p class="empty">No new matches.</p>'
         sections.append(head + body + _health(run))
+    closed_html = (
+        f'<details class="closedlist"><summary>Closed postings <span>· {len(closed)} in the last 30 days, '
+        f'no longer listed on the company site</span></summary>'
+        + ("".join(_card(c, c["closed_on"]) for c in closed)
+           or '<p class="empty">None yet.</p>') + '</details>')
     chips = ('<div class="chips"><button aria-pressed="true" data-r="">All</button>'
              '<button aria-pressed="false" data-r="Strong">Strong</button>'
              '<button aria-pressed="false" data-r="Good">Good</button>'
@@ -96,19 +119,18 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str) -> None:
 <h1>Job Scanner</h1>
 <p class="sub">Early-career consulting &amp; strategy openings at target companies.
 Last scan {e(latest.get("label", "never"))}. {total} matches across the last {len(runs)} scans, newest first.</p>
-{chips}{"".join(sections)}
+{chips}{"".join(sections)}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)
 
-    live = {m["code"] for run in runs for m in run["matches"]}
+    live = {m["code"] for run in runs for m in run["matches"]} | set(closed_on)
     for old in (site_dir / "j").glob("*.html"):
         if old.stem not in live:
             old.unlink()
-    for run in runs:
-        for m in run["matches"]:
-            (site_dir / "j" / f"{m['code']}.html").write_text(
-                f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
-                f'<meta http-equiv="refresh" content="0;url={e(m["url"])}">'
-                f'<title>{e(m["company"])} - {e(m["title"])}</title>'
-                f'<a href="{e(m["url"])}">{e(m["title"])}</a>')
+    for m in [m for run in runs for m in run["matches"]] + closed:
+        (site_dir / "j" / f"{m['code']}.html").write_text(
+            f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
+            f'<meta http-equiv="refresh" content="0;url={e(m["url"])}">'
+            f'<title>{e(m["company"])} - {e(m["title"])}</title>'
+            f'<a href="{e(m["url"])}">{e(m["title"])}</a>')
     (site_dir / "latest.json").write_text(json.dumps(latest, indent=1))

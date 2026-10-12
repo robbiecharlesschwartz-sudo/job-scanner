@@ -5,9 +5,10 @@
 url = "https://job-scanner-robbie.vercel.app"
 
 [sms]
-# Up to this many matches are texted one per message. More than this -> one summary text
-# with a link to the full list.
-max_individual_texts = 3
+# Every new match is texted with a link to the posting, plus a link to the results page.
+# Matches are packed several to a text. Past this many in one day (e.g. the first scan's
+# backlog) the text lists the top ones and points to the page for the rest.
+max_listed = 25
 
 [scoring]
 model = "claude-opus-5-5"

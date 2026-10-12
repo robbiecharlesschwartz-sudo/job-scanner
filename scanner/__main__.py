@@ -25,6 +25,8 @@ RANK = {"Strong": 0, "Good": 1, "Stretch": 2}
 KEEP_RUNS = 30            # scans shown on the results page
 FORGET_AFTER_DAYS = 180   # drop seen-IDs not listed for this long
 MAX_CLAUDE = 250          # cap per run (first run sees the whole backlog)
+CLOSED_DAYS = 30          # closed postings stay on the page this long
+PARTIAL_PLATFORMS = {"avature_rss"}   # feeds too partial to detect a posting closing
 
 
 def short_code(key: str) -> str:
@@ -157,7 +159,8 @@ def main(argv=None) -> int:
         "notes": notes,
     }
 
-    texts = notify.compose(matches, settings["site"]["url"], settings["sms"]["max_individual_texts"])
+    texts = notify.compose(run["matches"], settings["site"]["url"], first_run=first_run,
+                           max_listed=settings["sms"]["max_listed"])
     if args.dry_run:
         print(json.dumps(run, indent=1))
         print("\n--- texts that would be sent ---", file=sys.stderr)
@@ -173,11 +176,36 @@ def main(argv=None) -> int:
     cutoff = (now.date() - dt.timedelta(days=FORGET_AFTER_DAYS)).isoformat()
     seen = {k: v for k, v in seen.items() if v[1] >= cutoff}
 
+    # Closed postings: a match counts as closed once its board answers twice without listing it.
+    # Feeds that only show a slice of the board (Slalom's RSS) can't tell, so they're skipped.
+    tracked: dict = load_json(STATE / "tracked.json", {})
+    listed = {j.key for j in jobs}
+    partial = {c["name"] for c in companies if c["platform"] in PARTIAL_PLATFORMS}
+    for key, t in tracked.items():
+        if t["company"] not in ok_companies or t["company"] in partial:
+            continue
+        if key in listed:
+            t.update(misses=0, closed_on=None, last_listed=today)
+        elif not t.get("closed_on"):
+            t["misses"] = t.get("misses", 0) + 1
+            if t["misses"] >= 2:
+                t["closed_on"] = today
+    for m in run["matches"]:
+        tracked.setdefault(m["key"], {**m, "first_seen": today, "last_listed": today,
+                                      "misses": 0, "closed_on": None})
+    closed_cutoff = (now.date() - dt.timedelta(days=CLOSED_DAYS)).isoformat()
+    open_cutoff = (now.date() - dt.timedelta(days=FORGET_AFTER_DAYS)).isoformat()
+    tracked = {k: t for k, t in tracked.items()
+               if (t["closed_on"] or "9") >= closed_cutoff and t["last_listed"] >= open_cutoff}
+
     runs = (runs + [run])[-KEEP_RUNS:]
     STATE.mkdir(exist_ok=True)
     (STATE / "seen.json").write_text(json.dumps(seen, indent=0, sort_keys=True))
     (STATE / "runs.json").write_text(json.dumps(runs, indent=1))
-    report.write_site(SITE, runs, settings["site"]["url"])
+    (STATE / "tracked.json").write_text(json.dumps(tracked, indent=1, sort_keys=True))
+    closed = sorted((t for t in tracked.values() if t["closed_on"]),
+                    key=lambda t: (t["closed_on"], -t["priority"]), reverse=True)
+    report.write_site(SITE, runs, settings["site"]["url"], closed)
     print(f"{len(matches)} matches -> site/index.html", file=sys.stderr)
 
     if texts and not args.no_sms:

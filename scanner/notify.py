@@ -16,23 +16,42 @@ def _short_loc(loc: str) -> str:
     return (first[:28] + (f" +{extra}" if extra else "")) or "location n/a"
 
 
-def compose(matches: list, site_url: str, max_individual: int) -> list[str]:
-    """Returns the text bodies to send (empty list = send nothing)."""
+def compose(matches: list[dict], site_url: str, first_run: bool = False,
+            max_listed: int = 25, max_chars: int = 1200) -> list[str]:
+    """Text bodies to send (empty list = send nothing). Every match gets a line and a link to
+    the posting; the last text links to the results page. Twilio joins a long body into one
+    message on the phone (it bills per 153-character segment)."""
     if not matches:
         return []
     host = site_url.replace("https://", "").replace("http://", "").rstrip("/")
-    if len(matches) <= max_individual:
-        out = []
-        for j in matches:
-            flag = " | starts pre-summer '27" if j.early_start else ""
-            out.append(f"{j.company}: {j.title} | {_short_loc(j.location)} | {j.rating}{flag}\n"
-                       f"{host}/j/{j.extra['code']}")
-        return out
-    counts = {r: sum(1 for j in matches if j.rating == r) for r in RATING_ORDER}
-    parts = ", ".join(f"{n} {r}" for r, n in counts.items() if n)
-    top = matches[0]
-    return [f"{len(matches)} new matches ({parts}). Top: {top.company} - {top.title[:60]} ({top.rating}).\n"
-            f"Full list: {host}/"]
+    counts = {r: sum(1 for m in matches if m["rating"] == r) for r in RATING_ORDER}
+    tally = ", ".join(f"{n} {r}" for r, n in counts.items() if n)
+    n = len(matches)
+    head = (f"Job Scanner first scan: {n} open matches ({tally})." if first_run
+            else f"Job Scanner: {n} new match{'es' if n != 1 else ''} ({tally}).")
+    listed = matches[:max_listed]
+    lines = []
+    for m in listed:
+        flag = " | starts pre-summer '27" if m.get("early_start") else ""
+        lines.append(f"{m['company']}: {m['title'][:80]} | {_short_loc(m['location'])} | "
+                     f"{m['rating']}{flag}\n{host}/j/{m['code']}")
+    tail = (f"+{n - len(listed)} more on the page: {host}/" if n > len(listed)
+            else f"All results: {host}/")
+
+    bodies, cur = [], head
+    for line in lines:
+        if len(cur) + len(line) + 2 > max_chars:
+            bodies.append(cur)
+            cur = line
+        else:
+            cur += "\n\n" + line
+    if len(cur) + len(tail) + 2 > max_chars:
+        bodies.append(cur)
+        cur = tail
+    else:
+        cur += "\n\n" + tail
+    bodies.append(cur)
+    return bodies
 
 
 def send(bodies: list[str]) -> list[str]:

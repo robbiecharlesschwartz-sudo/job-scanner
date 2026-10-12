@@ -67,24 +67,35 @@ class Classify(unittest.TestCase):
 
 class Texts(unittest.TestCase):
     def m(self, i, rating="Good"):
-        j = job(f"Strategy Analyst {i}")
-        j.rating, j.extra["code"] = rating, f"c{i}"
-        return j
+        return {"company": "Acme", "title": f"Strategy Analyst {i}", "location": "New York, NY",
+                "rating": rating, "code": f"c{i}", "early_start": False}
 
-    def test_individual(self):
-        out = notify.compose([self.m(1), self.m(2)], "https://site.example", 3)
-        self.assertEqual(len(out), 2)
-        self.assertIn("site.example/j/c1", out[0])
-        self.assertLessEqual(max(len(t) for t in out), 320)    # <= 2 SMS segments
+    def test_every_match_linked(self):
+        ms = [self.m(i, r) for i, r in enumerate(["Strong", "Good", "Good", "Stretch", "Good"])]
+        out = notify.compose(ms, "https://site.example")
+        text = "\n".join(out)
+        self.assertTrue(out[0].startswith("Job Scanner: 5 new matches (1 Strong, 3 Good, 1 Stretch)"))
+        for i in range(5):
+            self.assertIn(f"site.example/j/c{i}", text)
+        self.assertTrue(out[-1].endswith("All results: site.example/"))
+        self.assertTrue(all(len(t) <= 1200 for t in out))
 
-    def test_summary(self):
-        ms = [self.m(i, r) for i, r in enumerate(["Strong", "Good", "Good", "Stretch"])]
-        out = notify.compose(ms, "https://site.example", 3)
+    def test_one(self):
+        out = notify.compose([self.m(1)], "https://site.example")
         self.assertEqual(len(out), 1)
-        self.assertTrue(out[0].startswith("4 new matches (1 Strong, 2 Good, 1 Stretch)"))
+        self.assertIn("1 new match (1 Good)", out[0])
+
+    def test_backlog_capped(self):
+        ms = [self.m(i) for i in range(60)]
+        out = notify.compose(ms, "https://site.example", first_run=True, max_listed=25)
+        text = "\n".join(out)
+        self.assertIn("first scan: 60 open matches", text)
+        self.assertIn("/j/c24", text)
+        self.assertNotIn("/j/c25", text)
+        self.assertIn("+35 more on the page: site.example/", text)
 
     def test_none(self):
-        self.assertEqual(notify.compose([], "https://s", 3), [])
+        self.assertEqual(notify.compose([], "https://s"), [])
 
 
 if __name__ == "__main__":
