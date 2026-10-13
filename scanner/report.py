@@ -41,6 +41,19 @@ details td.n{text-align:right;font-variant-numeric:tabular-nums}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 4px}
 .chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
 .chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pointers{margin:8px 0 0;padding:0;list-style:none;font-size:14px}
+.pointers li{display:flex;gap:8px;padding:3px 0;line-height:1.4}
+.pointers .m{flex:0 0 16px;font-weight:700;text-align:center}
+.pointers .fit .m{color:var(--strong-ink)}
+.pointers .gap .m{color:var(--warn-ink)}
+.pointers .neu .m{color:var(--muted)}
+details.key{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:0 0 16px}
+details.key>summary{font-weight:600;cursor:pointer}
+.key dl{margin:10px 0 0}
+.key dt{margin:10px 0 4px}
+.key dd{margin:0 0 2px;font-size:14px}
+.key dd.do{color:var(--muted)}
+.key .legend{font-size:13px;color:var(--muted);margin:12px 0 0}
 .card.closed{opacity:.7}
 .card.closed .title{color:var(--muted)}
 .closedtag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
@@ -67,6 +80,29 @@ def _date(iso: str) -> str:
         return iso
 
 
+MARKS = {"+": ("fit", "✓", "Fits"), "-": ("gap", "✗", "Gap"), "~": ("neu", "~", "Unclear")}
+
+
+def _pointers(ps: list[str]) -> str:
+    items = []
+    for p in ps or []:
+        cls, sym, label = MARKS.get(p[:1], MARKS["~"])
+        text = p[1:].strip() if p[:1] in MARKS else p
+        items.append(f'<li class="{cls}"><span class="m" aria-label="{label}">{sym}</span>'
+                     f'<span>{e(text)}</span></li>')
+    return f'<ul class="pointers">{"".join(items)}</ul>' if items else ""
+
+
+def _key() -> str:
+    from .scorer import RATING_GUIDE
+    rows = "".join(f'<dt><span class="pill {r}">{r}</span></dt><dd>{e(what)}</dd>'
+                   f'<dd class="do">What to do: {e(do)}</dd>' for r, (what, do) in RATING_GUIDE.items())
+    return ('<details class="key"><summary>What Strong, Good and Stretch mean</summary>'
+            f'<dl>{rows}</dl><p class="legend">Under each job: ✓ where you fit, ✗ a gap or risk, '
+            '~ something the posting leaves unclear. Every rating comes from the full posting '
+            'checked against your profile.</p></details>')
+
+
 def _card(m: dict, closed_on: str | None = None) -> str:
     flag = '<span class="flag">Start date may be before summer 2027</span>' if m.get("early_start") else ""
     posted = f" · posted {e(m['posted'])}" if m.get("posted") else ""
@@ -76,7 +112,7 @@ def _card(m: dict, closed_on: str | None = None) -> str:
             f'<span>{tag} <span class="pill {e(m["rating"])}">{e(m["rating"])}</span></span></div>'
             f'<a class="title" href="{e(m["url"])}" target="_blank" rel="noopener">{e(m["title"])}</a>'
             f'<div class="meta">{e(m["location"] or "Location not listed")}{posted}</div>'
-            f'<p class="reason">{e(m["reason"])}</p>{flag}</div>')
+            f'<p class="reason">{e(m["reason"])}</p>{_pointers(m.get("pointers"))}{flag}</div>')
 
 
 def _health(run: dict) -> str:
@@ -119,7 +155,7 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
 <h1>Job Scanner</h1>
 <p class="sub">Early-career consulting &amp; strategy openings at target companies.
 Last scan {e(latest.get("label", "never"))}. {total} matches across the last {len(runs)} scans, newest first.</p>
-{chips}{"".join(sections)}{closed_html}
+{_key()}{chips}{"".join(sections)}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)
 

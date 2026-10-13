@@ -30,7 +30,8 @@ def compose(matches: list[dict], site_url: str, first_run: bool = False,
         flag = "\nStart date may be before summer 2027." if m.get("early_start") else ""
         alerts.append({
             "title": f"{m['company']}: {m['title'][:90]}",
-            "body": f"{m['rating']} fit · {_short_loc(m['location'])}\n{m['reason']}{flag}",
+            "body": f"{m['rating']} fit · {_short_loc(m['location'])}\n{m['reason']}{flag}"
+                    + "".join(f"\n{p}" for p in (m.get("pointers") or [])[:4]),
             "click": m["url"], "tags": "briefcase",
             "priority": "high" if m["rating"] == "Strong" else "default",
         })

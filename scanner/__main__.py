@@ -123,9 +123,12 @@ def main(argv=None) -> int:
 
     def enrich(j):
         try:
+            platform = j.extra.get("platform")
             if "detail" in j.extra:
                 adapters.workday_detail(j)
-            elif j.extra.get("platform") in ("avature", "radancy", "yello"):
+            elif "oracle" in j.extra:
+                adapters.oracle_detail(j)
+            elif platform in ("avature", "radancy", "yello", "kpmg", "avature_rss"):
                 adapters.page_detail(j)
         except Exception:
             pass                                # keep the listing-level data
@@ -157,6 +160,7 @@ def main(argv=None) -> int:
             if r.rating == "No" or r.starts_before_summer_2027:
                 continue                        # the AI's "no" is final
             j.rating, j.reason = r.rating, r.reason
+            j.extra["pointers"] = [p.strip() for p in r.pointers if p.strip()][:5]
             if j.verdict == "stretch" and j.rating == "Strong":
                 j.rating = "Good"               # keyword rules found it a step off-lane
         else:
@@ -176,7 +180,8 @@ def main(argv=None) -> int:
         "matches": [{
             "code": j.extra["code"], "company": j.company, "priority": j.priority, "title": j.title,
             "location": j.location, "url": j.url, "posted": j.posted, "rating": j.rating,
-            "reason": j.reason, "early_start": j.early_start, "key": j.key} for j in matches],
+            "reason": j.reason, "pointers": j.extra.get("pointers", []),
+            "early_start": j.early_start, "key": j.key} for j in matches],
         "sources": dict(sorted(sources.items())),
         "screened_out": len(new) - len(matches),
         "notes": notes,

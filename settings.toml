@@ -15,7 +15,7 @@ max_listed = 25
 # Haiku 5.5 keeps this to pennies a month; "claude-opus-5-5" rates more carefully at ~40x the price.
 model = "claude-haiku-5-5"
 # Postings scored per Claude request.
-batch_size = 6
+batch_size = 3   # small batches: each posting now goes in with its full text
 
 [filters]
 # Regexes, case-insensitive. The target (see profile.md): new-grad (0-1 yrs) roles based in NYC,

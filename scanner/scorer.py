@@ -1,4 +1,5 @@
-"""Rates keyword survivors with an LLM (Groq free tier, or Claude): Strong / Good / Stretch / No, plus a one-line reason."""
+"""Rates keyword survivors with an LLM (Claude, else free NVIDIA / Groq): Strong / Good / Stretch / No,
+with a headline reason and a few pointers comparing the full posting against the candidate."""
 from __future__ import annotations
 
 import json
@@ -10,11 +11,30 @@ from typing import Literal
 
 from pydantic import BaseModel
 
+# What each rating means for the candidate, and what to do about it. Shown to the AI and on the page.
+RATING_GUIDE = {
+    "Strong": ("You meet every stated requirement and it's squarely your target: an entry-level "
+               "strategy, management or sustainability consulting role, or in-house corporate "
+               "strategy, based in NYC.",
+               "Apply now and put it first. Look for a referral, tailor your resume to the posting, "
+               "and lead with the GDI ESG work."),
+    "Good": ("You meet the hard requirements, but it's a step to the side of your core lanes "
+             "(operations or transformation consulting, a rotational program, strategic finance, "
+             "business development), or one detail isn't confirmed.",
+             "Worth applying. Tailor your resume to the angle it emphasises; slightly less urgent "
+             "than Strong."),
+    "Stretch": ("Realistic but a reach: one thing sits a little above you, like ~2 years "
+                "asked for, a Consultant title with no stated level, or a specialised industry.",
+                "Apply if you have time, ideally after networking with someone on the team. Lead "
+                "with transferable proof (the GDI procurement and AI tool); expect lower odds."),
+}
+
 
 class Rating(BaseModel):
     id: str
     rating: Literal["Strong", "Good", "Stretch", "No"]
     reason: str
+    pointers: list[str]
     starts_before_summer_2027: bool
 
 
@@ -23,36 +43,44 @@ class Ratings(BaseModel):
 
 
 INSTRUCTIONS = """You screen job postings for one early-career candidate. Their profile, including
-hard requirements, is below. Hard requirements are
-strict, but the candidate does want to see a few close calls: roles slightly out of range that
-they could still realistically get.
+hard requirements, is below. Hard requirements are strict, but the candidate does want to see a
+few close calls: roles slightly out of range that they could still realistically get.
+
+READ THE WHOLE POSTING before rating: title, location list, responsibilities, required AND
+preferred qualifications, degree requirements, years of experience, start date or cohort,
+citizenship/clearance/sponsorship terms, and travel. Then compare each against the candidate.
 
 For each posting, return:
 - rating (use the whole scale - a typical day should have more Good and Stretch than Strong):
-  Strong  = meets every hard requirement AND is squarely lane 1 or 2 (strategy / management /
-            sustainability consulting analyst, or in-house corporate strategy / chief of staff
-            office analyst), explicitly new-grad or 0-1 years, NYC. Example: "Strategy Analyst,
-            Monitor Deloitte - 2027 new grad, New York".
-  Good    = meets the hard requirements but is a step to the side: operations / supply-chain /
-            transformation consulting, a rotational program, strategic finance, business
-            development, or a lane 1-2 role that doesn't state its level. Example: "Kearney
-            Associate, Strategic Operations".
-  Stretch = slightly out of range but realistic: asks for about 2 years, sits next to the lanes
-            (analytics, product or marketing strategy, risk advisory), or the level is a
-            reasonable reach. Example: "Strategy Associate - 1-2 years preferred".
-  No      = misses a hard requirement: not NYC, senior, 3+ years, MBA, internship, wrong start
-            date, technical/implementation work, or a bank "Associate".
-- reason: ONE short line (max ~15 words) saying why, specific to this candidate.
+  Strong  = {strong}
+  Good    = {good}
+  Stretch = {stretch}
+  No      = misses a hard requirement: not NYC, senior, 3+ years, MBA / graduate degree or prior
+            full-time work required, internship, wrong start date, technical/implementation work,
+            or a bank or Kearney "Associate" (post-MBA titles).
+  Examples: Strong - "Analyst, Functional & Operations Strategy (Deloitte), entry-level, NYC";
+  Good - "2027 Leadership Development Program, rotational, NYC"; Stretch - "Strategy Consultant,
+  ~2 years preferred, NYC".
+- reason: ONE headline line (max ~15 words) for the rating.
+- pointers: 3-5 short bullets (max ~20 words each) explaining the rating, each tying a specific
+  fact FROM THE POSTING to a specific fact about THE CANDIDATE. Start each with "+ " (fits),
+  "- " (gap or risk) or "~ " (neutral / unknown). Cover level/years, location, function/lane,
+  and any requirement the candidate meets or misses. Quote the posting's own words where useful.
+  Good: "+ Asks for CDP/EcoVadis or sustainability reporting - you ran both at GDI".
+  Good: "- Prefers 1-2 years' consulting experience; you'd have one internship".
+  Bad (too generic): "+ Good fit for candidate".
 - starts_before_summer_2027: true if the posting needs a start before ~May 2027 or a cohort
   after 2027 (e.g. 2028 availability).
 If a posting has a "Screening note", the keyword screen found it a step off-lane: rate it Good
 or Stretch, not Strong.
 
 Level calibration:
-- At Deloitte, EY, PwC, KPMG, Accenture, IBM, Guidehouse, Slalom, West Monroe and Kearney, a bare
-  "Consultant" title is often the level above entry. Rate it No if the posting asks for 2+ years,
-  Stretch if it says nothing about level, higher only if it says new grad / campus / 2027.
-- If the description is missing, judge from the title and lean one step lower.
+- At Deloitte, EY, PwC, KPMG, Accenture, IBM, Guidehouse, Slalom and West Monroe, a bare
+  "Consultant" title is often the level above entry. Rate it No if the posting asks for 3+ years,
+  Stretch if it asks ~2 years or says nothing about level, higher only if it says new grad /
+  campus / 2027.
+- If the description is missing, judge from the title, lean one step lower, and say so in a "~ "
+  pointer.
 
 Return one entry per posting, using the posting's id exactly as given.
 
@@ -75,7 +103,7 @@ def _examples() -> str:
 
 
 def _posting_block(j) -> str:
-    desc = (j.description or "").strip()[:2500]
+    desc = (j.description or "").strip()[:9000]
     hint = f"Screening note: {j.reason}\n" if j.verdict == "stretch" else ""
     return (f"<posting id=\"{j.key}\">\nCompany: {j.company}\nTitle: {j.title}\n{hint}"
             f"Location: {j.location or 'unknown'}\nBoard hints: {j.meta or '-'}\n"
@@ -87,7 +115,8 @@ def score(jobs: list, profile: str, model: str, batch_size: int = 12) -> tuple[d
     ANTHROPIC_API_KEY is set. No key or an API failure -> keyword ratings, and the run carries on."""
     if not jobs:
         return {}, None
-    system = INSTRUCTIONS.format(profile=profile, examples=_examples())
+    system = INSTRUCTIONS.format(profile=profile, examples=_examples(),
+                                 **{k.lower(): " ".join(v[0].split()) for k, v in RATING_GUIDE.items()})
     providers = []
     if os.environ.get("ANTHROPIC_API_KEY"):
         providers.append(("Claude", lambda chunk: _claude(system, chunk, model)))
@@ -135,7 +164,8 @@ OPENAI_COMPATIBLE = [
 
 def _openai_compatible(system: str, chunk: list, url: str, key_env: str, model: str) -> list[Rating]:
     schema_hint = ('Respond with JSON only, no prose: {"ratings": [{"id": str, "rating": "Strong"|"Good"|'
-                   '"Stretch"|"No", "reason": str, "starts_before_summer_2027": bool}]}')
+                   '"Stretch"|"No", "reason": str, "pointers": [str, ...], '
+                   '"starts_before_summer_2027": bool}]}')
     body = json.dumps({
         "model": model, "temperature": 0.2, "max_tokens": 4000,
         "response_format": {"type": "json_object"},

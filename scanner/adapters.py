@@ -199,15 +199,16 @@ def workday_detail(job: Job) -> None:
 
 def page_detail(job: Job) -> None:
     """Avature (Deloitte) and Radancy (EY) list "Multiple Locations"; the posting page has the
-    real city list and the description. Yello (Kearney) listings carry no description.
+    real city list and the description. Yello (Kearney), KPMG and Slalom listings carry no
+    description at all.
     Called for candidates only."""
     h = get_text(job.url)
     body = h[h.find("ats-description"):] if "ats-description" in h else h
-    if job.extra.get("platform") == "yello":      # listing location is already right
-        job.description = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", h, flags=re.S | re.I))[:8000]
+    if job.extra.get("platform") in ("yello", "kpmg", "avature_rss"):   # keep listing location
+        job.description = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", h, flags=re.S | re.I))[:12000]
         return
     text = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", body, flags=re.S | re.I))
-    job.description = text[:8000]
+    job.description = text[:12000]
     flat = strip_html(h).replace("\n", " | ")
     m = re.search(r"Locations?:\s*\|?\s*([^|]{3,600})", flat)
     if m:
@@ -216,6 +217,21 @@ def page_detail(job: Job) -> None:
         cities = re.findall(r"[A-Z][A-Za-z .'-]+, [A-Z][A-Za-z ]+, United States", strip_html(h))
         if cities:
             job.location = "; ".join(dict.fromkeys(c.strip() for c in cities))
+
+
+def oracle_detail(job: Job) -> None:
+    host, site, rid = job.extra["oracle"]
+    finder = urllib.parse.quote(f'ById;Id="{rid}",siteNumber={site}', safe="=;,")
+    d = get_json(f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitionDetails"
+                 f"?expand=all&onlyData=true&finder={finder}").get("items") or [{}]
+    d = d[0]
+    parts = [d.get(k) for k in ("ExternalDescriptionStr", "ExternalResponsibilitiesStr",
+                                "ExternalQualificationsStr", "CorporateDescriptionStr")]
+    text = "\n".join(strip_html(x) for x in parts if x)
+    if text:
+        job.description = text
+    if d.get("StudyLevel"):
+        job.meta = f"{job.meta} | study level: {d['StudyLevel']}".strip(" |")
 
 
 def oracle(c: dict) -> list[Job]:
@@ -239,7 +255,8 @@ def oracle(c: dict) -> list[Job]:
                                url=f"https://{host}/hcmUI/CandidateExperience/en/sites/{site}/job/{r['Id']}",
                                posted=r.get("PostedDate", ""),
                                description=strip_html(r.get("ShortDescriptionStr")),
-                               meta=r.get("JobFamily", "") or ""))
+                               meta=r.get("JobFamily", "") or "",
+                               extra={"oracle": (host, site, str(r["Id"]))}))
             if len(reqs) < 25:
                 break
     return _dedupe(out)
@@ -254,7 +271,7 @@ def ibm(c: dict) -> list[Job]:
         d = post_json("https://www-api.ibm.com/search/api/v2", {
             "appId": "careers", "scopes": ["careers2"], "query": {"bool": {"must": must}},
             "size": size, "from": page * size, "sort": [{"_id": "desc"}], "lang": "zz",
-            "_source": ["_id", "title", "url", "description", "field_keyword_05", "field_keyword_08",
+            "_source": ["_id", "title", "url", "description", "body", "field_keyword_05", "field_keyword_08",
                         "field_keyword_17", "field_keyword_18", "field_keyword_19"]},
             headers={"Origin": "https://www.ibm.com", "Referer": "https://www.ibm.com/careers/search"})
         hits = d.get("hits", {}).get("hits", [])
@@ -263,7 +280,7 @@ def ibm(c: dict) -> list[Job]:
             jid = re.search(r"jobId=(\d+)", s.get("url", ""))
             out.append(_mk(c, job_id=jid.group(1) if jid else h["_id"], title=s.get("title", ""),
                            location=f"{s.get('field_keyword_19', '')} ({s.get('field_keyword_05', '')})",
-                           url=s.get("url", ""), description=s.get("description", ""),
+                           url=s.get("url", ""), description=s.get("body") or s.get("description", ""),
                            meta=f"{s.get('field_keyword_18', '')} / {s.get('field_keyword_17', '')}"))
         if len(hits) < size:
             break
