@@ -1,6 +1,6 @@
 {
  "date": "2026-10-12",
- "label": "Mon Oct 12, 2026 \u00b7 4:14 PM ET \u00b7 first scan (full backlog)",
+ "label": "Mon Oct 12, 2026 \u00b7 8:33 PM ET \u00b7 first scan (full backlog)",
  "matches": [
   {
    "code": "wkjtpp",
@@ -11,7 +11,14 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Enterprise-Tech-Strategy/364926",
    "posted": "",
    "rating": "Strong",
-   "reason": "Entry-level strategy consulting analyst, NYC among offices; tech strategy still strategy lane.",
+   "reason": "Entry-level tech strategy analyst in NYC; strategy work, not implementation.",
+   "pointers": [
+    "+ Explicitly 'entry-level opportunity' for candidates graduating Spring/Summer 2027 - matches your timeline",
+    "+ New York among listed offices; requires commutable distance, which you have",
+    "+ Work is strategy ('target technology state', roadmaps, AI value), not technical implementation",
+    "+ Bachelor's in Business or Liberal Arts accepted; 3.3 GPA required",
+    "+ Up to 50% travel - you're open to travel"
+   ],
    "early_start": false,
    "key": "Deloitte|364926"
   },
@@ -24,35 +31,16 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Functional-Operations-Strategy/364895",
    "posted": "",
    "rating": "Strong",
-   "reason": "Entry-level strategy consulting analyst, NYC among offices; matches prior verdict.",
+   "reason": "Entry-level strategy consulting analyst, NYC among offices - exact target role.",
+   "pointers": [
+    "+ 'Analyst - Functional & Operations Strategy' is Deloitte's entry-level strategy title, your core lane",
+    "+ New York listed among 26 offices; you're NYC-based",
+    "+ Requires bachelor's graduating by Spring/Summer 2027 - you graduate April 2027",
+    "+ Your BA in Management & Organizational Studies fits the listed Business/Liberal Arts majors",
+    "~ Recruiting ends 11/01/2026 - apply soon; start aligns with post-graduation"
+   ],
    "early_start": false,
    "key": "Deloitte|364895"
-  },
-  {
-   "code": "tms32m",
-   "company": "IBM Consulting",
-   "priority": 1,
-   "title": "Entry Level AI-First Transformation \u2013 Strategy Consultant 2027",
-   "location": "New York, US (United States)",
-   "url": "https://careers.ibm.com/careers/JobDetail?jobId=130269",
-   "posted": "",
-   "rating": "Strong",
-   "reason": "Explicit 2027 entry-level strategy consulting role in New York; matches prior verdict.",
-   "early_start": false,
-   "key": "IBM Consulting|130269"
-  },
-  {
-   "code": "ttenas",
-   "company": "IBM Consulting",
-   "priority": 1,
-   "title": "Integration Strategy Consultant \u2013 2027 Full Time ELH",
-   "location": "New York, US (United States)",
-   "url": "https://careers.ibm.com/careers/JobDetail?jobId=130070",
-   "posted": "",
-   "rating": "Good",
-   "reason": "2027 entry-level NYC strategy role, but specialized M&A integration domain.",
-   "early_start": false,
-   "key": "IBM Consulting|130070"
   },
   {
    "code": "2z97rb",
@@ -63,7 +51,14 @@
    "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/PA---Philadelphia/Life-Sciences-R-D-Management-Consultant_R00328324",
    "posted": "2026-09-25",
    "rating": "Stretch",
-   "reason": "Consulting in NYC but requires 2+ years and life sciences R&D depth.",
+   "reason": "Management consulting in NYC, but asks 2+ years in life sciences R&D consulting.",
+   "pointers": [
+    "- Requires 'at least two years of experience in management consulting and the life sciences R&D industry'; you have one ESG internship",
+    "- Deep biopharma R&D expertise expected; your background is sustainability, not life sciences",
+    "+ New York (One Manhattan West) is among the listed offices",
+    "+ Bachelor's degree required - yours qualifies; no MBA asked",
+    "~ Role includes coaching juniors and BD, signaling a level above entry"
+   ],
    "early_start": false,
    "key": "Accenture|R00328324"
   },
@@ -76,9 +71,56 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Banking-Capital-Markets-Transformation-Consultant/370839",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Transformation strategy lane, NYC, but Consultant level asking ~2 years.",
+   "reason": "Transformation consulting in NYC, but asks 2+ years financial services experience.",
+   "pointers": [
+    "- Requires '2+ years of experience in strategy, operations, product, or business transformation' in financial services; you have one internship",
+    "+ New York is among the 32 listed locations",
+    "+ Work is hypothesis-driven transformation engagements - squarely consulting lane",
+    "- Also wants 1+ year product launch/platform migration and business-engineering coordination experience",
+    "~ 'Limited immigration sponsorship may be available' - irrelevant; you're a US citizen"
+   ],
    "early_start": false,
    "key": "Deloitte|370839"
+  },
+  {
+   "code": "yejnub",
+   "company": "Deloitte",
+   "priority": 1,
+   "title": "Commerce Product Consultant",
+   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Baltimore, Maryland, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Hartford, Connecticut, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New Orleans, Louisiana, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Richmond, Virginia, United States; Sacramento, California, United States; San Antonio, Texas, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
+   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Commerce-Product-Consultant/369988",
+   "posted": "",
+   "rating": "Stretch",
+   "reason": "Digital product consulting in NYC, but requires 2+ years product experience.",
+   "pointers": [
+    "+ New York listed among 43 locations - meets your NYC requirement",
+    "- Requires '2+ years of experience in digital product strategy/management/development'; you have one internship",
+    "- Specialised digital product/AdTech-MarTech lane, not generalist strategy or ESG",
+    "~ Prefers MBA and CSPO/agile certs; bachelor's accepted, so degree is fine",
+    "- 50% travel and JIRA/Confluence product-delivery focus skews implementation-adjacent"
+   ],
+   "early_start": false,
+   "key": "Deloitte|369988"
+  },
+  {
+   "code": "cjyhh7",
+   "company": "Deloitte",
+   "priority": 1,
+   "title": "Consultant, GBS - Operational Finance",
+   "location": "Atlanta, Georgia, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Jersey City, New Jersey, United States; Los Angeles, California, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; San Jose, California, United States; Seattle, Washington, United States; Washington, District of Columbia, United States",
+   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultant-GBS-Operational-Finance/355803",
+   "posted": "",
+   "rating": "Stretch",
+   "reason": "Finance transformation consulting in NYC, but 2+ years and finance-ops specialisation.",
+   "pointers": [
+    "+ New York listed; no sponsorship needed - you're a US citizen, meets that requirement",
+    "- Requires '2+ years of consulting or industry experience' in Finance Operations; you have one ESG internship",
+    "- Invoice-to-Pay/Record-to-Report finance-ops focus is off your strategy/ESG lanes",
+    "~ ERP/ServiceNow/BlackLine platform exposure wanted - leans technology-enabled transformation",
+    "+ Bachelor's degree accepted; advanced degree only preferred"
+   ],
+   "early_start": false,
+   "key": "Deloitte|355803"
   },
   {
    "code": "exaj4e",
@@ -89,7 +131,14 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Customer-Strategy-Consultant/370893",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Right strategy lane and NYC, but Big 4 Consultant asking 2+ years.",
+   "reason": "Right strategy lane and NYC, but asks 2+ years consulting experience.",
+   "pointers": [
+    "- Requires '2+ years of experience in consulting and customer strategy' - you'd have one internship",
+    "+ Customer strategy/marketing transformation work fits your strategy lane and marketing degree focus",
+    "+ New York listed among 8 offices; bachelor's degree sufficient",
+    "~ 50% travel - you're open to travel",
+    "~ Bare 'Consultant' title at Deloitte is often the level above entry"
+   ],
    "early_start": false,
    "key": "Deloitte|370893"
   },
@@ -102,7 +151,14 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Global-Business-Services-GBS-Strategy-Consultant/355048",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Operating-model strategy adjacent, but Consultant level asking ~2 years.",
+   "reason": "Operating-model strategy Consultant, but requires 2+ years GBS/finance transformation experience.",
+   "pointers": [
+    "- Requires '2+ years of consulting and/or industry experience in Global Business Services, shared services... Finance Transformation' - you have none",
+    "+ Operating model design and transformation work is adjacent to your strategy lane",
+    "+ New York listed; bachelor's degree accepted, MBA only preferred",
+    "- Wants exposure to ERP/automation/AI tools and finance functions - limited match to your ESG background",
+    "~ 50% travel; 'Consultant' title likely above entry level"
+   ],
    "early_start": false,
    "key": "Deloitte|355048"
   },
@@ -115,22 +171,56 @@
    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Healthcare-Supply-Chain-Data-Analytics-Strategy-Growth-and-Transformation-Consultant/368834",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Specialized healthcare supply-chain analytics and ~2 years required.",
+   "reason": "Healthcare supply chain Consultant asking 2+ years; specialized domain above new grad.",
+   "pointers": [
+    "- Requires '2+ years of experience in healthcare supply chain, sourcing, procurement' - you have one ESG internship",
+    "- Requires 2+ years data analysis with Power BI/SQL/Python - beyond your toolkit",
+    "- Specialized federal health/GPS domain with Public Trust clearance - far from your strategy lanes",
+    "+ New York listed among 42 locations; no sponsorship needed fits your citizenship",
+    "~ Bare Deloitte 'Consultant' title with 2+ years sits above entry level"
+   ],
    "early_start": false,
    "key": "Deloitte|368834"
   },
   {
-   "code": "abbkew",
-   "company": "IBM Consulting",
+   "code": "2smwmw",
+   "company": "Deloitte",
    "priority": 1,
-   "title": "Strategy Consultant",
-   "location": "New York, US (United States)",
-   "url": "https://careers.ibm.com/careers/JobDetail?jobId=134479",
+   "title": "Technology Strategy Consultant",
+   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Sacramento, California, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
+   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Technology-Strategy-Consultant/355406",
    "posted": "",
    "rating": "Stretch",
-   "reason": "Right lane but bare 'Strategy Consultant' with no stated level likely above new grad.",
+   "reason": "Right strategy lane and NYC, but 2+ years consulting required.",
+   "pointers": [
+    "+ 'Strategy, Growth, and Transformation' team - core strategy consulting lane",
+    "+ New York among the 38 listed offices",
+    "- Requires '2+ years of management consulting experience'; you'd have one internship",
+    "- Bare 'Consultant' title at Deloitte is typically above new-grad entry level",
+    "~ Tech strategy focus is adjacent to your generalist/ESG strengths"
+   ],
    "early_start": false,
-   "key": "IBM Consulting|134479"
+   "key": "Deloitte|355406"
+  },
+  {
+   "code": "ttenas",
+   "company": "IBM Consulting",
+   "priority": 1,
+   "title": "Integration Strategy Consultant \u2013 2027 Full Time ELH",
+   "location": "New York, US (United States)",
+   "url": "https://careers.ibm.com/careers/JobDetail?jobId=130070",
+   "posted": "",
+   "rating": "Stretch",
+   "reason": "Entry-level 2027 NYC strategy role, but specialized M&A integration domain wants experience.",
+   "pointers": [
+    "+ Labeled 'Entry Level' and '2027 Full Time' in New York - level and location fit",
+    "+ Bachelor's in Business accepted; in-house strategy/corporate development is your lane 2",
+    "- Asks 'Proven experience in integration management' and consulting transformation experience - you have one internship",
+    "- Prefers master's or 'bachelor's degree and professional experience' - you'd have neither at start",
+    "~ Specialized post-merger integration domain, narrower than generalist strategy"
+   ],
+   "early_start": false,
+   "key": "IBM Consulting|130070"
   },
   {
    "code": "8bajmv",
@@ -141,22 +231,16 @@
    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765640",
    "posted": "2026-09-14",
    "rating": "Good",
-   "reason": "2027 full-time analyst rotational program in NYC, but marketing-focused rather than strategy.",
+   "reason": "New-grad rotational analyst in NYC, but marketing-specialised rather than strategy lane.",
+   "pointers": [
+    "+ 'Full-Time Analyst' rotational program, three 8-month rotations - fits your lane 3 rotational programs",
+    "+ NYC listed as a location - meets your hard location requirement",
+    "+ Requires bachelor's with graduation Dec 2026-June 2027 - your April 2027 grad date fits",
+    "+ No sponsorship offered, but you're a US citizen so unaffected",
+    "~ Marketing-specific domain (campaigns, brand, SEO/PPC) - a step off your strategy/consulting core, though your BA includes Marketing"
+   ],
    "early_start": false,
    "key": "JPMorgan Chase|210765640"
-  },
-  {
-   "code": "mxg34q",
-   "company": "JPMorgan Chase",
-   "priority": 3,
-   "title": "Asset Management Global Liquidity & Cash - Program Analyst (Client Advisor)",
-   "location": "New York, NY, United States (US)",
-   "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210797484",
-   "posted": "2026-10-06",
-   "rating": "Stretch",
-   "reason": "NYC analyst program but asset-management liquidity/cash client work, adjacent to strategy lanes.",
-   "early_start": false,
-   "key": "JPMorgan Chase|210797484"
   },
   {
    "code": "f82w29",
@@ -167,7 +251,14 @@
    "url": "https://jobs.ashbyhq.com/ramp/606475af-b74f-42c4-978a-dde138a86ac7",
    "posted": "2026-05-29",
    "rating": "Stretch",
-   "reason": "Strategic finance in NYC; 1-4 years slightly above new grad.",
+   "reason": "Strategic finance in NYC, but asks 1-4 years of IB/consulting/PE experience.",
+   "pointers": [
+    "+ NYC HQ location matches your hard requirement",
+    "+ Strategic Finance is a listed adjacent lane (strategic finance / in-house strategy)",
+    "- Requires '1\u20134 years in Investment Banking, Management Consulting, VC/PE, or Corporate Finance'; you have one internship",
+    "- Heavy financial modeling/FP&A focus; your experience is ESG strategy, not finance",
+    "~ 'Associate' here is not a bank post-MBA title, but the years bar still sits above new grad"
+   ],
    "early_start": false,
    "key": "Ramp|606475af-b74f-42c4-978a-dde138a86ac7"
   }
@@ -189,8 +280,8 @@
    "company": "BlackRock"
   },
   "Deloitte": {
-   "fetched": 682,
-   "new": 682,
+   "fetched": 683,
+   "new": 683,
    "company": "Deloitte"
   },
   "EY": {
@@ -204,23 +295,23 @@
    "company": "Guidehouse"
   },
   "IBM Consulting": {
-   "fetched": 91,
-   "new": 91,
+   "fetched": 94,
+   "new": 94,
    "company": "IBM Consulting"
   },
   "JPMorgan Chase": {
-   "fetched": 732,
-   "new": 732,
+   "fetched": 734,
+   "new": 734,
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 782,
-   "new": 782,
+   "fetched": 787,
+   "new": 787,
    "company": "KPMG"
   },
   "Kearney": {
-   "fetched": 194,
-   "new": 194,
+   "fetched": 192,
+   "new": 192,
    "company": "Kearney"
   },
   "North Highland": {
@@ -239,18 +330,18 @@
    "company": "Pfizer"
   },
   "PwC (Global_Experienced_Careers)": {
-   "fetched": 728,
+   "fetched": 729,
    "new": 0,
    "company": "PwC"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 60,
-   "new": 788,
+   "new": 789,
    "company": "PwC"
   },
   "Ramp": {
-   "fetched": 165,
-   "new": 165,
+   "fetched": 164,
+   "new": 164,
    "company": "Ramp"
   },
   "Slalom": {
@@ -269,7 +360,7 @@
    "company": "West Monroe"
   }
  },
- "screened_out": 5364,
+ "screened_out": 5373,
  "notes": [
   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
  ]
