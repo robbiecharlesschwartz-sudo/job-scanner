@@ -365,5 +365,111 @@
   "notes": [
    "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
   ]
+ },
+ {
+  "date": "2026-10-13",
+  "label": "Tue Oct 13, 2026 \u00b7 2:35 PM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 153,
+    "new": 3,
+    "company": "Accenture"
+   },
+   "American Express": {
+    "fetched": 328,
+    "new": 23,
+    "company": "American Express"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 158,
+    "new": 3,
+    "company": "BlackRock"
+   },
+   "Deloitte": {
+    "fetched": 684,
+    "new": 70,
+    "company": "Deloitte"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "Guidehouse (External)": {
+    "fetched": 40,
+    "new": 23,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 95,
+    "new": 2,
+    "company": "IBM Consulting"
+   },
+   "JPMorgan Chase": {
+    "fetched": 723,
+    "new": 65,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 794,
+    "new": 18,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 193,
+    "new": 2,
+    "company": "Kearney"
+   },
+   "North Highland": {
+    "fetched": 62,
+    "new": 2,
+    "company": "North Highland"
+   },
+   "PepsiCo": {
+    "fetched": 896,
+    "new": 28,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 94,
+    "new": 7,
+    "company": "Pfizer"
+   },
+   "PwC (Global_Experienced_Careers)": {
+    "fetched": 732,
+    "new": 0,
+    "company": "PwC"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 60,
+    "new": 21,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 163,
+    "new": 2,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 1,
+    "company": "Slalom"
+   },
+   "Watershed": {
+    "fetched": 36,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 0,
+    "company": "West Monroe"
+   }
+  },
+  "screened_out": 270,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
+  ]
  }
 ]
