@@ -1,1 +1,6 @@
-{}
+{
+ "TEST|delete-me": {
+  "status": "applied",
+  "at": "2026-10-14"
+ }
+}
