@@ -1545,5 +1545,188 @@
   "notes": [
    "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
   ]
+ },
+ {
+  "date": "2026-10-14",
+  "label": "Wed Oct 14, 2026 \u00b7 3:19 PM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 772,
+    "new": 7,
+    "company": "Accenture"
+   },
+   "AlixPartners": {
+    "fetched": 113,
+    "new": 1,
+    "company": "AlixPartners"
+   },
+   "American Express": {
+    "fetched": 335,
+    "new": 13,
+    "company": "American Express"
+   },
+   "Axion Ray": {
+    "fetched": 14,
+    "new": 0,
+    "company": "Axion Ray"
+   },
+   "BCG": {
+    "fetched": 90,
+    "new": 0,
+    "company": "BCG"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 161,
+    "new": 0,
+    "company": "BlackRock"
+   },
+   "Capco": {
+    "fetched": 711,
+    "new": 0,
+    "company": "Capco"
+   },
+   "Deloitte": {
+    "fetched": 702,
+    "new": 37,
+    "company": "Deloitte"
+   },
+   "ERM (ERM_Careers)": {
+    "fetched": 264,
+    "new": 7,
+    "company": "ERM"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "EY-Parthenon": {
+    "fetched": 135,
+    "new": 0,
+    "company": "EY-Parthenon"
+   },
+   "First & First Consulting": {
+    "fetched": 0,
+    "new": 0,
+    "company": "First & First Consulting"
+   },
+   "Guidehouse (External)": {
+    "fetched": 686,
+    "new": 7,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 105,
+    "new": 5,
+    "company": "IBM Consulting"
+   },
+   "Innosight (huroncareers)": {
+    "fetched": 3,
+    "new": 0,
+    "company": "Innosight"
+   },
+   "JPMorgan Chase": {
+    "fetched": 715,
+    "new": 18,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 792,
+    "new": 5,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 192,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "McKinsey": {
+    "fetched": 85,
+    "new": 0,
+    "company": "McKinsey"
+   },
+   "North Highland": {
+    "fetched": 61,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "Oliver Wyman (MMC)": {
+    "fetched": 75,
+    "new": 0,
+    "company": "Oliver Wyman"
+   },
+   "PepsiCo": {
+    "fetched": 899,
+    "new": 10,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 132,
+    "new": 11,
+    "company": "Pfizer"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 57,
+    "new": 4,
+    "company": "PwC"
+   },
+   "PwC (US_Experienced_Careers)": {
+    "fetched": 518,
+    "new": 0,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 161,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Strategy& (PwC) (US_Entry_Level_Careers)": {
+    "fetched": 4,
+    "new": 1,
+    "company": "Strategy& (PwC)"
+   },
+   "Strategy& (PwC) (US_Experienced_Careers)": {
+    "fetched": 21,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Watershed": {
+    "fetched": 34,
+    "new": 1,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 124,
+    "new": 0,
+    "company": "West Monroe"
+   },
+   "Zocdoc": {
+    "fetched": 58,
+    "new": 0,
+    "company": "Zocdoc"
+   }
+  },
+  "screened_out": 127,
+  "notes": [],
+  "log": {
+   "fetched": 8077,
+   "sources_ok": 30,
+   "sources_failed": [],
+   "new_postings": 127,
+   "passed_rules": 0,
+   "new_matches": [],
+   "rerated": [],
+   "closed": [],
+   "dismissed_total": 0,
+   "open_total": 23,
+   "alerts": 0,
+   "emails": 0
+  }
  }
 ]
