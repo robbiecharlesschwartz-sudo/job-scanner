@@ -293,12 +293,12 @@ def write_log(site_dir: Path, runs: list[dict]) -> None:
         lg = run.get("log")
         if lg:
             failed = lg.get("sources_failed") or []
-            facts = [f'{lg["fetched"]:,} postings from {lg["sources_ok"]} sources'
+            facts = [f'{lg["fetched"]:,} postings from {lg["sources_ok"]} companies'
                      + (f' ({len(failed)} failed)' if failed else ""),
                      f'{lg["new_postings"]:,} new postings, {lg["passed_rules"]} passed the rules',
                      f'{len(lg["new_matches"])} new match{"es" if len(lg["new_matches"]) != 1 else ""}',
                      f'{len(lg["closed"])} closed',
-                     f'{lg["open_total"]} open after this scan',
+                     f'{lg["open_total"]} tracked matches still open on company sites',
                      f'{lg["alerts"]} phone alert{"s" if lg["alerts"] != 1 else ""} sent',
                      f'{lg.get("emails", 0)} email{"s" if lg.get("emails", 0) != 1 else ""} sent']
             lists = "".join(
