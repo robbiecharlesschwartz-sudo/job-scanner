@@ -20,7 +20,8 @@
 #   mckinsey    (no fields)                     (McKinsey's careers API, US postings)
 #   phenom      base                            (Phenom career sites' search widget, e.g. BCG)
 #   successfactors base, location, [queries]    (SAP SuccessFactors HTML search, e.g. careers.ey.com)
-# Workday also takes `title_must` (regex) for boards shared with a parent company.
+#   breezy      base                            (Breezy HR portal, <base>/json)
+# Workday also takes `title_must` / `title_skip` (regex) for boards shared with a parent company.
 #
 # `associate_is_senior = true` skips "Associate" titles (post-MBA at banks) unless the posting
 # says early-career.
@@ -49,6 +50,7 @@ platform = "workday"
 tenant = "pwc"
 host = "wd3"
 site = "US_Entry_Level_Careers"
+title_skip = "strategy\\s*&"
 
 [[company]]
 name = "PwC"
@@ -56,8 +58,8 @@ priority = 1
 platform = "workday"
 tenant = "pwc"
 host = "wd3"
-site = "Global_Experienced_Careers"
-queries = ["associate strategy", "associate consulting", "associate sustainability", "analyst"]
+site = "US_Experienced_Careers"   # all ~540 US postings (the Global site was mostly non-US)
+title_skip = "strategy\\s*&"       # Strategy& roles are listed under their own entry
 
 [[company]]
 name = "KPMG"
@@ -161,6 +163,46 @@ tenant = "erm"
 host = "wd3"
 site = "ERM_Careers"
 
+[[company]]
+name = "Strategy& (PwC)"
+priority = 1
+platform = "workday"
+tenant = "pwc"
+host = "wd3"
+site = "US_Entry_Level_Careers"
+title_must = "strategy\\s*&"
+
+[[company]]
+name = "Strategy& (PwC)"
+priority = 1
+platform = "workday"
+tenant = "pwc"
+host = "wd3"
+site = "US_Experienced_Careers"
+title_must = "strategy\\s*&"
+
+[[company]]
+name = "Innosight"
+priority = 2                 # Huron's strategy arm; posts on Huron's Workday board
+platform = "workday"
+tenant = "huron"
+host = "wd1"
+site = "huroncareers"
+queries = ["innosight"]
+title_must = "innosight"
+
+[[company]]
+name = "Capco"
+priority = 2
+platform = "greenhouse"
+board = "capco"
+
+[[company]]
+name = "First & First Consulting"
+priority = 2                 # NYC strategy & analytics boutique
+platform = "breezy"
+base = "https://first-first-consulting.breezy.hr"
+
 # Bain, L.E.K. and Alvarez & Marsal block automated requests (Cloudflare / bot checks), so they
 # can't be scanned. Check them by hand: bain.com/careers, lek.com/careers, careers.alvarezandmarsal.com
 
@@ -221,8 +263,20 @@ platform = "ashby"
 board = "watershed"
 
 [[company]]
+name = "Zocdoc"
+priority = 3
+platform = "greenhouse"
+board = "zocdoc"
+
+[[company]]
+name = "Axion Ray"
+priority = 3
+platform = "ashby"
+board = "axion"
+
+[[company]]
 name = "Persefoni"
 priority = 3
 platform = "greenhouse"
 board = "persefoniaiinc"
-enabled = false   # board returned 404 on 2026-10-11 (no open roles, or moved). Re-check later.
+enabled = false   # board still 404 on 2026-10-14 (Greenhouse board taken down). Was 404 on 2026-10-11 (no open roles, or moved). Re-check later.

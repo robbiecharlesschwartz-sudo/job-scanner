@@ -49,6 +49,11 @@ class Classify(unittest.TestCase):
         self.assertEqual(self.v("Consultant, Strategy", pri=1), "candidate")
 
     def test_rejects(self):
+        from scanner.adapters import _mk
+        pwc = _mk({"name": "PwC", "priority": 1, "platform": "workday"}, job_id="1",
+                  title="Manager_Product Development Excellence (Strategy and Transformation)",
+                  location="New York, NY", url="u")
+        self.assertFalse(filters.title_ok(pwc, F))
         cases = {
             "Technical Consultant, Mid-Market": dict(pri=3, desc="4+ years in technical consulting"),
             "Senior Consultant, Strategy": {}, "Manager, Corporate Strategy": {},

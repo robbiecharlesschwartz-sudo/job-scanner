@@ -139,7 +139,7 @@ def main(argv=None) -> int:
                 adapters.oracle_detail(j)
             elif platform == "phenom":
                 adapters.phenom_detail(j)
-            elif platform in ("avature", "radancy", "yello", "kpmg", "avature_rss", "successfactors"):
+            elif platform in ("avature", "radancy", "yello", "kpmg", "avature_rss", "successfactors", "breezy"):
                 adapters.page_detail(j)
         except Exception:
             pass                                # keep the listing-level data

@@ -96,7 +96,8 @@ def _dedupe(jobs: list[Job]) -> list[Job]:
 
 
 def _mk(c: dict, **kw) -> Job:
-    kw["title"] = re.sub(r"\s+", " ", html.unescape(kw.get("title") or "")).strip()
+    # "Manager_Product Development" (PwC): underscores would hide words from the \b rules.
+    kw["title"] = re.sub(r"[\s_]+", " ", html.unescape(kw.get("title") or "")).strip()
     kw["location"] = re.sub(r"\s+", " ", html.unescape(kw.get("location") or "")).strip()
     job = Job(company=c["name"], priority=int(c.get("priority", 9)), **kw)
     job.extra["platform"] = c["platform"]
@@ -175,6 +176,8 @@ def workday(c: dict) -> list[Job]:
             for j in posts:
                 if c.get("title_must") and not re.search(c["title_must"], j.get("title", ""), re.I):
                     continue                    # shared parent-company board (e.g. Oliver Wyman on MMC)
+                if c.get("title_skip") and re.search(c["title_skip"], j.get("title", ""), re.I):
+                    continue                    # listed under its own entry (e.g. Strategy& on PwC)
                 path = j.get("externalPath", "")
                 jid = (j.get("bulletFields") or [path])[0]
                 out.append(_mk(c, job_id=jid, title=j.get("title", ""),
@@ -208,7 +211,7 @@ def page_detail(job: Job) -> None:
     Called for candidates only."""
     h = get_text(job.url)
     body = h[h.find("ats-description"):] if "ats-description" in h else h
-    if job.extra.get("platform") in ("yello", "kpmg", "avature_rss", "successfactors"):   # keep listing location
+    if job.extra.get("platform") in ("yello", "kpmg", "avature_rss", "successfactors", "breezy"):   # keep listing location
         job.description = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", h, flags=re.S | re.I))[:12000]
         return
     text = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", body, flags=re.S | re.I))
@@ -528,9 +531,25 @@ def successfactors(c: dict) -> list[Job]:
                 break
     return _dedupe(out)
 
+
+def breezy(c: dict) -> list[Job]:
+    """Breezy HR portals publish every open posting at <portal>/json."""
+    base = c["base"].rstrip("/")
+    out = []
+    for j in get_json(f"{base}/json"):
+        loc = j.get("location") or {}
+        where = loc.get("name") or ", ".join(x for x in (loc.get("city"), (loc.get("state") or {}).get("name")
+                                                        if isinstance(loc.get("state"), dict) else loc.get("state")) if x)
+        if loc.get("is_remote"):
+            where = f"{where}; Remote".strip("; ")
+        out.append(_mk(c, job_id=str(j.get("id") or j.get("friendly_id")), title=j.get("name", ""),
+                       location=where, url=j.get("url", ""), posted=(j.get("published_date") or "")[:10],
+                       meta=(j.get("type") or {}).get("name", "") if isinstance(j.get("type"), dict) else ""))
+    return out
+
 ADAPTERS = {
     "greenhouse": greenhouse, "lever": lever, "ashby": ashby, "workday": workday,
     "oracle": oracle, "ibm": ibm, "jibe": jibe, "sourceflow": sourceflow,
     "avature": avature, "avature_rss": avature_rss, "radancy": radancy, "yello": yello, "kpmg": kpmg,
-    "mckinsey": mckinsey, "phenom": phenom, "successfactors": successfactors,
+    "mckinsey": mckinsey, "phenom": phenom, "successfactors": successfactors, "breezy": breezy,
 }
