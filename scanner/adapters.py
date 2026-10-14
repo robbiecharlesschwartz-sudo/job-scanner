@@ -173,6 +173,8 @@ def workday(c: dict) -> list[Job]:
             total = d.get("total") or total     # many tenants send the total on page 1 only
             posts = d.get("jobPostings") or []
             for j in posts:
+                if c.get("title_must") and not re.search(c["title_must"], j.get("title", ""), re.I):
+                    continue                    # shared parent-company board (e.g. Oliver Wyman on MMC)
                 path = j.get("externalPath", "")
                 jid = (j.get("bulletFields") or [path])[0]
                 out.append(_mk(c, job_id=jid, title=j.get("title", ""),
@@ -206,7 +208,7 @@ def page_detail(job: Job) -> None:
     Called for candidates only."""
     h = get_text(job.url)
     body = h[h.find("ats-description"):] if "ats-description" in h else h
-    if job.extra.get("platform") in ("yello", "kpmg", "avature_rss"):   # keep listing location
+    if job.extra.get("platform") in ("yello", "kpmg", "avature_rss", "successfactors"):   # keep listing location
         job.description = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", h, flags=re.S | re.I))[:12000]
         return
     text = strip_html(re.sub(r"<(nav|header|footer)\b.*?</\1>", " ", body, flags=re.S | re.I))
@@ -219,6 +221,14 @@ def page_detail(job: Job) -> None:
         cities = re.findall(r"[A-Z][A-Za-z .'-]+, [A-Z][A-Za-z ]+, United States", strip_html(h))
         if cities:
             job.location = "; ".join(dict.fromkeys(c.strip() for c in cities))
+
+
+def phenom_detail(job: Job) -> None:
+    """Phenom (BCG) job pages embed the full description as a JSON string."""
+    h = get_text(job.url)
+    m = re.search(r'"description":"((?:[^"\\]|\\.)*)"', h)
+    if m:
+        job.description = strip_html(json.loads(f'"{m.group(1)}"'))[:12000]
 
 
 def oracle_detail(job: Job) -> None:
@@ -444,8 +454,83 @@ def kpmg(c: dict) -> list[Job]:
     return out
 
 
+
+def mckinsey(c: dict) -> list[Job]:
+    """McKinsey's own careers API: every posting with its full text, 100 per page (start = page no.)."""
+    api = "https://gateway.mckinsey.com/apigw-x0cceuow60/v1/api/jobs/search"
+    out = []
+    for page in range(1, 20):
+        d = json.loads(_request(f"{api}?pageSize=100&start={page}&lang=en",
+                                headers={"Origin": "https://www.mckinsey.com", "Accept": "application/json"}))
+        docs = d.get("docs") or []
+        for j in docs:
+            if "United States" not in (j.get("countries") or []):
+                continue
+            out.append(_mk(c, job_id=str(j["jobID"]), title=j.get("title", ""),
+                           location="; ".join(j.get("cities") or []) + " (US)",
+                           url=f"https://www.mckinsey.com/careers/search-jobs/jobs/{j.get('friendlyURL', j['jobID'])}",
+                           description=strip_html(" ".join(j.get(k) or "" for k in
+                                                           ("whoYouWillWorkWith", "whatYouWillDo", "yourBackground"))),
+                           meta=" / ".join((j.get("jobSkillGroup") or []) + (j.get("jobSkillCode") or []))))
+        if len(docs) < 100:
+            break
+    return _dedupe(out)
+
+
+def phenom(c: dict) -> list[Job]:
+    """Phenom career sites (BCG): the page's own search widget endpoint, filtered to one country."""
+    base = c["base"].rstrip("/")
+    out, size = [], 100
+    for page in range(20):
+        d = post_json(f"{base}/widgets", {
+            "lang": c.get("lang", "en_global"), "deviceType": "desktop", "country": c.get("site_country", "global"),
+            "pageName": "search-results", "ddoKey": "refineSearch", "sortBy": "", "subsearch": "",
+            "from": page * size, "jobs": True, "counts": True, "all_fields": ["country"], "size": size,
+            "clearAll": False, "jdsource": "facets", "isSliderEnable": False, "pageId": "page20",
+            "siteType": "external", "keywords": "", "global": True,
+            "selected_fields": {"country": [c.get("country", "United States of America")]}, "locationData": {}})
+        jobs = ((d.get("refineSearch") or {}).get("data") or {}).get("jobs") or []
+        for j in jobs:
+            locs = j.get("multi_location") or [j.get("location", "")]
+            out.append(_mk(c, job_id=str(j.get("jobId") or j.get("reqId")), title=j.get("title", ""),
+                           location="; ".join(locs),
+                           url=f"{base}/{c.get('path', 'global/en')}/job/{j.get('jobId')}",
+                           posted=(j.get("postedDate") or "")[:10],
+                           description=strip_html(j.get("descriptionTeaser")),
+                           meta=f"{j.get('category', '')} {j.get('type', '')}".strip()))
+        if len(jobs) < size:
+            break
+    return _dedupe(out)
+
+
+def successfactors(c: dict) -> list[Job]:
+    """SAP SuccessFactors career sites (careers.ey.com): HTML search results, 25 rows a page."""
+    base = c["base"].rstrip("/")
+    root = re.match(r"https?://[^/]+", base).group(0)
+    out = []
+    for q in c.get("queries") or [""]:
+        for page in range(int(c.get("max_pages", 20))):
+            qs = urllib.parse.urlencode({"q": q, "locationsearch": c.get("location", ""), "startrow": page * 25})
+            h = get_text(f"{base}/search/?{qs}")
+            rows = re.findall(r'<tr class="data-row">(.*?)</tr>', h, re.S)
+            for r in rows:
+                a = re.search(r'href="([^"]+)"[^>]*class="jobTitle-link">(.*?)</a>', r, re.S) or \
+                    re.search(r'class="jobTitle-link"[^>]*href="([^"]+)">(.*?)</a>', r, re.S)
+                if not a:
+                    continue
+                loc = re.search(r'class="jobLocation">(.*?)</span>', r, re.S)
+                loc = strip_html(loc.group(1)).replace("…", "").replace("\n", " ") if loc else ""
+                href = html.unescape(a.group(1))
+                jid = re.search(r"/(\d+)/?$", href)
+                out.append(_mk(c, job_id=jid.group(1) if jid else href, title=strip_html(a.group(2)),
+                               location=loc, url=root + href))
+            if len(rows) < 25:
+                break
+    return _dedupe(out)
+
 ADAPTERS = {
     "greenhouse": greenhouse, "lever": lever, "ashby": ashby, "workday": workday,
     "oracle": oracle, "ibm": ibm, "jibe": jibe, "sourceflow": sourceflow,
     "avature": avature, "avature_rss": avature_rss, "radancy": radancy, "yello": yello, "kpmg": kpmg,
+    "mckinsey": mckinsey, "phenom": phenom, "successfactors": successfactors,
 }

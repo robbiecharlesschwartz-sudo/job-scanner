@@ -112,6 +112,54 @@ board = "EPd41qlA4_03IncZMnWyRQ"
 
 # ---------------- Priority 3 ----------------
 
+# ---- Added 2026-10-14: strategy houses + ESG consulting -------------------------------------
+[[company]]
+name = "McKinsey"
+priority = 1
+associate_is_senior = true   # undergrads join as Business Analysts; Associate = post-MBA
+platform = "mckinsey"
+
+[[company]]
+name = "BCG"
+priority = 1                 # at BCG, "Associate" IS the undergrad entry title (Consultant = post-MBA)
+platform = "phenom"
+base = "https://careers.bcg.com"
+
+[[company]]
+name = "EY-Parthenon"
+priority = 1
+platform = "successfactors"
+base = "https://careers.ey.com/ey"
+queries = ["parthenon"]
+location = "New York"
+
+[[company]]
+name = "Oliver Wyman"
+priority = 2
+platform = "workday"         # posts on parent Marsh McLennan's board
+tenant = "mmc"
+host = "wd1"
+site = "MMC"
+queries = ["Oliver Wyman"]
+title_must = "oliver wyman"
+
+[[company]]
+name = "AlixPartners"
+priority = 2
+platform = "greenhouse"
+board = "alixpartners"
+
+[[company]]
+name = "ERM"
+priority = 2                 # largest pure-play sustainability consultancy; NYC office in Manhattan
+platform = "workday"
+tenant = "erm"
+host = "wd3"
+site = "ERM_Careers"
+
+# Bain, L.E.K. and Alvarez & Marsal block automated requests (Cloudflare / bot checks), so they
+# can't be scanned. Check them by hand: bain.com/careers, lek.com/careers, careers.alvarezandmarsal.com
+
 [[company]]
 name = "American Express"
 priority = 3

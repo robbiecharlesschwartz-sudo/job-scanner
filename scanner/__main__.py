@@ -137,7 +137,9 @@ def main(argv=None) -> int:
                 adapters.workday_detail(j)
             elif "oracle" in j.extra:
                 adapters.oracle_detail(j)
-            elif platform in ("avature", "radancy", "yello", "kpmg", "avature_rss"):
+            elif platform == "phenom":
+                adapters.phenom_detail(j)
+            elif platform in ("avature", "radancy", "yello", "kpmg", "avature_rss", "successfactors"):
                 adapters.page_detail(j)
         except Exception:
             pass                                # keep the listing-level data
