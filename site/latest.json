@@ -1,11 +1,62 @@
 {
  "date": "2026-10-14",
- "label": "Wed Oct 14, 2026 \u00b7 3:59 AM ET",
- "matches": [],
+ "label": "Wed Oct 14, 2026 \u00b7 11:52 AM ET",
+ "matches": [
+  {
+   "code": "744kvx",
+   "company": "Guidehouse",
+   "priority": 2,
+   "title": "Consulting Analyst - Energy Providers - Campus 2027",
+   "location": "US - GA, Atlanta; US - NY, New York; US - VA, Arlington; US - TX, Austin; US - IL, Chicago; US - CO, Boulder; US - CA, Sacramento; US - TX, Houston; US - TX, San Antonio; US - MA, Boston (United States of America)",
+   "url": "https://guidehouse.wd1.myworkdayjobs.com/en-US/External/job/US---GA-Atlanta/Consulting-Analyst---Energy-Providers---Campus-2027_43439",
+   "posted": "2026-10-14",
+   "rating": "Strong",
+   "reason": "Campus 2027 management consulting analyst, 0 years required, NYC office.",
+   "pointers": [
+    "+ 'Campus 2027', 'Minimum Years of Experience: 0 years' - squarely new-grad entry level",
+    "+ 'Undergraduate Degree... graduate by Summer 2027' - matches your April 2027 bachelor's",
+    "+ New York listed among office locations; up to 25% travel, you're open to travel",
+    "+ Management Consulting job family - core external consulting lane",
+    "~ Energy Providers practice is a specialized industry; your ESG/sustainability internship is adjacent but not utilities"
+   ],
+   "undergrad": "yes",
+   "early_start": false,
+   "key": "Guidehouse|43439",
+   "first_seen": "2026-10-14",
+   "last_listed": "2026-10-14",
+   "misses": 0,
+   "closed_on": null
+  },
+  {
+   "code": "kg89eq",
+   "company": "Guidehouse",
+   "priority": 2,
+   "title": "Consulting Analyst - State & Local Government - Campus 2027",
+   "location": "US - MA, Boston; US - NY, New York; US - VA, Richmond; US - VA, Arlington; US - TX, Austin; US - SC, Columbia; US - IL, Chicago; US - CA, Sacramento; US - TX, Houston; US - GA, Atlanta (United States of America)",
+   "url": "https://guidehouse.wd1.myworkdayjobs.com/en-US/External/job/US---MA-Boston/Consulting-Analyst---State---Local-Government---Campus-2027_43438",
+   "posted": "2026-10-14",
+   "rating": "Strong",
+   "reason": "Campus 2027 consulting analyst in NYC; practice spans sustainability and strategy.",
+   "pointers": [
+    "+ 'Campus 2027', 'Minimum Years of Experience: 0 years' - entry-level new grad",
+    "+ 'Undergraduate Degree... graduate by Summer 2027' - fits your bachelor's timeline",
+    "+ New York among listed offices; 'No current or future sponsorship' - fine, you're a US citizen",
+    "+ Practice covers 'sustainability... organizational strategy... market analysis' - matches your ESG proof points",
+    "- Public-sector (state/local government) focus is a step from private-sector strategy, but still management consulting"
+   ],
+   "undergrad": "yes",
+   "early_start": false,
+   "key": "Guidehouse|43438",
+   "first_seen": "2026-10-14",
+   "last_listed": "2026-10-14",
+   "misses": 0,
+   "closed_on": null
+  }
+ ],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 773,
-   "new": 0,
+   "fetched": 763,
+   "new": 5,
    "company": "Accenture"
   },
   "AlixPartners": {
@@ -14,13 +65,13 @@
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 327,
-   "new": 0,
+   "fetched": 334,
+   "new": 17,
    "company": "American Express"
   },
   "Axion Ray": {
-   "fetched": 14,
-   "new": 0,
+   "fetched": 15,
+   "new": 1,
    "company": "Axion Ray"
   },
   "BCG": {
@@ -29,23 +80,23 @@
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 160,
-   "new": 0,
+   "fetched": 162,
+   "new": 5,
    "company": "BlackRock"
   },
   "Capco": {
-   "fetched": 707,
-   "new": 0,
+   "fetched": 711,
+   "new": 8,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 695,
-   "new": 1,
+   "fetched": 692,
+   "new": 42,
    "company": "Deloitte"
   },
   "ERM (ERM_Careers)": {
-   "fetched": 258,
-   "new": 0,
+   "fetched": 259,
+   "new": 2,
    "company": "ERM"
   },
   "EY": {
@@ -54,7 +105,7 @@
    "company": "EY"
   },
   "EY-Parthenon": {
-   "fetched": 160,
+   "fetched": 135,
    "new": 0,
    "company": "EY-Parthenon"
   },
@@ -64,8 +115,8 @@
    "company": "First & First Consulting"
   },
   "Guidehouse (External)": {
-   "fetched": 671,
-   "new": 0,
+   "fetched": 680,
+   "new": 10,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
@@ -79,13 +130,13 @@
    "company": "Innosight"
   },
   "JPMorgan Chase": {
-   "fetched": 720,
-   "new": 0,
+   "fetched": 718,
+   "new": 32,
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 796,
-   "new": 0,
+   "fetched": 792,
+   "new": 3,
    "company": "KPMG"
   },
   "Kearney": {
@@ -94,8 +145,8 @@
    "company": "Kearney"
   },
   "McKinsey": {
-   "fetched": 89,
-   "new": 0,
+   "fetched": 86,
+   "new": 1,
    "company": "McKinsey"
   },
   "North Highland": {
@@ -110,17 +161,17 @@
   },
   "PepsiCo": {
    "fetched": 904,
-   "new": 0,
+   "new": 10,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
-   "fetched": 117,
-   "new": 0,
+   "fetched": 121,
+   "new": 5,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 57,
-   "new": 0,
+   "new": 2,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
@@ -149,12 +200,12 @@
    "company": "Strategy& (PwC)"
   },
   "Watershed": {
-   "fetched": 37,
+   "fetched": 36,
    "new": 0,
    "company": "Watershed"
   },
   "West Monroe": {
-   "fetched": 126,
+   "fetched": 124,
    "new": 0,
    "company": "West Monroe"
   },
@@ -164,7 +215,9 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 1,
- "notes": [],
- "found": 0
+ "screened_out": 141,
+ "notes": [
+  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
+ ],
+ "found": 2
 }

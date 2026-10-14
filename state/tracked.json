@@ -133,7 +133,7 @@
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Mergers-and-Acquisitions-Financial-Due-Diligence-Consultant/357257"
  },
  "Deloitte|363770": {
-  "closed_on": null,
+  "closed_on": "2026-10-14",
   "code": "8kwbys",
   "company": "Deloitte",
   "early_start": false,
@@ -141,7 +141,7 @@
   "key": "Deloitte|363770",
   "last_listed": "2026-10-14",
   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Sacramento, California, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
-  "misses": 0,
+  "misses": 1,
   "pointers": [
    "+ Business Strategy team doing growth, portfolio, and business model strategy - squarely your target lane",
    "+ New York listed among 38 locations",
@@ -289,6 +289,56 @@
   "reason": "Close fit: asks for ~2 years (AI rating unavailable this run).",
   "title": "Customer Strategy Consultant",
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Customer-Strategy-Consultant/370893"
+ },
+ "Guidehouse|43438": {
+  "closed_on": null,
+  "code": "kg89eq",
+  "company": "Guidehouse",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "Guidehouse|43438",
+  "last_listed": "2026-10-14",
+  "location": "US - MA, Boston; US - NY, New York; US - VA, Richmond; US - VA, Arlington; US - TX, Austin; US - SC, Columbia; US - IL, Chicago; US - CA, Sacramento; US - TX, Houston; US - GA, Atlanta (United States of America)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Campus 2027', 'Minimum Years of Experience: 0 years' - entry-level new grad",
+   "+ 'Undergraduate Degree... graduate by Summer 2027' - fits your bachelor's timeline",
+   "+ New York among listed offices; 'No current or future sponsorship' - fine, you're a US citizen",
+   "+ Practice covers 'sustainability... organizational strategy... market analysis' - matches your ESG proof points",
+   "- Public-sector (state/local government) focus is a step from private-sector strategy, but still management consulting"
+  ],
+  "posted": "2026-10-14",
+  "priority": 2,
+  "rating": "Strong",
+  "reason": "Campus 2027 consulting analyst in NYC; practice spans sustainability and strategy.",
+  "title": "Consulting Analyst - State & Local Government - Campus 2027",
+  "undergrad": "yes",
+  "url": "https://guidehouse.wd1.myworkdayjobs.com/en-US/External/job/US---MA-Boston/Consulting-Analyst---State---Local-Government---Campus-2027_43438"
+ },
+ "Guidehouse|43439": {
+  "closed_on": null,
+  "code": "744kvx",
+  "company": "Guidehouse",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "Guidehouse|43439",
+  "last_listed": "2026-10-14",
+  "location": "US - GA, Atlanta; US - NY, New York; US - VA, Arlington; US - TX, Austin; US - IL, Chicago; US - CO, Boulder; US - CA, Sacramento; US - TX, Houston; US - TX, San Antonio; US - MA, Boston (United States of America)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Campus 2027', 'Minimum Years of Experience: 0 years' - squarely new-grad entry level",
+   "+ 'Undergraduate Degree... graduate by Summer 2027' - matches your April 2027 bachelor's",
+   "+ New York listed among office locations; up to 25% travel, you're open to travel",
+   "+ Management Consulting job family - core external consulting lane",
+   "~ Energy Providers practice is a specialized industry; your ESG/sustainability internship is adjacent but not utilities"
+  ],
+  "posted": "2026-10-14",
+  "priority": 2,
+  "rating": "Strong",
+  "reason": "Campus 2027 management consulting analyst, 0 years required, NYC office.",
+  "title": "Consulting Analyst - Energy Providers - Campus 2027",
+  "undergrad": "yes",
+  "url": "https://guidehouse.wd1.myworkdayjobs.com/en-US/External/job/US---GA-Atlanta/Consulting-Analyst---Energy-Providers---Campus-2027_43439"
  },
  "Guidehouse|45253": {
   "closed_on": null,
