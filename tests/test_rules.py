@@ -70,6 +70,9 @@ class Classify(unittest.TestCase):
         self.assertEqual(self.v("Strategy Analyst", desc="2-4 years of consulting experience"), "reject")
         self.assertEqual(self.v("Strategy Analyst", desc="Minimum of two years of experience"), "stretch")
         self.assertEqual(self.v("Strategy Analyst", desc="3+ years of experience"), "reject")
+        self.assertEqual(self.v("Business Analyst", desc="Typically, an undergraduate degree with "
+                                "less than 4 years of work experience"), "clear")
+        self.assertEqual(self.v("Strategy Analyst", desc="up to 5 years of experience"), "candidate")
 
     def test_stretch_band(self):
         self.assertEqual(self.v("Associate, Financial Planning", pri=3, desc="early career"), "stretch")

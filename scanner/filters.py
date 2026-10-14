@@ -132,6 +132,9 @@ def classify(job, f: dict) -> tuple[str, str]:
     if _any(f["bad_start_title"], title) or _any(f["bad_start_description"], desc[:8000]):
         return "reject", "start date / cohort doesn't fit an April 2027 grad"
     desc_years = re.sub(r"(?i)\b[01]\s*(-|–|to)\s*\d+\s*\+?\s*years?", " ", desc)
+    # A ceiling isn't a requirement: "less than 4 years of work experience" (McKinsey BA).
+    desc_years = re.sub(r"(?i)\b(less than|fewer than|under|up to|no more than|maximum of|max\.?)\s+"
+                        r"(\d+|one|two|three|four|five|six)\s*\+?\s*years?", " ", desc_years)
     if _any(f["exclude_description"], desc_years):
         return "reject", "asks for 3+ years or an MBA"
     nyc = is_nyc(job.location)
