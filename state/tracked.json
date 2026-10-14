@@ -81,6 +81,32 @@
   "title": "Consultant, GBS - Operational Finance",
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultant-GBS-Operational-Finance/355803"
  },
+ "Deloitte|357257": {
+  "closed_on": null,
+  "code": "2cqnem",
+  "company": "Deloitte",
+  "early_start": false,
+  "first_seen": "2026-10-13",
+  "key": "Deloitte|357257",
+  "last_listed": "2026-10-13",
+  "location": "Cincinnati, Ohio, United States; McLean, Virginia, United States; New York, New York, United States; Stamford, Connecticut, United States",
+  "misses": 0,
+  "pointers": [
+   "- Requires \"1+ years of US GAAP Accounting experience\"; you have none",
+   "+ New York is among 4 locations",
+   "~ Financial due diligence is specialized M&A work, a step off the strategy lane",
+   "+ Bachelor's degree required; master's only preferred",
+   "- Prefers CPA/CA or audit experience; your background is ESG/strategy, not accounting",
+   "~ Limited sponsorship available but you don't need it"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Stretch",
+  "reason": "M&A FDD Consultant needs 1+ years US GAAP accounting; specialized domain, NYC listed.",
+  "title": "Mergers and Acquisitions Financial Due Diligence Consultant",
+  "undergrad": "yes",
+  "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Mergers-and-Acquisitions-Financial-Due-Diligence-Consultant/357257"
+ },
  "Deloitte|363770": {
   "closed_on": null,
   "code": "8kwbys",
@@ -179,6 +205,31 @@
   "reason": "Digital product consulting in NYC, but requires 2+ years product experience.",
   "title": "Commerce Product Consultant",
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Commerce-Product-Consultant/369988"
+ },
+ "Deloitte|370759": {
+  "closed_on": null,
+  "code": "aey4du",
+  "company": "Deloitte",
+  "early_start": false,
+  "first_seen": "2026-10-13",
+  "key": "Deloitte|370759",
+  "last_listed": "2026-10-13",
+  "location": "Atlanta, Georgia, United States; Chicago, Illinois, United States; Morristown, New Jersey, United States; New York, New York, United States",
+  "misses": 0,
+  "pointers": [
+   "- Requires '2+ years of business valuation and intangible asset valuation consulting experience'; you have internship only",
+   "- Deep specialization: ASC 805/350, purchase price allocations, impairment analyses - outside your background",
+   "+ New York is one of four listed offices",
+   "~ 'MBA and/or CFA designation is a plus' - not required, bachelor's suffices",
+   "- Includes 'supervising, training, and developing junior staff' - signals above-entry level"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Stretch",
+  "reason": "NYC valuation consulting, but 2+ years of specialized valuation experience required.",
+  "title": "Financial Services Business Valuation Consultant",
+  "undergrad": "yes",
+  "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Financial-Services-Business-Valuation-Consultant/370759"
  },
  "Deloitte|370839": {
   "closed_on": null,
