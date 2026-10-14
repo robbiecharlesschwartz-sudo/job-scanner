@@ -66,8 +66,7 @@ priority = 1
 platform = "workday"
 tenant = "accenture"
 host = "wd103"
-site = "AccentureCareers"
-queries = ["analyst", "strategy", "consulting", "sustainability", "2027"]
+site = "AccentureCareers"   # no search terms: all ~800 US postings (searches return nearly all anyway)
 
 [[company]]
 name = "IBM Consulting"

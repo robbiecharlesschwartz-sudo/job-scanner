@@ -163,12 +163,14 @@ def workday(c: dict) -> list[Job]:
     walk(None, first.get("facets"))
     facets = {k: v for k, v in facets.items() if k and "country" in k.lower()} or {}
 
-    max_pages = int(c.get("max_pages", 15))
+    max_pages = int(c.get("max_pages", 60))   # 1,200 per search
     out = []
     for q in c.get("queries") or [""]:
+        total = 0
         for page in range(max_pages):
             d = post_json(f"{api}/jobs", {"limit": 20, "offset": page * 20, "searchText": q,
                                           "appliedFacets": facets})
+            total = d.get("total") or total     # many tenants send the total on page 1 only
             posts = d.get("jobPostings") or []
             for j in posts:
                 path = j.get("externalPath", "")
@@ -177,7 +179,7 @@ def workday(c: dict) -> list[Job]:
                                location=j.get("locationsText", ""),
                                url=f"{base}/en-US/{c['site']}{path}", posted=j.get("postedOn", ""),
                                extra={"detail": f"{api}{path}"}))
-            if len(posts) < 20 or (page + 1) * 20 >= d.get("total", 0):
+            if len(posts) < 20 or (page + 1) * 20 >= total:
                 break
     return _dedupe(out)
 
