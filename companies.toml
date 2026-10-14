@@ -17,6 +17,10 @@
 #   yello       base, board                     (Yello / recsolu job boards)
 #   ibm         category                        (IBM's careers search API)
 #   kpmg        (no fields)                     (kpmguscareers.com listing)
+#   mckinsey    (no fields)                     (McKinsey's careers API, US postings)
+#   phenom      base                            (Phenom career sites' search widget, e.g. BCG)
+#   successfactors base, location, [queries]    (SAP SuccessFactors HTML search, e.g. careers.ey.com)
+# Workday also takes `title_must` (regex) for boards shared with a parent company.
 #
 # `associate_is_senior = true` skips "Associate" titles (post-MBA at banks) unless the posting
 # says early-career.

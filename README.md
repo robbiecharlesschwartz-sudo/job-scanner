@@ -82,7 +82,9 @@ Then `.venv/bin/python -m scanner --dry-run --only "<Name>"` to see what it find
 - **Slalom** only exposes an RSS feed of ~20 postings with no locations; its search page is
   rendered in the browser. Coverage there is partial.
 - **EY** is scanned through its US early-careers board, which is where new-grad roles are posted.
-  Experienced-hire roles on careers.ey.com are not scanned.
+  On careers.ey.com only EY-Parthenon roles in New York are scanned.
+- **Bain, L.E.K., Alvarez & Marsal** put their job boards behind Cloudflare / bot checks, so they
+  can't be scanned automatically. Check them by hand.
 - **Persefoni** is disabled: its Greenhouse board returned 404 on 2026-10-11.
 - Boards change their markup. When one breaks, the page's "Scan details" shows it as failed
   and the rest of the run carries on.
