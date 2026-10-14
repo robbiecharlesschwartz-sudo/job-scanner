@@ -81,6 +81,30 @@
   "title": "Consultant, GBS - Operational Finance",
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultant-GBS-Operational-Finance/355803"
  },
+ "Deloitte|363770": {
+  "closed_on": null,
+  "code": "8kwbys",
+  "company": "Deloitte",
+  "early_start": false,
+  "first_seen": "2026-10-13",
+  "key": "Deloitte|363770",
+  "last_listed": "2026-10-13",
+  "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Sacramento, California, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
+  "misses": 0,
+  "pointers": [
+   "+ Business Strategy team doing growth, portfolio, and business model strategy - squarely your target lane",
+   "+ New York listed among 38 locations",
+   "- Requires '2+ years of consulting experience' and '2+ years' corporate strategy work; you have one internship",
+   "~ Bare 'Consultant' title at Deloitte is typically the level above entry",
+   "+ No sponsorship needed and you're a US citizen; 50% travel fine"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Stretch",
+  "reason": "Core strategy lane in NYC, but requires 2+ years consulting experience.",
+  "title": "Business Strategy Consultant",
+  "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Business-Strategy-Consultant/363770"
+ },
  "Deloitte|364895": {
   "closed_on": null,
   "code": "hmb45j",
@@ -99,7 +123,7 @@
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultative-Offerings-Analyst-Functional-Operations-Strategy/364895"
  },
  "Deloitte|364926": {
-  "closed_on": null,
+  "closed_on": "2026-10-13",
   "code": "wkjtpp",
   "company": "Deloitte",
   "early_start": false,
@@ -107,7 +131,7 @@
   "key": "Deloitte|364926",
   "last_listed": "2026-10-12",
   "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Kansas City, Missouri, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Minneapolis, Minnesota, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Raleigh, North Carolina, United States; San Diego, California, United States; San Francisco, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States",
-  "misses": 1,
+  "misses": 2,
   "posted": "",
   "priority": 1,
   "rating": "Strong",
@@ -223,6 +247,30 @@
   "reason": "Marketing leadership program, not core strategy",
   "title": "2027 Marketing Leadership Development Program - Full-Time Analyst Opportunity",
   "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210765640"
+ },
+ "JPMorgan Chase|210800212": {
+  "closed_on": null,
+  "code": "dx5bs9",
+  "company": "JPMorgan Chase",
+  "early_start": false,
+  "first_seen": "2026-10-13",
+  "key": "JPMorgan Chase|210800212",
+  "last_listed": "2026-10-13",
+  "location": "New York, NY, United States (US)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Analyst' on an internal management consulting team - in-house strategy lane, NYC-based",
+   "+ Work is problem framing, operating model design, transformation - exactly your target work",
+   "- Requires '2+ years of strategy/diverse problem-solving experience'; you'd have one internship",
+   "+ Prefers AI tool experience (Copilot) - you built a Copilot Studio tool at GDI",
+   "~ Technology-focused domain, but strategy toolkit rather than technical implementation"
+  ],
+  "posted": "2026-10-13",
+  "priority": 3,
+  "rating": "Stretch",
+  "reason": "In-house strategy analyst in NYC, but asks 2+ years strategy experience.",
+  "title": "Global Technology Strategy, Analyst",
+  "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210800212"
  },
  "Ramp|606475af-b74f-42c4-978a-dde138a86ac7": {
   "closed_on": null,

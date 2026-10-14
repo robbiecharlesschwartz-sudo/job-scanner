@@ -471,5 +471,152 @@
   "notes": [
    "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
   ]
+ },
+ {
+  "date": "2026-10-13",
+  "label": "Tue Oct 13, 2026 \u00b7 8:03 PM ET",
+  "matches": [
+   {
+    "code": "8kwbys",
+    "company": "Deloitte",
+    "priority": 1,
+    "title": "Business Strategy Consultant",
+    "location": "Atlanta, Georgia, United States; Austin, Texas, United States; Boston, Massachusetts, United States; Charlotte, North Carolina, United States; Chicago, Illinois, United States; Cincinnati, Ohio, United States; Cleveland, Ohio, United States; Columbus, Ohio, United States; Costa Mesa, California, United States; Dallas, Texas, United States; Denver, Colorado, United States; Detroit, Michigan, United States; Houston, Texas, United States; Indianapolis, Indiana, United States; Jacksonville, Florida, United States; Kansas City, Missouri, United States; Las Vegas, Nevada, United States; Los Angeles, California, United States; McLean, Virginia, United States; Miami, Florida, United States; Milwaukee, Wisconsin, United States; Minneapolis, Minnesota, United States; Morristown, New Jersey, United States; Nashville, Tennessee, United States; New York, New York, United States; Philadelphia, Pennsylvania, United States; Pittsburgh, Pennsylvania, United States; Portland, Oregon, United States; Raleigh, North Carolina, United States; Sacramento, California, United States; San Diego, California, United States; San Francisco, California, United States; San Jose, California, United States; Seattle, Washington, United States; St. Louis, Missouri, United States; Stamford, Connecticut, United States; Tampa, Florida, United States; Tempe, Arizona, United States",
+    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Business-Strategy-Consultant/363770",
+    "posted": "",
+    "rating": "Stretch",
+    "reason": "Core strategy lane in NYC, but requires 2+ years consulting experience.",
+    "pointers": [
+     "+ Business Strategy team doing growth, portfolio, and business model strategy - squarely your target lane",
+     "+ New York listed among 38 locations",
+     "- Requires '2+ years of consulting experience' and '2+ years' corporate strategy work; you have one internship",
+     "~ Bare 'Consultant' title at Deloitte is typically the level above entry",
+     "+ No sponsorship needed and you're a US citizen; 50% travel fine"
+    ],
+    "early_start": false,
+    "key": "Deloitte|363770"
+   },
+   {
+    "code": "dx5bs9",
+    "company": "JPMorgan Chase",
+    "priority": 3,
+    "title": "Global Technology Strategy, Analyst",
+    "location": "New York, NY, United States (US)",
+    "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210800212",
+    "posted": "2026-10-13",
+    "rating": "Stretch",
+    "reason": "In-house strategy analyst in NYC, but asks 2+ years strategy experience.",
+    "pointers": [
+     "+ 'Analyst' on an internal management consulting team - in-house strategy lane, NYC-based",
+     "+ Work is problem framing, operating model design, transformation - exactly your target work",
+     "- Requires '2+ years of strategy/diverse problem-solving experience'; you'd have one internship",
+     "+ Prefers AI tool experience (Copilot) - you built a Copilot Studio tool at GDI",
+     "~ Technology-focused domain, but strategy toolkit rather than technical implementation"
+    ],
+    "early_start": false,
+    "key": "JPMorgan Chase|210800212"
+   }
+  ],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 154,
+    "new": 7,
+    "company": "Accenture"
+   },
+   "American Express": {
+    "fetched": 328,
+    "new": 15,
+    "company": "American Express"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 158,
+    "new": 1,
+    "company": "BlackRock"
+   },
+   "Deloitte": {
+    "fetched": 694,
+    "new": 50,
+    "company": "Deloitte"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "Guidehouse (External)": {
+    "fetched": 40,
+    "new": 2,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 101,
+    "new": 8,
+    "company": "IBM Consulting"
+   },
+   "JPMorgan Chase": {
+    "fetched": 722,
+    "new": 32,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 796,
+    "new": 4,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 192,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "North Highland": {
+    "fetched": 62,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "PepsiCo": {
+    "fetched": 901,
+    "new": 16,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 94,
+    "new": 2,
+    "company": "Pfizer"
+   },
+   "PwC (Global_Experienced_Careers)": {
+    "fetched": 729,
+    "new": 0,
+    "company": "PwC"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 62,
+    "new": 4,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 162,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 1,
+    "company": "Slalom"
+   },
+   "Watershed": {
+    "fetched": 37,
+    "new": 1,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 0,
+    "company": "West Monroe"
+   }
+  },
+  "screened_out": 141,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
+  ]
  }
 ]
