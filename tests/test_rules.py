@@ -134,14 +134,10 @@ if __name__ == "__main__":
 
 
 class Page(unittest.TestCase):
-    def test_open_matches_survive_old_runs_and_closed_leave(self):
-        from scanner.__main__ import display_runs
-        m = lambda k, **x: {"key": k, "code": k, "company": "X", "priority": 1, "rating": "Good",
-                            "title": k, "closed_on": None, **x}
-        runs = [{"label": "new", "matches": [m("a"), m("b")]}]
-        tracked = {"a": m("a", title="a (renamed)"), "b": m("b", closed_on="2026-10-01"),
-                   "old": m("old")}                         # found in a scan no longer kept
-        out = display_runs(runs, tracked)
-        self.assertEqual(out[0]["label"], "Earlier finds · still open")
-        self.assertEqual([t["key"] for t in out[0]["matches"]], ["old"])
-        self.assertEqual([t["title"] for t in out[1]["matches"]], ["a (renamed)"])   # latest details, b closed
+    def test_one_list_open_only_newest_first(self):
+        from scanner.__main__ import open_matches
+        m = lambda k, seen, **x: {"key": k, "code": k, "company": "X", "priority": 1, "rating": "Good",
+                                  "title": k, "closed_on": None, "first_seen": seen, **x}
+        tracked = {"old": m("old", "2026-09-01"), "new": m("new", "2026-10-14"),
+                   "shut": m("shut", "2026-10-10", closed_on="2026-10-12")}
+        self.assertEqual([t["key"] for t in open_matches(tracked)], ["new", "old"])

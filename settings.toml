@@ -10,6 +10,12 @@ url = "https://job-scanner-robbie.vercel.app"
 # Past this many in one day (e.g. the first scan's backlog) the rest are only on the page.
 max_listed = 25
 
+[email]
+# New matches with these ratings also get an email, sent free through Resend from the verified
+# taskbytask.org domain (needs the RESEND_API_KEY GitHub secret). Leave `to` empty to turn off.
+to = "robbiecschwartz@icloud.com"
+ratings = ["Strong"]
+
 [scoring]
 # Ratings use Claude when ANTHROPIC_API_KEY is set, otherwise Groq's free tier (GROQ_API_KEY).
 # Haiku 5.5 keeps this to pennies a month; "claude-opus-5-5" rates more carefully at ~40x the price.

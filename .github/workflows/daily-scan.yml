@@ -40,6 +40,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
 
       # Commit even if alerts failed: the state must record what was seen, or tomorrow

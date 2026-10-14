@@ -24,7 +24,7 @@ STATE = ROOT / "state"
 SITE = ROOT / "site"
 TZ = ZoneInfo("America/New_York")
 RANK = {"Strong": 0, "Good": 1, "Stretch": 2}
-KEEP_RUNS = 30            # scans shown on the results page
+LOG_DAYS = 30             # scan audit log (site/log.html) keeps this many days
 FORGET_AFTER_DAYS = 180   # drop seen-IDs not listed for this long
 MAX_CLAUDE = 250          # cap per run (first run sees the whole backlog)
 CLOSED_DAYS = 30          # closed postings stay on the page this long
@@ -66,26 +66,12 @@ def fetch_all(companies: list[dict]) -> tuple[list, dict]:
     return jobs, sources
 
 
-def display_runs(runs: list[dict], tracked: dict) -> list[dict]:
-    """What the page shows. tracked.json is the source of truth: each open match appears once,
-    under the newest scan that found it, with its latest details. Matches older than the scans
-    kept on the page go in an "Earlier finds" section. Closed ones live only in the closed list."""
-    placed, out = set(), []
-    for r in reversed(runs):
-        ms = []
-        for m in r["matches"]:
-            t = tracked.get(m["key"])
-            if t and not t.get("closed_on") and m["key"] not in placed:
-                placed.add(m["key"])
-                ms.append(t)
-        out.append({**r, "matches": ms, "found": len(r["matches"])})
-    out.reverse()
-    older = [t for k, t in tracked.items() if k not in placed and not t.get("closed_on")]
-    if older:
-        older.sort(key=lambda t: (t["priority"], RANK.get(t["rating"], 9), t["company"], t["title"]))
-        out.insert(0, {"label": "Earlier finds · still open", "matches": older, "found": len(older),
-                       "sources": {}, "notes": [], "screened_out": 0, "earlier": True})
-    return out
+def open_matches(tracked: dict) -> list[dict]:
+    """The page's one long list: every open match, newest find first, then priority and fit."""
+    rows = [t for t in tracked.values() if not t.get("closed_on")]
+    rows.sort(key=lambda t: (t["priority"], RANK.get(t["rating"], 9), t["company"], t["title"]))
+    rows.sort(key=lambda t: t.get("first_seen", ""), reverse=True)    # stable: keeps the order above
+    return rows
 
 
 def posting_gone(url: str) -> bool:
@@ -232,6 +218,7 @@ def main(argv=None) -> int:
     dismissed = {k for k, v in status.items()
                  if v.get("status") == "not_interested" and v.get("at", "9") <= dismiss_cutoff}
     fresh = [m for m in run["matches"] if m["key"] not in tracked and m["key"] not in dismissed]
+    mail_alerts = [m for m in fresh if m["rating"] in settings.get("email", {}).get("ratings", ["Strong"])]
     texts = notify.compose(fresh, settings["site"]["url"], first_run=first_run and not tracked,
                            max_listed=settings["sms"]["max_listed"])
     if args.dry_run:
@@ -240,6 +227,14 @@ def main(argv=None) -> int:
         for t in texts:
             print(t, "\n", file=sys.stderr)
         return 0
+
+    # Email for new Strong matches (sent before the log is written so problems land in it).
+    mail = notify.compose_email(mail_alerts, settings["site"]["url"])
+    mail_to = settings.get("email", {}).get("to")
+    if mail and mail_to and not args.no_sms:
+        for err in notify.send_email(mail, mail_to):
+            print("EMAIL:", err, file=sys.stderr)
+            run["notes"].append(f"Email alert problem: {err}")
 
     # Remember everything listed by a board that answered, so nothing is ever texted twice.
     ok_companies = {s["company"] for s in sources.values() if "error" not in s}
@@ -253,6 +248,7 @@ def main(argv=None) -> int:
     # Feeds that only show a slice of the board (Slalom's RSS) can't tell, so they're skipped.
     # Every scan also refreshes the matches already on the page from the live listing.
     listed = {j.key: j for j in jobs}
+    closed_now = []
     partial = {c["name"] for c in companies if c["platform"] in PARTIAL_PLATFORMS}
     for key, t in tracked.items():
         if t["company"] not in ok_companies or t["company"] in partial:
@@ -268,6 +264,7 @@ def main(argv=None) -> int:
             # Two misses in a row = closed. Sooner if the posting link itself is gone.
             if t["misses"] >= 2 or posting_gone(t["url"]):
                 t["closed_on"] = today
+                closed_now.append(t)
     for m in run["matches"]:
         if m["key"] in tracked:                 # re-rated (rules or AI changed): keep the history
             tracked[m["key"]].update({k: v for k, v in m.items() if k != "key"})
@@ -281,14 +278,31 @@ def main(argv=None) -> int:
                if k not in dismissed
                and (t["closed_on"] or "9") >= closed_cutoff and t["last_listed"] >= open_cutoff}
 
-    runs = (runs + [run])[-KEEP_RUNS:]
+    # Audit log entry for this scan (site/log.html), kept LOG_DAYS days.
+    brief = lambda t: {"company": t["company"], "title": t["title"], "rating": t.get("rating", ""),
+                       "url": t.get("url", "")}
+    run["log"] = {
+        "fetched": sum(s["fetched"] for s in sources.values()),
+        "sources_ok": len(ok_companies), "sources_failed": sorted(k for k, v in sources.items() if "error" in v),
+        "new_postings": len(new), "passed_rules": len(candidates),
+        "new_matches": [brief(tracked[m["key"]]) for m in fresh if m["key"] in tracked],
+        "rerated": [brief(tracked[m["key"]]) for m in run["matches"]
+                    if m["key"] not in {f["key"] for f in fresh} and m["key"] in tracked],
+        "closed": [brief(t) for t in closed_now],
+        "dismissed_total": len(dismissed),
+        "open_total": sum(1 for t in tracked.values() if not t.get("closed_on")),
+        "alerts": len(texts) if not args.no_sms else 0,
+        "emails": len(mail_alerts) if not args.no_sms else 0,
+    }
+    log_cutoff = (now.date() - dt.timedelta(days=LOG_DAYS)).isoformat()
+    runs = [r for r in runs + [run] if r.get("date", "") >= log_cutoff]
     STATE.mkdir(exist_ok=True)
     (STATE / "seen.json").write_text(json.dumps(seen, indent=0, sort_keys=True))
     (STATE / "runs.json").write_text(json.dumps(runs, indent=1))
     (STATE / "tracked.json").write_text(json.dumps(tracked, indent=1, sort_keys=True))
     closed = sorted((t for t in tracked.values() if t["closed_on"]),
                     key=lambda t: (t["closed_on"], -t["priority"]), reverse=True)
-    report.write_site(SITE, display_runs(runs, tracked), settings["site"]["url"], closed, status)
+    report.write_site(SITE, open_matches(tracked), runs, settings["site"]["url"], closed, status)
     print(f"{len(matches)} matches -> site/index.html", file=sys.stderr)
 
     if texts and not args.no_sms:

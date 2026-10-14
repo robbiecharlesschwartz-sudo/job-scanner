@@ -71,6 +71,13 @@ Secrets the workflow reads (repo Settings, Secrets and variables, Actions):
 | `NTFY_TOPIC` | private ntfy topic name; subscribe to it in the ntfy phone app |
 | `ANTHROPIC_API_KEY` | optional, paid: use Claude for ratings instead of Groq |
 
+## Email alerts
+
+New **Strong** matches also get an email (`[email]` in `settings.toml`: address and ratings).
+Sent through Resend's free plan from the verified `taskbytask.org` domain; needs the
+`RESEND_API_KEY` GitHub secret. Without it the scan still runs and the scan log notes that email
+is off. The scan log (`/log`) records how many emails each scan sent.
+
 ## Adding a company
 
 Find the board its careers page links to, then add an entry to `companies.toml` using one of the

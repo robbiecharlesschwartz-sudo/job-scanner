@@ -4,6 +4,7 @@ from __future__ import annotations
 import datetime as dt
 import html
 import json
+import re
 from pathlib import Path
 
 CSS = """
@@ -33,6 +34,12 @@ h2 span{color:var(--muted);font-weight:400;font-size:13px}
 .Stretch{background:var(--stretch-bg);color:var(--stretch-ink)}
 .flag{display:inline-block;margin-top:6px;font-size:12px;background:var(--warn-bg);color:var(--warn-ink);padding:2px 8px;border-radius:6px}
 .empty{color:var(--muted);font-size:14px;margin:0 0 6px}
+.sub a{color:inherit}
+.logentry .facts{font-size:14px;margin:0 0 6px}
+.logentry .lh{font-size:13px;font-weight:600;margin:8px 0 2px}
+.logentry ul{margin:0 0 6px;padding-left:18px;font-size:13px}
+.logentry li{margin:2px 0}
+.logentry .pill{font-size:11px}
 details{margin-top:6px;font-size:13px;color:var(--muted)}
 details table{border-collapse:collapse;width:100%;margin-top:6px}
 details td{padding:3px 6px;border-bottom:1px solid var(--line)}
@@ -90,13 +97,18 @@ function place(card,st){
   const stamp=card.querySelector('.stamp');
   if(stamp)stamp.textContent=s?`${LABEL[s]} ${st.at||''}`:'';
   const dest=s?document.getElementById('done-'+s):document.getElementById(card.dataset.home);
-  if(dest&&card.parentElement!==dest)dest.appendChild(card);
+  if(dest&&card.parentElement!==dest){
+    const i=+card.dataset.i, next=!s&&card.dataset.i?[...dest.children].find(c=>+c.dataset.i>i):null;
+    dest.insertBefore(card,next||null);
+  }
 }
 function counts(){
   for(const s of ['applied','not_interested']){
     const n=document.querySelectorAll('#done-'+s+' .card').length;
     document.getElementById('n-'+s).textContent=n;
   }
+  const o=document.getElementById('n-open');
+  if(o)o.textContent=document.querySelectorAll('#list .card').length;
 }
 async function api(method,body){
   const r=await fetch('/api/status',{method,headers:{'Content-Type':'application/json'},
@@ -154,9 +166,24 @@ def _key() -> str:
             'checked against your profile.</p></details>')
 
 
-def _card(m: dict, closed_on: str | None = None, home: str = "", st: dict | None = None) -> str:
+def _short_loc(loc: str, keep: int = 4) -> str:
+    """Long office lists (McKinsey lists 100+): New York first, then a few, then "+N more"."""
+    parts = [p.strip() for p in re.split(r";", loc) if p.strip()]
+    if len(parts) <= keep + 1:
+        return loc
+    suffix = re.search(r"\s(\([A-Z]{2}(?:,\s*[A-Z]{2})*\))$", parts[-1])
+    parts[-1] = parts[-1][:suffix.start()] if suffix else parts[-1]
+    ny = [p for p in parts if re.search(r"(?i)new york|\bnyc\b|manhattan|brooklyn", p)]
+    rest = [p for p in parts if p not in ny]
+    shown = (ny + rest)[:keep]
+    return "; ".join(shown) + f" +{len(parts) - len(shown)} more" + (f" {suffix.group(1)}" if suffix else "")
+
+
+def _card(m: dict, closed_on: str | None = None, home: str = "", st: dict | None = None,
+          order: int | None = None) -> str:
     flag = '<span class="flag">Start date may be before summer 2027</span>' if m.get("early_start") else ""
     posted = f" · posted {e(m['posted'])}" if m.get("posted") else ""
+    found = f" · found {e(_date(m['first_seen']))}" if m.get("first_seen") else ""
     degree = {"yes": " · ✓ open to bachelor's grads", "unclear": " · degree requirement not stated"
               }.get(m.get("undergrad", ""), "")
     tag = f'<span class="closedtag">Closed {e(_date(closed_on))}</span>' if closed_on else ""
@@ -166,11 +193,13 @@ def _card(m: dict, closed_on: str | None = None, home: str = "", st: dict | None
             '<button class="mark" data-s="not_interested">✗ Not interested</button>'
             f'<button class="undo" data-s="">Undo</button><span class="stamp">{e(stamp)}</span></div>')
     return (f'<div class="card{" closed" if closed_on else ""}" id="{e(m["code"])}" data-r="{e(m["rating"])}"'
-            f' data-key="{e(m.get("key", ""))}" data-home="{e(home)}"{s_attr}>'
+            f' data-key="{e(m.get("key", ""))}" data-home="{e(home)}"'
+            f'{f" data-i={order}" if order is not None else ""}{s_attr}>'
             f'<div class="top"><span class="co">P{m["priority"]} · {e(m["company"])}</span>'
             f'<span>{tag} <span class="pill {e(m["rating"])}">{e(m["rating"])}</span></span></div>'
             f'<a class="title" href="{e(m["url"])}" target="_blank" rel="noopener">{e(m["title"])}</a>'
-            f'<div class="meta">{e(m["location"] or "Location not listed")}{posted}{degree}</div>'
+            f'<div class="meta" title="{e(m["location"])}">{e(_short_loc(m["location"]) or "Location not listed")}'
+            f'{found}{posted}{degree}</div>'
             f'<p class="reason">{e(m["reason"])}</p>{_pointers(m.get("pointers"))}{flag}{acts}</div>')
 
 
@@ -189,30 +218,25 @@ def _health(run: dict) -> str:
 DISMISS_NOTE = "7 days after you mark them"
 
 
-def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dict] | None = None,
-               status: dict | None = None) -> None:
+def write_site(site_dir: Path, matches: list[dict], runs: list[dict], site_url: str,
+               closed: list[dict] | None = None, status: dict | None = None) -> None:
+    """index.html: one long list of every open match (newest find first), plus the Applied /
+    Not interested / Closed drawers. log.html: the scan-by-scan audit log."""
     closed = closed or []
     status = status or {}
     done = {"applied": [], "not_interested": []}
-    closed_on = {c["code"]: c["closed_on"] for c in closed}
     site_dir.mkdir(parents=True, exist_ok=True)
     (site_dir / "j").mkdir(exist_ok=True)
     latest = runs[-1] if runs else {}
-    total = sum(len(r["matches"]) for r in runs)
-    sections = []
-    for i, run in enumerate(reversed(runs)):
-        ms, home = run["matches"], f"run-{i}"
-        head = f'<h2>{e(run["label"])}<span>{len(ms)} match{"es" if len(ms) != 1 else ""}</span></h2>'
-        cards = []
-        for m in ms:
-            st = status.get(m.get("key", ""))
-            html_ = _card(m, closed_on.get(m["code"]), home, st)
-            (done[st["status"]] if st and st["status"] in done else cards).append(html_)
-        empty = ("No new matches." if not run.get("found", len(ms)) else
-                 "Every match from this scan has since closed, been marked, or been dismissed.")
-        body = "".join(cards) or (f'<p class="empty">{empty}</p>' if not ms else "")
-        sections.append(head + f'<div class="cards" id="{home}">{body}</div>'
-                        + ("" if run.get("earlier") else _health(run)))
+    cards = []
+    for i, m in enumerate(matches):
+        st = status.get(m.get("key", ""))
+        html_ = _card(m, None, "list", st, i)
+        (done[st["status"]] if st and st["status"] in done else cards).append(html_)
+    body = "".join(cards) or '<p class="empty">No open matches right now.</p>'
+    n_open = len(cards)
+    listing = (f'<h2>Open matches<span><b id="n-open">{n_open}</b> open · newest first</span></h2>'
+               f'<div class="cards" id="list">{body}</div>')
     done_html = "".join(
         f'<details class="done"><summary>{label} <span>· <b id="n-{k}">{len(done[k])}</b></span></summary>'
         f'<div id="done-{k}">{"".join(done[k])}</div></details>'
@@ -226,25 +250,72 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
              '<button aria-pressed="false" data-r="Strong">Strong</button>'
              '<button aria-pressed="false" data-r="Good">Good</button>'
              '<button aria-pressed="false" data-r="Stretch">Stretch</button></div>')
+    lg = latest.get("log", {})
+    last = (f'Last scan {e(latest.get("label", "never"))}'
+            + (f' · {lg["fetched"]:,} postings checked' if lg.get("fetched") else "") + ".")
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
 <title>Job Scanner</title><style>{CSS}</style></head><body><main>
 <h1>Job Scanner</h1>
-<p class="sub">Early-career consulting &amp; strategy openings at target companies.
-Last scan {e(latest.get("label", "never"))}. {total} open matches, newest first.
+<p class="sub">Early-career consulting &amp; strategy openings at target companies, updated every scan.
+{last} <a href="log">Scan log</a><br>
 "Not interested" cards are removed {DISMISS_NOTE}.</p>
-{_key()}{chips}{"".join(sections)}{done_html}{closed_html}
+{_key()}{chips}{listing}{done_html}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)
+    write_log(site_dir, runs)
 
-    live = {m["code"] for run in runs for m in run["matches"]} | set(closed_on)
+    shown = matches + closed
+    live = {m["code"] for m in shown}
     for old in (site_dir / "j").glob("*.html"):
         if old.stem not in live:
             old.unlink()
-    for m in [m for run in runs for m in run["matches"]] + closed:
+    for m in shown:
         (site_dir / "j" / f"{m['code']}.html").write_text(
             f'<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex">'
             f'<meta http-equiv="refresh" content="0;url={e(m["url"])}">'
             f'<title>{e(m["company"])} - {e(m["title"])}</title>'
             f'<a href="{e(m["url"])}">{e(m["title"])}</a>')
     (site_dir / "latest.json").write_text(json.dumps(latest, indent=1))
+
+
+def _jobline(x: dict) -> str:
+    rating = f' <span class="pill {e(x["rating"])}">{e(x["rating"])}</span>' if x.get("rating") else ""
+    title = (f'<a href="{e(x["url"])}" target="_blank" rel="noopener">{e(x["title"])}</a>'
+             if x.get("url") else e(x["title"]))
+    return f'<li>{e(x["company"])}: {title}{rating}</li>'
+
+
+def write_log(site_dir: Path, runs: list[dict]) -> None:
+    """Audit log: one entry per scan (newest first) for the last 30 days."""
+    entries = []
+    for run in reversed(runs):
+        lg = run.get("log")
+        if lg:
+            failed = lg.get("sources_failed") or []
+            facts = [f'{lg["fetched"]:,} postings from {lg["sources_ok"]} sources'
+                     + (f' ({len(failed)} failed)' if failed else ""),
+                     f'{lg["new_postings"]:,} new postings, {lg["passed_rules"]} passed the rules',
+                     f'{len(lg["new_matches"])} new match{"es" if len(lg["new_matches"]) != 1 else ""}',
+                     f'{len(lg["closed"])} closed',
+                     f'{lg["open_total"]} open after this scan',
+                     f'{lg["alerts"]} phone alert{"s" if lg["alerts"] != 1 else ""} sent',
+                     f'{lg.get("emails", 0)} email{"s" if lg.get("emails", 0) != 1 else ""} sent']
+            lists = "".join(
+                f'<p class="lh">{label}</p><ul>{"".join(_jobline(x) for x in lg[k])}</ul>'
+                for k, label in (("new_matches", "New matches"), ("rerated", "Re-rated"),
+                                 ("closed", "Closed this scan")) if lg.get(k))
+        else:   # scans from before the log existed
+            n = len(run.get("matches", []))
+            facts = [f'{n} match{"es" if n != 1 else ""}', f'{run.get("screened_out", 0):,} screened out']
+            lists = ""
+        entries.append(f'<section class="logentry"><h2>{e(run["label"])}</h2>'
+                       f'<p class="facts">{" · ".join(facts)}</p>{lists}{_health(run)}</section>')
+    page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Scan Log</title><style>{CSS}</style></head><body><main>
+<h1>Scan log</h1>
+<p class="sub">Every scan from the last 30 days, newest first. <a href="./">Back to matches</a></p>
+{"".join(entries) or '<p class="empty">No scans yet.</p>'}
+</main></body></html>"""
+    (site_dir / "log.html").write_text(page)
