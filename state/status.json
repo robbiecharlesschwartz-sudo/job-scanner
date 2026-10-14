@@ -54,5 +54,9 @@
  "JPMorgan Chase|210800212": {
   "status": "not_interested",
   "at": "2026-10-14"
+ },
+ "Ramp|606475af-b74f-42c4-978a-dde138a86ac7": {
+  "status": "not_interested",
+  "at": "2026-10-14"
  }
 }
