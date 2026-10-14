@@ -54,6 +54,22 @@ details.key>summary{font-weight:600;cursor:pointer}
 .key dd{margin:0 0 2px;font-size:14px}
 .key dd.do{color:var(--muted)}
 .key .legend{font-size:13px;color:var(--muted);margin:12px 0 0}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.acts button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;min-height:32px}
+.acts button:hover{border-color:var(--ink)}
+.acts .undo{display:none}
+.card[data-s] .acts .mark{display:none}
+.card[data-s] .acts .undo{display:inline-block}
+.card[data-s="applied"]{border-left:4px solid var(--strong-ink)}
+.card[data-s="not_interested"]{opacity:.65}
+.stamp{font-size:12px;color:var(--muted);margin-left:auto;align-self:center}
+body.nokey .acts{display:none}
+.keynote{display:none;font-size:13px;color:var(--muted);margin:0 0 12px}
+body.nokey .keynote{display:block}
+details.done{margin:14px 0 0;font-size:15px}
+details.done>summary{font-weight:600;cursor:pointer;padding:10px 0;border-bottom:1px solid var(--line)}
+details.done>summary span{color:var(--muted);font-weight:400;font-size:13px}
+details.done .card{margin-top:10px}
 .card.closed{opacity:.7}
 .card.closed .title{color:var(--muted)}
 .closedtag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
@@ -63,11 +79,56 @@ details.closedlist>summary span{color:var(--muted);font-weight:400;font-size:13p
 details.closedlist .card{margin-top:10px}
 """
 
-JS = """
+JS = r"""
 document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.chips button').forEach(x=>x.setAttribute('aria-pressed',x===b));
   const r=b.dataset.r;document.querySelectorAll('.card').forEach(c=>{c.hidden=!!r&&c.dataset.r!==r});
 }));
+
+// Check-offs. The key comes from a one-time setup link (#key=...) and stays in this browser.
+let key=null;
+try{
+  const m=location.hash.match(/key=([\w-]+)/);
+  if(m){localStorage.setItem('jsk',m[1]);history.replaceState(null,'',location.pathname);}
+  key=localStorage.getItem('jsk');
+}catch(e){}
+const LABEL={applied:'Applied',not_interested:'Not interested'};
+function place(card,st){
+  const s=st&&st.status;
+  if(s){card.dataset.s=s;}else{delete card.dataset.s;}
+  const stamp=card.querySelector('.stamp');
+  if(stamp)stamp.textContent=s?`${LABEL[s]} ${st.at||''}`:'';
+  const dest=s?document.getElementById('done-'+s):document.getElementById(card.dataset.home);
+  if(dest&&card.parentElement!==dest)dest.appendChild(card);
+}
+function counts(){
+  for(const s of ['applied','not_interested']){
+    const n=document.querySelectorAll('#done-'+s+' .card').length;
+    document.getElementById('n-'+s).textContent=n;
+  }
+}
+async function api(method,body){
+  const r=await fetch('/api/status',{method,headers:{'Content-Type':'application/json','X-Status-Key':key},
+    body:body&&JSON.stringify(body)});
+  if(!r.ok)throw new Error(r.status);
+  return r.json();
+}
+function applyAll(data){
+  document.querySelectorAll('.card[data-key]').forEach(c=>place(c,data[c.dataset.key]));
+  counts();
+}
+if(!key){document.body.classList.add('nokey');}
+else{
+  api('GET').then(applyAll).catch(()=>{});
+  document.addEventListener('click',async ev=>{
+    const btn=ev.target.closest('.acts button');if(!btn)return;
+    const card=btn.closest('.card');const s=btn.dataset.s||null;
+    const prev=card.dataset.s?{status:card.dataset.s}:undefined;
+    place(card,s?{status:s,at:new Date().toISOString().slice(0,10)}:undefined);counts();
+    try{applyAll(await api('POST',{key:card.dataset.key,status:s}));}
+    catch(e){place(card,prev);counts();alert('Could not save - check your connection and try again.');}
+  });
+}
 """
 
 e = html.escape
@@ -103,16 +164,24 @@ def _key() -> str:
             'checked against your profile.</p></details>')
 
 
-def _card(m: dict, closed_on: str | None = None) -> str:
+def _card(m: dict, closed_on: str | None = None, home: str = "", st: dict | None = None) -> str:
     flag = '<span class="flag">Start date may be before summer 2027</span>' if m.get("early_start") else ""
     posted = f" · posted {e(m['posted'])}" if m.get("posted") else ""
+    degree = {"yes": " · ✓ open to bachelor's grads", "unclear": " · degree requirement not stated"
+              }.get(m.get("undergrad", ""), "")
     tag = f'<span class="closedtag">Closed {e(_date(closed_on))}</span>' if closed_on else ""
-    return (f'<div class="card{" closed" if closed_on else ""}" id="{e(m["code"])}" data-r="{e(m["rating"])}">'
+    s_attr = f' data-s="{e(st["status"])}"' if st else ""
+    stamp = f'{"Applied" if st["status"] == "applied" else "Not interested"} {st.get("at", "")}' if st else ""
+    acts = ('<div class="acts"><button class="mark" data-s="applied">✓ Applied</button>'
+            '<button class="mark" data-s="not_interested">✗ Not interested</button>'
+            f'<button class="undo" data-s="">Undo</button><span class="stamp">{e(stamp)}</span></div>')
+    return (f'<div class="card{" closed" if closed_on else ""}" id="{e(m["code"])}" data-r="{e(m["rating"])}"'
+            f' data-key="{e(m.get("key", ""))}" data-home="{e(home)}"{s_attr}>'
             f'<div class="top"><span class="co">P{m["priority"]} · {e(m["company"])}</span>'
             f'<span>{tag} <span class="pill {e(m["rating"])}">{e(m["rating"])}</span></span></div>'
             f'<a class="title" href="{e(m["url"])}" target="_blank" rel="noopener">{e(m["title"])}</a>'
-            f'<div class="meta">{e(m["location"] or "Location not listed")}{posted}</div>'
-            f'<p class="reason">{e(m["reason"])}</p>{_pointers(m.get("pointers"))}{flag}</div>')
+            f'<div class="meta">{e(m["location"] or "Location not listed")}{posted}{degree}</div>'
+            f'<p class="reason">{e(m["reason"])}</p>{_pointers(m.get("pointers"))}{flag}{acts}</div>')
 
 
 def _health(run: dict) -> str:
@@ -127,24 +196,36 @@ def _health(run: dict) -> str:
             f'{notes}<table>{"".join(rows)}</table></details>')
 
 
-def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dict] | None = None) -> None:
+def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dict] | None = None,
+               status: dict | None = None) -> None:
     closed = closed or []
+    status = status or {}
+    done = {"applied": [], "not_interested": []}
     closed_on = {c["code"]: c["closed_on"] for c in closed}
     site_dir.mkdir(parents=True, exist_ok=True)
     (site_dir / "j").mkdir(exist_ok=True)
     latest = runs[-1] if runs else {}
     total = sum(len(r["matches"]) for r in runs)
     sections = []
-    for run in reversed(runs):
-        ms = run["matches"]
+    for i, run in enumerate(reversed(runs)):
+        ms, home = run["matches"], f"run-{i}"
         head = f'<h2>{e(run["label"])}<span>{len(ms)} match{"es" if len(ms) != 1 else ""}</span></h2>'
-        body = "".join(_card(m, closed_on.get(m["code"])) for m in ms) or '<p class="empty">No new matches.</p>'
-        sections.append(head + body + _health(run))
+        cards = []
+        for m in ms:
+            st = status.get(m.get("key", ""))
+            html_ = _card(m, closed_on.get(m["code"]), home, st)
+            (done[st["status"]] if st and st["status"] in done else cards).append(html_)
+        body = "".join(cards) or ('<p class="empty">No new matches.</p>' if not ms else "")
+        sections.append(head + f'<div class="cards" id="{home}">{body}</div>' + _health(run))
+    done_html = "".join(
+        f'<details class="done"><summary>{label} <span>· <b id="n-{k}">{len(done[k])}</b></span></summary>'
+        f'<div id="done-{k}">{"".join(done[k])}</div></details>'
+        for k, label in (("applied", "Applied"), ("not_interested", "Not interested")))
     closed_html = (
         f'<details class="closedlist"><summary>Closed postings <span>· {len(closed)} in the last 30 days, '
-        f'no longer listed on the company site</span></summary>'
-        + ("".join(_card(c, c["closed_on"]) for c in closed)
-           or '<p class="empty">None yet.</p>') + '</details>')
+        f'no longer listed on the company site</span></summary><div id="closed-list">'
+        + ("".join(_card(c, c["closed_on"], "closed-list", status.get(c.get("key", ""))) for c in closed)
+           or '<p class="empty">None yet.</p>') + '</div></details>')
     chips = ('<div class="chips"><button aria-pressed="true" data-r="">All</button>'
              '<button aria-pressed="false" data-r="Strong">Strong</button>'
              '<button aria-pressed="false" data-r="Good">Good</button>'
@@ -155,7 +236,9 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
 <h1>Job Scanner</h1>
 <p class="sub">Early-career consulting &amp; strategy openings at target companies.
 Last scan {e(latest.get("label", "never"))}. {total} matches across the last {len(runs)} scans, newest first.</p>
-{_key()}{chips}{"".join(sections)}{closed_html}
+<p class="keynote">Check-off buttons are off on this device. Open your personal setup link once
+here to turn them on.</p>
+{_key()}{chips}{"".join(sections)}{done_html}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)
 

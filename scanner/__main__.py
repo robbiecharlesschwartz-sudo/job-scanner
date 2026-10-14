@@ -166,10 +166,11 @@ def main(argv=None) -> int:
     for j in candidates:
         r = ratings.get(j.key)
         if r:
-            if r.rating == "No" or r.starts_before_summer_2027:
+            if r.rating == "No" or r.starts_before_summer_2027 or r.undergrad_eligible == "no":
                 continue                        # the AI's "no" is final
             j.rating, j.reason = r.rating, r.reason
-            j.extra["pointers"] = [p.strip() for p in r.pointers if p.strip()][:5]
+            j.extra["pointers"] = [p.strip() for p in r.pointers if p.strip()][:6]
+            j.extra["undergrad"] = r.undergrad_eligible
             if j.verdict == "stretch" and j.rating == "Strong":
                 j.rating = "Good"               # keyword rules found it a step off-lane
         else:
@@ -190,6 +191,7 @@ def main(argv=None) -> int:
             "code": j.extra["code"], "company": j.company, "priority": j.priority, "title": j.title,
             "location": j.location, "url": j.url, "posted": j.posted, "rating": j.rating,
             "reason": j.reason, "pointers": j.extra.get("pointers", []),
+            "undergrad": j.extra.get("undergrad", "unclear"),
             "early_start": j.early_start, "key": j.key} for j in matches],
         "sources": dict(sorted(sources.items())),
         "screened_out": len(new) - len(matches),
@@ -247,7 +249,8 @@ def main(argv=None) -> int:
     (STATE / "tracked.json").write_text(json.dumps(tracked, indent=1, sort_keys=True))
     closed = sorted((t for t in tracked.values() if t["closed_on"]),
                     key=lambda t: (t["closed_on"], -t["priority"]), reverse=True)
-    report.write_site(SITE, runs, settings["site"]["url"], closed)
+    report.write_site(SITE, runs, settings["site"]["url"], closed,
+                      load_json(STATE / "status.json", {}))
     print(f"{len(matches)} matches -> site/index.html", file=sys.stderr)
 
     if texts and not args.no_sms:

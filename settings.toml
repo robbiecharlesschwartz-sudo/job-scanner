@@ -95,6 +95,8 @@ exclude_description = [
   '\b(have|hold|be pursuing|pursuing|completed?|possess|earned)\s+(an?\s+|your\s+)?(mba|master|graduate degree|advanced degree)',
   '\b(mba|graduate degree|advanced degree)\b[^.]{0,40}\b(required|must|necessary)',
   'prior full[- ]time (work |professional )?experience', 'mba (candidates|graduates|students)',
+  'ph\.?d\.? (is )?(required|candidates|students)', 'doctoral (degree|candidates)',
+  '(master.s|graduate) (degree )?(students|candidates) only', 'law degree required', '\bj\.?d\.? required',
 ]
 
 # Start-date / cohort mismatches: before an April 2027 graduation, or a 2028+ cohort.

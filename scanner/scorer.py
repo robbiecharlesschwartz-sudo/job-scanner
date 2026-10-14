@@ -35,6 +35,7 @@ class Rating(BaseModel):
     rating: Literal["Strong", "Good", "Stretch", "No"]
     reason: str
     pointers: list[str]
+    undergrad_eligible: Literal["yes", "no", "unclear"]
     starts_before_summer_2027: bool
 
 
@@ -69,6 +70,12 @@ For each posting, return:
   Good: "+ Asks for CDP/EcoVadis or sustainability reporting - you ran both at GDI".
   Good: "- Prefers 1-2 years' consulting experience; you'd have one internship".
   Bad (too generic): "+ Good fit for candidate".
+- undergrad_eligible: can someone finishing a BACHELOR'S degree in April 2027, with no further
+  degree planned and only internship experience, apply? "yes" if it asks for a bachelor's /
+  undergraduate degree or targets students, new grads or campus hires; "no" if it requires (or
+  wants candidates pursuing) an MBA, master's, PhD, JD or other graduate degree, or prior
+  full-time work; "unclear" if the posting doesn't say. A "no" means the rating must be No.
+  Always include one pointer on the degree requirement, quoting the posting.
 - starts_before_summer_2027: true if the posting needs a start before ~May 2027 or a cohort
   after 2027 (e.g. 2028 availability).
 If a posting has a "Screening note", the keyword screen found it a step off-lane: rate it Good
@@ -165,7 +172,7 @@ OPENAI_COMPATIBLE = [
 def _openai_compatible(system: str, chunk: list, url: str, key_env: str, model: str) -> list[Rating]:
     schema_hint = ('Respond with JSON only, no prose: {"ratings": [{"id": str, "rating": "Strong"|"Good"|'
                    '"Stretch"|"No", "reason": str, "pointers": [str, ...], '
-                   '"starts_before_summer_2027": bool}]}')
+                   '"undergrad_eligible": "yes"|"no"|"unclear", "starts_before_summer_2027": bool}]}')
     body = json.dumps({
         "model": model, "temperature": 0.2, "max_tokens": 4000,
         "response_format": {"type": "json_object"},
