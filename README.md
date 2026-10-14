@@ -22,15 +22,27 @@ site/            the generated results page, deployed by Vercel
    No LinkedIn, no aggregators.
 2. Anything already in `state/seen.json` (company + job ID) is skipped.
 3. Keyword rules in `settings.toml` sort new postings into reject / borderline / clear.
-4. An LLM rates every survivor (Claude if `ANTHROPIC_API_KEY` has credit, else NVIDIA's free
-   Kimi K3, else Groq's free tier), guided by `profile.md` and your past verdicts in `examples.toml`. It
-   Strong / Good / Stretch / No with a one-line reason. Borderline postings rated No are dropped;
-   keyword-clear ones are kept. Without a key, clear postings get "Good", borderline "Stretch".
+4. An LLM reads each survivor's full posting (Claude if `ANTHROPIC_API_KEY` has credit, else
+   NVIDIA's free Kimi K3, else Groq) against `profile.md` and your past verdicts in
+   `examples.toml`. It rates Strong / Good / Stretch / No, writes 3-5 pointers, and says whether
+   a bachelor's grad can apply. Anything rated No, or not open to undergrads, is dropped.
 5. Matches are ordered by company priority, then fit. Each gets its own phone alert (tap opens
    the posting), then one summary alert opens the results page. No matches, no alert.
 6. Past matches that vanish from their board on two scans in a row (or whose posting link
    returns "not found") move to "Closed postings" on the page for 30 days.
 7. `state/` and `site/` are committed back, which redeploys the page.
+
+## Check-offs (Applied / Not interested)
+
+Each job card has **Applied** and **Not interested** buttons. A click calls `api/status.mjs` (a
+Vercel function), which saves it to `state/status.json` in this repo, so marks sync across devices
+and survive re-scans. Marked jobs move into the "Applied" / "Not interested" sections; Undo
+moves them back. Clicks don't redeploy the site (`ignoreCommand` in `vercel.json`).
+
+The buttons only appear in a browser that has opened the personal setup link
+(`https://job-scanner-robbie.vercel.app/#key=<STATUS_KEY>`) once. Vercel env vars:
+`STATUS_KEY` (that key) and `GITHUB_TOKEN` (writes `state/status.json`; currently the `gh` CLI
+token - replace it with a fine-grained token scoped to this repo's contents if you prefer).
 
 ## Running it
 
