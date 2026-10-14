@@ -444,5 +444,133 @@
   "notes": [
    "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
   ]
+ },
+ {
+  "date": "2026-10-14",
+  "label": "Wed Oct 14, 2026 \u00b7 3:06 AM ET",
+  "matches": [
+   {
+    "code": "5b9zsa",
+    "company": "Guidehouse",
+    "priority": 2,
+    "title": "Consulting Analyst - Life Sciences Advisory, Health Segment - Campus 2027",
+    "location": "US - NY, New York; US - IL, Chicago; US - PA, Philadelphia; US - MA, Boston (United States of America)",
+    "url": "https://guidehouse.wd1.myworkdayjobs.com/en-US/External/job/US---NY-New-York/Consulting-Analyst---Life-Sciences-Advisory--Health-Segment---Campus-2027_45253",
+    "posted": "2026-10-08",
+    "rating": "Good",
+    "reason": "Entry-level campus consulting analyst in NYC, but specialized life sciences practice.",
+    "pointers": [
+     "+ 'Minimum Years of Experience: 0 years' and 'Campus 2027' - squarely new-grad level",
+     "+ New York listed first among offices; no clearance, up to 25% travel - fine for you",
+     "+ 'Bachelor's degree... graduate by Summer 2027' - matches your April 2027 graduation exactly",
+     "~ Life Sciences focus (pharma, biotech, pricing, reimbursement) - specialized industry, not your ESG/generalist lane",
+     "~ Preferred majors are science-heavy (Biology, Pharmacy, Neuroscience) though Business is listed; your BA qualifies"
+    ],
+    "undergrad": "yes",
+    "early_start": false,
+    "key": "Guidehouse|45253"
+   }
+  ],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 773,
+    "new": 619,
+    "company": "Accenture"
+   },
+   "American Express": {
+    "fetched": 327,
+    "new": 14,
+    "company": "American Express"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 159,
+    "new": 2,
+    "company": "BlackRock"
+   },
+   "Deloitte": {
+    "fetched": 698,
+    "new": 50,
+    "company": "Deloitte"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "Guidehouse (External)": {
+    "fetched": 671,
+    "new": 631,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 100,
+    "new": 0,
+    "company": "IBM Consulting"
+   },
+   "JPMorgan Chase": {
+    "fetched": 722,
+    "new": 8,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 779,
+    "new": 0,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 192,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "North Highland": {
+    "fetched": 61,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "PepsiCo": {
+    "fetched": 902,
+    "new": 11,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 117,
+    "new": 39,
+    "company": "Pfizer"
+   },
+   "PwC (Global_Experienced_Careers)": {
+    "fetched": 1600,
+    "new": 0,
+    "company": "PwC"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 61,
+    "new": 872,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 162,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Watershed": {
+    "fetched": 37,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 0,
+    "company": "West Monroe"
+   }
+  },
+  "screened_out": 2245,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
+  ]
  }
 ]
