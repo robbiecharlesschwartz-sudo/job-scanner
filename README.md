@@ -39,9 +39,8 @@ Vercel function), which saves it to `state/status.json` in this repo, so marks s
 and survive re-scans. Marked jobs move into the "Applied" / "Not interested" sections; Undo
 moves them back. Clicks don't redeploy the site (`ignoreCommand` in `vercel.json`).
 
-The buttons only appear in a browser that has opened the personal setup link
-(`https://job-scanner-robbie.vercel.app/#key=<STATUS_KEY>`) once. Vercel env vars:
-`STATUS_KEY` (that key) and `GITHUB_TOKEN` (writes `state/status.json`; currently the `gh` CLI
+The buttons work on the plain URL with no setup (the site is unlisted and marks are undoable).
+Vercel env var: `GITHUB_TOKEN` (writes `state/status.json`; currently the `gh` CLI
 token - replace it with a fine-grained token scoped to this repo's contents if you prefer).
 
 ## Running it

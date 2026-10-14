@@ -63,9 +63,6 @@ details.key>summary{font-weight:600;cursor:pointer}
 .card[data-s="applied"]{border-left:4px solid var(--strong-ink)}
 .card[data-s="not_interested"]{opacity:.65}
 .stamp{font-size:12px;color:var(--muted);margin-left:auto;align-self:center}
-body.nokey .acts{display:none}
-.keynote{display:none;font-size:13px;color:var(--muted);margin:0 0 12px}
-body.nokey .keynote{display:block}
 details.done{margin:14px 0 0;font-size:15px}
 details.done>summary{font-weight:600;cursor:pointer;padding:10px 0;border-bottom:1px solid var(--line)}
 details.done>summary span{color:var(--muted);font-weight:400;font-size:13px}
@@ -85,13 +82,7 @@ document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click'
   const r=b.dataset.r;document.querySelectorAll('.card').forEach(c=>{c.hidden=!!r&&c.dataset.r!==r});
 }));
 
-// Check-offs. The key comes from a one-time setup link (#key=...) and stays in this browser.
-let key=null;
-try{
-  const m=location.hash.match(/key=([\w-]+)/);
-  if(m){localStorage.setItem('jsk',m[1]);history.replaceState(null,'',location.pathname);}
-  key=localStorage.getItem('jsk');
-}catch(e){}
+// Check-offs: saved to the private repo through /api/status, so they sync across devices.
 const LABEL={applied:'Applied',not_interested:'Not interested'};
 function place(card,st){
   const s=st&&st.status;
@@ -108,7 +99,7 @@ function counts(){
   }
 }
 async function api(method,body){
-  const r=await fetch('/api/status',{method,headers:{'Content-Type':'application/json','X-Status-Key':key},
+  const r=await fetch('/api/status',{method,headers:{'Content-Type':'application/json'},
     body:body&&JSON.stringify(body)});
   if(!r.ok)throw new Error(r.status);
   return r.json();
@@ -117,8 +108,7 @@ function applyAll(data){
   document.querySelectorAll('.card[data-key]').forEach(c=>place(c,data[c.dataset.key]));
   counts();
 }
-if(!key){document.body.classList.add('nokey');}
-else{
+{
   api('GET').then(applyAll).catch(()=>{});
   document.addEventListener('click',async ev=>{
     const btn=ev.target.closest('.acts button');if(!btn)return;
@@ -236,8 +226,6 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
 <h1>Job Scanner</h1>
 <p class="sub">Early-career consulting &amp; strategy openings at target companies.
 Last scan {e(latest.get("label", "never"))}. {total} matches across the last {len(runs)} scans, newest first.</p>
-<p class="keynote">Check-off buttons are off on this device. Open your personal setup link once
-here to turn them on.</p>
 {_key()}{chips}{"".join(sections)}{done_html}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)

@@ -1,6 +1,6 @@
 // Saves "Applied" / "Not interested" check-offs from the results page into state/status.json in
 // the private repo, so they sync across devices and the scanner can read them.
-// Env: GITHUB_TOKEN (repo contents write), STATUS_KEY (shared secret the page sends), REPO.
+// Env: GITHUB_TOKEN (repo contents write), REPO.
 const REPO = process.env.REPO || "robbiecharlesschwartz-sudo/job-scanner";
 const PATH = "state/status.json";
 const ALLOWED = new Set(["applied", "not_interested"]);
@@ -28,9 +28,6 @@ async function load() {
 
 export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
-  if (!process.env.STATUS_KEY || req.headers["x-status-key"] !== process.env.STATUS_KEY) {
-    return res.status(401).json({ error: "bad key" });
-  }
   try {
     if (req.method === "GET") return res.status(200).json((await load()).data);
     if (req.method !== "POST") return res.status(405).end();
