@@ -28,8 +28,8 @@ site/            the generated results page, deployed by Vercel
    keyword-clear ones are kept. Without a key, clear postings get "Good", borderline "Stretch".
 5. Matches are ordered by company priority, then fit. Each gets its own phone alert (tap opens
    the posting), then one summary alert opens the results page. No matches, no alert.
-6. Past matches that vanish from their board on two scans in a row move to "Closed postings"
-   on the page for 30 days.
+6. Past matches that vanish from their board on two scans in a row (or whose posting link
+   returns "not found") move to "Closed postings" on the page for 30 days.
 7. `state/` and `site/` are committed back, which redeploys the page.
 
 ## Running it
@@ -41,7 +41,8 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 .venv/bin/python -m scanner --only Ramp EY     # just these companies
 ```
 
-In production it runs daily on GitHub Actions (`.github/workflows/daily-scan.yml`, 8 AM ET).
+In production it runs on GitHub Actions (`.github/workflows/daily-scan.yml`) at 7:23 AM ET with a
+backup run at 11:47 AM ET; a failed run sends a phone alert.
 Trigger a run by hand from the repo's Actions tab, "daily-scan", "Run workflow".
 
 Secrets the workflow reads (repo Settings, Secrets and variables, Actions):

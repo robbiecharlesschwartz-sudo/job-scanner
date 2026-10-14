@@ -2,7 +2,10 @@ name: daily-scan
 
 on:
   schedule:
-    - cron: "0 12 * * *"   # 12:00 UTC = 8 AM EDT / 7 AM EST
+    # Off the top of the hour: GitHub delays busy :00 schedules by hours. The second run is a
+    # backup in case one is dropped; it never re-alerts (only unseen postings alert).
+    - cron: "23 11 * * *"   # 7:23 AM EDT / 6:23 AM EST
+    - cron: "47 15 * * *"   # 11:47 AM EDT / 10:47 AM EST
   workflow_dispatch:         # "Run workflow" button for a manual scan
     inputs:
       check_ai:
@@ -51,3 +54,13 @@ jobs:
           git commit -m "Scan $(TZ=America/New_York date '+%Y-%m-%d %H:%M %Z')"
           git pull --rebase origin main
           git push
+
+      - name: Alert if the scan failed
+        if: failure()
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          curl -s -H "Title: Job Scanner run failed" -H "Tags: warning" \
+            -H "Click: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            -d "Today's scan hit an error. Tap to see what happened; the next scheduled run will retry." \
+            "https://ntfy.sh/$NTFY_TOPIC"

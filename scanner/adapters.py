@@ -54,7 +54,7 @@ def _request(url: str, data: bytes | None = None, headers: dict | None = None,
                 return r.read().decode("utf-8", "replace")
         except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
             last = e
-            if isinstance(e, urllib.error.HTTPError) and e.code in (400, 401, 403, 404, 422):
+            if isinstance(e, urllib.error.HTTPError) and e.code in (400, 401, 403, 404, 410, 422):
                 break
             time.sleep(2 * (attempt + 1))
     raise RuntimeError(f"{url}: {last}")

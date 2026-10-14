@@ -64,6 +64,15 @@ def fetch_all(companies: list[dict]) -> tuple[list, dict]:
     return jobs, sources
 
 
+def posting_gone(url: str) -> bool:
+    """True only on a definite 404/410 from the posting page; anything else proves nothing."""
+    try:
+        adapters.get_text(url)
+        return False
+    except RuntimeError as e:
+        return any(f"HTTP Error {c}" in str(e) for c in (404, 410))
+
+
 def check_ai() -> int:
     settings = tomllib.loads((ROOT / "settings.toml").read_text())
     sample = adapters.Job(company="Deloitte", priority=1, job_id="check", title="Strategy Analyst",
@@ -218,7 +227,8 @@ def main(argv=None) -> int:
             t.update(misses=0, closed_on=None, last_listed=today)
         elif not t.get("closed_on"):
             t["misses"] = t.get("misses", 0) + 1
-            if t["misses"] >= 2:
+            # Two misses in a row = closed. Sooner if the posting link itself is gone.
+            if t["misses"] >= 2 or posting_gone(t["url"]):
                 t["closed_on"] = today
     for m in run["matches"]:
         tracked.setdefault(m["key"], {**m, "first_seen": today, "last_listed": today,
