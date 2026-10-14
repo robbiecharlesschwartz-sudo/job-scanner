@@ -1,21 +1,21 @@
 {
  "date": "2026-10-14",
- "label": "Wed Oct 14, 2026 \u00b7 3:19 PM ET",
+ "label": "Wed Oct 14, 2026 \u00b7 3:42 PM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
    "fetched": 772,
-   "new": 7,
+   "new": 0,
    "company": "Accenture"
   },
   "AlixPartners": {
    "fetched": 113,
-   "new": 1,
+   "new": 0,
    "company": "AlixPartners"
   },
   "American Express": {
    "fetched": 335,
-   "new": 13,
+   "new": 1,
    "company": "American Express"
   },
   "Axion Ray": {
@@ -39,13 +39,13 @@
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 702,
-   "new": 37,
+   "fetched": 698,
+   "new": 17,
    "company": "Deloitte"
   },
   "ERM (ERM_Careers)": {
    "fetched": 264,
-   "new": 7,
+   "new": 0,
    "company": "ERM"
   },
   "EY": {
@@ -65,12 +65,12 @@
   },
   "Guidehouse (External)": {
    "fetched": 686,
-   "new": 7,
+   "new": 0,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
    "fetched": 105,
-   "new": 5,
+   "new": 0,
    "company": "IBM Consulting"
   },
   "Innosight (huroncareers)": {
@@ -80,12 +80,12 @@
   },
   "JPMorgan Chase": {
    "fetched": 715,
-   "new": 18,
+   "new": 1,
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 792,
-   "new": 5,
+   "fetched": 790,
+   "new": 0,
    "company": "KPMG"
   },
   "Kearney": {
@@ -109,18 +109,18 @@
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 899,
-   "new": 10,
+   "fetched": 900,
+   "new": 1,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
    "fetched": 132,
-   "new": 11,
+   "new": 0,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 57,
-   "new": 4,
+   "new": 0,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
@@ -140,7 +140,7 @@
   },
   "Strategy& (PwC) (US_Entry_Level_Careers)": {
    "fetched": 4,
-   "new": 1,
+   "new": 0,
    "company": "Strategy& (PwC)"
   },
   "Strategy& (PwC) (US_Experienced_Careers)": {
@@ -150,7 +150,7 @@
   },
   "Watershed": {
    "fetched": 34,
-   "new": 1,
+   "new": 0,
    "company": "Watershed"
   },
   "West Monroe": {
@@ -164,19 +164,19 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 127,
+ "screened_out": 20,
  "notes": [],
  "log": {
-  "fetched": 8077,
+  "fetched": 8072,
   "sources_ok": 30,
   "sources_failed": [],
-  "new_postings": 127,
+  "new_postings": 20,
   "passed_rules": 0,
   "new_matches": [],
   "rerated": [],
   "closed": [],
   "dismissed_total": 0,
-  "open_total": 23,
+  "open_total": 24,
   "alerts": 0,
   "emails": 0
  }
