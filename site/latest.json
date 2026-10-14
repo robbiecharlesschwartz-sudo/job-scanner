@@ -1,71 +1,7 @@
 {
  "date": "2026-10-14",
- "label": "Wed Oct 14, 2026 \u00b7 3:34 AM ET",
- "matches": [
-  {
-   "code": "axzrb3",
-   "company": "McKinsey",
-   "priority": 1,
-   "title": "Business Analyst",
-   "location": "Abu Dhabi; Addis Ababa; Athens; Atlanta; Auckland; Austin; Baku; Bangkok; Barcelona; Beijing; Belo Horizonte; Berlin; Bogota; Boston; Brisbane; Bucharest; Budapest; Buenos Aires; Cairo; Calgary; Canberra; Casablanca; Charlotte; Chicago; Cleveland; Cologne; Columbus; Connecticut - Darien; Copenhagen; Dallas; Denver; Detroit; Doha; Dublin; Dusseldorf; Frankfurt; Geneva; Gothenburg; Guatemala City; Hamburg; Hanoi; Helsinki; Hong Kong SAR; Houston; Monterrey; Jakarta; Johannesburg; Kuala Lumpur; Kuwait; Kyiv; Lagos; Lima; Lisbon; London; Luanda; Madrid; Manama; Manila; Medellin; Melbourne; Mexico City; Miami; Milan; Minneapolis; Montreal; Munich; Nairobi; New Jersey; New York City; Seoul; Shanghai; Shenzhen; Taipei; Tokyo; Osaka; Panama City; Paris; Perth; Philadelphia; Pittsburgh; Prague; Germany (Berlin, Cologne, Dusseldorf, Frankfurt, Hamburg, Munich, Stuttgart, Vienna); Quito; Raleigh; Rio de Janeiro; Riyadh; Rome; Salvador; San Francisco; San Jose; Santiago; Santo Domingo; Sao Paulo; Seattle; Silicon Valley; Singapore City; Southern California; St. Louis; Stockholm; Stuttgart; Sydney; Amsterdam; Vienna; Zurich; Tel Aviv; Toronto; Warsaw; Washington DC; Zagreb (US)",
-   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-15136",
-   "posted": "",
-   "rating": "Strong",
-   "reason": "Classic entry-level McKinsey Business Analyst, undergrad degree, NYC among offices.",
-   "pointers": [
-    "+ 'Typically, an undergraduate degree with less than 4 years of work experience' - matches your April 2027 bachelor's and internship-only background",
-    "+ New York City is on the long office list - meets your NYC hard requirement",
-    "+ Core strategy consulting: 'take ownership of a workstream to solve some of the toughest challenges our clients face' - your top lane",
-    "+ Your GDI ESG internship (CDP/EcoVadis, client RFPs) fits the research/analysis/client-facing work described",
-    "~ Extensive travel and non-traditional hours flagged; you're open to travel"
-   ],
-   "undergrad": "yes",
-   "early_start": false,
-   "key": "McKinsey|15136"
-  },
-  {
-   "code": "8r9yck",
-   "company": "McKinsey",
-   "priority": 1,
-   "title": "Business Analyst - Operations",
-   "location": "Atlanta; Austin; Boston; Chicago; Connecticut - Darien; Dallas; Denver; Detroit; Houston; Miami; Minneapolis; New Jersey; New York City; Seattle; Washington DC (US)",
-   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-operations-103025",
-   "posted": "",
-   "rating": "Good",
-   "reason": "Entry-level McKinsey BA in NYC, but operations-focused and asks 1+ years experience.",
-   "pointers": [
-    "+ 'Business Analyst' is McKinsey's undergrad entry title; bachelor's degree required - fits your April 2027 BA",
-    "+ New York City listed among offices; open to travel, and posting wants comfort with 'up to 80%' travel",
-    "~ Operations lane (supply chain, S&OP, procurement, manufacturing) - a step to the side of your strategy/ESG core",
-    "- Requires '1+ years of experience' and 'led operational improvements'; you'd have one ESG internship, not ops transformation",
-    "- Board hint 'EPBA - Experienced Professional Business Analyst' suggests they may expect post-grad experience"
-   ],
-   "undergrad": "yes",
-   "early_start": false,
-   "key": "McKinsey|103025"
-  },
-  {
-   "code": "kaes65",
-   "company": "McKinsey",
-   "priority": 1,
-   "title": "Business Analyst - McKinsey Transformation",
-   "location": "Atlanta; Boston; Charlotte; Chicago; Connecticut - Darien; Dallas; Houston; Miami; New Jersey; New York City; Philadelphia; Washington DC (US)",
-   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-mckinseytransformation-104428",
-   "posted": "",
-   "rating": "Stretch",
-   "reason": "Transformation BA asks 1+ year experience; experienced-hire track but bachelor's accepted.",
-   "pointers": [
-    "- '1+ year of experience focused on operations, finance/accounting, and or go-to-market' - you'd have one ESG internship, not ops/finance",
-    "~ Board hint 'EPBA - Experienced Professional Business Analyst' and 'We hire experienced professionals from industry' suggest above new-grad level",
-    "+ 'Bachelor's degree' is the stated education requirement - no MBA or graduate degree needed",
-    "+ New York City listed among offices; transformation/operations consulting is a side lane (Good-tier) for you",
-    "- 'Comfortable with extensive travel, up to 80%' - heavy but you're open to travel"
-   ],
-   "undergrad": "yes",
-   "early_start": false,
-   "key": "McKinsey|104428"
-  }
- ],
+ "label": "Wed Oct 14, 2026 \u00b7 3:44 AM ET",
+ "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
    "fetched": 773,
@@ -82,18 +18,28 @@
    "new": 0,
    "company": "American Express"
   },
+  "Axion Ray": {
+   "fetched": 14,
+   "new": 14,
+   "company": "Axion Ray"
+  },
   "BCG": {
    "fetched": 90,
    "new": 0,
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 159,
-   "new": 0,
+   "fetched": 160,
+   "new": 1,
    "company": "BlackRock"
   },
+  "Capco": {
+   "fetched": 707,
+   "new": 707,
+   "company": "Capco"
+  },
   "Deloitte": {
-   "fetched": 695,
+   "fetched": 696,
    "new": 1,
    "company": "Deloitte"
   },
@@ -112,6 +58,11 @@
    "new": 0,
    "company": "EY-Parthenon"
   },
+  "First & First Consulting": {
+   "fetched": 0,
+   "new": 0,
+   "company": "First & First Consulting"
+  },
   "Guidehouse (External)": {
    "fetched": 671,
    "new": 0,
@@ -122,13 +73,18 @@
    "new": 0,
    "company": "IBM Consulting"
   },
+  "Innosight (huroncareers)": {
+   "fetched": 3,
+   "new": 3,
+   "company": "Innosight"
+  },
   "JPMorgan Chase": {
-   "fetched": 721,
+   "fetched": 720,
    "new": 0,
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 780,
+   "fetched": 782,
    "new": 0,
    "company": "KPMG"
   },
@@ -139,7 +95,7 @@
   },
   "McKinsey": {
    "fetched": 89,
-   "new": 89,
+   "new": 0,
    "company": "McKinsey"
   },
   "North Highland": {
@@ -154,7 +110,7 @@
   },
   "PepsiCo": {
    "fetched": 904,
-   "new": 0,
+   "new": 1,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
@@ -162,13 +118,13 @@
    "new": 0,
    "company": "Pfizer"
   },
-  "PwC (Global_Experienced_Careers)": {
-   "fetched": 1603,
-   "new": 0,
+  "PwC (US_Entry_Level_Careers)": {
+   "fetched": 57,
+   "new": 518,
    "company": "PwC"
   },
-  "PwC (US_Entry_Level_Careers)": {
-   "fetched": 61,
+  "PwC (US_Experienced_Careers)": {
+   "fetched": 518,
    "new": 0,
    "company": "PwC"
   },
@@ -182,6 +138,16 @@
    "new": 0,
    "company": "Slalom"
   },
+  "Strategy& (PwC) (US_Entry_Level_Careers)": {
+   "fetched": 4,
+   "new": 24,
+   "company": "Strategy& (PwC)"
+  },
+  "Strategy& (PwC) (US_Experienced_Careers)": {
+   "fetched": 20,
+   "new": 0,
+   "company": "Strategy& (PwC)"
+  },
   "Watershed": {
    "fetched": 37,
    "new": 0,
@@ -191,10 +157,13 @@
    "fetched": 126,
    "new": 0,
    "company": "West Monroe"
+  },
+  "Zocdoc": {
+   "fetched": 58,
+   "new": 58,
+   "company": "Zocdoc"
   }
  },
- "screened_out": 87,
- "notes": [
-  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
- ]
+ "screened_out": 1327,
+ "notes": []
 }
