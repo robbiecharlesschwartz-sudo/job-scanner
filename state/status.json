@@ -6,5 +6,9 @@
  "JPMorgan Chase|210765640": {
   "status": "applied",
   "at": "2026-10-14"
+ },
+ "Accenture|R00328324": {
+  "status": "not_interested",
+  "at": "2026-10-14"
  }
 }
