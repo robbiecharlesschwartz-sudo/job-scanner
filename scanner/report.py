@@ -186,6 +186,9 @@ def _health(run: dict) -> str:
             f'{notes}<table>{"".join(rows)}</table></details>')
 
 
+DISMISS_NOTE = "7 days after you mark them"
+
+
 def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dict] | None = None,
                status: dict | None = None) -> None:
     closed = closed or []
@@ -205,8 +208,11 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
             st = status.get(m.get("key", ""))
             html_ = _card(m, closed_on.get(m["code"]), home, st)
             (done[st["status"]] if st and st["status"] in done else cards).append(html_)
-        body = "".join(cards) or ('<p class="empty">No new matches.</p>' if not ms else "")
-        sections.append(head + f'<div class="cards" id="{home}">{body}</div>' + _health(run))
+        empty = ("No new matches." if not run.get("found", len(ms)) else
+                 "Every match from this scan has since closed, been marked, or been dismissed.")
+        body = "".join(cards) or (f'<p class="empty">{empty}</p>' if not ms else "")
+        sections.append(head + f'<div class="cards" id="{home}">{body}</div>'
+                        + ("" if run.get("earlier") else _health(run)))
     done_html = "".join(
         f'<details class="done"><summary>{label} <span>· <b id="n-{k}">{len(done[k])}</b></span></summary>'
         f'<div id="done-{k}">{"".join(done[k])}</div></details>'
@@ -225,7 +231,8 @@ def write_site(site_dir: Path, runs: list[dict], site_url: str, closed: list[dic
 <title>Job Scanner</title><style>{CSS}</style></head><body><main>
 <h1>Job Scanner</h1>
 <p class="sub">Early-career consulting &amp; strategy openings at target companies.
-Last scan {e(latest.get("label", "never"))}. {total} matches across the last {len(runs)} scans, newest first.</p>
+Last scan {e(latest.get("label", "never"))}. {total} open matches, newest first.
+"Not interested" cards are removed {DISMISS_NOTE}.</p>
 {_key()}{chips}{"".join(sections)}{done_html}{closed_html}
 </main><script>{JS}</script></body></html>"""
     (site_dir / "index.html").write_text(page)

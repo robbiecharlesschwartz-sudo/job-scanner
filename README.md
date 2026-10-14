@@ -38,6 +38,12 @@ Each job card has **Applied** and **Not interested** buttons. A click calls `api
 Vercel function), which saves it to `state/status.json` in this repo, so marks sync across devices
 and survive re-scans. Marked jobs move into the "Applied" / "Not interested" sections; Undo
 moves them back. Clicks don't redeploy the site (`ignoreCommand` in `vercel.json`).
+"Not interested" cards are dropped from the page 7 days after marking (`DISMISS_DAYS`) and never
+re-alert; the mark stays in `state/status.json` as the record.
+
+Every scan also refreshes the matches already on the page: title, link, location and posted date
+come from the live listing, re-rated postings take their new rating, and an open match stays on
+the page (under "Earlier finds" once its scan scrolls off) until its posting closes.
 
 The buttons work on the plain URL with no setup (the site is unlisted and marks are undoable).
 Vercel env var: `GITHUB_TOKEN` (writes `state/status.json`; currently the `gh` CLI
