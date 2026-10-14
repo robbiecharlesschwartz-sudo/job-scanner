@@ -16,6 +16,31 @@
   "title": "Life Sciences R&D Management Consultant",
   "url": "https://accenture.wd103.myworkdayjobs.com/en-US/AccentureCareers/job/PA---Philadelphia/Life-Sciences-R-D-Management-Consultant_R00328324"
  },
+ "BCG|56396": {
+  "closed_on": null,
+  "code": "gy99tk",
+  "company": "BCG",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "BCG|56396",
+  "last_listed": "2026-10-14",
+  "location": "Atlanta, Georgia, United States of America; Chicago, Illinois, United States of America; Brooklyn, New York, United States of America",
+  "misses": 0,
+  "pointers": [
+   "+ 'BS from an accredited university' - your April 2027 bachelor's qualifies; MS only 'preferred'",
+   "+ Brooklyn, New York listed among locations - meets your NYC requirement",
+   "~ Procurement/supply chain consulting at Inverto (BCG-backed) - adjacent to strategy, not core lane",
+   "- Requires '1+ years of relevant professional experience' - you have one ESG internship, not full-time",
+   "- 'Significant travel to client sites' expected - you're open to travel, so manageable"
+  ],
+  "posted": "2026-07-17",
+  "priority": 1,
+  "rating": "Stretch",
+  "reason": "BCG-backed procurement consulting in Brooklyn, but asks 1+ years professional experience.",
+  "title": "Inverto | Consultant, Procurement",
+  "undergrad": "yes",
+  "url": "https://careers.bcg.com/global/en/job/56396"
+ },
  "Deloitte|355048": {
   "closed_on": null,
   "code": "82kupc",
@@ -347,6 +372,81 @@
   "reason": "In-house strategy analyst in NYC, but asks 2+ years strategy experience.",
   "title": "Global Technology Strategy, Analyst",
   "url": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210800212"
+ },
+ "McKinsey|103025": {
+  "closed_on": null,
+  "code": "8r9yck",
+  "company": "McKinsey",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "McKinsey|103025",
+  "last_listed": "2026-10-14",
+  "location": "Atlanta; Austin; Boston; Chicago; Connecticut - Darien; Dallas; Denver; Detroit; Houston; Miami; Minneapolis; New Jersey; New York City; Seattle; Washington DC (US)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Bachelor's degree' required - your April 2027 BA qualifies, no graduate degree asked",
+   "+ New York City among listed offices - meets your NYC hard requirement",
+   "~ Operations practice (supply chain, S&OP, manufacturing) - side lane vs. your strategy target",
+   "- Wants '1+ years of experience' and 'led operational improvements' - you have one internship",
+   "~ 'Extensive travel, up to 80%' - you're open to travel"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Good",
+  "reason": "Entry-level McKinsey BA in NYC, but operations-focused and prefers 1+ years.",
+  "title": "Business Analyst - Operations",
+  "undergrad": "yes",
+  "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-operations-103025"
+ },
+ "McKinsey|104428": {
+  "closed_on": null,
+  "code": "kaes65",
+  "company": "McKinsey",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "McKinsey|104428",
+  "last_listed": "2026-10-14",
+  "location": "Atlanta; Boston; Charlotte; Chicago; Connecticut - Darien; Dallas; Houston; Miami; New Jersey; New York City; Philadelphia; Washington DC (US)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Bachelor's degree' is the only degree requirement - your 2027 BA qualifies",
+   "+ New York City among listed offices - meets your location requirement",
+   "~ 'Business Analyst' is McKinsey's entry-level title, though board hints 'Experienced Professional BA'",
+   "~ Transformation/implementation-focused work - a step sideways from pure strategy consulting",
+   "- Asks '1+ year of experience' in operations/finance - you have internship experience only"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Good",
+  "reason": "McKinsey Business Analyst in NYC; transformation lane, 1+ year experience is a soft ask.",
+  "title": "Business Analyst - McKinsey Transformation",
+  "undergrad": "yes",
+  "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-mckinseytransformation-104428"
+ },
+ "Oliver Wyman|R_335277": {
+  "closed_on": null,
+  "code": "zwyg55",
+  "company": "Oliver Wyman",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "Oliver Wyman|R_335277",
+  "last_listed": "2026-10-14",
+  "location": "New York - 1166 (United States of America)",
+  "misses": 0,
+  "pointers": [
+   "+ NYC location (1166 Ave of the Americas) - meets your hard location requirement",
+   "+ Work is core consulting: 'quantitative and qualitative analyses', slides, client interaction - squarely your lane",
+   "~ No degree, years, or level stated anywhere in the posting - can't confirm new-grad eligibility",
+   "- 'Temporary' Consultant at $225/hour suggests an experienced contract hire, not a campus analyst role",
+   "- No mention of students, new grads, or 2027 cohort; start timing unclear"
+  ],
+  "posted": "2026-09-25",
+  "priority": 2,
+  "rating": "Stretch",
+  "reason": "NYC management consulting work, but 'Temporary Consultant' with no stated level or requirements.",
+  "title": "Oliver Wyman- Temporary Consultant / Specialist",
+  "undergrad": "unclear",
+  "url": "https://mmc.wd1.myworkdayjobs.com/en-US/MMC/job/New-York---1166/Oliver-Wyman--Temporary-Consultant---Specialist_R_335277"
  },
  "Ramp|606475af-b74f-42c4-978a-dde138a86ac7": {
   "closed_on": null,
