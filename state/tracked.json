@@ -423,6 +423,31 @@
   "undergrad": "yes",
   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-mckinseytransformation-104428"
  },
+ "McKinsey|15136": {
+  "closed_on": null,
+  "code": "axzrb3",
+  "company": "McKinsey",
+  "early_start": false,
+  "first_seen": "2026-10-14",
+  "key": "McKinsey|15136",
+  "last_listed": "2026-10-14",
+  "location": "Abu Dhabi; Addis Ababa; Athens; Atlanta; Auckland; Austin; Baku; Bangkok; Barcelona; Beijing; Belo Horizonte; Berlin; Bogota; Boston; Brisbane; Bucharest; Budapest; Buenos Aires; Cairo; Calgary; Canberra; Casablanca; Charlotte; Chicago; Cleveland; Cologne; Columbus; Connecticut - Darien; Copenhagen; Dallas; Denver; Detroit; Doha; Dublin; Dusseldorf; Frankfurt; Geneva; Gothenburg; Guatemala City; Hamburg; Hanoi; Helsinki; Hong Kong SAR; Houston; Monterrey; Jakarta; Johannesburg; Kuala Lumpur; Kuwait; Kyiv; Lagos; Lima; Lisbon; London; Luanda; Madrid; Manama; Manila; Medellin; Melbourne; Mexico City; Miami; Milan; Minneapolis; Montreal; Munich; Nairobi; New Jersey; New York City; Seoul; Shanghai; Shenzhen; Taipei; Tokyo; Osaka; Panama City; Paris; Perth; Philadelphia; Pittsburgh; Prague; Germany (Berlin, Cologne, Dusseldorf, Frankfurt, Hamburg, Munich, Stuttgart, Vienna); Quito; Raleigh; Rio de Janeiro; Riyadh; Rome; Salvador; San Francisco; San Jose; Santiago; Santo Domingo; Sao Paulo; Seattle; Silicon Valley; Singapore City; Southern California; St. Louis; Stockholm; Stuttgart; Sydney; Amsterdam; Vienna; Zurich; Tel Aviv; Toronto; Warsaw; Washington DC; Zagreb (US)",
+  "misses": 0,
+  "pointers": [
+   "+ 'Typically, an undergraduate degree with less than 4 years of work experience' - matches your April 2027 bachelor's and internship-only background",
+   "+ New York City is on the long office list - meets your NYC hard requirement",
+   "+ Core strategy consulting: 'take ownership of a workstream to solve some of the toughest challenges our clients face' - your top lane",
+   "+ Your GDI ESG internship (CDP/EcoVadis, client RFPs) fits the research/analysis/client-facing work described",
+   "~ Extensive travel and non-traditional hours flagged; you're open to travel"
+  ],
+  "posted": "",
+  "priority": 1,
+  "rating": "Strong",
+  "reason": "Classic entry-level McKinsey Business Analyst, undergrad degree, NYC among offices.",
+  "title": "Business Analyst",
+  "undergrad": "yes",
+  "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-15136"
+ },
  "Oliver Wyman|R_335277": {
   "closed_on": null,
   "code": "zwyg55",

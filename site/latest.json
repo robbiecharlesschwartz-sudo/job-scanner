@@ -1,27 +1,27 @@
 {
  "date": "2026-10-14",
- "label": "Wed Oct 14, 2026 \u00b7 3:25 AM ET",
+ "label": "Wed Oct 14, 2026 \u00b7 3:34 AM ET",
  "matches": [
   {
-   "code": "kaes65",
+   "code": "axzrb3",
    "company": "McKinsey",
    "priority": 1,
-   "title": "Business Analyst - McKinsey Transformation",
-   "location": "Atlanta; Boston; Charlotte; Chicago; Connecticut - Darien; Dallas; Houston; Miami; New Jersey; New York City; Philadelphia; Washington DC (US)",
-   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-mckinseytransformation-104428",
+   "title": "Business Analyst",
+   "location": "Abu Dhabi; Addis Ababa; Athens; Atlanta; Auckland; Austin; Baku; Bangkok; Barcelona; Beijing; Belo Horizonte; Berlin; Bogota; Boston; Brisbane; Bucharest; Budapest; Buenos Aires; Cairo; Calgary; Canberra; Casablanca; Charlotte; Chicago; Cleveland; Cologne; Columbus; Connecticut - Darien; Copenhagen; Dallas; Denver; Detroit; Doha; Dublin; Dusseldorf; Frankfurt; Geneva; Gothenburg; Guatemala City; Hamburg; Hanoi; Helsinki; Hong Kong SAR; Houston; Monterrey; Jakarta; Johannesburg; Kuala Lumpur; Kuwait; Kyiv; Lagos; Lima; Lisbon; London; Luanda; Madrid; Manama; Manila; Medellin; Melbourne; Mexico City; Miami; Milan; Minneapolis; Montreal; Munich; Nairobi; New Jersey; New York City; Seoul; Shanghai; Shenzhen; Taipei; Tokyo; Osaka; Panama City; Paris; Perth; Philadelphia; Pittsburgh; Prague; Germany (Berlin, Cologne, Dusseldorf, Frankfurt, Hamburg, Munich, Stuttgart, Vienna); Quito; Raleigh; Rio de Janeiro; Riyadh; Rome; Salvador; San Francisco; San Jose; Santiago; Santo Domingo; Sao Paulo; Seattle; Silicon Valley; Singapore City; Southern California; St. Louis; Stockholm; Stuttgart; Sydney; Amsterdam; Vienna; Zurich; Tel Aviv; Toronto; Warsaw; Washington DC; Zagreb (US)",
+   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-15136",
    "posted": "",
-   "rating": "Good",
-   "reason": "McKinsey Business Analyst in NYC; transformation lane, 1+ year experience is a soft ask.",
+   "rating": "Strong",
+   "reason": "Classic entry-level McKinsey Business Analyst, undergrad degree, NYC among offices.",
    "pointers": [
-    "+ 'Bachelor's degree' is the only degree requirement - your 2027 BA qualifies",
-    "+ New York City among listed offices - meets your location requirement",
-    "~ 'Business Analyst' is McKinsey's entry-level title, though board hints 'Experienced Professional BA'",
-    "~ Transformation/implementation-focused work - a step sideways from pure strategy consulting",
-    "- Asks '1+ year of experience' in operations/finance - you have internship experience only"
+    "+ 'Typically, an undergraduate degree with less than 4 years of work experience' - matches your April 2027 bachelor's and internship-only background",
+    "+ New York City is on the long office list - meets your NYC hard requirement",
+    "+ Core strategy consulting: 'take ownership of a workstream to solve some of the toughest challenges our clients face' - your top lane",
+    "+ Your GDI ESG internship (CDP/EcoVadis, client RFPs) fits the research/analysis/client-facing work described",
+    "~ Extensive travel and non-traditional hours flagged; you're open to travel"
    ],
    "undergrad": "yes",
    "early_start": false,
-   "key": "McKinsey|104428"
+   "key": "McKinsey|15136"
   },
   {
    "code": "8r9yck",
@@ -32,59 +32,38 @@
    "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-operations-103025",
    "posted": "",
    "rating": "Good",
-   "reason": "Entry-level McKinsey BA in NYC, but operations-focused and prefers 1+ years.",
+   "reason": "Entry-level McKinsey BA in NYC, but operations-focused and asks 1+ years experience.",
    "pointers": [
-    "+ 'Bachelor's degree' required - your April 2027 BA qualifies, no graduate degree asked",
-    "+ New York City among listed offices - meets your NYC hard requirement",
-    "~ Operations practice (supply chain, S&OP, manufacturing) - side lane vs. your strategy target",
-    "- Wants '1+ years of experience' and 'led operational improvements' - you have one internship",
-    "~ 'Extensive travel, up to 80%' - you're open to travel"
+    "+ 'Business Analyst' is McKinsey's undergrad entry title; bachelor's degree required - fits your April 2027 BA",
+    "+ New York City listed among offices; open to travel, and posting wants comfort with 'up to 80%' travel",
+    "~ Operations lane (supply chain, S&OP, procurement, manufacturing) - a step to the side of your strategy/ESG core",
+    "- Requires '1+ years of experience' and 'led operational improvements'; you'd have one ESG internship, not ops transformation",
+    "- Board hint 'EPBA - Experienced Professional Business Analyst' suggests they may expect post-grad experience"
    ],
    "undergrad": "yes",
    "early_start": false,
    "key": "McKinsey|103025"
   },
   {
-   "code": "gy99tk",
-   "company": "BCG",
+   "code": "kaes65",
+   "company": "McKinsey",
    "priority": 1,
-   "title": "Inverto | Consultant, Procurement",
-   "location": "Atlanta, Georgia, United States of America; Chicago, Illinois, United States of America; Brooklyn, New York, United States of America",
-   "url": "https://careers.bcg.com/global/en/job/56396",
-   "posted": "2026-07-17",
+   "title": "Business Analyst - McKinsey Transformation",
+   "location": "Atlanta; Boston; Charlotte; Chicago; Connecticut - Darien; Dallas; Houston; Miami; New Jersey; New York City; Philadelphia; Washington DC (US)",
+   "url": "https://www.mckinsey.com/careers/search-jobs/jobs/businessanalyst-mckinseytransformation-104428",
+   "posted": "",
    "rating": "Stretch",
-   "reason": "BCG-backed procurement consulting in Brooklyn, but asks 1+ years professional experience.",
+   "reason": "Transformation BA asks 1+ year experience; experienced-hire track but bachelor's accepted.",
    "pointers": [
-    "+ 'BS from an accredited university' - your April 2027 bachelor's qualifies; MS only 'preferred'",
-    "+ Brooklyn, New York listed among locations - meets your NYC requirement",
-    "~ Procurement/supply chain consulting at Inverto (BCG-backed) - adjacent to strategy, not core lane",
-    "- Requires '1+ years of relevant professional experience' - you have one ESG internship, not full-time",
-    "- 'Significant travel to client sites' expected - you're open to travel, so manageable"
+    "- '1+ year of experience focused on operations, finance/accounting, and or go-to-market' - you'd have one ESG internship, not ops/finance",
+    "~ Board hint 'EPBA - Experienced Professional Business Analyst' and 'We hire experienced professionals from industry' suggest above new-grad level",
+    "+ 'Bachelor's degree' is the stated education requirement - no MBA or graduate degree needed",
+    "+ New York City listed among offices; transformation/operations consulting is a side lane (Good-tier) for you",
+    "- 'Comfortable with extensive travel, up to 80%' - heavy but you're open to travel"
    ],
    "undergrad": "yes",
    "early_start": false,
-   "key": "BCG|56396"
-  },
-  {
-   "code": "zwyg55",
-   "company": "Oliver Wyman",
-   "priority": 2,
-   "title": "Oliver Wyman- Temporary Consultant / Specialist",
-   "location": "New York - 1166 (United States of America)",
-   "url": "https://mmc.wd1.myworkdayjobs.com/en-US/MMC/job/New-York---1166/Oliver-Wyman--Temporary-Consultant---Specialist_R_335277",
-   "posted": "2026-09-25",
-   "rating": "Stretch",
-   "reason": "NYC management consulting work, but 'Temporary Consultant' with no stated level or requirements.",
-   "pointers": [
-    "+ NYC location (1166 Ave of the Americas) - meets your hard location requirement",
-    "+ Work is core consulting: 'quantitative and qualitative analyses', slides, client interaction - squarely your lane",
-    "~ No degree, years, or level stated anywhere in the posting - can't confirm new-grad eligibility",
-    "- 'Temporary' Consultant at $225/hour suggests an experienced contract hire, not a campus analyst role",
-    "- No mention of students, new grads, or 2027 cohort; start timing unclear"
-   ],
-   "undergrad": "unclear",
-   "early_start": false,
-   "key": "Oliver Wyman|R_335277"
+   "key": "McKinsey|104428"
   }
  ],
  "sources": {
@@ -95,7 +74,7 @@
   },
   "AlixPartners": {
    "fetched": 112,
-   "new": 112,
+   "new": 0,
    "company": "AlixPartners"
   },
   "American Express": {
@@ -105,7 +84,7 @@
   },
   "BCG": {
    "fetched": 90,
-   "new": 90,
+   "new": 0,
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
@@ -114,13 +93,13 @@
    "company": "BlackRock"
   },
   "Deloitte": {
-   "fetched": 698,
+   "fetched": 695,
    "new": 1,
    "company": "Deloitte"
   },
   "ERM (ERM_Careers)": {
    "fetched": 258,
-   "new": 258,
+   "new": 0,
    "company": "ERM"
   },
   "EY": {
@@ -130,7 +109,7 @@
   },
   "EY-Parthenon": {
    "fetched": 160,
-   "new": 160,
+   "new": 0,
    "company": "EY-Parthenon"
   },
   "Guidehouse (External)": {
@@ -149,7 +128,7 @@
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 782,
+   "fetched": 780,
    "new": 0,
    "company": "KPMG"
   },
@@ -170,7 +149,7 @@
   },
   "Oliver Wyman (MMC)": {
    "fetched": 75,
-   "new": 75,
+   "new": 0,
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
@@ -184,13 +163,13 @@
    "company": "Pfizer"
   },
   "PwC (Global_Experienced_Careers)": {
-   "fetched": 1605,
+   "fetched": 1603,
    "new": 0,
    "company": "PwC"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 61,
-   "new": 5,
+   "new": 0,
    "company": "PwC"
   },
   "Ramp": {
@@ -214,8 +193,8 @@
    "company": "West Monroe"
   }
  },
- "screened_out": 786,
+ "screened_out": 87,
  "notes": [
-  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: The read operation timed out"
+  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go"
  ]
 }
