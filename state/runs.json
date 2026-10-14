@@ -1162,5 +1162,174 @@
   },
   "screened_out": 1327,
   "notes": []
+ },
+ {
+  "date": "2026-10-14",
+  "label": "Wed Oct 14, 2026 \u00b7 3:59 AM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 773,
+    "new": 0,
+    "company": "Accenture"
+   },
+   "AlixPartners": {
+    "fetched": 112,
+    "new": 0,
+    "company": "AlixPartners"
+   },
+   "American Express": {
+    "fetched": 327,
+    "new": 0,
+    "company": "American Express"
+   },
+   "Axion Ray": {
+    "fetched": 14,
+    "new": 0,
+    "company": "Axion Ray"
+   },
+   "BCG": {
+    "fetched": 90,
+    "new": 0,
+    "company": "BCG"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 160,
+    "new": 0,
+    "company": "BlackRock"
+   },
+   "Capco": {
+    "fetched": 707,
+    "new": 0,
+    "company": "Capco"
+   },
+   "Deloitte": {
+    "fetched": 695,
+    "new": 1,
+    "company": "Deloitte"
+   },
+   "ERM (ERM_Careers)": {
+    "fetched": 258,
+    "new": 0,
+    "company": "ERM"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "EY-Parthenon": {
+    "fetched": 160,
+    "new": 0,
+    "company": "EY-Parthenon"
+   },
+   "First & First Consulting": {
+    "fetched": 0,
+    "new": 0,
+    "company": "First & First Consulting"
+   },
+   "Guidehouse (External)": {
+    "fetched": 671,
+    "new": 0,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 100,
+    "new": 0,
+    "company": "IBM Consulting"
+   },
+   "Innosight (huroncareers)": {
+    "fetched": 3,
+    "new": 0,
+    "company": "Innosight"
+   },
+   "JPMorgan Chase": {
+    "fetched": 720,
+    "new": 0,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 796,
+    "new": 0,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 192,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "McKinsey": {
+    "fetched": 89,
+    "new": 0,
+    "company": "McKinsey"
+   },
+   "North Highland": {
+    "fetched": 61,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "Oliver Wyman (MMC)": {
+    "fetched": 75,
+    "new": 0,
+    "company": "Oliver Wyman"
+   },
+   "PepsiCo": {
+    "fetched": 904,
+    "new": 0,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 117,
+    "new": 0,
+    "company": "Pfizer"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 57,
+    "new": 0,
+    "company": "PwC"
+   },
+   "PwC (US_Experienced_Careers)": {
+    "fetched": 518,
+    "new": 0,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 162,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Strategy& (PwC) (US_Entry_Level_Careers)": {
+    "fetched": 4,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Strategy& (PwC) (US_Experienced_Careers)": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Watershed": {
+    "fetched": 37,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 0,
+    "company": "West Monroe"
+   },
+   "Zocdoc": {
+    "fetched": 58,
+    "new": 0,
+    "company": "Zocdoc"
+   }
+  },
+  "screened_out": 1,
+  "notes": []
  }
 ]
