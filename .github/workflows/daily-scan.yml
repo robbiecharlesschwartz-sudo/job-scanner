@@ -12,6 +12,10 @@ on:
         description: "Only test which AI answers (no scan)"
         type: boolean
         default: false
+      test_email:
+        description: "Only send a test email (no scan)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -35,7 +39,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Scan, rate, alert
-        run: python -m scanner ${{ inputs.check_ai && '--check-ai' || '' }}
+        run: python -m scanner ${{ inputs.check_ai && '--check-ai' || '' }} ${{ inputs.test_email && '--test-email' || '' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}

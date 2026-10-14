@@ -100,15 +100,32 @@ def check_ai() -> int:
     return 0 if r else 1
 
 
+def test_email() -> int:
+    settings = tomllib.loads((ROOT / "settings.toml").read_text())
+    best = open_matches(load_json(STATE / "tracked.json", {}))
+    best.sort(key=lambda t: RANK.get(t["rating"], 9))
+    mail = notify.compose_email(best[:1], settings["site"]["url"])
+    if not mail:
+        print("no open matches to use as a sample")
+        return 1
+    mail["subject"] = "[Test] " + mail["subject"]
+    errs = notify.send_email(mail, settings["email"]["to"])
+    print("email test:", "sent to " + settings["email"]["to"] if not errs else "; ".join(errs))
+    return 1 if errs else 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="no state/site writes, print texts")
     ap.add_argument("--no-sms", action="store_true", help="write state/site but don't text")
     ap.add_argument("--only", nargs="*", help="limit to these company names")
     ap.add_argument("--check-ai", action="store_true", help="rate one sample posting and report which AI answered")
+    ap.add_argument("--test-email", action="store_true", help="email the best open match as a test")
     args = ap.parse_args(argv)
     if args.check_ai:
         return check_ai()
+    if args.test_email:
+        return test_email()
 
     settings = tomllib.loads((ROOT / "settings.toml").read_text())
     companies = [c for c in tomllib.loads((ROOT / "companies.toml").read_text())["company"]
