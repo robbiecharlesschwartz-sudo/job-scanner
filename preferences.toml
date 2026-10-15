@@ -1,0 +1,41 @@
+# What you want from a company and a role, beyond the hard requirements.
+#
+# Hard requirements (location, level, degree, start date, deal-breaker work) live in profile.md and
+# the keyword rules in settings.toml. A miss there excludes a role. Everything here is a
+# PREFERENCE: it changes how matches are ordered and explained, never whether you can apply.
+#
+# Entries below were taken from profile.md. Empty lists mean "not stated yet". The AI is told
+# not to assume anything you haven't written, so blanks are never read as "don't care" or
+# "dislike". Fill them in whenever you like; no code changes are needed.
+
+[preferences]
+work_types = [            # from profile.md "What counts"
+  "strategy / management / business consulting (external)",
+  "ESG and sustainability consulting (strongest proof point, not the only target)",
+  "in-house corporate strategy, strategic initiatives, chief-of-staff office",
+  "rotational or generalist graduate programs",
+  "business development (looser fit)",
+]
+industries = []           # e.g. ["sustainability", "healthcare", "financial services"]
+learning = []             # e.g. ["structured training", "exposure to senior clients"]
+environment = []          # e.g. ["small teams", "collaborative over competitive"]
+flexibility = []          # e.g. ["hybrid at least 2 days", "flexible hours"]
+mentorship = []           # e.g. ["assigned mentor or coach", "regular feedback"]
+responsibility = []       # e.g. ["client-facing early", "own a workstream in year one"]
+employee_support = []     # e.g. ["generous leave", "support during illness or caregiving"]
+working_arrangements = [] # e.g. ["staffed locally", "4-day client weeks"]
+location = "New York City (hard requirement - see profile.md)"
+travel = "Open to travel (profile.md)"
+deal_breakers = []        # preferences strong enough to flag, beyond profile.md's hard requirements
+
+# How much each company-fit factor counts when matches are ordered (0 = ignore, 1 = normal,
+# 2 = important, 3 = very important). All 1 until you decide otherwise.
+#   learning         training, mentorship, responsibility and a credible path from this role
+#   support          documented employee support beyond standard benefits, and flexibility
+#   differentiation  how specifically the role connects to what makes this company distinct
+#   motivation       how plausible a specific, genuine interest in this company's work is
+[weights]
+learning = 1
+support = 1
+differentiation = 1
+motivation = 1

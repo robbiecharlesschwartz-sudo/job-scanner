@@ -1,0 +1,29 @@
+{
+ "company": "Guidehouse",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Guidehouse is a consulting firm focused on highly regulated sectors: US federal and state government, defense and national security, healthcare, energy and financial services. It was formed in 2018 from PwC's public-sector practice and added Navigant's commercial business in 2019.",
+ "business_type": "Public-sector and regulated-industry consulting",
+ "service_lines": ["Federal / defense / national security", "State and local government", "Health", "Energy, sustainability and infrastructure", "Financial services"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Specialised in government and regulated industries (formed from PwC's public-sector arm, with Navigant's commercial practices added), including energy and sustainability work for utilities and agencies.", "evidence": "supporting_evidence", "sources": ["1"], "significance": "A route into public-sector or energy-transition strategy; less corporate-strategy work than a generalist firm."}
+ ],
+ "early_career": [],
+ "employee_support": [
+  {"text": "Job postings list parental leave and adoption assistance, emergency back-up childcare, dependent-care accounts and tuition reimbursement.", "evidence": "verified_policy", "sources": ["2"], "significance": "Back-up childcare and tuition support are documented; leave length not stated."}
+ ],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Guidehouse was among the firms hit hardest by 2025 federal consulting contract cuts, and filed WARN layoff notices for its digital unit in 2025.", "evidence": "supporting_evidence", "sources": ["3", "4"], "significance": "Federal demand is volatile; commercial and state-government roles carry different risk."}
+ ],
+ "unknowns": ["Length of paid parental leave.", "Flexibility and office expectations.", "Structured new-grad training."],
+ "sources": [
+  {"id": "1", "url": "https://managementconsulted.com/guidehouse/", "title": "Management Consulted: Guidehouse firm overview", "type": "other", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://careers.conbio.org/job/570406/strategy-consultant-state-and-local-government-consultant/", "title": "Guidehouse Strategy Consultant posting (benefits section)", "type": "official", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://managementconsulted.com/podcast/doge-cuts-1-5b-consulting-spend/", "title": "Management Consulted: $1.5B federal consulting cuts", "type": "other", "accessed": "2026-10-15", "published": "2025"},
+  {"id": "4", "url": "https://www.warntracker.com/layoff/guidehouse-digital-2025-11-30", "title": "WARN Tracker: Guidehouse Digital layoffs", "type": "independent", "accessed": "2026-10-15", "published": "2025"}
+ ]
+}

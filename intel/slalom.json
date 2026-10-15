@@ -1,0 +1,96 @@
+{
+ "company": "Slalom",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Slalom is a Seattle-founded business and technology consulting firm built on a local delivery model: consultants serve clients in their home market, with work spanning strategy, data and analytics, cloud and experience design.",
+ "business_type": "Local-model business and technology consulting",
+ "service_lines": [
+  "Strategy and operations",
+  "Data and AI",
+  "Cloud and technology",
+  "Experience and design",
+  "Org and change"
+ ],
+ "watch_urls": [],
+ "differentiators": [
+  {
+   "text": "Local model: consultants mostly live where they work and serve clients in their home city, so travel is minimal; leadership has described the goal as being the best travel-free consulting firm.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "1",
+    "2"
+   ],
+   "significance": "Rare among consulting firms. It matters if you want consulting without weekly flights."
+  }
+ ],
+ "early_career": [],
+ "employee_support": [
+  {
+   "text": "A 2026 ranking of consulting firms for working parents lists paid parental leave, flexible schedules, and fertility and adoption assistance (not confirmed on Slalom's own pages).",
+   "evidence": "tentative_signal",
+   "sources": [
+    "3"
+   ],
+   "significance": "Indicative only."
+  }
+ ],
+ "flexibility": [
+  {
+   "text": "Low travel follows from the delivery model rather than a written flexibility policy.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "2"
+   ],
+   "significance": "Reliable for travel; says nothing about hours."
+  }
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {
+   "text": "Reviewers and forum posts say the local model can mean smaller scale, more technology implementation or staff-augmentation work, independently run offices, and slower raises and promotions than larger firms.",
+   "evidence": "tentative_signal",
+   "sources": [
+    "2",
+    "4"
+   ],
+   "significance": "Check how much pure strategy work the NYC office does."
+  }
+ ],
+ "unknowns": [
+  "Formal parental leave length and benefits on Slalom's own pages.",
+  "Entry-level hiring volume in NYC."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://www.consultingmag.com/2010/08/24/the-2010-best-firms-10-slalom-consulting",
+   "title": "Consulting Magazine: 2010 Best Firms - Slalom",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2010"
+  },
+  {
+   "id": "2",
+   "url": "https://legacy.vault.com/company-profiles/tech-consulting/slalom-consulting/company-reviews",
+   "title": "Vault: Slalom company reviews",
+   "type": "employee_reviews",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "3",
+   "url": "https://managementconsulted.com/top-consulting-firms-for-working-parents/",
+   "title": "Management Consulted: Top consulting firms for working parents 2026",
+   "type": "other",
+   "accessed": "2026-10-15",
+   "published": "2026"
+  },
+  {
+   "id": "4",
+   "url": "https://www.fishbowlapp.com/post/whats-the-word-in-slalom-the-local-no-travel-model-sounds-compelling-anyone-with-experience-with-their-data-and-analytics-team",
+   "title": "Fishbowl thread on Slalom's local model",
+   "type": "employee_reviews",
+   "accessed": "2026-10-15"
+  }
+ ]
+}

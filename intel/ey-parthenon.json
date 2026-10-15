@@ -1,0 +1,30 @@
+{
+ "company": "EY-Parthenon",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Firm-wide EY benefits are in the EY profile.",
+ "overview": "EY-Parthenon is EY's strategy and transactions consulting brand: corporate and growth strategy, due diligence and transaction support, and strategy execution. It grew from the Parthenon Group, a Boston strategy firm founded in 1991 that joined EY in 2014.",
+ "business_type": "Strategy and transactions consulting inside a Big Four firm",
+ "service_lines": ["Strategy & Execution (generalist)", "Corporate and growth strategy", "Commercial and operational due diligence", "Software Strategy Group", "Deal technology"],
+ "watch_urls": ["https://www.ey.com/en_us/careers/parthenon/consultant-program"],
+ "differentiators": [
+  {"text": "Work centres on capital and transaction decisions (growth strategy, due diligence, organisational change), giving strategy work a deal-driven flavour that a pure strategy shop or implementation practice lacks.", "evidence": "verified_policy", "sources": ["1", "2"], "significance": "Expect fast diligence projects alongside longer strategy work."},
+  {"text": "Boutique strategy heritage (Parthenon Group, 1991) combined with the Big Four's scale and EY's firm-wide benefits and training.", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Strategy-house work with Big Four infrastructure."}
+ ],
+ "early_career": [
+  {"text": "US campus hiring runs a structured program with generalist and specialist tracks (e.g. Software Strategy Group, Deal Technology); applications open each campus season.", "evidence": "verified_policy", "sources": ["1"], "significance": "Recruiting is seasonal; an off-cycle posting is unusual."},
+  {"text": "A third-party guide says undergraduates join through the Associate Program (MBAs through the Consultant Program), with most undergraduate deadlines in late August and September.", "evidence": "tentative_signal", "sources": ["3"], "significance": "Check which title is the undergraduate entry level before applying."}
+ ],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Transaction support work (due diligence) runs on deal timelines, which typically means compressed, intense project cycles.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Ask how often analysts are staffed on diligence versus strategy projects."}
+ ],
+ "unknowns": ["EY-Parthenon-specific flexibility or support practices beyond EY firm-wide benefits.", "Hours and travel for NYC associates."],
+ "sources": [
+  {"id": "1", "url": "https://www.ey.com/en_us/careers/parthenon/consultant-program", "title": "EY-Parthenon Strategy: Consultant Program", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://usearlycareers.ey.com/job/los-angeles/usa-ey-parthenon-strategy-and-execution-consultant/39053/100310764544", "title": "EY-Parthenon Strategy & Execution posting (US early careers)", "type": "official", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.hackingthecaseinterview.com/pages/ey-parthenon-boston-recruiting", "title": "Hacking the Case Interview: EY-Parthenon recruiting", "type": "other", "accessed": "2026-10-15"}
+ ]
+}

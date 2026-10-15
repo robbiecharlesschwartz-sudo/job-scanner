@@ -1,0 +1,25 @@
+{
+ "company": "First & First Consulting",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "First & First is a small (about 20-25 people) New York strategy and analytics boutique founded around 2016-17. It does consumer insights, cultural-trend, brand-health and influencer research for brands, positioned as 'the nexus of strategy and analytics'.",
+ "business_type": "Boutique strategy, research and analytics consultancy",
+ "service_lines": ["Consumer insights", "Cultural trends", "Brand health", "Influencer identification and vetting"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Data-driven brand and consumer strategy for large brands (postings name Meta, Nike, Cash App and Regeneron), on project and retainer bases.", "evidence": "verified_policy", "sources": ["1", "2"], "significance": "Marketing-strategy flavour rather than corporate or operations strategy; small-firm exposure to senior clients."}
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Very small firm: little formal structure or training, and sources disagree on founding year, size and office location (Brooklyn moving to the Financial District per one posting).", "evidence": "tentative_signal", "sources": ["1", "2"], "significance": "Ask about mentorship, career path and stability directly."}
+ ],
+ "unknowns": ["Benefits, leave and flexibility.", "Training and promotion path."],
+ "sources": [
+  {"id": "1", "url": "https://www.builtinnyc.com/company/first-first-consulting", "title": "Built In NYC: First & First Consulting", "type": "other", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.talentify.io/job/jr-research-and-analytics-consultant-new-york-new-york-us-remote-jobs-0d1maepsfhfu", "title": "First & First Jr. Research & Analytics Consultant posting", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

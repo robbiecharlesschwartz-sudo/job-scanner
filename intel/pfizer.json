@@ -1,0 +1,29 @@
+{
+ "company": "Pfizer",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Mostly third-party summaries; US terms not confirmed on Pfizer pages.",
+ "overview": "Pfizer is a global biopharmaceutical company headquartered in New York. Strategy roles are in-house: corporate and portfolio strategy, commercial strategy and transformation teams.",
+ "business_type": "In-house strategy at a biopharmaceutical company",
+ "service_lines": ["Biopharmaceuticals", "Corporate and portfolio strategy", "Commercial strategy"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "New York headquarters with strategy work tied to drug portfolio and commercial decisions.", "evidence": "tentative_signal", "sources": ["1"], "significance": "A route into healthcare strategy; specialised industry knowledge is often expected."}
+ ],
+ "early_career": [
+  {"text": "Summaries list development tracks, a mentorship program, tuition reimbursement and continuing education during work hours.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Unconfirmed on Pfizer's own pages."}
+ ],
+ "employee_support": [
+  {"text": "Summaries list parental and family medical leave (12 weeks for both parents on a non-US page).", "evidence": "tentative_signal", "sources": ["1", "2"], "significance": "US leave length not confirmed."}
+ ],
+ "flexibility": [
+  {"text": "Hybrid model with typically 2-3 on-site days for office roles, with flexibility depending on local leadership (non-US summaries).", "evidence": "tentative_signal", "sources": ["2"], "significance": "Team-dependent; ask."}
+ ],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": ["US-specific benefits and office expectations.", "Early-career strategy programs."],
+ "sources": [
+  {"id": "1", "url": "https://builtin.com/company/pfizer/benefits", "title": "Built In: Benefits at Pfizer", "type": "other", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://builtinsingapore.com/company/pfizer/faq/work-life-balance-wellbeing", "title": "Built In: Work-life balance at Pfizer (Singapore)", "type": "other", "accessed": "2026-10-15"}
+ ]
+}

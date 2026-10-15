@@ -1,0 +1,104 @@
+{
+ "company": "Kearney",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Kearney is a Chicago-headquartered, partner-owned global management consulting firm (roots in 1926, a former McKinsey office), best known for operations, procurement and supply chain, with strategy, M&A, digital and sustainability practices.",
+ "business_type": "Partner-owned global management consulting",
+ "service_lines": [
+  "Operations and performance",
+  "Procurement and supply chain",
+  "Strategy",
+  "M&A",
+  "Sustainability",
+  "Digital and analytics"
+ ],
+ "watch_urls": [],
+ "differentiators": [
+  {
+   "text": "Known above all for operations, procurement and supply chain; it publishes the CPO Agenda and positions itself as the originator of strategic sourcing (its own claim).",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "2",
+    "3"
+   ],
+   "significance": "Strategy work here often meets operations; sustainable-supply-chain work links to your ESG procurement experience."
+  },
+  {
+   "text": "Partner-owned and independent since 2006.",
+   "evidence": "tentative_signal",
+   "sources": [
+    "2"
+   ],
+   "significance": "Single third-party source."
+  }
+ ],
+ "early_career": [
+  {
+   "text": "Business Analysts attend training on core consulting concepts and methods, often taught by Kearney managers and partners. Top performers with two years' tenure who commit to return can get tuition support through the Kearney Scholars' Program.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "Formal training plus a sponsored path to further study, if wanted later."
+  }
+ ],
+ "employee_support": [],
+ "flexibility": [
+  {
+   "text": "Some regional postings mention flexible work programs and externships; US terms were not found.",
+   "evidence": "tentative_signal",
+   "sources": [
+    "4"
+   ],
+   "significance": "Ask the US recruiter."
+  }
+ ],
+ "culture": [
+  {
+   "text": "Postings stress working alongside clients rather than at a distance, and performance-driven advancement.",
+   "evidence": "tentative_signal",
+   "sources": [
+    "1"
+   ],
+   "significance": "Expect client-site work and merit-based progression."
+  }
+ ],
+ "tradeoffs": [],
+ "unknowns": [
+  "US parental leave and employee-support policies.",
+  "Size of the NYC sustainability practice."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://jobs.managementconsulted.com/jobs/549041568/apply",
+   "title": "Kearney Business Analyst posting",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "2",
+   "url": "https://strategycase.com/kearney-consulting/",
+   "title": "StrategyCase: Kearney 2026 insider guide",
+   "type": "other",
+   "accessed": "2026-10-15",
+   "published": "2026"
+  },
+  {
+   "id": "3",
+   "url": "https://en.wikipedia.com/wiki/AT_Kearney",
+   "title": "Wikipedia: Kearney (consulting firm)",
+   "type": "independent",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "4",
+   "url": "https://ef.uni-lj.si/assets/Karierni-center/redna-zaposlitev_Kearney_16-4-2025.pdf",
+   "title": "Kearney posting (Slovenia) - benefits",
+   "type": "official",
+   "accessed": "2026-10-15",
+   "published": "2025-04"
+  }
+ ]
+}

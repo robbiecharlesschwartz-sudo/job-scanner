@@ -1,0 +1,30 @@
+{
+ "company": "Zocdoc",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Zocdoc is a New York-headquartered (founded 2007) healthcare marketplace where patients find and book doctors; about 900 employees. Strategy-type roles are in-house business strategy and operations.",
+ "business_type": "Healthcare technology company",
+ "service_lines": ["Patient booking marketplace", "Provider software", "Business strategy and operations"],
+ "watch_urls": ["https://www.zocdoc.com/about/careers-home/"],
+ "differentiators": [],
+ "early_career": [],
+ "employee_support": [
+  {"text": "Careers page lists paid parental leave, mental-health benefits, career planning and wellness programs; it also reports that 90% of employees say their manager cares about their wellbeing (company survey).", "evidence": "verified_policy", "sources": ["1"], "significance": "Documented basics; the 90% figure is self-reported."}
+ ],
+ "flexibility": [
+  {"text": "Built In describes a hybrid model with 2-3 office days, unlimited PTO and sabbaticals.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Sabbaticals are unusual; confirm eligibility."}
+ ],
+ "culture": [
+  {"text": "Stated values include 'Patients First' and 'Learners before Masters'.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Self-description."}
+ ],
+ "tradeoffs": [
+  {"text": "Employee reviews are mixed: praise for PTO and balance, complaints about management turnover and strict metrics.", "evidence": "tentative_signal", "sources": ["3"], "significance": "Individual reviews; ask the team directly."}
+ ],
+ "unknowns": ["Parental leave length.", "Structured early-career development."],
+ "sources": [
+  {"id": "1", "url": "https://www.zocdoc.com/about/careers-home/", "title": "Zocdoc careers", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.builtinnyc.com/company/zocdoc/faq/culture-values", "title": "Built In NYC: Zocdoc culture", "type": "other", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.glassdoor.com/FAQ/Zocdoc-Question-FAQ200032-E250247.htm", "title": "Glassdoor: Zocdoc employee Q&A", "type": "employee_reviews", "accessed": "2026-10-15"}
+ ]
+}

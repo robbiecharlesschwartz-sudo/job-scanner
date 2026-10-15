@@ -1,0 +1,75 @@
+{
+ "company": "BlackRock",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "BlackRock is the world's largest asset manager, headquartered in New York. Strategy roles are in-house (corporate strategy, business strategy, chief-of-staff teams); entry is mainly through its two-year Full-Time Analyst Program.",
+ "business_type": "In-house strategy at an asset manager",
+ "service_lines": [
+  "Asset management (iShares, active, alternatives)",
+  "Aladdin technology",
+  "Corporate strategy"
+ ],
+ "watch_urls": [],
+ "differentiators": [],
+ "early_career": [
+  {
+   "text": "Two-year Full-Time Analyst Program: orientation and training, then placement on a team with ongoing training.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "Structured entry, though most analyst roles are investment or operations rather than strategy."
+  }
+ ],
+ "employee_support": [
+  {
+   "text": "Analyst postings list birth-parent, non-birth-parent and adoption leave and fertility benefits; summaries mention a return-to-work program after parental leave.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1",
+    "2"
+   ],
+   "significance": "Return-to-work support addresses the transition back, not only the leave."
+  }
+ ],
+ "flexibility": [
+  {
+   "text": "A BlackRock careers page describes a hybrid model of at least four office days a week, with some groups requiring more.",
+   "evidence": "verified_policy",
+   "sources": [
+    "3"
+   ],
+   "significance": "Mostly in-office."
+  }
+ ],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": [
+  "Hours in strategy teams.",
+  "US parental leave length."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://www.themuse.com/jobs/blackrock/2026-fulltime-analyst-program-amers",
+   "title": "BlackRock 2026 Full-Time Analyst Program (Americas) posting",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "2",
+   "url": "https://www.builtinboston.com/company/blackrock/benefits",
+   "title": "Built In: BlackRock benefits",
+   "type": "other",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "3",
+   "url": "https://www.themuse.com/jobs/blackrock/career-returners-programme-edinburgh-426a3d",
+   "title": "BlackRock careers page (hybrid policy)",
+   "type": "official",
+   "accessed": "2026-10-15"
+  }
+ ]
+}

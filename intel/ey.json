@@ -1,0 +1,38 @@
+{
+ "company": "EY",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Verify specific numbers before relying on them.",
+ "overview": "Ernst & Young US is a Big Four firm. Its consulting practice covers business, technology and people consulting; the US early-careers board scanned here carries its campus and new-grad roles across service lines. Strategy and transactions sit in EY-Parthenon (profiled separately).",
+ "business_type": "Big Four professional services (assurance, tax, consulting, strategy and transactions)",
+ "service_lines": ["Business consulting", "Technology consulting", "People advisory", "Assurance incl. climate change and sustainability services", "Tax", "Strategy and transactions (EY-Parthenon)"],
+ "watch_urls": ["https://www.ey.com/en_gl/careers/personalized-career-development"],
+ "differentiators": [
+  {"text": "EY runs its own credential programs: EY Badges (digital skills credentials, e.g. data and AI) and a free, accredited corporate Tech MBA with Hult International Business School open regardless of role.", "evidence": "verified_policy", "sources": ["1"], "significance": "A distinctive, firm-funded route to formal qualifications for someone not planning a graduate degree."},
+  {"text": "In 2025 EY reorganised from 18 regions into 10 'super regions' after its 2023 plan to split consulting from audit (Project Everest) was abandoned.", "evidence": "supporting_evidence", "sources": ["2"], "significance": "The firm stayed integrated; consulting and audit remain one organisation."}
+ ],
+ "early_career": [
+  {"text": "EY reports US$385m spent on formal training in 2023 (global figure) and links badges to on-the-job experience, not only courses.", "evidence": "verified_policy", "sources": ["1"], "significance": "Training spend is global, not specific to US new hires."}
+ ],
+ "employee_support": [
+  {"text": "In 2016 EY US announced up to 16 weeks of fully paid parental leave for all new parents (after a year of service) and up to $25,000 per family for adoption, fertility treatment and surrogacy.", "evidence": "tentative_signal", "sources": ["3", "4"], "significance": "Dated announcements; confirm current terms with a recruiter."},
+  {"text": "Third-party summaries describe flexible vacation, ~19 paid holidays including week-long summer and winter breaks, and up to 80 hours a year of paid family-care time.", "evidence": "tentative_signal", "sources": ["5"], "significance": "Not confirmed on an EY page; summaries also conflict on the size of the well-being fund."}
+ ],
+ "flexibility": [
+  {"text": "EY has had a formal US flexibility leader and framed flexibility as firm policy since at least 2014 (Senate testimony).", "evidence": "tentative_signal", "sources": ["6"], "significance": "Old evidence of intent, not of current team practice."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "2025 restructuring removed layers of middle management; reported job cuts were concentrated outside the US, with US specifics unconfirmed.", "evidence": "supporting_evidence", "sources": ["2"], "significance": "Ask how the restructuring changed the team you would join."},
+  {"text": "Summaries note that taking time off can be hard in busy periods despite generous stated leave.", "evidence": "tentative_signal", "sources": ["5"], "significance": "Policy and practice may differ by team and season."}
+ ],
+ "unknowns": ["Current US parental-leave and well-being-fund terms (sources are dated or conflict).", "Typical hours and travel for NYC consulting staff."],
+ "sources": [
+  {"id": "1", "url": "https://www.ey.com/en_gl/careers/personalized-career-development", "title": "EY: Personalized career development", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://me.peoplemattersglobal.com/news/business/ey-undergoing-global-restructuring-layoffs-including-in-the-middle-east-heres-the-report-45044", "title": "People Matters: EY global restructuring", "type": "independent", "accessed": "2026-10-15", "published": "2025-03"},
+  {"id": "3", "url": "https://fortune.com/2016/04/13/ey-parental-leave-policy", "title": "Fortune: EY parental leave policy", "type": "independent", "accessed": "2026-10-15", "published": "2016-04-13"},
+  {"id": "4", "url": "https://www.benefitscanada.com/?p=21104", "title": "Benefits Canada: EY parental leave", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "5", "url": "https://builtin.com/company/ey/faq/compensation-benefits", "title": "Built In: EY compensation and benefits (not reviewed by EY)", "type": "other", "accessed": "2026-10-15"},
+  {"id": "6", "url": "https://www.help.senate.gov/download/gockel1", "title": "Senate HELP testimony, EY US flexibility leader", "type": "official", "accessed": "2026-10-15", "published": "2014"}
+ ]
+}

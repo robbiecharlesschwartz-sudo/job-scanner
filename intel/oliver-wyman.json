@@ -1,0 +1,70 @@
+{
+ "company": "Oliver Wyman",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Benefits are set by parent Marsh McLennan and were not confirmed.",
+ "overview": "Oliver Wyman is a global management consulting firm owned by Marsh McLennan (alongside Marsh, Guy Carpenter and Mercer). It covers strategy, operations, risk and organisational transformation, and is strongest in financial services, risk and actuarial work.",
+ "business_type": "Management consulting within an insurance-broking and risk group",
+ "service_lines": [
+  "Financial services strategy and risk",
+  "Actuarial",
+  "Strategy and operations",
+  "Organizational transformation",
+  "Industry practices"
+ ],
+ "watch_urls": [],
+ "differentiators": [
+  {
+   "text": "Particular depth in financial services, risk management and actuarial advisory, backed by Marsh McLennan's risk and insurance businesses.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "2"
+   ],
+   "significance": "Strong fit if you want strategy work in banking, insurance or risk; less so for other sectors."
+  }
+ ],
+ "early_career": [
+  {
+   "text": "Typical track: Analyst, Consultant, Associate, Engagement Manager, Principal/Partner; an MBA is not required to advance, and postings say no specific major or industry experience is needed.",
+   "evidence": "tentative_signal",
+   "sources": [
+    "2",
+    "1"
+   ],
+   "significance": "An undergraduate entry with a path that does not depend on business school."
+  }
+ ],
+ "employee_support": [
+  {
+   "text": "Postings describe performance-based pay with year-end bonuses and point to Marsh McLennan's US benefits; actuarial trainees get paid exam-study time, materials, fee reimbursement and pass bonuses.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "Concrete study support applies to actuarial tracks; consulting benefits follow the parent company."
+  }
+ ],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": [
+  "Marsh McLennan US parental leave and flexibility terms.",
+  "Hours and travel for NYC analysts."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://simplify.jobs/p/a280365a-b955-49dd-b261-65a210258295/Analyst",
+   "title": "Oliver Wyman Analyst posting",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "2",
+   "url": "https://managementconsulted.com/oliver-wyman/",
+   "title": "Management Consulted: Oliver Wyman profile",
+   "type": "other",
+   "accessed": "2026-10-15"
+  }
+ ]
+}

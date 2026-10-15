@@ -1,0 +1,93 @@
+{
+ "company": "JPMorgan Chase",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "JPMorgan Chase is the largest US bank, headquartered in New York. Strategy roles are in-house (corporate strategy, line-of-business strategy, internal consulting, chief-of-staff teams); entry-level hiring runs through analyst programs.",
+ "business_type": "In-house strategy at a global bank",
+ "service_lines": [
+  "Consumer & community banking",
+  "Corporate & investment bank",
+  "Asset & wealth management",
+  "Corporate functions / strategy"
+ ],
+ "watch_urls": [],
+ "differentiators": [
+  {
+   "text": "The Corporate Analyst Development Program (summer internship leading to a two-year rotational full-time role) builds skills in analytics, project management or process improvement.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "A structured, rotational entry into corporate roles, though it leans operational rather than strategic."
+  }
+ ],
+ "early_career": [
+  {
+   "text": "Two-year rotational analyst programs give new grads structured placements across corporate teams.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "Rotations help you find the right team without changing employer."
+  }
+ ],
+ "employee_support": [
+  {
+   "text": "Since 2023 JPMorgan gives 16 weeks of paid leave to either parent for birth or adoption, regardless of primary-caregiver status; postings also list back-up childcare, tuition reimbursement, mental-health support and on-site health centres.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "2",
+    "3"
+   ],
+   "significance": "Documented family and wellbeing support at large-bank scale."
+  }
+ ],
+ "flexibility": [
+  {
+   "text": "In January 2025 JPMorgan told hybrid employees to return to the office five days a week from March 2025, while saying it still supports 'flexibility in the workplace'.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "4"
+   ],
+   "significance": "Expect full-time office attendance."
+  }
+ ],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": [
+  "Hours in strategy teams versus banking teams."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://builtin.com/job/2026-corporate-analyst-development-program-summer-analyst-new-york-metro/6547804",
+   "title": "JPMorgan 2026 Corporate Analyst Development Program (New York) posting",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "2",
+   "url": "https://fortune.com/2022/11/18/jpmorgan-giving-16-weeks-leave-all-new-parents",
+   "title": "Fortune: JPMorgan gives 16 weeks leave to all new parents",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2022-11-18"
+  },
+  {
+   "id": "3",
+   "url": "https://www.themuse.com/jobs/jpmorganchase/2027-global-corporate-banking-summer-analyst-program-toronto",
+   "title": "JPMorgan posting (benefits section)",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "4",
+   "url": "https://tuoitrenews.vn/news/international/20250113/jpmorgan-asks-staff-to-return-to-office-five-days-a-week-prompting-complaints/83884.html",
+   "title": "Reuters via Tuoi Tre: JPMorgan asks staff to return five days a week",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2025-01-13"
+  }
+ ]
+}

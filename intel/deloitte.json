@@ -1,0 +1,42 @@
+{
+ "company": "Deloitte",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Verify specific numbers before relying on them.",
+ "overview": "Deloitte LLP is the US member of the Big Four network. Deloitte Consulting is one of the largest consulting practices in the US, spanning strategy (Monitor Deloitte), operations, human capital, technology and a large federal government practice.",
+ "business_type": "Big Four professional services (consulting, audit, tax, advisory)",
+ "service_lines": ["Strategy, Analytics and M&A (Monitor Deloitte brand)", "Operations transformation", "Human capital", "Technology / engineering", "Government & public services"],
+ "watch_urls": ["https://www.deloitte.com/us/en/careers/executives.html"],
+ "differentiators": [
+  {"text": "Strategy work sits under the Monitor Deloitte brand within Strategy, Analytics and M&A, built from Monitor Group's assets that Deloitte bought out of bankruptcy in 2013.", "evidence": "verified_policy", "sources": ["3", "4"], "significance": "Strategy-titled analyst roles can sit next to analytics and M&A teams; ask which offering a role belongs to."},
+  {"text": "Breadth: strategy, operations, human capital and technology practices under one firm, plus a large federal government consulting business (about $4bn of agency contracts in 2024).", "evidence": "supporting_evidence", "sources": ["6"], "significance": "Many entry paths, but the same 'Analyst' title can mean very different day-to-day work."}
+ ],
+ "early_career": [
+  {"text": "Deloitte says it provides intensive training within the first 90 days and at career milestones; Deloitte University, a dedicated learning campus near Dallas, hosts first-year training.", "evidence": "verified_policy", "sources": ["2", "7"], "significance": "Structured onboarding and formal training are a real feature of the Big Four model."}
+ ],
+ "employee_support": [
+  {"text": "US benefits list an annual well-being subsidy, a well-being app, family-planning support (fertility, adoption and surrogacy reimbursement) and paid family leave.", "evidence": "verified_policy", "sources": ["1", "2"], "significance": "Documented support beyond pay and healthcare; eligibility details sit in plan documents and can change."},
+  {"text": "In 2016 Deloitte US introduced up to 16 weeks of fully paid family leave covering parental and broader family care; current terms were not confirmed.", "evidence": "tentative_signal", "sources": ["5"], "significance": "Indicates intent toward caregiving support; check current leave terms with a recruiter."}
+ ],
+ "flexibility": [
+  {"text": "Deloitte describes a flexible hybrid model where teams co-locate when it matters for the work; in 2025 its US tax practice moved to 2-3 office days tied to reviews, unlike the wider firm.", "evidence": "supporting_evidence", "sources": ["8", "9"], "significance": "Firm-wide policy is flexible but practices set their own norms; ask the specific team."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Anonymous 2025 reviews on Blind rate work-life balance lowest of its categories (3.0/5) and career growth highest (3.7/5).", "evidence": "tentative_signal", "sources": ["10"], "significance": "Self-selected sample; treat as a prompt to ask about hours and travel."},
+  {"text": "In 2025 Deloitte laid off part of its government consulting team after federal contract cancellations; it called the cuts modest.", "evidence": "supporting_evidence", "sources": ["6"], "significance": "Demand varies by practice; commercial strategy and federal work face different conditions."}
+ ],
+ "unknowns": ["Typical travel for NYC-based strategy analysts in 2026.", "How consistently the hybrid policy is applied across consulting teams."],
+ "sources": [
+  {"id": "1", "url": "https://www.deloitte.com/content/dam/assets-zone3/us/en/docs/careers/2024/us-careers-benefits.pdf", "title": "Deloitte US careers benefits (PDF)", "type": "official", "accessed": "2026-10-15", "published": "2024"},
+  {"id": "2", "url": "https://www.deloitte.com/us/en/careers/executives.html", "title": "Deloitte US careers - benefits overview", "type": "official", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.deloitte.com/cbc/en/services/consulting/services/monitor-deloitte.html", "title": "Monitor Deloitte", "type": "official", "accessed": "2026-10-15"},
+  {"id": "4", "url": "https://www.consultingmag.com/amp/2013/03/02/strategic-thinking-deloitte-adds-monitor-to-the-mix/", "title": "Consulting Magazine: Deloitte adds Monitor to the mix", "type": "independent", "accessed": "2026-10-15", "published": "2013-03"},
+  {"id": "5", "url": "https://www.consultancy.uk/news/12615/new-deloitte-scheme-allows-for-16-weeks-of-fully-paid-family-leave", "title": "Consultancy.uk: 16 weeks fully paid family leave", "type": "independent", "accessed": "2026-10-15", "published": "2016"},
+  {"id": "6", "url": "https://news.bloomberglaw.com/us-law-week/deloitte-to-lay-off-government-consultants-amid-spending-cuts", "title": "Bloomberg Law: Deloitte to lay off government consultants", "type": "independent", "accessed": "2026-10-15", "published": "2025-04"},
+  {"id": "7", "url": "https://www.workforce.com/news/deloitte-gets-physical-with-300-million-learning-center", "title": "Workforce: Deloitte's $300 million learning center", "type": "independent", "accessed": "2026-10-15", "published": "2011"},
+  {"id": "8", "url": "https://news.bloomberglaw.com/daily-tax-report/big-four-shun-return-to-office-push-stick-with-hybrid-instead", "title": "Bloomberg: Big Four stick with hybrid", "type": "independent", "accessed": "2026-10-15", "published": "2025"},
+  {"id": "9", "url": "https://fortune.com/2025/03/05/deloitte-staff-office-client-site-attendance-performance-metrics-us-tax-team", "title": "Fortune: Deloitte tax team attendance tied to reviews", "type": "independent", "accessed": "2026-10-15", "published": "2025-03-05"},
+  {"id": "10", "url": "https://www.teamblind.com/company/Deloitte/reviews", "title": "Blind: Deloitte reviews", "type": "employee_reviews", "accessed": "2026-10-15"}
+ ]
+}
