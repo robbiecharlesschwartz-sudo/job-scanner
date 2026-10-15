@@ -107,7 +107,7 @@
   "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Consultant-GBS-Operational-Finance/355803"
  },
  "Deloitte|357257": {
-  "closed_on": null,
+  "closed_on": "2026-10-15",
   "code": "2cqnem",
   "company": "Deloitte",
   "early_start": false,
@@ -115,7 +115,7 @@
   "key": "Deloitte|357257",
   "last_listed": "2026-10-15",
   "location": "Cincinnati, Ohio, United States; McLean, Virginia, United States; New York, New York, United States; Stamford, Connecticut, United States",
-  "misses": 0,
+  "misses": 1,
   "pointers": [
    "- Requires \"1+ years of US GAAP Accounting experience\"; you have none",
    "+ New York is among 4 locations",
@@ -240,7 +240,7 @@
   "key": "Deloitte|370759",
   "last_listed": "2026-10-15",
   "location": "Atlanta, Georgia, United States; Chicago, Illinois, United States; Morristown, New Jersey, United States; New York, New York, United States",
-  "misses": 0,
+  "misses": 1,
   "pointers": [
    "- Requires '2+ years of business valuation and intangible asset valuation consulting experience'; you have internship only",
    "- Deep specialization: ASC 805/350, purchase price allocations, impairment analyses - outside your background",

@@ -1,11 +1,11 @@
 {
  "date": "2026-10-15",
- "label": "Thu Oct 15, 2026 \u00b7 11:39 AM ET",
+ "label": "Thu Oct 15, 2026 \u00b7 3:23 PM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 771,
-   "new": 5,
+   "fetched": 775,
+   "new": 6,
    "company": "Accenture"
   },
   "AlixPartners": {
@@ -14,8 +14,8 @@
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 345,
-   "new": 40,
+   "fetched": 344,
+   "new": 9,
    "company": "American Express"
   },
   "Axion Ray": {
@@ -24,38 +24,38 @@
    "company": "Axion Ray"
   },
   "BCG": {
-   "fetched": 89,
-   "new": 1,
+   "fetched": 91,
+   "new": 2,
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 167,
-   "new": 6,
+   "fetched": 165,
+   "new": 0,
    "company": "BlackRock"
   },
   "Capco": {
-   "fetched": 711,
-   "new": 19,
+   "fetched": 700,
+   "new": 2,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 707,
-   "new": 44,
+   "fetched": 714,
+   "new": 32,
    "company": "Deloitte"
   },
   "ERM (ERM_Careers)": {
-   "fetched": 264,
+   "fetched": 266,
    "new": 2,
    "company": "ERM"
   },
   "EY": {
-   "fetched": 38,
-   "new": 0,
+   "fetched": 39,
+   "new": 1,
    "company": "EY"
   },
   "EY-Parthenon": {
-   "fetched": 159,
-   "new": 4,
+   "fetched": 161,
+   "new": 2,
    "company": "EY-Parthenon"
   },
   "First & First Consulting": {
@@ -64,12 +64,12 @@
    "company": "First & First Consulting"
   },
   "Guidehouse (External)": {
-   "fetched": 690,
-   "new": 11,
+   "fetched": 685,
+   "new": 5,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
-   "fetched": 105,
+   "fetched": 107,
    "new": 2,
    "company": "IBM Consulting"
   },
@@ -79,23 +79,23 @@
    "company": "Innosight"
   },
   "JPMorgan Chase": {
-   "fetched": 718,
-   "new": 48,
+   "fetched": 712,
+   "new": 24,
    "company": "JPMorgan Chase"
   },
   "KPMG": {
-   "fetched": 775,
-   "new": 10,
+   "fetched": 772,
+   "new": 8,
    "company": "KPMG"
   },
   "Kearney": {
    "fetched": 193,
-   "new": 2,
+   "new": 0,
    "company": "Kearney"
   },
   "McKinsey": {
    "fetched": 88,
-   "new": 3,
+   "new": 0,
    "company": "McKinsey"
   },
   "North Highland": {
@@ -104,33 +104,33 @@
    "company": "North Highland"
   },
   "Oliver Wyman (MMC)": {
-   "fetched": 76,
-   "new": 1,
+   "fetched": 73,
+   "new": 0,
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 894,
-   "new": 32,
+   "fetched": 892,
+   "new": 10,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
-   "fetched": 135,
-   "new": 17,
+   "fetched": 150,
+   "new": 15,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 57,
-   "new": 10,
+   "new": 9,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
-   "fetched": 519,
+   "fetched": 526,
    "new": 0,
    "company": "PwC"
   },
   "Ramp": {
-   "fetched": 165,
-   "new": 5,
+   "fetched": 164,
+   "new": 0,
    "company": "Ramp"
   },
   "Slalom": {
@@ -140,7 +140,7 @@
   },
   "Strategy& (PwC) (US_Entry_Level_Careers)": {
    "fetched": 4,
-   "new": 2,
+   "new": 0,
    "company": "Strategy& (PwC)"
   },
   "Strategy& (PwC) (US_Experienced_Careers)": {
@@ -154,8 +154,8 @@
    "company": "Watershed"
   },
   "West Monroe": {
-   "fetched": 126,
-   "new": 2,
+   "fetched": 125,
+   "new": 0,
    "company": "West Monroe"
   },
   "Zocdoc": {
@@ -164,28 +164,28 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 266,
+ "screened_out": 129,
  "notes": [
   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
  ],
  "log": {
-  "fetched": 8120,
+  "fetched": 8127,
   "sources_ok": 30,
   "sources_failed": [],
-  "new_postings": 266,
-  "passed_rules": 1,
+  "new_postings": 129,
+  "passed_rules": 2,
   "new_matches": [],
   "rerated": [],
   "closed": [
    {
     "company": "Deloitte",
-    "title": "Business Strategy Consultant",
+    "title": "Mergers and Acquisitions Financial Due Diligence Consultant",
     "rating": "Stretch",
-    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Business-Strategy-Consultant/363770"
+    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Mergers-and-Acquisitions-Financial-Due-Diligence-Consultant/357257"
    }
   ],
   "dismissed_total": 0,
-  "open_total": 23,
+  "open_total": 22,
   "alerts": 0,
   "emails": 0
  }

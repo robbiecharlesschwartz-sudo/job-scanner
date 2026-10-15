@@ -2103,5 +2103,197 @@
    "alerts": 0,
    "emails": 0
   }
+ },
+ {
+  "date": "2026-10-15",
+  "label": "Thu Oct 15, 2026 \u00b7 3:23 PM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 775,
+    "new": 6,
+    "company": "Accenture"
+   },
+   "AlixPartners": {
+    "fetched": 113,
+    "new": 0,
+    "company": "AlixPartners"
+   },
+   "American Express": {
+    "fetched": 344,
+    "new": 9,
+    "company": "American Express"
+   },
+   "Axion Ray": {
+    "fetched": 14,
+    "new": 0,
+    "company": "Axion Ray"
+   },
+   "BCG": {
+    "fetched": 91,
+    "new": 2,
+    "company": "BCG"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 165,
+    "new": 0,
+    "company": "BlackRock"
+   },
+   "Capco": {
+    "fetched": 700,
+    "new": 2,
+    "company": "Capco"
+   },
+   "Deloitte": {
+    "fetched": 714,
+    "new": 32,
+    "company": "Deloitte"
+   },
+   "ERM (ERM_Careers)": {
+    "fetched": 266,
+    "new": 2,
+    "company": "ERM"
+   },
+   "EY": {
+    "fetched": 39,
+    "new": 1,
+    "company": "EY"
+   },
+   "EY-Parthenon": {
+    "fetched": 161,
+    "new": 2,
+    "company": "EY-Parthenon"
+   },
+   "First & First Consulting": {
+    "fetched": 0,
+    "new": 0,
+    "company": "First & First Consulting"
+   },
+   "Guidehouse (External)": {
+    "fetched": 685,
+    "new": 5,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 107,
+    "new": 2,
+    "company": "IBM Consulting"
+   },
+   "Innosight (huroncareers)": {
+    "fetched": 3,
+    "new": 0,
+    "company": "Innosight"
+   },
+   "JPMorgan Chase": {
+    "fetched": 712,
+    "new": 24,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 772,
+    "new": 8,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 193,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "McKinsey": {
+    "fetched": 88,
+    "new": 0,
+    "company": "McKinsey"
+   },
+   "North Highland": {
+    "fetched": 59,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "Oliver Wyman (MMC)": {
+    "fetched": 73,
+    "new": 0,
+    "company": "Oliver Wyman"
+   },
+   "PepsiCo": {
+    "fetched": 892,
+    "new": 10,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 150,
+    "new": 15,
+    "company": "Pfizer"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 57,
+    "new": 9,
+    "company": "PwC"
+   },
+   "PwC (US_Experienced_Careers)": {
+    "fetched": 526,
+    "new": 0,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 164,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Strategy& (PwC) (US_Entry_Level_Careers)": {
+    "fetched": 4,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Strategy& (PwC) (US_Experienced_Careers)": {
+    "fetched": 23,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Watershed": {
+    "fetched": 34,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 125,
+    "new": 0,
+    "company": "West Monroe"
+   },
+   "Zocdoc": {
+    "fetched": 58,
+    "new": 0,
+    "company": "Zocdoc"
+   }
+  },
+  "screened_out": 129,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
+  ],
+  "log": {
+   "fetched": 8127,
+   "sources_ok": 30,
+   "sources_failed": [],
+   "new_postings": 129,
+   "passed_rules": 2,
+   "new_matches": [],
+   "rerated": [],
+   "closed": [
+    {
+     "company": "Deloitte",
+     "title": "Mergers and Acquisitions Financial Due Diligence Consultant",
+     "rating": "Stretch",
+     "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Mergers-and-Acquisitions-Financial-Due-Diligence-Consultant/357257"
+    }
+   ],
+   "dismissed_total": 0,
+   "open_total": 22,
+   "alerts": 0,
+   "emails": 0
+  }
  }
 ]
