@@ -1911,5 +1911,197 @@
    "alerts": 0,
    "emails": 0
   }
+ },
+ {
+  "date": "2026-10-15",
+  "label": "Thu Oct 15, 2026 \u00b7 11:39 AM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 771,
+    "new": 5,
+    "company": "Accenture"
+   },
+   "AlixPartners": {
+    "fetched": 113,
+    "new": 0,
+    "company": "AlixPartners"
+   },
+   "American Express": {
+    "fetched": 345,
+    "new": 40,
+    "company": "American Express"
+   },
+   "Axion Ray": {
+    "fetched": 14,
+    "new": 0,
+    "company": "Axion Ray"
+   },
+   "BCG": {
+    "fetched": 89,
+    "new": 1,
+    "company": "BCG"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 167,
+    "new": 6,
+    "company": "BlackRock"
+   },
+   "Capco": {
+    "fetched": 711,
+    "new": 19,
+    "company": "Capco"
+   },
+   "Deloitte": {
+    "fetched": 707,
+    "new": 44,
+    "company": "Deloitte"
+   },
+   "ERM (ERM_Careers)": {
+    "fetched": 264,
+    "new": 2,
+    "company": "ERM"
+   },
+   "EY": {
+    "fetched": 38,
+    "new": 0,
+    "company": "EY"
+   },
+   "EY-Parthenon": {
+    "fetched": 159,
+    "new": 4,
+    "company": "EY-Parthenon"
+   },
+   "First & First Consulting": {
+    "fetched": 0,
+    "new": 0,
+    "company": "First & First Consulting"
+   },
+   "Guidehouse (External)": {
+    "fetched": 690,
+    "new": 11,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 105,
+    "new": 2,
+    "company": "IBM Consulting"
+   },
+   "Innosight (huroncareers)": {
+    "fetched": 3,
+    "new": 0,
+    "company": "Innosight"
+   },
+   "JPMorgan Chase": {
+    "fetched": 718,
+    "new": 48,
+    "company": "JPMorgan Chase"
+   },
+   "KPMG": {
+    "fetched": 775,
+    "new": 10,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 193,
+    "new": 2,
+    "company": "Kearney"
+   },
+   "McKinsey": {
+    "fetched": 88,
+    "new": 3,
+    "company": "McKinsey"
+   },
+   "North Highland": {
+    "fetched": 59,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "Oliver Wyman (MMC)": {
+    "fetched": 76,
+    "new": 1,
+    "company": "Oliver Wyman"
+   },
+   "PepsiCo": {
+    "fetched": 894,
+    "new": 32,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 135,
+    "new": 17,
+    "company": "Pfizer"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 57,
+    "new": 10,
+    "company": "PwC"
+   },
+   "PwC (US_Experienced_Careers)": {
+    "fetched": 519,
+    "new": 0,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 165,
+    "new": 5,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Strategy& (PwC) (US_Entry_Level_Careers)": {
+    "fetched": 4,
+    "new": 2,
+    "company": "Strategy& (PwC)"
+   },
+   "Strategy& (PwC) (US_Experienced_Careers)": {
+    "fetched": 23,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Watershed": {
+    "fetched": 34,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 126,
+    "new": 2,
+    "company": "West Monroe"
+   },
+   "Zocdoc": {
+    "fetched": 58,
+    "new": 0,
+    "company": "Zocdoc"
+   }
+  },
+  "screened_out": 266,
+  "notes": [
+   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
+  ],
+  "log": {
+   "fetched": 8120,
+   "sources_ok": 30,
+   "sources_failed": [],
+   "new_postings": 266,
+   "passed_rules": 1,
+   "new_matches": [],
+   "rerated": [],
+   "closed": [
+    {
+     "company": "Deloitte",
+     "title": "Business Strategy Consultant",
+     "rating": "Stretch",
+     "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Business-Strategy-Consultant/363770"
+    }
+   ],
+   "dismissed_total": 0,
+   "open_total": 23,
+   "alerts": 0,
+   "emails": 0
+  }
  }
 ]
