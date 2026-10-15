@@ -437,6 +437,17 @@ class Scans(unittest.TestCase):
         self.assertTrue(tracked["Acme|5"]["provisional"])
         self.assertNotIn("Acme|5", self.state_json("pending.json"))
 
+    def test_provisional_confirmed_strong_gets_its_email_once(self):
+        self.listing = [job(8)]
+        self.run_scan()                                                   # AI down: provisional Good
+        self.assertEqual(self.emails, [])
+        self.rate = {"Acme|8": rating("Acme|8", rating="Strong")}
+        self.run_scan()
+        self.assertEqual(len(self.emails), 1)                             # confirmed Strong: email
+        self.assertEqual(len(self.alerts), 1)                             # no second phone alert
+        self.run_scan()
+        self.assertEqual(len(self.emails), 1)                             # never repeated
+
     def test_provisional_removed_when_ai_says_no(self):
         self.listing = [job(7)]
         self.run_scan()
@@ -498,7 +509,7 @@ class Page(unittest.TestCase):
         report.write_site(self.d, [full, bare], [], "https://s", [], {}, companies=summ, profiles={"Acme": p})
         html = (self.d / "index.html").read_text()
         for s in ("Eligible on stated requirements", "Company fit: High", "Specific edge", "Verified policy",
-                  "Travel?", "Provisional: AI rating pending", "Known for X.", "(company-level)",
+                  "Travel?", "Provisional - AI rating pending", "Known for X.", "(company-level)",
                   "may be out of date", 'href="companies#acme"', 'role="status"'):
             self.assertIn(s, html, s)
         comp = (self.d / "companies.html").read_text()

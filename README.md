@@ -41,9 +41,9 @@ and what it doesn't.
 ![Results page on a phone: one match with its rating, pointers, company reason, and expanded
 company research with evidence labels](docs/results-page.png)
 
-*Rendered from the live state. This match was rated before the upgrade, so its company details
-are company-level research; matches rated from now on also get job-specific write-ups,
-eligibility and company-fit badges.*
+*Rendered from the live state with the new code. This match was rated before the upgrade, so its
+company details are company-level research ("About McKinsey"); matches rated from now on also get
+job-specific write-ups ("Why McKinsey"), eligibility and company-fit badges.*
 
 ## How it works
 
@@ -136,7 +136,8 @@ refresh date, or if an official page it watches changes.
 **Company research vs job scoring.** The profile is *context*. The AI rates the role from the
 posting itself, then writes job-specific "Why this company / support / development / check
 before applying" notes that may draw on the profile. Where a match has no job-specific note,
-the page shows the company-level finding and labels it "(company-level)".
+the page shows the company-level finding instead, headed "About <company>" and labelled
+"(company-level)", so it never claims to explain the specific role.
 
 **Cost controls.** No research happens during scans. Only profiles for companies in the current
 batch are sent, each capped at 2,200 characters (`[intel] prompt_chars`), and same-company
@@ -199,7 +200,7 @@ account, the ntfy phone app.
 ```bash
 git clone https://github.com/robbiecharlesschwartz-sudo/job-scanner && cd job-scanner
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
-.venv/bin/python -m unittest discover -s tests      # 54 tests, no network
+.venv/bin/python -m unittest discover -s tests      # 55 tests, no network
 node --test tests/status.test.mjs                    # 6 API tests
 .venv/bin/python -m scanner.intel status             # company-profile coverage
 ```
@@ -295,16 +296,16 @@ Vercel redeploys when `site/`, `api/` or `vercel.json` change (`ignoreCommand`),
 Every card has **Applied** and **Not interested** (and Undo). A click calls `/api/status`, which
 commits the change to `state/status.json` through the GitHub API (retrying on conflicting
 writes), so marks sync across devices and every scan sees them. A marked card moves into its
-section immediately (and stays there on every device); if saving fails, an inline message says
-so and the card moves back.
+section immediately, and a notice at the top confirms it with an **Undo** button (keyboard users
+land on it). If saving fails, a red notice says why and the card moves back.
 "Not interested" cards leave the page 7 days after marking and never re-alert; the mark stays
 in `status.json` as the record.
 
 ## Security and privacy
 
 - **Status API authentication.** Set `STATUS_TOKEN` in Vercel, then open the page once on each
-  device as `https://<site>/#token=<STATUS_TOKEN>`. The page stores the token in that browser and
-  removes it from the address bar. Every GET and POST must then send it (`X-Status-Token`,
+  device as `https://<site>/#token=<STATUS_TOKEN>` (pasting it into a tab that already shows the
+  page works too). The page stores the token in that browser and removes it from the address bar. Every GET and POST must then send it (`X-Status-Token`,
   compared in constant time). **Without `STATUS_TOKEN` the endpoint is open to anyone who finds
   the URL**, which was the pre-upgrade behaviour and is kept only for backwards compatibility.
 - The API also refuses cross-site POSTs (Origin check), accepts only `company|id` keys and the two

@@ -386,7 +386,12 @@ def main(argv=None) -> int:
     dismissed = {k for k, v in status.items()
                  if isinstance(v, dict) and v.get("status") == "not_interested" and v.get("at", "9") <= dismiss_cutoff}
     fresh = [m for m in run_matches if m["key"] not in tracked and m["key"] not in dismissed]
-    mail_alerts = [m for m in fresh if m["rating"] in settings.get("email", {}).get("ratings", ["Strong"])]
+    mail_ratings = settings.get("email", {}).get("ratings", ["Strong"])
+    # Email new matches with an email-worthy rating, and provisional matches the AI has now
+    # confirmed at that rating (their phone alert went out when they first appeared).
+    confirmed = [m for m in run_matches if m["key"] in tracked and tracked[m["key"]].get("provisional")
+                 and not m.get("provisional") and tracked[m["key"]].get("rating") not in mail_ratings]
+    mail_alerts = [m for m in fresh + confirmed if m["rating"] in mail_ratings]
     texts = notify.compose(fresh, settings["site"]["url"], first_run=first_run and not tracked,
                            max_listed=settings["sms"]["max_listed"])
     run = {

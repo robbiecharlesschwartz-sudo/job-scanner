@@ -85,7 +85,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .badges{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 0}
 .badge{font-size:12px;padding:1px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
 .badge.ok{color:var(--strong-ink);border-color:var(--strong-ink)}
-.badge.warn{color:var(--warn-ink);border-color:var(--warn-ink)}
+.badge.pend{color:var(--stretch-ink);border-color:var(--stretch-ink);background:var(--stretch-bg)}
 .whyco{margin:8px 0 0;font-size:14px}
 .whyco b{font-weight:600}
 details.more{margin-top:8px;color:var(--ink);font-size:14px}
@@ -102,8 +102,10 @@ details.more ul{margin:2px 0;padding-left:18px}
 .lvl{font-size:12px;color:var(--muted)}
 .srcs{font-size:12px;color:var(--muted)}
 .srcs a{color:var(--muted)}
-#saveMsg{position:sticky;top:0;z-index:2;margin:0;font-size:13px;padding:0}
-#saveMsg:not(:empty){background:var(--warn-bg);color:var(--warn-ink);padding:8px 12px;border-radius:8px;margin:0 0 10px}
+#saveMsg{position:sticky;top:8px;z-index:2;margin:0;font-size:14px;padding:0}
+#saveMsg:not(:empty){display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);padding:10px 12px;border-radius:10px;margin:0 0 10px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+#saveMsg.err:not(:empty){background:var(--warn-bg);color:var(--warn-ink);box-shadow:none}
+#saveMsg button{font:inherit;font-size:13px;font-weight:600;background:none;color:inherit;border:1px solid currentColor;border-radius:8px;padding:5px 12px;cursor:pointer;min-height:36px;flex:none}
 .acts button[disabled]{opacity:.6;cursor:progress}
 .co-prof{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 14px}
 .co-prof h2{border:0;margin:0 0 6px;padding:0}
@@ -111,6 +113,13 @@ details.more ul{margin:2px 0;padding-left:18px}
 .co-prof ul{margin:0;padding-left:18px;font-size:14px}
 .co-prof li{margin:3px 0}
 .co-prof p{margin:4px 0;font-size:14px}
+.co-prof{scroll-margin-top:12px}
+.jump{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+.jump a{font-size:13px;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px}
+.jump a:hover{border-color:var(--ink)}
+.top-link{text-align:right;font-size:12px}
+.nw{white-space:nowrap}
+.top-link a{color:var(--muted)}
 """
 
 JS = r"""
@@ -124,12 +133,26 @@ document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click'
 // the token is kept in this browser and removed from the address bar.
 const LABEL={applied:'Applied',not_interested:'Not interested'};
 let TOKEN='';
-try{
+function readToken(){
   const m=location.hash.match(/token=([^&]+)/);
-  if(m){localStorage.setItem('statusToken',decodeURIComponent(m[1]));history.replaceState(null,'',location.pathname+location.search);}
-  TOKEN=localStorage.getItem('statusToken')||'';
-}catch(e){}
-const msg=t=>{const el=document.getElementById('saveMsg');if(el)el.textContent=t||'';};
+  if(m){TOKEN=decodeURIComponent(m[1]);history.replaceState(null,'',location.pathname+location.search);}
+  try{if(m)localStorage.setItem('statusToken',TOKEN);else TOKEN=TOKEN||localStorage.getItem('statusToken')||'';}catch(e){}
+  return !!m;
+}
+readToken();
+let msgTimer;
+function msg(t,opts){
+  const el=document.getElementById('saveMsg');if(!el)return;
+  clearTimeout(msgTimer);el.textContent='';el.className=opts&&opts.err?'err':'';
+  if(!t)return;
+  const span=document.createElement('span');span.textContent=t;el.append(span);
+  if(opts&&opts.undo){
+    const b=document.createElement('button');b.type='button';b.textContent='Undo';
+    b.addEventListener('click',()=>{msg('');opts.undo();});el.append(b);
+    if(opts.focus)b.focus();
+  }
+  if(!(opts&&opts.err))msgTimer=setTimeout(()=>{if(!el.contains(document.activeElement))el.textContent='';},8000);
+}
 function place(card,st){
   const s=st&&st.status;
   if(s){card.dataset.s=s;}else{delete card.dataset.s;}
@@ -159,19 +182,32 @@ function applyAll(data){
   document.querySelectorAll('.card[data-key]').forEach(c=>place(c,data[c.dataset.key]));
   counts();
 }
+async function mark(card,s,fromKeyboard){
+  const prev=card.dataset.s?{status:card.dataset.s,at:(card.querySelector('.stamp')||{}).textContent}:undefined;
+  const btns=card.querySelectorAll('.acts button');btns.forEach(b=>b.disabled=true);
+  const title=(card.querySelector('.title')||{}).textContent||'';
+  place(card,s?{status:s,at:new Date().toISOString().slice(0,10)}:undefined);counts();msg('');
+  try{
+    applyAll(await api('POST',{key:card.dataset.key,status:s}));
+    // The card has moved into a (possibly collapsed) section: confirm it and offer Undo here.
+    msg(s?`Marked ${LABEL[s]}: ${title}`:`Moved back to open matches: ${title}`,
+        {undo:()=>mark(card,prev?prev.status:null,true),focus:fromKeyboard});
+  }catch(e){place(card,prev);counts();
+    msg(e.status===401?'Not saved: this device has no access token. Open your private link (…/#token=…) once, then try again.'
+      :'Not saved - check your connection and try again.',{err:true});}
+  finally{btns.forEach(b=>b.disabled=false);}
+}
+function sync(){
+  api('GET').then(d=>{applyAll(d);const el=document.getElementById('saveMsg');if(el&&el.className==='err')msg('');})
+    .catch(e=>{if(e.status===401)msg('Marks are read-only on this device: open your private link (…/#token=…) once to enable saving.',{err:true});});
+}
 if(document.querySelector('.acts')){
-  api('GET').then(applyAll).catch(e=>{if(e.status===401)msg('Marks are read-only on this device: open your private link (…/#token=…) once to enable saving.');});
-  document.addEventListener('click',async ev=>{
+  sync();
+  // The private link pasted into a tab that already shows the page only changes the hash.
+  window.addEventListener('hashchange',()=>{if(readToken())sync();});
+  document.addEventListener('click',ev=>{
     const btn=ev.target.closest('.acts button');if(!btn||btn.disabled)return;
-    const card=btn.closest('.card');const s=btn.dataset.s||null;
-    const prev=card.dataset.s?{status:card.dataset.s}:undefined;
-    const btns=card.querySelectorAll('.acts button');btns.forEach(b=>b.disabled=true);
-    place(card,s?{status:s,at:new Date().toISOString().slice(0,10)}:undefined);counts();msg('');
-    try{applyAll(await api('POST',{key:card.dataset.key,status:s}));}
-    catch(e){place(card,prev);counts();
-      msg(e.status===401?'Not saved: this device has no access token. Open your private link (…/#token=…) once, then try again.'
-        :'Not saved - check your connection and try again.');}
-    finally{btns.forEach(b=>b.disabled=false);const f=card.querySelector(s?'.undo':'.mark');if(f)f.focus();}
+    mark(btn.closest('.card'),btn.dataset.s||null,ev.detail===0);
   });
 }
 """
@@ -251,18 +287,18 @@ def _short_loc(loc: str, keep: int = 4) -> str:
 
 def _badges(m: dict) -> str:
     out = []
-    elig = m.get("eligibility")
-    if elig == "eligible":
+    # One eligibility badge: the strongest thing the posting confirms, else "unclear".
+    if m.get("eligibility") == "eligible":
         out.append('<span class="badge ok">✓ Eligible on stated requirements</span>')
-    elif elig == "unclear" or m.get("undergrad") == "unclear":
-        out.append('<span class="badge">Eligibility unclear</span>')
-    if m.get("undergrad") == "yes":
-        out.append('<span class="badge ok">Open to bachelor\'s grads</span>')
+    elif m.get("undergrad") == "yes":
+        out.append('<span class="badge ok">✓ Open to bachelor\'s grads</span>')
+    elif m.get("eligibility") == "unclear" or m.get("undergrad") == "unclear":
+        out.append('<span class="badge">Eligibility not stated</span>')
     cf = m.get("company_fit")
-    if cf:
+    if cf in ("High", "Medium", "Low"):          # "Unknown" adds nothing to a card
         out.append(f'<span class="badge">Company fit: {e(cf)}</span>')
     if m.get("provisional"):
-        out.append('<span class="badge warn">Provisional: AI rating pending</span>')
+        out.append('<span class="badge pend">Provisional - AI rating pending</span>')
     return f'<div class="badges">{"".join(out)}</div>' if out else ""
 
 
@@ -276,7 +312,7 @@ def _more(m: dict, co: dict) -> tuple[str, str]:
         whyline = f'<p class="whyco"><b>Why {company}:</b> {e(why_co)}</p>'
     elif co.get("differentiator"):
         f = co["differentiator"]
-        whyline = (f'<p class="whyco"><b>Why {company}:</b> {e(f["text"])} '
+        whyline = (f'<p class="whyco"><b>About {company}:</b> {e(f["text"])} '
                    f'<span class="lvl">(company-level)</span></p>')
     rows = []
     if m.get("why_role"):
@@ -488,7 +524,11 @@ def write_log(site_dir: Path, runs: list[dict]) -> None:
 def write_companies(site_dir: Path, profiles: dict, summaries: dict) -> None:
     """companies.html: every researched profile with its evidence labels, unknowns and sources."""
     from .intel import SECTIONS
+    from collections import Counter
     blocks = []
+    first = lambda m: re.split(r"(?<=\.)\s", m or "", maxsplit=1)[0]
+    common = Counter(first(p.get("method")) for p in profiles.values()).most_common(1)
+    common_method = common[0][0] if common and common[0][1] > 1 else ""
     for name in sorted(profiles, key=str.lower):
         p = profiles[name]
         src = {x["id"]: x for x in p.get("sources", [])}
@@ -510,18 +550,25 @@ def write_companies(site_dir: Path, profiles: dict, summaries: dict) -> None:
                      f'{", accessed " + e(x["accessed"]) if x.get("accessed") else ""}</span></li>'
                      for x in src.values())
         fresh = FRESH.get((summaries.get(name) or {}).get("freshness", ""), "")
+        method = p.get("method", "")
+        note = method[len(common_method):].strip() if common_method and method.startswith(common_method) else method
         blocks.append(
             f'<section class="co-prof" id="{e(p["_slug"])}"><h2>{e(name)}</h2>'
-            f'<p class="lvl">Researched {e(p.get("researched_on", "?"))} · refresh after {e(p.get("refresh_after", "?"))}'
-            f'{" · " + e(fresh) if fresh else ""}{" · " + e(p["method"]) if p.get("method") else ""}</p>'
-            f'<p>{e(p.get("overview", ""))}</p>{"".join(secs)}<h3>Sources</h3><ul class="srcs">{sl}</ul></section>')
+            f'<p class="lvl">Researched <span class="nw">{e(p.get("researched_on", "?"))}</span> · refresh after '
+            f'<span class="nw">{e(p.get("refresh_after", "?"))}</span>{" · " + e(fresh) if fresh else ""}'
+            f'{" · " + e(note) if note else ""}</p>'
+            f'<p>{e(p.get("overview", ""))}</p>{"".join(secs)}<h3>Sources</h3><ul class="srcs">{sl}</ul>'
+            '<p class="top-link"><a href="#top">Back to top</a></p></section>')
+    jump = "".join(f'<a href="#{e(profiles[n]["_slug"])}">{e(n)}</a>' for n in sorted(profiles, key=str.lower))
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>Company Research</title><style>{CSS}</style></head><body><main>
+<title>Company Research</title><style>{CSS}</style></head><body><main id="top">
 <h1>Company research</h1>
 <p class="sub">What each company documents about itself, what independent sources add, and what is
 still unknown. A verified policy shows that a policy exists, not that every team practises it.
 Research is cached and reused by every scan; dates show how current it is. <a href="./">Back to matches</a></p>
+{f'<p class="sub">How it was gathered: {e(common_method)}</p>' if common_method else ""}
+{f'<nav class="jump" aria-label="Jump to a company">{jump}</nav>' if blocks else ""}
 {"".join(blocks) or '<p class="empty">No company profiles yet.</p>'}
 </main></body></html>"""
     (site_dir / "companies.html").write_text(page)
