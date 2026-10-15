@@ -3,9 +3,9 @@
 //
 // Env (Vercel project settings):
 //   GITHUB_TOKEN   fine-grained token with Contents: read & write on this repo only (required)
-//   STATUS_TOKEN   shared secret; when set, every request must send it in X-Status-Token
-//                  (the page reads it once from .../#token=<value> and keeps it in the browser).
-//                  Without it the endpoint stays open to anyone who finds the URL.
+//   STATUS_TOKEN   optional shared secret for requests that do NOT come from the results page
+//                  itself (scripts, other sites). The page works on every device with no setup:
+//                  browsers mark its own requests as same-site, and those are accepted.
 //   REPO           owner/name, defaults to this repo
 import { timingSafeEqual } from "node:crypto";
 
@@ -41,22 +41,38 @@ async function load() {
   return { data: data && typeof data === "object" && !Array.isArray(data) ? data : {}, sha: j.sha };
 }
 
-export function authorized(headers, token = process.env.STATUS_TOKEN) {
-  if (!token) return true;
+function hostOf(url) {
+  try { return new URL(url).host; } catch { return null; }
+}
+
+// True when the browser says the request comes from the results page itself.
+export function fromSite(headers) {
+  const hosts = new Set([headers.host, headers["x-forwarded-host"]].filter(Boolean));
+  if (headers["sec-fetch-site"] === "same-origin") return true;
+  if (headers.origin) return hosts.has(hostOf(headers.origin));
+  if (headers.referer) return hosts.has(hostOf(headers.referer));
+  return false;
+}
+
+export function tokenOk(headers, token = process.env.STATUS_TOKEN) {
+  if (!token) return false;
   const got = Buffer.from(String(headers["x-status-token"] || ""));
   const want = Buffer.from(token);
   return got.length === want.length && timingSafeEqual(got, want);
+}
+
+// The page itself is always allowed (so marks sync on every device with no setup); anything else
+// needs the token when one is configured. With no STATUS_TOKEN set, behaviour is fully open.
+export function authorized(headers, token = process.env.STATUS_TOKEN) {
+  return !token || fromSite(headers) || tokenOk(headers, token);
 }
 
 export function sameOrigin(headers) {
   // Browsers send Origin on cross-site POSTs; refuse those (defence in depth against CSRF).
   const origin = headers.origin;
   if (!origin) return true;
-  try {
-    return new URL(origin).host === headers.host;
-  } catch {
-    return false;
-  }
+  const hosts = new Set([headers.host, headers["x-forwarded-host"]].filter(Boolean));
+  return hosts.has(hostOf(origin));
 }
 
 export function validate(body) {

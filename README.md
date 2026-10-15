@@ -234,7 +234,7 @@ and everything else waits in the retry queue.
 | Variable | Required | Purpose |
 |---|---|---|
 | `GITHUB_TOKEN` | yes | fine-grained token, **this repo only**, Contents: read and write; used to save marks |
-| `STATUS_TOKEN` | strongly recommended | shared secret for the status API (see Security) |
+| `STATUS_TOKEN` | optional | blocks status-API requests that don't come from the results page (see Security) |
 | `REPO` | no | `owner/name`, defaults to this repo |
 
 **Files:** `settings.toml` (`[scoring] batch_size`, `max_per_run`; `[intel] prompt_chars`,
@@ -303,11 +303,13 @@ in `status.json` as the record.
 
 ## Security and privacy
 
-- **Status API authentication.** Set `STATUS_TOKEN` in Vercel, then open the page once on each
-  device as `https://<site>/#token=<STATUS_TOKEN>` (pasting it into a tab that already shows the
-  page works too). The page stores the token in that browser and removes it from the address bar. Every GET and POST must then send it (`X-Status-Token`,
-  compared in constant time). **Without `STATUS_TOKEN` the endpoint is open to anyone who finds
-  the URL**, which was the pre-upgrade behaviour and is kept only for backwards compatibility.
+- **Status API access.** Check-offs work on every device with no setup: browsers label the
+  page's own requests as same-site, and the API accepts those. Requests from anywhere else
+  (another website, a script) need `STATUS_TOKEN` in an `X-Status-Token` header when it is set.
+  This blocks other sites and casual scripting, but it is **not strong authentication**: someone
+  who knows the URL and fakes browser headers could still change marks (they are undoable, and
+  every change is a commit in `state/status.json`). The `#token=` link still works if you ever
+  want to use the token from a browser.
 - The API also refuses cross-site POSTs (Origin check), accepts only `company|id` keys and the two
   statuses, caps the file at 5,000 marks, and never returns GitHub error bodies.
 - Only `http(s)` posting links reach the page (a board can't inject `javascript:` links); all text
@@ -375,7 +377,7 @@ Coverage is **not complete** for every company:
 | "Incomplete" every scan | Raise `max_pages` for that company, or narrow `queries`. |
 | Many "provisional" matches | AI keys missing or exhausted: run the workflow with `check_ai`. |
 | "Waiting for an AI rating" keeps growing | Same as above, or `max_per_run` too low for the backlog. |
-| Check-offs don't save | Page shows "no access token": open your `#token=` link once on that device. A 502 means `GITHUB_TOKEN` in Vercel is missing or expired. |
+| Check-offs don't save | A red "Not saved" notice explains why. A 502 means `GITHUB_TOKEN` in Vercel is missing or expired. Marks from another device appear when you return to the tab or reload. |
 | A rating looks wrong | Add the posting to `examples.toml` with your verdict and reason. |
 | Run stopped: "is not valid JSON" | Run the `git checkout HEAD~1 -- state/<file>` command it prints, commit, re-run. |
 

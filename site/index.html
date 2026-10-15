@@ -97,6 +97,7 @@ details.more ul{margin:2px 0;padding-left:18px}
 .srcs a{color:var(--muted)}
 #saveMsg{position:sticky;top:8px;z-index:2;margin:0;font-size:14px;padding:0}
 #saveMsg:not(:empty){display:flex;gap:10px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);padding:10px 12px;border-radius:10px;margin:0 0 10px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+#saveMsg.err{position:static}
 #saveMsg.err:not(:empty){background:var(--warn-bg);color:var(--warn-ink);box-shadow:none}
 #saveMsg button{font:inherit;font-size:13px;font-weight:600;background:none;color:inherit;border:1px solid currentColor;border-radius:8px;padding:5px 12px;cursor:pointer;min-height:36px;flex:none}
 .acts button[disabled]{opacity:.6;cursor:progress}
@@ -127,8 +128,8 @@ document.querySelectorAll('.chips button').forEach(b=>b.addEventListener('click'
 }));
 
 // Check-offs: saved to the repo through /api/status, so they sync across devices.
-// If the site owner set STATUS_TOKEN, open the page once as .../#token=<token> on each device;
-// the token is kept in this browser and removed from the address bar.
+// The page's own requests are accepted on every device with no setup. A #token=<STATUS_TOKEN>
+// link is still honoured (kept in this browser) for setups that require it.
 const LABEL={applied:'Applied',not_interested:'Not interested'};
 let TOKEN='';
 function readToken(){
@@ -148,6 +149,9 @@ function msg(t,opts){
     const b=document.createElement('button');b.type='button';b.textContent='Undo';
     b.addEventListener('click',()=>{msg('');opts.undo();});el.append(b);
     if(opts.focus)b.focus();
+  }else if(opts&&opts.err){
+    const x=document.createElement('button');x.type='button';x.textContent='Dismiss';
+    x.addEventListener('click',()=>msg(''));el.append(x);
   }
   if(!(opts&&opts.err))msgTimer=setTimeout(()=>{if(!el.contains(document.activeElement))el.textContent='';},8000);
 }
@@ -191,18 +195,33 @@ async function mark(card,s,fromKeyboard){
     msg(s?`Marked ${LABEL[s]}: ${title}`:`Moved back to open matches: ${title}`,
         {undo:()=>mark(card,prev?prev.status:null,true),focus:fromKeyboard});
   }catch(e){place(card,prev);counts();
-    msg(e.status===401?'Not saved: this device has no access token. Open your private link (…/#token=…) once, then try again.'
+    msg(e.status===401?'Not saved: the server refused this request. Reload the page and try again.'
       :'Not saved - check your connection and try again.',{err:true});}
   finally{btns.forEach(b=>b.disabled=false);}
 }
 function sync(){
   api('GET').then(d=>{applyAll(d);const el=document.getElementById('saveMsg');if(el&&el.className==='err')msg('');})
-    .catch(e=>{if(e.status===401)msg('Marks are read-only on this device: open your private link (…/#token=…) once to enable saving.',{err:true});});
+    .catch(e=>{if(e.status===401)msg('Your marks could not be loaded on this device. Reload the page; if it keeps happening, check the site settings.',{err:true});});
 }
+// Copy exactly what was highlighted. A triple-click selection runs on to the start of the next
+// block, so browsers paste the next heading too ("How to read a card"); clip it back.
+document.addEventListener('copy',ev=>{
+  const sel=getSelection();if(!sel||sel.isCollapsed||!sel.rangeCount)return;
+  const r=sel.getRangeAt(0).cloneRange();
+  const block=n=>{n=n.nodeType===1?n:n.parentElement;
+    while(n&&n!==document.body&&getComputedStyle(n).display==='inline')n=n.parentElement;return n;};
+  const start=block(r.startContainer);
+  if(r.endOffset===0&&start&&!start.contains(r.endContainer))r.setEnd(start,start.childNodes.length);
+  const text=r.toString().replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+  if(!text)return;
+  ev.clipboardData.setData('text/plain',text);ev.preventDefault();
+});
 if(document.querySelector('.acts')){
   sync();
   // The private link pasted into a tab that already shows the page only changes the hash.
   window.addEventListener('hashchange',()=>{if(readToken())sync();});
+  // Marks made on another device show up when you come back to this tab.
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')sync();});
   document.addEventListener('click',ev=>{
     const btn=ev.target.closest('.acts button');if(!btn||btn.disabled)return;
     mark(btn.closest('.card'),btn.dataset.s||null,ev.detail===0);
