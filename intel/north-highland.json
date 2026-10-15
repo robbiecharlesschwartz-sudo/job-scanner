@@ -1,0 +1,31 @@
+{
+ "company": "North Highland",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Culture and benefit sources are mostly 2010-2016.",
+ "overview": "North Highland is an Atlanta-founded (1992), partly employee-owned management consulting firm focused on change and transformation, combining workforce, customer and operations expertise. Its postings cite 5,000+ consultants and about 60 offices.",
+ "business_type": "Employee-owned change and transformation consulting",
+ "service_lines": ["Business transformation and change", "Customer and experience", "Operations", "Workforce / people", "Data and technology enablement"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Partly employee-owned through an ESOP (about 53% per a third-party profile), with a long-standing 'own your career' positioning.", "evidence": "tentative_signal", "sources": ["2", "3"], "significance": "Ownership can align incentives; the percentage is not confirmed by the firm."},
+  {"text": "Historically a local model: work mostly with clients in cities where it has offices, reducing travel.", "evidence": "tentative_signal", "sources": ["2"], "significance": "If still true, less travel than national-staffing firms; confirm for the NYC office."}
+ ],
+ "early_career": [],
+ "employee_support": [
+  {"text": "Profiles report unlimited paid time off and a matched 401(k) with immediate vesting.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Unlimited PTO's value depends on team norms."}
+ ],
+ "flexibility": [],
+ "culture": [
+  {"text": "Repeatedly ranked on Consulting Magazine's 'Best Firms to Work For' lists (e.g. #3 in 2010 and 2011, #5 in 2014).", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Survey-based recognition, now dated."}
+ ],
+ "tradeoffs": [
+  {"text": "A third-party profile says the firm mainly hires MBAs and experienced professionals, though 'Analyst' postings exist.", "evidence": "tentative_signal", "sources": ["2", "1"], "significance": "Check whether an Analyst posting is truly entry-level."}
+ ],
+ "unknowns": ["Current benefits and flexibility policies.", "Size and training of the NYC entry-level cohort."],
+ "sources": [
+  {"id": "1", "url": "https://careers.northhighland.com/jobs/analyst-47699", "title": "North Highland Analyst posting", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://managementconsulted.com/north-highland-consulting/", "title": "Management Consulted: North Highland profile", "type": "other", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.consultingmag.com/amp/2014/10/11/the-2014-best-firms-to-work-for-north-highland-consulting-group/", "title": "Consulting Magazine: 2014 Best Firms to Work For - North Highland", "type": "independent", "accessed": "2026-10-15", "published": "2014"}
+ ]
+}

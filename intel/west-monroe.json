@@ -1,0 +1,32 @@
+{
+ "company": "West Monroe",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "West Monroe is a Chicago-founded, 100% employee-owned business and technology consulting firm working across strategy, operations, M&A integration and technology for mid-market and large companies and private equity.",
+ "business_type": "Employee-owned business and technology consulting",
+ "service_lines": ["Strategy and operations", "M&A and private equity value creation", "Customer and digital", "Technology and data", "Energy and utilities"],
+ "watch_urls": ["https://www.westmonroe.com/company-highlight/west-monroe-named-a-best-place-to-work-for-parents-by-great-place-to-work-and-fortune"],
+ "differentiators": [
+  {"text": "100% employee-owned: employees from new hires up earn equity while they work there.", "evidence": "verified_policy", "sources": ["1"], "significance": "Ownership is unusual among consulting firms and ties pay to the firm's results."}
+ ],
+ "early_career": [
+  {"text": "A documented career model sets expectations for promotion, plus a continuing-education program (at least 40 hours a year reported).", "evidence": "tentative_signal", "sources": ["2", "3"], "significance": "Clear promotion criteria help early-career planning."}
+ ],
+ "employee_support": [
+  {"text": "Postings offer ten weeks' paid parental leave after one year of employment; back-up care and caregiver discounts are listed.", "evidence": "verified_policy", "sources": ["4", "2"], "significance": "Documented, with a one-year eligibility wait."},
+  {"text": "Named to Great Place to Work / Fortune's Best Workplaces for Parents (ranked 26 of 50).", "evidence": "supporting_evidence", "sources": ["1"], "significance": "Rankings rely partly on employee surveys: a useful but partial signal."}
+ ],
+ "flexibility": [],
+ "culture": [
+  {"text": "West Monroe says it was founded to be a different, 'people first' kind of consulting firm.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Self-description; ask employees how it plays out on projects."}
+ ],
+ "tradeoffs": [],
+ "unknowns": ["Structure of a new-grad analyst program.", "Typical travel and hours.", "Hybrid/flexibility policy."],
+ "sources": [
+  {"id": "1", "url": "https://www.westmonroe.com/company-highlight/west-monroe-named-a-best-place-to-work-for-parents-by-great-place-to-work-and-fortune", "title": "West Monroe: Best Place to Work for Parents", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.indeed.com/cmp/West-Monroe/about", "title": "Indeed: West Monroe company profile", "type": "other", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://seattlebusinessmag.com/?p=1195687", "title": "Seattle Business Magazine: West Monroe", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "4", "url": "https://builtin.com/job/experienced-consultant-ncino/3695560", "title": "West Monroe consultant posting (benefits section)", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

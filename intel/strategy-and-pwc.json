@@ -1,0 +1,25 @@
+{
+ "company": "Strategy& (PwC)",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Firm-wide PwC benefits are in the PwC profile.",
+ "overview": "Strategy& is PwC's strategy consulting business, formed when PwC acquired Booz & Company (closed 2014). It sells 'strategy through execution': strategy work that can draw on PwC's advisory, tax and assurance teams to implement it.",
+ "business_type": "Strategy consulting inside a Big Four network",
+ "service_lines": ["Corporate and business-unit strategy", "Capabilities-driven strategy", "Transformation and cost", "Deals strategy"],
+ "watch_urls": ["https://www.strategyand.pwc.com/de/en/about/history.html"],
+ "differentiators": [
+  {"text": "Booz & Company heritage (roots in 1914) inside PwC; positioned as 'strategy, made real', combining strategy methods with PwC's network to carry clients from strategy through execution.", "evidence": "verified_policy", "sources": ["1"], "significance": "Expect strategy work that stays involved into implementation, unlike pure advice-only shops. The 'oldest strategy consultancy' framing is the firm's own."}
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "PwC US slowed campus hiring in 2025 and reportedly plans to recruit fewer graduates; Strategy& entry seats in the US are few.", "evidence": "supporting_evidence", "sources": ["2"], "significance": "Competitive; apply early in the campus cycle."}
+ ],
+ "unknowns": ["Strategy&-specific mentorship, staffing and flexibility practices.", "Whether US Strategy& entry roles sit on PwC's entry-level board or are hired separately."],
+ "sources": [
+  {"id": "1", "url": "https://www.strategyand.pwc.com/de/en/about/history.html", "title": "Strategy&: History", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://news.bloomberglaw.com/daily-tax-report/big-four-layoffs-hit-amid-uncertain-time-for-accounting-pipeline", "title": "Bloomberg Law: Big Four layoffs and campus hiring", "type": "independent", "accessed": "2026-10-15", "published": "2025"}
+ ]
+}

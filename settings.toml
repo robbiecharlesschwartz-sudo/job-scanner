@@ -17,11 +17,24 @@ to = "robbiecschwartz@icloud.com"
 ratings = ["Strong"]
 
 [scoring]
-# Ratings use Claude when ANTHROPIC_API_KEY is set, otherwise Groq's free tier (GROQ_API_KEY).
+# Ratings use Claude when ANTHROPIC_API_KEY is set, otherwise NVIDIA's free Kimi model
+# (NVIDIA_API_KEY), then Groq's free tier (GROQ_API_KEY).
 # Haiku 5.5 keeps this to pennies a month; "claude-opus-5-5" rates more carefully at ~40x the price.
 model = "claude-haiku-5-5"
-# Postings scored per Claude request.
+# Postings scored per AI request. Same-company postings are batched together so their company
+# profile is sent once.
 batch_size = 3   # small batches: each posting now goes in with its full text
+# Most postings rated in one scan. Extra ones wait in state/pending.json for the next scan.
+max_per_run = 250
+
+[intel]
+# Company profiles live in intel/<company>.json (see intel/README.md). Scans only READ them.
+# Most characters of one company's profile sent to the AI with each batch.
+prompt_chars = 2200
+# `python -m scanner.intel check` (run after each scheduled scan) re-fetches a profile's official
+# watch_urls at most this often, and at most this many profiles per run. No AI calls.
+check_every_days = 30
+max_checks_per_run = 6
 
 [filters]
 # Regexes, case-insensitive. The target (see profile.md): new-grad (0-1 yrs) roles based in NYC,

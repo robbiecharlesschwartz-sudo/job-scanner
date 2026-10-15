@@ -95,6 +95,12 @@ def _dedupe(jobs: list[Job]) -> list[Job]:
     return out
 
 
+def _truncated(c: dict) -> None:
+    """A pagination loop hit its page cap before the board ran out: this listing is incomplete,
+    so postings missing from it must not be treated as closed."""
+    c["_truncated"] = True
+
+
 def _mk(c: dict, **kw) -> Job:
     # "Manager_Product Development" (PwC): underscores would hide words from the \b rules.
     kw["title"] = re.sub(r"[\s_]+", " ", html.unescape(kw.get("title") or "")).strip()
@@ -186,6 +192,8 @@ def workday(c: dict) -> list[Job]:
                                extra={"detail": f"{api}{path}"}))
             if len(posts) < 20 or (page + 1) * 20 >= total:
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 
@@ -274,6 +282,8 @@ def oracle(c: dict) -> list[Job]:
                                extra={"oracle": (host, site, str(r["Id"]))}))
             if len(reqs) < 25:
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 
@@ -299,6 +309,8 @@ def ibm(c: dict) -> list[Job]:
                            meta=f"{s.get('field_keyword_18', '')} / {s.get('field_keyword_17', '')}"))
         if len(hits) < size:
             break
+    else:
+        _truncated(c)
     return _dedupe(out)
 
 
@@ -321,6 +333,8 @@ def jibe(c: dict) -> list[Job]:
                                meta=" ".join(c2.get("name", "") for c2 in j.get("categories") or [] if isinstance(c2, dict))))
             if len(jobs) < 100:
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 
@@ -345,6 +359,8 @@ def sourceflow(c: dict) -> list[Job]:
                            description=strip_html(j.get("description"))))
         if len(res) < 50 or (page + 1) * 50 >= d.get("total_size", 0):
             break
+    else:
+        _truncated(c)
     return out
 
 
@@ -370,6 +386,8 @@ def avature(c: dict) -> list[Job]:
             total = re.search(r'data-total="(\d+)', h)
             if len(arts) < 10 or (total and (page + 1) * 10 >= int(total.group(1))):
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 
@@ -408,6 +426,8 @@ def radancy(c: dict) -> list[Job]:
             pages = re.search(r'data-total-pages="(\d+)"', h)
             if not lis or not pages or page >= int(pages.group(1)):
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 
@@ -430,6 +450,8 @@ def yello(c: dict) -> list[Job]:
                            meta=spans[0] if spans else ""))
         if not items or not d.get("more_requisitions"):
             break
+    else:
+        _truncated(c)
     return _dedupe(out)
 
 
@@ -454,6 +476,8 @@ def kpmg(c: dict) -> list[Job]:
                            meta=f"{strip_html(level.group(1)) if level else ''} / {practice.strip()}"))
         if not new:
             break
+    else:
+        _truncated(c)
     return out
 
 
@@ -477,6 +501,8 @@ def mckinsey(c: dict) -> list[Job]:
                            meta=" / ".join((j.get("jobSkillGroup") or []) + (j.get("jobSkillCode") or []))))
         if len(docs) < 100:
             break
+    else:
+        _truncated(c)
     return _dedupe(out)
 
 
@@ -503,6 +529,8 @@ def phenom(c: dict) -> list[Job]:
                            meta=f"{j.get('category', '')} {j.get('type', '')}".strip()))
         if len(jobs) < size:
             break
+    else:
+        _truncated(c)
     return _dedupe(out)
 
 
@@ -529,6 +557,8 @@ def successfactors(c: dict) -> list[Job]:
                                location=loc, url=root + href))
             if len(rows) < 25:
                 break
+        else:
+            _truncated(c)
     return _dedupe(out)
 
 

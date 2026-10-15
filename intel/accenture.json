@@ -1,0 +1,35 @@
+{
+ "company": "Accenture",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Verify specific numbers before relying on them.",
+ "overview": "Accenture is the largest listed professional-services firm, centred on technology-led transformation. Strategy and management consulting sits alongside a much larger technology, operations and implementation business.",
+ "business_type": "Global technology-led consulting and services",
+ "service_lines": ["Strategy & Consulting", "Technology (implementation, cloud, AI)", "Operations (managed services)", "Song (marketing, experience)", "Industry X (engineering, manufacturing)", "LearnVantage (reskilling services)"],
+ "watch_urls": ["https://www.accenture.com/us-en/careers/local/total-rewards"],
+ "differentiators": [
+  {"text": "Strategy work is tied to technology-led 'reinvention': analysts design operating-model and AI-era transformations that Accenture's technology arm can then build.", "evidence": "verified_policy", "sources": ["2"], "significance": "Good for strategy-to-implementation exposure; many 'Analyst/Consultant' roles are technical, which your hard rules exclude."}
+ ],
+ "early_career": [
+  {"text": "Strategy analysts go through an 'Analyst Runway' training programme on foundational consulting skills and AI (described for the UK 2027-28 graduate cohort).", "evidence": "verified_policy", "sources": ["2"], "significance": "US program details may differ."}
+ ],
+ "employee_support": [
+  {"text": "US careers page: primary caregivers (any gender) may choose to work locally, without travel, for one year after returning from birth or adoption.", "evidence": "verified_policy", "sources": ["1"], "significance": "A practical, consulting-specific support: it addresses travel, the hardest part of consulting for new parents."},
+  {"text": "US time off: 17-27 PTO days by level and tenure (vacation and sick combined), 8 holidays and 2 culture days.", "evidence": "verified_policy", "sources": ["1"], "significance": "Entry levels are at the lower end of the range."},
+  {"text": "Earlier US benefits included 16 weeks' paid leave for birth mothers, 8 for other primary caregivers, and 80 hours of back-up dependent care (2015 reporting).", "evidence": "tentative_signal", "sources": ["3"], "significance": "Dated figures; the current careers page is the better guide."}
+ ],
+ "flexibility": [
+  {"text": "Accenture states that flexible work arrangements must also meet business needs.", "evidence": "verified_policy", "sources": ["1"], "significance": "Flexibility is conditional on client and project needs."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "In September 2025 Accenture announced an $865m restructuring that included exiting staff it judged could not be reskilled for AI work.", "evidence": "supporting_evidence", "sources": ["4"], "significance": "Expect strong pressure to build AI skills; ask how the strategy team was affected."}
+ ],
+ "unknowns": ["Share of US Strategy & Consulting analyst roles that are pure strategy versus technology-adjacent.", "US analyst travel norms."],
+ "sources": [
+  {"id": "1", "url": "https://www.accenture.com/us-en/careers/local/total-rewards", "title": "Accenture US: Total rewards", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.brightnetwork.co.uk/graduate-jobs/accenture/strategy-graduate-programme-2027-2028", "title": "Accenture Strategy Graduate Programme 2027-2028 (listing)", "type": "official", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.fortune.com/2015/08/26/accenture-ship-breast-milk", "title": "Fortune: Accenture parental benefits", "type": "independent", "accessed": "2026-10-15", "published": "2015-08-26"},
+  {"id": "4", "url": "https://www.computerworld.com/article/4064955/accenture-wants-to-lay-off-employees-without-ai-potential.html", "title": "Computerworld: Accenture to lay off staff without AI potential", "type": "independent", "accessed": "2026-10-15", "published": "2025-09"}
+ ]
+}

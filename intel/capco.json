@@ -1,0 +1,27 @@
+{
+ "company": "Capco",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Capco is a management and technology consultancy for financial services (banking, capital markets, wealth and asset management, insurance) and energy and commodities trading, with 5,000+ consultants in 30+ locations. Wipro acquired it in 2021 for about $1.45bn.",
+ "business_type": "Financial-services management and technology consulting (owned by Wipro)",
+ "service_lines": ["Banking and payments", "Capital markets", "Wealth and asset management", "Insurance", "Energy and commodities trading", "Technology and data transformation"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Specialist in financial-services transformation, working with boards and C-suites of banks, insurers and asset managers; part of Wipro since 2021.", "evidence": "supporting_evidence", "sources": ["1", "2"], "significance": "Deep FS exposure; much of the work combines business change with technology delivery."}
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [
+  {"text": "At the acquisition, both CEOs described similar cultures (a press-release claim, not evidence of employee experience).", "evidence": "tentative_signal", "sources": ["2"], "significance": "No independent culture evidence found."}
+ ],
+ "tradeoffs": [
+  {"text": "Financial-services focus with a technology-delivery tilt; strategy-only roles are less common.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Check whether a role is advisory or delivery."}
+ ],
+ "unknowns": ["Graduate program, benefits and flexibility in the US.", "Whether Wipro ownership changed day-to-day culture."],
+ "sources": [
+  {"id": "1", "url": "https://www.businesswire.com/news/home/20210304005536/en/Wipro-to-acquire-Capco-a-global-management-and-technology-consultancy-to-banking-and-financial-services-industry-for-1.45-billion", "title": "Business Wire: Wipro to acquire Capco", "type": "official", "accessed": "2026-10-15", "published": "2021-03-04"},
+  {"id": "2", "url": "https://www.consultancy.uk/news/27166/global-consulting-firm-capco-joins-wipro-in-15-billion-deal", "title": "Consultancy.uk: Capco joins Wipro", "type": "independent", "accessed": "2026-10-15", "published": "2021"}
+ ]
+}

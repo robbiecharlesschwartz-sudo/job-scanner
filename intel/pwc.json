@@ -1,0 +1,35 @@
+{
+ "company": "PwC",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Verify specific numbers before relying on them.",
+ "overview": "PwC US is a Big Four firm with assurance, tax and a large advisory/consulting business. Its strategy consulting arm is Strategy& (profiled separately); the US advisory business was reorganised into eight divisions in 2025.",
+ "business_type": "Big Four professional services",
+ "service_lines": ["Consulting / advisory (reorganised into eight divisions in 2025)", "Deals", "Assurance incl. sustainability assurance", "Tax", "Strategy& (strategy consulting)"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "PwC US runs a firm-wide internal development program, the Learning Collective (30-skill curriculum mixing AI and human skills), with an 'Associate Discovery' track for new associates that includes rotations, mentorship and applied client scenarios.", "evidence": "tentative_signal", "sources": ["3"], "significance": "Structured first-year development, but reported by a secondary source; confirm the program's current form."}
+ ],
+ "early_career": [
+  {"text": "Associate Discovery reportedly includes rotations across clients, sectors or teams, local-leader mentorship, shadowing and coaching.", "evidence": "tentative_signal", "sources": ["3"], "significance": "If confirmed, rotations reduce the risk of being locked into one narrow team early."}
+ ],
+ "employee_support": [
+  {"text": "Coverage of PwC's 2021-22 benefits expansion: parental leave raised to 12 weeks, free mental-health visits doubled to 12 a year, out-of-network mental-health reimbursement raised to 90%.", "evidence": "supporting_evidence", "sources": ["1"], "significance": "Concrete mental-health and family support beyond standard healthcare."},
+  {"text": "A 2026 summary lists 12 weeks' paid leave for all parents plus a four-week phased return at full base pay.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Phased return is a practical support for returning parents; confirm with PwC."}
+ ],
+ "flexibility": [
+  {"text": "Two week-long US firm-wide shutdowns (July and December) and hybrid working are described in benefit summaries.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Firm-wide shutdowns mean the whole team is off together, which makes time off easier to actually take."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "In 2025 PwC US cut about 1,500 jobs (~2%, mostly audit and tax) and slowed campus hiring, citing historically low attrition; it reportedly plans to hire about a third fewer graduates by 2028.", "evidence": "supporting_evidence", "sources": ["4", "5"], "significance": "Fewer entry-level seats; also reported delays to some entry-level consulting start dates."}
+ ],
+ "unknowns": ["Which advisory division a given 'Associate' posting belongs to and how much of it is strategy versus implementation.", "Current start-date practice for 2027 consulting associates."],
+ "sources": [
+  {"id": "1", "url": "https://www.hcamag.com/us/specialization/benefits/pwc-increases-benefits-and-salaries-expands-flexibility/405004", "title": "HCAMag: PwC increases benefits and salaries, expands flexibility", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://builtin.com/company/pwc/faq/compensation-benefits", "title": "Built In: PwC compensation and benefits", "type": "other", "accessed": "2026-10-15", "published": "2026-07-15"},
+  {"id": "3", "url": "https://magica.com/news/pwc-concentrates-entry-level-hires-for-ai-apprenticeship", "title": "Report: PwC Learning Collective and Associate Discovery", "type": "other", "accessed": "2026-10-15"},
+  {"id": "4", "url": "https://www.consulting.us/news/11817/pwc-us-cuts-1500-jobs", "title": "Consulting.us: PwC US cuts 1,500 jobs", "type": "independent", "accessed": "2026-10-15", "published": "2025-05"},
+  {"id": "5", "url": "https://news.bloomberglaw.com/daily-tax-report/big-four-layoffs-hit-amid-uncertain-time-for-accounting-pipeline", "title": "Bloomberg Law: Big Four layoffs", "type": "independent", "accessed": "2026-10-15", "published": "2025"}
+ ]
+}

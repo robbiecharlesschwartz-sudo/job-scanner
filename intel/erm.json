@@ -1,0 +1,29 @@
+{
+ "company": "ERM",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "ERM (Environmental Resources Management) describes itself as the world's largest pure-play sustainability consultancy, with 8,200+ consultants in 150+ locations, advising companies on sustainability strategy, reporting, climate, environmental compliance, health and safety, and social impact.",
+ "business_type": "Specialist sustainability consultancy",
+ "service_lines": ["Corporate sustainability strategy and reporting", "Climate and energy transition / carbon", "Environmental permitting and compliance", "Health and safety", "Social performance", "ESG due diligence (via ERM's sustainability institute and practices)"],
+ "watch_urls": ["https://www.erm.com/erm-careers/early-careers/"],
+ "differentiators": [
+  {"text": "Sustainability is the whole business, not one practice inside a generalist firm; the scale claim ('largest pure-play') is ERM's own.", "evidence": "verified_policy", "sources": ["1", "2"], "significance": "Directly matches your strongest proof point (CDP/EcoVadis reporting, ESG RFPs)."}
+ ],
+ "early_career": [
+  {"text": "Entry-level 'Consulting Associate, Sustainability' roles (Manhattan among the offices) support corporate sustainability strategy, materiality assessments and sustainability reports; ERM's early-careers page stresses hands-on work from day one.", "evidence": "verified_policy", "sources": ["1", "2"], "significance": "Day-to-day work maps closely to your GDI internship. Some postings ask 0-3 years."},
+  {"text": "A full-time graduate pathway (Compass Program) exists for associate consultants.", "evidence": "verified_policy", "sources": ["3"], "significance": "A structured entry program, though posted for a different office."}
+ ],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Much of ERM's work is technical (environmental compliance, permitting, health and safety) rather than strategy; strategy-and-reporting roles are a subset.", "evidence": "supporting_evidence", "sources": ["2"], "significance": "Check that the posting is in corporate sustainability, not field or compliance work."}
+ ],
+ "unknowns": ["US benefits, leave and flexibility policies.", "Pay relative to generalist consulting firms."],
+ "sources": [
+  {"id": "1", "url": "https://climatebase.org/job/51593036/consulting-associate-sustainability-entry-level", "title": "ERM Consulting Associate, Sustainability (entry level) posting", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.erm.com/erm-careers/early-careers/", "title": "ERM: Launch your career in sustainability", "type": "official", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://app.joinhandshake.com/jobs/7178958/share_preview", "title": "ERM Associate Consultant, Compass Program (posting)", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

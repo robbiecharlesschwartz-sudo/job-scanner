@@ -16,6 +16,10 @@ on:
         description: "Only send a test email (no scan)"
         type: boolean
         default: false
+      dry_run:
+        description: "Dry run: scan and rate, print what would be alerted, change nothing"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -39,7 +43,7 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Scan, rate, alert
-        run: python -m scanner ${{ inputs.check_ai && '--check-ai' || '' }} ${{ inputs.test_email && '--test-email' || '' }}
+        run: python -m scanner ${{ inputs.check_ai && '--check-ai' || '' }} ${{ inputs.test_email && '--test-email' || '' }} ${{ inputs.dry_run && '--dry-run' || '' }}
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
@@ -47,8 +51,18 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
 
+      # Cheap upkeep of company research: re-fetch the official pages of profiles that are due and
+      # flag any that changed. No AI calls; a failure here never affects the scan.
+      - name: Check company research sources
+        if: ${{ !inputs.check_ai && !inputs.test_email && !inputs.dry_run }}
+        continue-on-error: true
+        timeout-minutes: 5
+        run: python -m scanner.intel check
+
       # Commit even if alerts failed: the state must record what was seen, or tomorrow
       # would re-send everything. The push redeploys the results page on Vercel.
+      # A check-off saved from the page between checkout and push makes the first push fail;
+      # rebase and try again (the scanner never writes status.json, so there is no conflict).
       - name: Save state and results page
         if: always()
         run: |
@@ -57,8 +71,11 @@ jobs:
           git add state site
           git diff --cached --quiet && exit 0
           git commit -m "Scan $(TZ=America/New_York date '+%Y-%m-%d %H:%M %Z')"
-          git pull --rebase origin main
-          git push
+          for i in 1 2 3 4; do
+            git pull --rebase origin main && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
 
       - name: Alert if the scan failed
         if: failure()

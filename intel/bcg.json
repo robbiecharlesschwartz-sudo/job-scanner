@@ -1,0 +1,34 @@
+{
+ "company": "BCG",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Boston Consulting Group is a global strategy consulting firm (MBB). In the US, undergraduates and non-MBA master's graduates join as Associates; Consultant is the post-MBA title.",
+ "business_type": "Global strategy and management consulting (MBB)",
+ "service_lines": ["Corporate strategy", "Transformation", "Climate and sustainability", "Digital, technology and data (BCG X)", "Organization and people", "Industry practices"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "BCG's PTO program (Predictability, Teaming, Open communication), piloted in Boston and rolled out across North America and Europe, has teams plan around each consultant's stated commitments such as protected evenings.", "evidence": "supporting_evidence", "sources": ["2", "3"], "significance": "A structured team practice for predictability, not just a policy statement; how strictly teams follow it varies."}
+ ],
+ "early_career": [
+  {"text": "The US Associate role is open to undergraduates and non-MBA master's students from any field graduating in a set window (e.g. Dec 2026 - Jul 2027).", "evidence": "verified_policy", "sources": ["1"], "significance": "Matches your April 2027 graduation; recruiting is seasonal."}
+ ],
+ "employee_support": [
+  {"text": "US postings list paid parental leave, family planning (elective egg freezing, surrogacy and adoption reimbursement), caregiving resources and mental-health offerings, with health coverage for employees, spouses and children at no cost.", "evidence": "verified_policy", "sources": ["1"], "significance": "Broad documented family and caregiving support; leave length not stated."}
+ ],
+ "flexibility": [
+  {"text": "Associates must live within commuting distance of their home office and be in the office as directed.", "evidence": "verified_policy", "sources": ["1"], "significance": "Office-based, not remote-friendly."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "A 2021 survey summary put hours worked and work-life balance among BCG's weakest-rated areas, as is typical for MBB; a 2026 guide says consultants often log back on after dinner in busy weeks.", "evidence": "tentative_signal", "sources": ["4", "5"], "significance": "Demanding hours are part of the trade-off for MBB training and exit options."}
+ ],
+ "unknowns": ["US parental leave length.", "Typical travel for NYC associates."],
+ "sources": [
+  {"id": "1", "url": "https://careers.rhsmith.umd.edu/jobs/the-boston-consulting-group-bcg-associate-us-offices-us-campus-graduation-dec-2026-july-2027/", "title": "BCG Associate - US offices (campus posting)", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.consultingmag.com/amp/2012/09/21/one-on-one-with-bcgs-joe-davis/", "title": "Consulting Magazine: One on one with BCG's Joe Davis", "type": "independent", "accessed": "2026-10-15", "published": "2012-09"},
+  {"id": "3", "url": "https://www.consultancy.uk/news/335/bcg-working-hard-and-over-hours-are-history", "title": "Consultancy.uk: BCG PTO program", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "4", "url": "https://poetsandquants.com/2021/01/13/top-50-consulting-firms-to-work-for-in-2021/3/", "title": "Poets&Quants: Top consulting firms to work for 2021", "type": "independent", "accessed": "2026-10-15", "published": "2021-01-13"},
+  {"id": "5", "url": "https://www.hackingthecaseinterview.com/pages/day-in-the-life-of-a-bcg-consultant", "title": "Hacking the Case Interview: Day in the life of a BCG consultant", "type": "other", "accessed": "2026-10-15", "published": "2026"}
+ ]
+}

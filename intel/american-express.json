@@ -1,0 +1,79 @@
+{
+ "company": "American Express",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "American Express is a New York-headquartered global payments and card company. Strategy roles here are in-house: corporate strategy, business-unit strategy and chief-of-staff teams inside one company.",
+ "business_type": "In-house strategy at a financial-services company",
+ "service_lines": [
+  "Card and payments",
+  "Merchant services",
+  "Corporate strategy and planning"
+ ],
+ "watch_urls": [
+  "https://www.americanexpress.com/en-us/careers/locations/new-york/index.html"
+ ],
+ "differentiators": [
+  {
+   "text": "Headquartered in New York, so corporate strategy roles sit close to senior leadership.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1"
+   ],
+   "significance": "In-house strategy in your city, with exposure to how one company makes decisions end to end."
+  }
+ ],
+ "early_career": [],
+ "employee_support": [
+  {
+   "text": "Careers pages list up to 20 weeks of paid parental leave (birth, adoption, surrogacy); 2017 coverage adds 6-8 extra medical weeks for birth mothers and up to $35,000 for adoption or surrogacy costs.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1",
+    "2"
+   ],
+   "significance": "Among the more generous documented leave policies here; confirm current terms."
+  }
+ ],
+ "flexibility": [
+  {
+   "text": "'Amex Flex': depending on role and business needs, colleagues work onsite or hybrid; a third-party site says three office days is typical.",
+   "evidence": "verified_policy",
+   "sources": [
+    "1",
+    "3"
+   ],
+   "significance": "Hybrid exists but is set by role; the three-day figure is unconfirmed."
+  }
+ ],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": [
+  "A structured early-career strategy program in the US.",
+  "Team-level hours in strategy groups."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://www.americanexpress.com/en-us/careers/locations/new-york/index.html",
+   "title": "American Express Careers: New York",
+   "type": "official",
+   "accessed": "2026-10-15"
+  },
+  {
+   "id": "2",
+   "url": "https://benefitnews.com/news/american-express-to-give-employees-20-weeks-of-paid-parental-leave",
+   "title": "Benefit News: Amex 20 weeks paid parental leave",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2017"
+  },
+  {
+   "id": "3",
+   "url": "https://4dayweek.io/company/american-express",
+   "title": "4dayweek.io: American Express work model",
+   "type": "other",
+   "accessed": "2026-10-15"
+  }
+ ]
+}

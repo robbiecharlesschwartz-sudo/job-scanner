@@ -1,0 +1,58 @@
+{
+ "company": "Innosight",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Benefits follow parent Huron and were not researched.",
+ "overview": "Innosight is a growth and innovation strategy consultancy co-founded in 2000 by Clayton Christensen (disruptive innovation) and Mark Johnson. Huron acquired it in 2017; it still operates as Huron's strategy and innovation team and posts on Huron's careers board.",
+ "business_type": "Growth and innovation strategy consulting inside a larger consultancy (Huron)",
+ "service_lines": [
+  "Growth strategy",
+  "Innovation strategy and new business models",
+  "Strategic transformation"
+ ],
+ "watch_urls": [],
+ "differentiators": [
+  {
+   "text": "Built on disruptive-innovation theory (Christensen); work focuses on growth, new business models and navigating disruption, across sectors such as healthcare, energy, financial services and life sciences.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "1"
+   ],
+   "significance": "Future-focused strategy rather than cost or operations work."
+  },
+  {
+   "text": "Huron's 2025 acquisition of Wilson Perumal was framed as building on the Innosight team's strategy and innovation strengths, indicating Innosight remains a distinct team.",
+   "evidence": "supporting_evidence",
+   "sources": [
+    "2"
+   ],
+   "significance": "The brand and team are still active within Huron."
+  }
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": [
+  "Entry-level program, benefits and flexibility (Huron's policies apply)."
+ ],
+ "sources": [
+  {
+   "id": "1",
+   "url": "https://consultingmag.com/2017/02/22/huron-to-acquire-strategy-firm-innosight",
+   "title": "Consulting Magazine: Huron to acquire Innosight",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2017-02-22"
+  },
+  {
+   "id": "2",
+   "url": "https://pulse2.com/huron-buying-wilson-perumal-company-to-enhance-strategy-and-operations-consulting-capabilities/amp/",
+   "title": "Pulse 2.0: Huron buying Wilson Perumal & Company",
+   "type": "independent",
+   "accessed": "2026-10-15",
+   "published": "2025-09"
+  }
+ ]
+}

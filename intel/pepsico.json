@@ -1,0 +1,26 @@
+{
+ "company": "PepsiCo",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). US-specific evidence was not found; regional policies are noted as such.",
+ "overview": "PepsiCo is a global food and beverage company (brands include Pepsi, Frito-Lay, Gatorade and Quaker), headquartered in Purchase, New York. Strategy roles are in-house: corporate, sector or brand strategy and transformation teams.",
+ "business_type": "In-house strategy at a consumer-goods company",
+ "service_lines": ["Beverages", "Convenient foods", "Corporate strategy and transformation"],
+ "watch_urls": [],
+ "differentiators": [],
+ "early_career": [],
+ "employee_support": [
+  {"text": "Outside the US, PepsiCo documents generous parental leave (UK and Ireland: 26 weeks at full pay for maternity, 10 weeks for other parents after a year of service; ANZ: 16 weeks for primary carers).", "evidence": "tentative_signal", "sources": ["1", "2"], "significance": "Shows company intent, but US terms may differ; ask."}
+ ],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Headquarters is in Purchase, NY (Westchester), which the scanner does not count as New York City.", "evidence": "verified_policy", "sources": ["3"], "significance": "Many corporate roles are a commute from NYC; check the posting's office."}
+ ],
+ "unknowns": ["US parental leave and flexibility.", "Early-career strategy or rotational programs in the US."],
+ "sources": [
+  {"id": "1", "url": "https://www.york.ac.uk/media/business-society/research/equalparentingproject/workingdadsemployerawards/Parenting Policies case study.pdf", "title": "University of York: PepsiCo parenting policies case study (UK)", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://womensagenda.com.au/?p=24858", "title": "Women's Agenda: employers extending parental leave (PepsiCo ANZ)", "type": "independent", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://www.pepsicojobs.com", "title": "PepsiCo jobs", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

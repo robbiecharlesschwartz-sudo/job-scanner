@@ -1,0 +1,26 @@
+{
+ "company": "Watershed",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Watershed is an enterprise sustainability software company: companies such as Airbnb, FedEx and Visa use it to measure emissions, manage climate and ESG data and produce audit-ready reports (including CSRD), with in-house climate experts and a decarbonization marketplace.",
+ "business_type": "Climate / ESG software startup",
+ "service_lines": ["Carbon accounting and emissions data", "ESG and CSRD reporting", "Decarbonization marketplace", "Climate advisory (in-house experts)"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Combines a carbon-data engine with in-house climate experts to turn operations and supply-chain data into audit-ready climate and ESG reporting.", "evidence": "verified_policy", "sources": ["1"], "significance": "Directly relevant to your CDP/EcoVadis and ESG-reporting experience, from the software side."}
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [
+  {"text": "Postings describe a hybrid setup with offices in San Francisco, New York and London, plus remote staff in the US and Europe.", "evidence": "verified_policy", "sources": ["1"], "significance": "NYC office exists; arrangements vary by role."}
+ ],
+ "culture": [
+  {"text": "Describes itself as a mission-oriented startup looking for people who want to work hard; values: customer-obsessed, outcome-oriented, inclusive.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Self-description; signals startup intensity."}
+ ],
+ "tradeoffs": [],
+ "unknowns": ["Benefits and leave.", "Independent evidence about employee experience."],
+ "sources": [
+  {"id": "1", "url": "https://watershed.com/careers/251112f7-software-engineer-full-stack", "title": "Watershed careers: About Watershed", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

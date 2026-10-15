@@ -1,0 +1,28 @@
+{
+ "company": "IBM Consulting",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Leave figures date from 2017.",
+ "overview": "IBM Consulting is IBM's services arm: business transformation, strategy and technology consulting delivered alongside IBM's own software, hybrid cloud and AI products.",
+ "business_type": "Technology company's consulting division",
+ "service_lines": ["Business strategy and transformation", "Technology consulting and implementation", "Operations / managed services", "AI and data"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Consulting sits inside a technology vendor, so strategy and transformation work is often linked to IBM's own software, hybrid-cloud and AI platforms.", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Strong AI and tech exposure; pure strategy roles are a small part of the business."}
+ ],
+ "early_career": [],
+ "employee_support": [
+  {"text": "In 2017 IBM expanded paid leave to 20 weeks for birth mothers and 12-14 weeks for fathers and adoptive parents, and added up to $20,000 for adoption or surrogacy.", "evidence": "tentative_signal", "sources": ["1", "2"], "significance": "Dated; current terms not confirmed."}
+ ],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "IBM confirmed a low-single-digit percentage workforce reduction in Q4 2025 while refocusing on software and AI; reports said consulting had struggled and that consulting staff were among those affected earlier in 2025.", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Ask about the stability of the specific consulting team."}
+ ],
+ "unknowns": ["Current US parental leave, flexibility and return-to-office rules.", "Early-career training for entry-level consultants."],
+ "sources": [
+  {"id": "1", "url": "https://www.hrdive.com/news/ibm-expands-paid-parental-leave-will-pay-for-adoption-and-surrogacy/508310/", "title": "HR Dive: IBM expands paid parental leave", "type": "independent", "accessed": "2026-10-15", "published": "2017-10"},
+  {"id": "2", "url": "https://qz.com/work/1111627/ibm-parental-leave-new-mothers-will-get-20-weeks-paid", "title": "Quartz: IBM gives new mothers 20 weeks", "type": "independent", "accessed": "2026-10-15", "published": "2017"},
+  {"id": "3", "url": "https://www.techrepublic.com/article/news-ibm-layoffs-november-2025/", "title": "TechRepublic: IBM layoffs as it shifts to AI", "type": "independent", "accessed": "2026-10-15", "published": "2025-11"}
+ ]
+}

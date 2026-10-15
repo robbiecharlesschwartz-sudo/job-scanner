@@ -1,0 +1,25 @@
+{
+ "company": "Axion Ray",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Axion Ray is a New York AI startup whose software helps manufacturers' engineering teams detect, investigate and resolve product-quality issues; customers include Boeing, Pratt & Whitney, Baxter and DENSO. It raised a $37m Series B led by Salesforce Ventures in December 2025.",
+ "business_type": "Venture-backed AI software startup",
+ "service_lines": ["AI for manufacturing quality", "Field and warranty issue detection", "Deployment strategy (customer-facing)"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Customer-facing 'AI Deployment Strategist' roles combine business problem-solving with rolling out AI at Fortune 500 manufacturers.", "evidence": "verified_policy", "sources": ["2"], "significance": "Consulting-like client work inside a startup; pay includes equity and commission."}
+ ],
+ "early_career": [],
+ "employee_support": [],
+ "flexibility": [],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "Early-stage company (Series B): roles change quickly and formal training is limited.", "evidence": "supporting_evidence", "sources": ["1"], "significance": "High ownership, less structure."}
+ ],
+ "unknowns": ["Benefits, leave and flexibility.", "Whether roles suit new grads."],
+ "sources": [
+  {"id": "1", "url": "https://pulse2.com/axion-ray-37-million-series-b/amp/", "title": "Pulse 2.0: Axion Ray $37M Series B", "type": "independent", "accessed": "2026-10-15", "published": "2025-12"},
+  {"id": "2", "url": "https://app.welcometothejungle.com/jobs/QKc1QxVw/company", "title": "Axion Ray: AI Deployment Strategist posting", "type": "official", "accessed": "2026-10-15"}
+ ]
+}

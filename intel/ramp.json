@@ -1,0 +1,31 @@
+{
+ "company": "Ramp",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly).",
+ "overview": "Ramp is a fast-growing New York fintech selling corporate cards and spend-management software. Strategy-type roles are in strategy and operations, business operations and finance teams at a startup scale.",
+ "business_type": "High-growth fintech startup",
+ "service_lines": ["Corporate cards", "Spend management and bill pay", "Strategy & operations / bizops"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "Operates with OKRs and team-based strategic planning; strategy and operations roles work close to product and leadership.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Hands-on ownership early, startup-style."}
+ ],
+ "early_career": [],
+ "employee_support": [
+  {"text": "US postings list parental leave of up to 16 weeks (birthing plus bonding) or 8 weeks (bonding) at full pay, and a fertility HRA of up to $10,000 a year.", "evidence": "verified_policy", "sources": ["1"], "significance": "Concrete, documented leave and family-building support."},
+  {"text": "Built In lists unlimited PTO and annual education reimbursement.", "evidence": "tentative_signal", "sources": ["2"], "significance": "Unlimited PTO's value depends on norms."}
+ ],
+ "flexibility": [
+  {"text": "In-office preference: new hires expected at least 3 days a week in NYC, SF or Miami.", "evidence": "tentative_signal", "sources": ["1"], "significance": "Mostly in-person."}
+ ],
+ "culture": [],
+ "tradeoffs": [
+  {"text": "A culture profile reports 60+ hour weeks and 10-12 hour days as common (work-life balance rated 3.5).", "evidence": "tentative_signal", "sources": ["3"], "significance": "Expect startup intensity."}
+ ],
+ "unknowns": ["Structured training or mentorship for new grads."],
+ "sources": [
+  {"id": "1", "url": "https://joinrise.co/ramp/associate-capital-markets-4s3l", "title": "Ramp posting (US benefits)", "type": "official", "accessed": "2026-10-15"},
+  {"id": "2", "url": "https://www.builtinnyc.com/company/ramp-0/benefits", "title": "Built In NYC: Ramp benefits", "type": "other", "accessed": "2026-10-15"},
+  {"id": "3", "url": "https://jobsbyculture.com/jobs/ramp/senior-manager-head-of-talent-operations", "title": "JobsByCulture: Ramp culture profile", "type": "employee_reviews", "accessed": "2026-10-15"}
+ ]
+}

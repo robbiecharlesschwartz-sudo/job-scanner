@@ -63,13 +63,22 @@ def send(alerts: list[dict]) -> list[str]:
         if a["click"] != site:
             params["actions"] = f"view, Open posting, {a['click']}; view, Results page, {site}"
         url = f"{server}/{topic}?{urllib.parse.urlencode(params)}"
-        req = urllib.request.Request(url, data=a["body"].encode("utf-8"), method="POST")
-        try:
-            urllib.request.urlopen(req, timeout=30).read()
-        except urllib.error.HTTPError as e:
-            errors.append(f"ntfy {e.code}: {e.read().decode('utf-8', 'replace')[:200]}")
-        except urllib.error.URLError as e:
-            errors.append(f"ntfy connection error: {e}")
+        err = None
+        for attempt in range(3):            # transient ntfy hiccups: retry, never duplicate a success
+            req = urllib.request.Request(url, data=a["body"].encode("utf-8"), method="POST")
+            try:
+                urllib.request.urlopen(req, timeout=30).read()
+                err = None
+                break
+            except urllib.error.HTTPError as e:
+                err = f"ntfy {e.code}: {e.read().decode('utf-8', 'replace')[:200]}"
+                if e.code not in (429, 500, 502, 503, 504):
+                    break
+            except urllib.error.URLError as e:
+                err = "ntfy connection error"   # never echo the URL: it contains the private topic
+            time.sleep(5 * (attempt + 1))
+        if err:
+            errors.append(err)
         time.sleep(1)                       # stay well inside ntfy's anonymous rate limit
     return errors
 
@@ -87,8 +96,9 @@ def compose_email(matches: list[dict], site_url: str) -> dict | None:
     text, rows = [], []
     for m in matches:
         pts = [p for p in (m.get("pointers") or [])[:5]]
+        why = f"Why {m['company']}: {m['why_company']}" if m.get("why_company") else ""
         text.append(f"{m['company']}: {m['title']}\n{m['location']}\n{m['reason']}\n"
-                    + "".join(f"  {p}\n" for p in pts) + f"Posting: {m['url']}\n")
+                    + "".join(f"  {p}\n" for p in pts) + (why + "\n" if why else "") + f"Posting: {m['url']}\n")
         esc = lambda x: (x or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         rows.append(
             f'<div style="border:1px solid #ddd;border-radius:10px;padding:14px;margin:0 0 12px">'
@@ -97,6 +107,8 @@ def compose_email(matches: list[dict], site_url: str) -> dict | None:
             f'<div style="color:#666;font-size:13px;margin:4px 0 8px">{esc(m["location"][:160])}</div>'
             f'<div style="font-size:14px">{esc(m["reason"])}</div>'
             f'<ul style="font-size:13px;padding-left:18px">{"".join(f"<li>{esc(p)}</li>" for p in pts)}</ul>'
+            + (f'<div style="font-size:13px;margin:0 0 8px"><b>Why {esc(m["company"])}:</b> {esc(m["why_company"])}</div>'
+               if m.get("why_company") else "") +
             f'<a href="{esc(m["url"])}" style="font-size:14px">Open the posting →</a></div>')
     html = (f'<div style="font-family:-apple-system,Segoe UI,sans-serif;max-width:600px">'
             f'<h2 style="font-size:18px">{"A new Strong match" if n == 1 else f"{n} new Strong matches"}</h2>'

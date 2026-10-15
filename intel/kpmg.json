@@ -1,0 +1,32 @@
+{
+ "company": "KPMG",
+ "researched_on": "2026-10-15",
+ "refresh_after": "2027-04-15",
+ "method": "Web research 2026-10-15 from search-engine summaries of the cited pages (pages not opened directly). Leave figures date from 2021-22 announcements.",
+ "overview": "KPMG US is a Big Four firm. Its advisory business includes management consulting (strategy, operations, finance, people, customer) and deal advisory alongside risk and technology work; scans use KPMG's own US careers listing.",
+ "business_type": "Big Four professional services",
+ "service_lines": ["Advisory: management consulting", "Deal advisory and strategy", "Risk and regulatory advisory", "Technology consulting", "Audit", "Tax"],
+ "watch_urls": [],
+ "differentiators": [
+  {"text": "KPMG built Lakehouse, a $450m learning and innovation campus in Lake Nona, Orlando (opened 2020), with in-person courses taught by partners and professionals each week.", "evidence": "supporting_evidence", "sources": ["1"], "significance": "Signals heavy investment in in-person training; how much new advisory hires use it was not confirmed."}
+ ],
+ "early_career": [
+  {"text": "Lakehouse was designed to deliver over a million hours of in-person professional development a year, mixing in-person and digital learning.", "evidence": "supporting_evidence", "sources": ["1", "2"], "significance": "Formal training capacity is large; new-hire curriculum details for advisory were not found."}
+ ],
+ "employee_support": [
+  {"text": "KPMG US announced 12 weeks' paid parental leave for all parents regardless of primary-caregiver status (up to 22 weeks combined with disability leave for birth parents) and up to three weeks of paid caregiver leave separate from PTO.", "evidence": "supporting_evidence", "sources": ["3", "4"], "significance": "Caregiver leave for a family member's serious illness goes beyond standard benefits. Announced 2021-22; confirm current terms."},
+  {"text": "Announced support includes up to $35,000 for fertility and $35,000 for adoption and surrogacy, 10 free counselling sessions a year and work/life coaching.", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Concrete mental-health and family-building support."}
+ ],
+ "flexibility": [
+  {"text": "KPMG introduced twice-yearly firm-wide breaks of at least nine consecutive days and a 'Flex with Purpose' hybrid approach.", "evidence": "supporting_evidence", "sources": ["3"], "significance": "Firm-wide breaks make it easier to actually disconnect. Hybrid alone is not evidence of flexibility."}
+ ],
+ "culture": [],
+ "tradeoffs": [],
+ "unknowns": ["Whether the 2021-22 leave and break policies are unchanged in 2026.", "Hours, travel and staffing model for NYC advisory associates."],
+ "sources": [
+  {"id": "1", "url": "https://www.consultingmag.com/2019/03/27/kpmg-to-open-lakehouse-a-450-million-training-and-innovation-center", "title": "Consulting Magazine: KPMG Lakehouse", "type": "independent", "accessed": "2026-10-15", "published": "2019-03-27"},
+  {"id": "2", "url": "https://accountingtoday.com/list/kpmg-opens-lakehouse-campus-in-orlando", "title": "Accounting Today: KPMG opens Lakehouse", "type": "independent", "accessed": "2026-10-15", "published": "2020"},
+  {"id": "3", "url": "https://accountingtoday.com/news/kpmg-announces-compensation-and-benefits-enhancements", "title": "Accounting Today: KPMG US compensation and benefits enhancements", "type": "independent", "accessed": "2026-10-15", "published": "2021"},
+  {"id": "4", "url": "https://news.bloombergtax.com/financial-accounting/kpmg-expanding-paid-leave-options-for-parents-caregivers", "title": "Bloomberg Tax: KPMG expanding paid leave for parents, caregivers", "type": "independent", "accessed": "2026-10-15"}
+ ]
+}
