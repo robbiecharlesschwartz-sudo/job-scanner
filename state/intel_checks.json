@@ -35,5 +35,47 @@
   "errors": [],
   "hashes": {}
  },
- "capco": {}
+ "capco": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "deloitte": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.deloitte.com/us/en/careers/executives.html": "64f91bfd1aa31041"
+  }
+ },
+ "erm": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.erm.com/erm-careers/early-careers/": "5dffe87da0d339f7"
+  }
+ },
+ "ey": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.ey.com/en_gl/careers/personalized-career-development": "89baf6d7b975411f"
+  }
+ },
+ "ey-parthenon": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.ey.com/en_us/careers/parthenon/consultant-program": "9c4490dcf255a85f"
+  }
+ },
+ "first-and-first-consulting": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "guidehouse": {}
 }

@@ -1,53 +1,53 @@
 {
  "date": "2026-10-16",
- "label": "Fri Oct 16, 2026 \u00b7 11:25 AM ET",
+ "label": "Fri Oct 16, 2026 \u00b7 3:02 PM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 777,
-   "new": 18,
+   "fetched": 776,
+   "new": 2,
    "company": "Accenture"
   },
   "AlixPartners": {
-   "fetched": 113,
-   "new": 0,
+   "fetched": 115,
+   "new": 2,
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 350,
-   "new": 38,
+   "fetched": 348,
+   "new": 6,
    "company": "American Express",
    "incomplete": "hit the page limit before the end of the board"
   },
   "Axion Ray": {
-   "fetched": 14,
+   "fetched": 13,
    "new": 0,
    "company": "Axion Ray"
   },
   "BCG": {
-   "fetched": 89,
-   "new": 1,
+   "fetched": 88,
+   "new": 0,
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 159,
-   "new": 4,
+   "fetched": 158,
+   "new": 1,
    "company": "BlackRock"
   },
   "Capco": {
-   "fetched": 708,
-   "new": 10,
+   "fetched": 707,
+   "new": 1,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 694,
-   "new": 35,
+   "fetched": 687,
+   "new": 18,
    "company": "Deloitte",
    "incomplete": "hit the page limit before the end of the board"
   },
   "ERM (ERM_Careers)": {
-   "fetched": 265,
-   "new": 1,
+   "fetched": 267,
+   "new": 2,
    "company": "ERM"
   },
   "EY": {
@@ -66,13 +66,13 @@
    "company": "First & First Consulting"
   },
   "Guidehouse (External)": {
-   "fetched": 679,
-   "new": 15,
+   "fetched": 677,
+   "new": 5,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
-   "fetched": 114,
-   "new": 9,
+   "fetched": 112,
+   "new": 0,
    "company": "IBM Consulting"
   },
   "Innosight (huroncareers)": {
@@ -81,14 +81,14 @@
    "company": "Innosight"
   },
   "JPMorgan Chase": {
-   "fetched": 710,
-   "new": 51,
+   "fetched": 707,
+   "new": 25,
    "company": "JPMorgan Chase",
    "incomplete": "hit the page limit before the end of the board"
   },
   "KPMG": {
-   "fetched": 773,
-   "new": 23,
+   "fetched": 774,
+   "new": 3,
    "company": "KPMG"
   },
   "Kearney": {
@@ -97,8 +97,8 @@
    "company": "Kearney"
   },
   "McKinsey": {
-   "fetched": 87,
-   "new": 0,
+   "fetched": 90,
+   "new": 3,
    "company": "McKinsey"
   },
   "North Highland": {
@@ -112,28 +112,28 @@
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 898,
-   "new": 32,
+   "fetched": 897,
+   "new": 7,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
-   "fetched": 150,
-   "new": 8,
+   "fetched": 155,
+   "new": 6,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
-   "fetched": 46,
-   "new": 4,
+   "fetched": 47,
+   "new": 9,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
-   "fetched": 525,
+   "fetched": 528,
    "new": 0,
    "company": "PwC"
   },
   "Ramp": {
-   "fetched": 163,
-   "new": 1,
+   "fetched": 165,
+   "new": 2,
    "company": "Ramp"
   },
   "Slalom": {
@@ -152,27 +152,25 @@
    "company": "Strategy& (PwC)"
   },
   "Watershed": {
-   "fetched": 34,
-   "new": 1,
+   "fetched": 33,
+   "new": 0,
    "company": "Watershed"
   },
   "West Monroe": {
-   "fetched": 124,
+   "fetched": 123,
    "new": 0,
    "company": "West Monroe"
   },
   "Zocdoc": {
    "fetched": 59,
-   "new": 1,
+   "new": 0,
    "company": "Zocdoc"
   }
  },
- "screened_out": 252,
- "notes": [
-  "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
- ],
+ "screened_out": 92,
+ "notes": [],
  "log": {
-  "fetched": 8082,
+  "fetched": 8077,
   "sources_ok": 27,
   "sources_failed": [],
   "incomplete": {
@@ -180,9 +178,9 @@
    "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
    "Deloitte": "Deloitte: hit the page limit before the end of the board"
   },
-  "new_postings": 252,
+  "new_postings": 92,
   "retried": 0,
-  "passed_rules": 1,
+  "passed_rules": 0,
   "new_matches": [],
   "rerated": [],
   "closed": [],
