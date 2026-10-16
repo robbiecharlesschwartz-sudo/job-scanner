@@ -1,11 +1,11 @@
 {
- "date": "2026-10-15",
- "label": "Thu Oct 15, 2026 \u00b7 3:23 PM ET",
+ "date": "2026-10-16",
+ "label": "Fri Oct 16, 2026 \u00b7 11:25 AM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 775,
-   "new": 6,
+   "fetched": 777,
+   "new": 18,
    "company": "Accenture"
   },
   "AlixPartners": {
@@ -14,9 +14,10 @@
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 344,
-   "new": 9,
-   "company": "American Express"
+   "fetched": 350,
+   "new": 38,
+   "company": "American Express",
+   "incomplete": "hit the page limit before the end of the board"
   },
   "Axion Ray": {
    "fetched": 14,
@@ -24,38 +25,39 @@
    "company": "Axion Ray"
   },
   "BCG": {
-   "fetched": 91,
-   "new": 2,
+   "fetched": 89,
+   "new": 1,
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 165,
-   "new": 0,
+   "fetched": 159,
+   "new": 4,
    "company": "BlackRock"
   },
   "Capco": {
-   "fetched": 700,
-   "new": 2,
+   "fetched": 708,
+   "new": 10,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 714,
-   "new": 32,
-   "company": "Deloitte"
+   "fetched": 694,
+   "new": 35,
+   "company": "Deloitte",
+   "incomplete": "hit the page limit before the end of the board"
   },
   "ERM (ERM_Careers)": {
-   "fetched": 266,
-   "new": 2,
+   "fetched": 265,
+   "new": 1,
    "company": "ERM"
   },
   "EY": {
    "fetched": 39,
-   "new": 1,
+   "new": 0,
    "company": "EY"
   },
   "EY-Parthenon": {
    "fetched": 161,
-   "new": 2,
+   "new": 0,
    "company": "EY-Parthenon"
   },
   "First & First Consulting": {
@@ -64,13 +66,13 @@
    "company": "First & First Consulting"
   },
   "Guidehouse (External)": {
-   "fetched": 685,
-   "new": 5,
+   "fetched": 679,
+   "new": 15,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
-   "fetched": 107,
-   "new": 2,
+   "fetched": 114,
+   "new": 9,
    "company": "IBM Consulting"
   },
   "Innosight (huroncareers)": {
@@ -79,22 +81,23 @@
    "company": "Innosight"
   },
   "JPMorgan Chase": {
-   "fetched": 712,
-   "new": 24,
-   "company": "JPMorgan Chase"
+   "fetched": 710,
+   "new": 51,
+   "company": "JPMorgan Chase",
+   "incomplete": "hit the page limit before the end of the board"
   },
   "KPMG": {
-   "fetched": 772,
-   "new": 8,
+   "fetched": 773,
+   "new": 23,
    "company": "KPMG"
   },
   "Kearney": {
-   "fetched": 193,
+   "fetched": 172,
    "new": 0,
    "company": "Kearney"
   },
   "McKinsey": {
-   "fetched": 88,
+   "fetched": 87,
    "new": 0,
    "company": "McKinsey"
   },
@@ -104,33 +107,33 @@
    "company": "North Highland"
   },
   "Oliver Wyman (MMC)": {
-   "fetched": 73,
+   "fetched": 71,
    "new": 0,
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 892,
-   "new": 10,
+   "fetched": 898,
+   "new": 32,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
    "fetched": 150,
-   "new": 15,
+   "new": 8,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
-   "fetched": 57,
-   "new": 9,
+   "fetched": 46,
+   "new": 4,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
-   "fetched": 526,
+   "fetched": 525,
    "new": 0,
    "company": "PwC"
   },
   "Ramp": {
-   "fetched": 164,
-   "new": 0,
+   "fetched": 163,
+   "new": 1,
    "company": "Ramp"
   },
   "Slalom": {
@@ -144,49 +147,51 @@
    "company": "Strategy& (PwC)"
   },
   "Strategy& (PwC) (US_Experienced_Careers)": {
-   "fetched": 23,
+   "fetched": 22,
    "new": 0,
    "company": "Strategy& (PwC)"
   },
   "Watershed": {
    "fetched": 34,
-   "new": 0,
+   "new": 1,
    "company": "Watershed"
   },
   "West Monroe": {
-   "fetched": 125,
+   "fetched": 124,
    "new": 0,
    "company": "West Monroe"
   },
   "Zocdoc": {
-   "fetched": 58,
-   "new": 0,
+   "fetched": 59,
+   "new": 1,
    "company": "Zocdoc"
   }
  },
- "screened_out": 129,
+ "screened_out": 252,
  "notes": [
   "Claude: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
  ],
  "log": {
-  "fetched": 8127,
-  "sources_ok": 30,
+  "fetched": 8082,
+  "sources_ok": 27,
   "sources_failed": [],
-  "new_postings": 129,
-  "passed_rules": 2,
+  "incomplete": {
+   "American Express": "American Express: hit the page limit before the end of the board",
+   "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
+   "Deloitte": "Deloitte: hit the page limit before the end of the board"
+  },
+  "new_postings": 252,
+  "retried": 0,
+  "passed_rules": 1,
   "new_matches": [],
   "rerated": [],
-  "closed": [
-   {
-    "company": "Deloitte",
-    "title": "Mergers and Acquisitions Financial Due Diligence Consultant",
-    "rating": "Stretch",
-    "url": "https://apply.deloitte.com/en_US/careers/JobDetail/Mergers-and-Acquisitions-Financial-Due-Diligence-Consultant/357257"
-   }
-  ],
+  "closed": [],
+  "removed": [],
+  "awaiting_rating": 0,
   "dismissed_total": 0,
   "open_total": 22,
   "alerts": 0,
-  "emails": 0
+  "emails": 0,
+  "no_profile": []
  }
 }

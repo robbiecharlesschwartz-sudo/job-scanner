@@ -1,0 +1,39 @@
+{
+ "accenture": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.accenture.com/us-en/careers/local/total-rewards": "da783054bc8c7ecb"
+  }
+ },
+ "alixpartners": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "american-express": {
+  "checked_on": "2026-10-16",
+  "confirmed_on": "2026-10-16",
+  "errors": [],
+  "hashes": {
+   "https://www.americanexpress.com/en-us/careers/locations/new-york/index.html": "9b4fc3f9aef91d45"
+  }
+ },
+ "axion-ray": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "bcg": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "blackrock": {
+  "checked_on": "2026-10-16",
+  "errors": [],
+  "hashes": {}
+ },
+ "capco": {}
+}
