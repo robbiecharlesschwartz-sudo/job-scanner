@@ -107,5 +107,37 @@
   "errors": [],
   "hashes": {}
  },
- "mckinsey": {}
+ "mckinsey": {
+  "checked_on": "2026-10-17",
+  "errors": [
+   "https://www.mckinsey.com/careers/meet-our-people/careers-blog/parenthood: https://www.mckinsey.com/careers/meet-our-people/careers-blog/parenthood: The re"
+  ],
+  "hashes": {}
+ },
+ "north-highland": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "oliver-wyman": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "pepsico": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "pfizer": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "pwc": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "ramp": {}
 }

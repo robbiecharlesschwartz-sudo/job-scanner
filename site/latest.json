@@ -1,11 +1,11 @@
 {
  "date": "2026-10-17",
- "label": "Sat Oct 17, 2026 \u00b7 10:17 AM ET",
+ "label": "Sat Oct 17, 2026 \u00b7 1:56 PM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
    "fetched": 776,
-   "new": 5,
+   "new": 0,
    "company": "Accenture"
   },
   "AlixPartners": {
@@ -15,13 +15,13 @@
   },
   "American Express": {
    "fetched": 341,
-   "new": 6,
+   "new": 0,
    "company": "American Express",
    "incomplete": "hit the page limit before the end of the board"
   },
   "Axion Ray": {
    "fetched": 14,
-   "new": 1,
+   "new": 0,
    "company": "Axion Ray"
   },
   "BCG": {
@@ -30,24 +30,24 @@
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 156,
+   "fetched": 154,
    "new": 0,
    "company": "BlackRock"
   },
   "Capco": {
    "fetched": 707,
-   "new": 1,
+   "new": 0,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 706,
-   "new": 29,
+   "fetched": 713,
+   "new": 7,
    "company": "Deloitte",
    "incomplete": "hit the page limit before the end of the board"
   },
   "ERM (ERM_Careers)": {
    "fetched": 268,
-   "new": 2,
+   "new": 0,
    "company": "ERM"
   },
   "EY": {
@@ -56,8 +56,8 @@
    "company": "EY"
   },
   "EY-Parthenon": {
-   "fetched": 136,
-   "new": 1,
+   "fetched": 139,
+   "new": 2,
    "company": "EY-Parthenon"
   },
   "First & First Consulting": {
@@ -67,12 +67,12 @@
   },
   "Guidehouse (External)": {
    "fetched": 680,
-   "new": 7,
+   "new": 0,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
    "fetched": 110,
-   "new": 2,
+   "new": 0,
    "company": "IBM Consulting"
   },
   "Innosight (huroncareers)": {
@@ -82,18 +82,18 @@
   },
   "JPMorgan Chase": {
    "fetched": 708,
-   "new": 27,
+   "new": 1,
    "company": "JPMorgan Chase",
    "incomplete": "hit the page limit before the end of the board"
   },
   "KPMG": {
    "fetched": 780,
-   "new": 9,
+   "new": 0,
    "company": "KPMG"
   },
   "Kearney": {
    "fetched": 171,
-   "new": 1,
+   "new": 0,
    "company": "Kearney"
   },
   "McKinsey": {
@@ -112,18 +112,18 @@
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 908,
-   "new": 17,
+   "fetched": 906,
+   "new": 0,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
    "fetched": 146,
-   "new": 1,
+   "new": 0,
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
    "fetched": 48,
-   "new": 6,
+   "new": 0,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
@@ -133,7 +133,7 @@
   },
   "Ramp": {
    "fetched": 167,
-   "new": 2,
+   "new": 0,
    "company": "Ramp"
   },
   "Slalom": {
@@ -153,12 +153,12 @@
   },
   "Watershed": {
    "fetched": 35,
-   "new": 2,
+   "new": 0,
    "company": "Watershed"
   },
   "West Monroe": {
    "fetched": 124,
-   "new": 1,
+   "new": 0,
    "company": "West Monroe"
   },
   "Zocdoc": {
@@ -167,12 +167,10 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 120,
- "notes": [
-  "Claude: Error code: 401 - {'type': 'error', 'error': {'type': 'authentication_error', 'message': 'invalid x-api-key'}, 'request_id': 'req_011Cg7xSaXqg36FvK3szRhFq'}; NVIDIA: 410: {\"type\":\"about:blank\",\"title\":\"Gone\",\"status\":410,\"detail\":\"The model 'moonshotai/kimi-k3' has reached its end of life on 2026-10-15T08:00:00Z and is "
- ],
+ "screened_out": 10,
+ "notes": [],
  "log": {
-  "fetched": 8079,
+  "fetched": 8085,
   "sources_ok": 27,
   "sources_failed": [],
   "incomplete": {
@@ -180,9 +178,9 @@
    "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
    "Deloitte": "Deloitte: hit the page limit before the end of the board"
   },
-  "new_postings": 120,
+  "new_postings": 10,
   "retried": 0,
-  "passed_rules": 2,
+  "passed_rules": 0,
   "new_matches": [],
   "rerated": [],
   "closed": [],
