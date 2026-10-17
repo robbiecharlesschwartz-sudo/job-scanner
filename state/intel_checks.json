@@ -77,5 +77,35 @@
   "errors": [],
   "hashes": {}
  },
- "guidehouse": {}
+ "guidehouse": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "ibm-consulting": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "innosight": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "jpmorgan-chase": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "kearney": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "kpmg": {
+  "checked_on": "2026-10-17",
+  "errors": [],
+  "hashes": {}
+ },
+ "mckinsey": {}
 }
