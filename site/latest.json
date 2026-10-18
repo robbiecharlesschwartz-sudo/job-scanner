@@ -1,6 +1,6 @@
 {
  "date": "2026-10-18",
- "label": "Sun Oct 18, 2026 \u00b7 10:41 AM ET",
+ "label": "Sun Oct 18, 2026 \u00b7 2:16 PM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
@@ -9,12 +9,12 @@
    "company": "Accenture"
   },
   "AlixPartners": {
-   "fetched": 115,
+   "fetched": 114,
    "new": 0,
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 339,
+   "fetched": 338,
    "new": 0,
    "company": "American Express",
    "incomplete": "hit the page limit before the end of the board"
@@ -40,8 +40,8 @@
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 710,
-   "new": 2,
+   "fetched": 711,
+   "new": 7,
    "company": "Deloitte",
    "incomplete": "hit the page limit before the end of the board"
   },
@@ -56,8 +56,8 @@
    "company": "EY"
   },
   "EY-Parthenon": {
-   "fetched": 161,
-   "new": 0,
+   "fetched": 162,
+   "new": 1,
    "company": "EY-Parthenon"
   },
   "First & First Consulting": {
@@ -67,7 +67,7 @@
   },
   "Guidehouse (External)": {
    "fetched": 683,
-   "new": 3,
+   "new": 0,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
@@ -81,14 +81,14 @@
    "company": "Innosight"
   },
   "JPMorgan Chase": {
-   "fetched": 708,
+   "fetched": 706,
    "new": 0,
    "company": "JPMorgan Chase",
    "incomplete": "hit the page limit before the end of the board"
   },
   "KPMG": {
-   "fetched": 777,
-   "new": 0,
+   "fetched": 778,
+   "new": 1,
    "company": "KPMG"
   },
   "Kearney": {
@@ -113,7 +113,7 @@
   },
   "PepsiCo": {
    "fetched": 890,
-   "new": 0,
+   "new": 2,
    "company": "PepsiCo"
   },
   "Pfizer (PfizerCareers)": {
@@ -122,12 +122,12 @@
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
-   "fetched": 49,
+   "fetched": 48,
    "new": 1,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
-   "fetched": 529,
+   "fetched": 528,
    "new": 0,
    "company": "PwC"
   },
@@ -167,10 +167,10 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 6,
+ "screened_out": 12,
  "notes": [],
  "log": {
-  "fetched": 8083,
+  "fetched": 8080,
   "sources_ok": 27,
   "sources_failed": [],
   "incomplete": {
@@ -178,7 +178,7 @@
    "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
    "Deloitte": "Deloitte: hit the page limit before the end of the board"
   },
-  "new_postings": 6,
+  "new_postings": 12,
   "retried": 0,
   "passed_rules": 0,
   "new_matches": [],
