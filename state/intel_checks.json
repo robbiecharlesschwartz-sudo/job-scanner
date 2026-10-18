@@ -139,5 +139,42 @@
   "errors": [],
   "hashes": {}
  },
- "ramp": {}
+ "ramp": {
+  "checked_on": "2026-10-18",
+  "errors": [],
+  "hashes": {}
+ },
+ "slalom": {
+  "checked_on": "2026-10-18",
+  "errors": [],
+  "hashes": {}
+ },
+ "strategy-and-pwc": {
+  "checked_on": "2026-10-18",
+  "confirmed_on": "2026-10-18",
+  "errors": [],
+  "hashes": {
+   "https://www.strategyand.pwc.com/de/en/about/history.html": "f0f567d18262e0f1"
+  }
+ },
+ "watershed": {
+  "checked_on": "2026-10-18",
+  "errors": [],
+  "hashes": {}
+ },
+ "west-monroe": {
+  "checked_on": "2026-10-18",
+  "confirmed_on": "2026-10-18",
+  "errors": [],
+  "hashes": {
+   "https://www.westmonroe.com/company-highlight/west-monroe-named-a-best-place-to-work-for-parents-by-great-place-to-work-and-fortune": "6dfb2ab1f099dc63"
+  }
+ },
+ "zocdoc": {
+  "checked_on": "2026-10-18",
+  "errors": [
+   "https://www.zocdoc.com/about/careers-home/: https://www.zocdoc.com/about/careers-home/: HTTP Error 403: Forbidden"
+  ],
+  "hashes": {}
+ }
 }

@@ -3079,5 +3079,200 @@
    "emails": 0,
    "no_profile": []
   }
+ },
+ {
+  "date": "2026-10-18",
+  "label": "Sun Oct 18, 2026 \u00b7 10:41 AM ET",
+  "matches": [],
+  "sources": {
+   "Accenture (AccentureCareers)": {
+    "fetched": 775,
+    "new": 0,
+    "company": "Accenture"
+   },
+   "AlixPartners": {
+    "fetched": 115,
+    "new": 0,
+    "company": "AlixPartners"
+   },
+   "American Express": {
+    "fetched": 339,
+    "new": 0,
+    "company": "American Express",
+    "incomplete": "hit the page limit before the end of the board"
+   },
+   "Axion Ray": {
+    "fetched": 14,
+    "new": 0,
+    "company": "Axion Ray"
+   },
+   "BCG": {
+    "fetched": 88,
+    "new": 0,
+    "company": "BCG"
+   },
+   "BlackRock (BlackRock_Professional)": {
+    "fetched": 153,
+    "new": 0,
+    "company": "BlackRock"
+   },
+   "Capco": {
+    "fetched": 706,
+    "new": 0,
+    "company": "Capco"
+   },
+   "Deloitte": {
+    "fetched": 710,
+    "new": 2,
+    "company": "Deloitte",
+    "incomplete": "hit the page limit before the end of the board"
+   },
+   "ERM (ERM_Careers)": {
+    "fetched": 268,
+    "new": 0,
+    "company": "ERM"
+   },
+   "EY": {
+    "fetched": 39,
+    "new": 0,
+    "company": "EY"
+   },
+   "EY-Parthenon": {
+    "fetched": 161,
+    "new": 0,
+    "company": "EY-Parthenon"
+   },
+   "First & First Consulting": {
+    "fetched": 0,
+    "new": 0,
+    "company": "First & First Consulting"
+   },
+   "Guidehouse (External)": {
+    "fetched": 683,
+    "new": 3,
+    "company": "Guidehouse"
+   },
+   "IBM Consulting": {
+    "fetched": 110,
+    "new": 0,
+    "company": "IBM Consulting"
+   },
+   "Innosight (huroncareers)": {
+    "fetched": 3,
+    "new": 0,
+    "company": "Innosight"
+   },
+   "JPMorgan Chase": {
+    "fetched": 708,
+    "new": 0,
+    "company": "JPMorgan Chase",
+    "incomplete": "hit the page limit before the end of the board"
+   },
+   "KPMG": {
+    "fetched": 777,
+    "new": 0,
+    "company": "KPMG"
+   },
+   "Kearney": {
+    "fetched": 171,
+    "new": 0,
+    "company": "Kearney"
+   },
+   "McKinsey": {
+    "fetched": 89,
+    "new": 0,
+    "company": "McKinsey"
+   },
+   "North Highland": {
+    "fetched": 58,
+    "new": 0,
+    "company": "North Highland"
+   },
+   "Oliver Wyman (MMC)": {
+    "fetched": 71,
+    "new": 0,
+    "company": "Oliver Wyman"
+   },
+   "PepsiCo": {
+    "fetched": 890,
+    "new": 0,
+    "company": "PepsiCo"
+   },
+   "Pfizer (PfizerCareers)": {
+    "fetched": 146,
+    "new": 0,
+    "company": "Pfizer"
+   },
+   "PwC (US_Entry_Level_Careers)": {
+    "fetched": 49,
+    "new": 1,
+    "company": "PwC"
+   },
+   "PwC (US_Experienced_Careers)": {
+    "fetched": 529,
+    "new": 0,
+    "company": "PwC"
+   },
+   "Ramp": {
+    "fetched": 167,
+    "new": 0,
+    "company": "Ramp"
+   },
+   "Slalom": {
+    "fetched": 20,
+    "new": 0,
+    "company": "Slalom"
+   },
+   "Strategy& (PwC) (US_Entry_Level_Careers)": {
+    "fetched": 4,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Strategy& (PwC) (US_Experienced_Careers)": {
+    "fetched": 22,
+    "new": 0,
+    "company": "Strategy& (PwC)"
+   },
+   "Watershed": {
+    "fetched": 35,
+    "new": 0,
+    "company": "Watershed"
+   },
+   "West Monroe": {
+    "fetched": 124,
+    "new": 0,
+    "company": "West Monroe"
+   },
+   "Zocdoc": {
+    "fetched": 59,
+    "new": 0,
+    "company": "Zocdoc"
+   }
+  },
+  "screened_out": 6,
+  "notes": [],
+  "log": {
+   "fetched": 8083,
+   "sources_ok": 27,
+   "sources_failed": [],
+   "incomplete": {
+    "American Express": "American Express: hit the page limit before the end of the board",
+    "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
+    "Deloitte": "Deloitte: hit the page limit before the end of the board"
+   },
+   "new_postings": 6,
+   "retried": 0,
+   "passed_rules": 0,
+   "new_matches": [],
+   "rerated": [],
+   "closed": [],
+   "removed": [],
+   "awaiting_rating": 0,
+   "dismissed_total": 0,
+   "open_total": 22,
+   "alerts": 0,
+   "emails": 0,
+   "no_profile": []
+  }
  }
 ]

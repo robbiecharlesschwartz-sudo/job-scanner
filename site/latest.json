@@ -1,10 +1,10 @@
 {
- "date": "2026-10-17",
- "label": "Sat Oct 17, 2026 \u00b7 1:56 PM ET",
+ "date": "2026-10-18",
+ "label": "Sun Oct 18, 2026 \u00b7 10:41 AM ET",
  "matches": [],
  "sources": {
   "Accenture (AccentureCareers)": {
-   "fetched": 776,
+   "fetched": 775,
    "new": 0,
    "company": "Accenture"
   },
@@ -14,7 +14,7 @@
    "company": "AlixPartners"
   },
   "American Express": {
-   "fetched": 341,
+   "fetched": 339,
    "new": 0,
    "company": "American Express",
    "incomplete": "hit the page limit before the end of the board"
@@ -30,18 +30,18 @@
    "company": "BCG"
   },
   "BlackRock (BlackRock_Professional)": {
-   "fetched": 154,
+   "fetched": 153,
    "new": 0,
    "company": "BlackRock"
   },
   "Capco": {
-   "fetched": 707,
+   "fetched": 706,
    "new": 0,
    "company": "Capco"
   },
   "Deloitte": {
-   "fetched": 713,
-   "new": 7,
+   "fetched": 710,
+   "new": 2,
    "company": "Deloitte",
    "incomplete": "hit the page limit before the end of the board"
   },
@@ -56,8 +56,8 @@
    "company": "EY"
   },
   "EY-Parthenon": {
-   "fetched": 139,
-   "new": 2,
+   "fetched": 161,
+   "new": 0,
    "company": "EY-Parthenon"
   },
   "First & First Consulting": {
@@ -66,8 +66,8 @@
    "company": "First & First Consulting"
   },
   "Guidehouse (External)": {
-   "fetched": 680,
-   "new": 0,
+   "fetched": 683,
+   "new": 3,
    "company": "Guidehouse"
   },
   "IBM Consulting": {
@@ -82,12 +82,12 @@
   },
   "JPMorgan Chase": {
    "fetched": 708,
-   "new": 1,
+   "new": 0,
    "company": "JPMorgan Chase",
    "incomplete": "hit the page limit before the end of the board"
   },
   "KPMG": {
-   "fetched": 780,
+   "fetched": 777,
    "new": 0,
    "company": "KPMG"
   },
@@ -112,7 +112,7 @@
    "company": "Oliver Wyman"
   },
   "PepsiCo": {
-   "fetched": 906,
+   "fetched": 890,
    "new": 0,
    "company": "PepsiCo"
   },
@@ -122,12 +122,12 @@
    "company": "Pfizer"
   },
   "PwC (US_Entry_Level_Careers)": {
-   "fetched": 48,
-   "new": 0,
+   "fetched": 49,
+   "new": 1,
    "company": "PwC"
   },
   "PwC (US_Experienced_Careers)": {
-   "fetched": 530,
+   "fetched": 529,
    "new": 0,
    "company": "PwC"
   },
@@ -167,10 +167,10 @@
    "company": "Zocdoc"
   }
  },
- "screened_out": 10,
+ "screened_out": 6,
  "notes": [],
  "log": {
-  "fetched": 8085,
+  "fetched": 8083,
   "sources_ok": 27,
   "sources_failed": [],
   "incomplete": {
@@ -178,7 +178,7 @@
    "JPMorgan Chase": "JPMorgan Chase: hit the page limit before the end of the board",
    "Deloitte": "Deloitte: hit the page limit before the end of the board"
   },
-  "new_postings": 10,
+  "new_postings": 6,
   "retried": 0,
   "passed_rules": 0,
   "new_matches": [],
