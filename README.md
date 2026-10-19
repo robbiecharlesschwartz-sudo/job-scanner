@@ -1,5 +1,11 @@
 # Job Scanner
 
+> **Retired 19 October 2026.** Replaced by the multi-user
+> [job-scanner-app](https://github.com/robbiecharlesschwartz-sudo/job-scanner-app)
+> (https://job-scanner-app-mocha.vercel.app). The daily scan is turned off, the old results page
+> redirects to the app, and this repository is archived (read-only). To bring it back: unarchive
+> the repo, remove `redirects` from `vercel.json`, and re-enable the `daily-scan` workflow.
+
 **A personal recruiting-intelligence tool for one early-career candidate.** Twice a day it reads
 the official career sites of ~30 target consulting firms and companies, keeps the early-career
 strategy roles a new grad can actually apply for, and explains each one: why the role fits, what

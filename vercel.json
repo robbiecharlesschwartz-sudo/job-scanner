@@ -14,5 +14,12 @@
       ]
     }
   ],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- site/ api/ vercel.json"
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- site/ api/ vercel.json",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://job-scanner-app-mocha.vercel.app/",
+      "permanent": false
+    }
+  ]
 }
